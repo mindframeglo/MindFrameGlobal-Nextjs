@@ -28,7 +28,6 @@ import Testimonial from '@/components/Testimonial';
 
 
 
-
 const gold = '#c9a84c';
 
 // Celebrity photos array using string paths
@@ -300,8 +299,114 @@ function CelebCarousel() {
 }
 
 // ─── Quick Contact Form ───────────────────────────────────────────────────────
+// function QuickContactForm() {
+//   const [form, setForm] = useState({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
+//   const [loading, setLoading] = useState(false);
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   useEffect(() => {
+//     const handleResize = () => setIsMobile(window.innerWidth < 768);
+//     handleResize();
+//     window.addEventListener('resize', handleResize);
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, []);
+
+//   const inputStyle = {
+//     border: 'none', 
+//     borderBottom: '1px solid #bbb',
+//     background: 'transparent', 
+//     fontFamily: 'Georgia, serif',
+//     fontSize: 13, 
+//     color: '#1a1a1a', 
+//     padding: '8px 0',
+//     outline: 'none', 
+//     width: '100%',
+//   };
+
+//   // Naya wala lagao:
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   if (!form.name || !form.email || !form.phone) {
+//     toast.error('Please fill required fields');
+//     return;
+//   }
+//   setLoading(true);
+//   try {
+//     await contactService.submitQuickContactForm(form);
+//     toast.success("Thank you! We'll be in touch shortly.");
+//     setForm({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
+//   } catch (error) {
+//     toast.error('Something went wrong. Please try again.');
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+
+//   return (
+//     <div style={{ border: '1px solid #ddd', padding: '28px 28px 32px', fontFamily: 'Georgia, serif' }}>
+//       <p style={{ fontSize: 14, fontWeight: 700, textAlign: 'center', margin: '0 0 10px', color: '#1a1a1a' }}>
+//         Fill in your details and you'll hear from us shortly!
+//       </p>
+//       <div style={{ width: 40, height: 2, background: gold, margin: '0 auto 24px' }} />
+//       <form onSubmit={handleSubmit}>
+//         <div style={{ 
+//           display: 'grid', 
+//           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
+//           gap: isMobile ? 16 : '0 24px', 
+//           marginBottom: 20 
+//         }}>
+//           <input placeholder="Name*" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} style={inputStyle} />
+//           <input placeholder="E-mail*" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} style={inputStyle} />
+//         </div>
+//         <div style={{ 
+//           display: 'grid', 
+//           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
+//           gap: isMobile ? 16 : '0 24px', 
+//           marginBottom: 20 
+//         }}>
+//           <input placeholder="Contact No.*" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} style={inputStyle} />
+//           <input placeholder="City" value={form.city} onChange={e => setForm({ ...form, city: e.target.value })} style={inputStyle} />
+//         </div>
+//         <div style={{ 
+//           display: 'grid', 
+//           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
+//           gap: isMobile ? 16 : '0 24px', 
+//           marginBottom: 28 
+//         }}>
+//           <input placeholder="Your Company Name*" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} style={inputStyle} />
+//           <input placeholder="Designation*" value={form.designation} onChange={e => setForm({ ...form, designation: e.target.value })} style={inputStyle} />
+//         </div>
+//         <button
+//           type="submit"
+//           disabled={loading}
+//           style={{
+//             background: gold, 
+//             color: '#fff', 
+//             border: 'none',
+//             padding: '11px 32px', 
+//             fontSize: 11, 
+//             fontWeight: 700,
+//             textTransform: 'uppercase', 
+//             letterSpacing: 2,
+//             cursor: loading ? 'not-allowed' : 'pointer',
+//             fontFamily: 'Georgia, serif', 
+//             opacity: loading ? 0.7 : 1,
+//             width: isMobile ? '100%' : 'auto',
+//           }}
+//         >
+//           {loading ? 'SENDING...' : 'SUBMIT'}
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+// ─── Quick Contact Form ───────────────────────────────────────────────────────
 function QuickContactForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -312,37 +417,49 @@ function QuickContactForm() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const inputStyle = {
-    border: 'none', 
-    borderBottom: '1px solid #bbb',
-    background: 'transparent', 
-    fontFamily: 'Georgia, serif',
-    fontSize: 13, 
-    color: '#1a1a1a', 
-    padding: '8px 0',
-    outline: 'none', 
-    width: '100%',
+  const validate = () => {
+    const newErrors = {};
+    if (!form.name.trim() || form.name.trim().length < 2) newErrors.name = 'Min 2 characters required';
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = 'Enter a valid email';
+    if (!form.phone.trim() || !/^[0-9]{10}$/.test(form.phone)) newErrors.phone = 'Enter valid 10-digit number';
+    if (!form.company.trim()) newErrors.company = 'Company name is required';
+    if (!form.designation.trim()) newErrors.designation = 'Designation is required';
+    return newErrors;
   };
 
-  // Naya wala lagao:
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!form.name || !form.email || !form.phone) {
-    toast.error('Please fill required fields');
-    return;
-  }
-  setLoading(true);
-  try {
-    await contactService.submitQuickContactForm(form);
-    toast.success("Thank you! We'll be in touch shortly.");
-    setForm({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
-  } catch (error) {
-    toast.error('Something went wrong. Please try again.');
-  } finally {
-    setLoading(false);
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+    setLoading(true);
+    try {
+      await contactService.submitQuickContactForm(form);
+      toast.success("Thank you! We'll be in touch shortly.");
+      setForm({ name: '', email: '', phone: '', city: '', company: '', designation: '' });
+    } catch (error) {
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  const inputStyle = (field) => ({
+    border: 'none',
+    borderBottom: `1px solid ${errors[field] ? '#e53e3e' : '#bbb'}`,
+    background: 'transparent',
+    fontFamily: 'Georgia, serif',
+    fontSize: 13,
+    color: '#1a1a1a',
+    padding: '8px 0',
+    outline: 'none',
+    width: '100%',
+  });
+
+  const errStyle = { fontSize: 10, color: '#e53e3e', marginTop: 3, fontFamily: 'Georgia, serif' };
 
   return (
     <div style={{ border: '1px solid #ddd', padding: '28px 28px 32px', fontFamily: 'Georgia, serif' }}>
@@ -351,48 +468,48 @@ const handleSubmit = async (e) => {
       </p>
       <div style={{ width: 40, height: 2, background: gold, margin: '0 auto 24px' }} />
       <form onSubmit={handleSubmit}>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-          gap: isMobile ? 16 : '0 24px', 
-          marginBottom: 20 
-        }}>
-          <input placeholder="Name*" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} style={inputStyle} />
-          <input placeholder="E-mail*" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} style={inputStyle} />
+
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : '0 24px', marginBottom: 20 }}>
+          <div>
+            <input placeholder="Name*" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} style={inputStyle('name')} />
+            {errors.name && <p style={errStyle}>{errors.name}</p>}
+          </div>
+          <div>
+            <input placeholder="E-mail*" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} style={inputStyle('email')} />
+            {errors.email && <p style={errStyle}>{errors.email}</p>}
+          </div>
         </div>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-          gap: isMobile ? 16 : '0 24px', 
-          marginBottom: 20 
-        }}>
-          <input placeholder="Contact No.*" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} style={inputStyle} />
-          <input placeholder="City" value={form.city} onChange={e => setForm({ ...form, city: e.target.value })} style={inputStyle} />
+
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : '0 24px', marginBottom: 20 }}>
+          <div>
+            <input placeholder="Contact No.*" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} style={inputStyle('phone')} />
+            {errors.phone && <p style={errStyle}>{errors.phone}</p>}
+          </div>
+          <div>
+            <input placeholder="City" value={form.city} onChange={e => setForm({ ...form, city: e.target.value })} style={inputStyle('city')} />
+          </div>
         </div>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', 
-          gap: isMobile ? 16 : '0 24px', 
-          marginBottom: 28 
-        }}>
-          <input placeholder="Your Company Name*" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} style={inputStyle} />
-          <input placeholder="Designation*" value={form.designation} onChange={e => setForm({ ...form, designation: e.target.value })} style={inputStyle} />
+
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : '0 24px', marginBottom: 28 }}>
+          <div>
+            <input placeholder="Your Company Name*" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} style={inputStyle('company')} />
+            {errors.company && <p style={errStyle}>{errors.company}</p>}
+          </div>
+          <div>
+            <input placeholder="Designation*" value={form.designation} onChange={e => setForm({ ...form, designation: e.target.value })} style={inputStyle('designation')} />
+            {errors.designation && <p style={errStyle}>{errors.designation}</p>}
+          </div>
         </div>
+
         <button
           type="submit"
           disabled={loading}
           style={{
-            background: gold, 
-            color: '#fff', 
-            border: 'none',
-            padding: '11px 32px', 
-            fontSize: 11, 
-            fontWeight: 700,
-            textTransform: 'uppercase', 
-            letterSpacing: 2,
+            background: gold, color: '#fff', border: 'none',
+            padding: '11px 32px', fontSize: 11, fontWeight: 700,
+            textTransform: 'uppercase', letterSpacing: 2,
             cursor: loading ? 'not-allowed' : 'pointer',
-            fontFamily: 'Georgia, serif', 
-            opacity: loading ? 0.7 : 1,
+            fontFamily: 'Georgia, serif', opacity: loading ? 0.7 : 1,
             width: isMobile ? '100%' : 'auto',
           }}
         >

@@ -292,8 +292,15 @@ export default function CareerManagement() {
   const [stats, setStats] = useState(null);
   const [availablePositions, setAvailablePositions] = useState([]);
 
-  useEffect(() => { checkAuth(); }, []);
-  useEffect(() => { if (!admin) navigate('/admin/login'); }, [admin, navigate]);
+// Naya:
+useEffect(() => {
+  const init = async () => {
+    await checkAuth();
+    const { admin } = useAuthStore.getState();
+    if (!admin) navigate('/admin/login');
+  };
+  init();
+}, [])
   useEffect(() => { fetchApplications(); }, [pagination.page, statusFilter, positionFilter]);
   useEffect(() => { fetchStats(); }, []);
   useEffect(() => {

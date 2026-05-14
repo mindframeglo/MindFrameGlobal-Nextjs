@@ -60,6 +60,19 @@ const contactService = {
     }
   },
 
+
+  /**
+ * Submit service/TV page contact form
+ */
+submitServiceContactForm: async (formData) => {
+  try {
+    const response = await apiClient.post('/contact/service', formData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+},
+
   /**
    * Submit quick contact form
    */
@@ -72,5 +85,7 @@ const contactService = {
     }
   }
 };
+
+
 
 export default contactService;

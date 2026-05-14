@@ -28,8 +28,15 @@ export default function AddBlog() {
   const [loading, setLoading] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  useEffect(() => { checkAuth(); }, []);
-  useEffect(() => { if (!admin) navigate('/admin/login'); }, [admin, navigate]);
+  // Naya:
+useEffect(() => {
+  const init = async () => {
+    await checkAuth();
+    const { admin } = useAuthStore.getState();
+    if (!admin) navigate('/admin/login');
+  };
+  init();
+}, [])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

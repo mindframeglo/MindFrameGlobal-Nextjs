@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import contactService from '@/services/contactService';
 
 const videos = [
   { id: 1, title: "Supreme Furnitures TVC 60 Sec AD by Mind Frame India", ytId: "YQch1ko8Lgs" },
@@ -95,26 +96,30 @@ export default function Television() {
     setErrors(validate(form));
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const allTouched = { name: true, email: true, mobile: true, location: true, message: true };
-    setTouched(allTouched);
-    const errs = validate(form);
-    setErrors(errs);
-    if (hasErrors(errs)) {
-      addToast('Please fill in all required fields correctly.', 'error');
-      return;
-    }
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      setForm(initialForm);
-      setTouched({});
-      setErrors(initialErrors);
-      addToast("Message sent successfully! We'll be in touch soon.", 'success');
-    }, 1200);
+ async function handleSubmit(e) {
+  e.preventDefault();
+  const allTouched = { name: true, email: true, mobile: true, location: true, message: true };
+  setTouched(allTouched);
+  const errs = validate(form);
+  setErrors(errs);
+  if (hasErrors(errs)) {
+    addToast('Please fill in all required fields correctly.', 'error');
+    return;
   }
+  setLoading(true);
+  try {
+    await contactService.submitServiceContactForm(form);
+    setSubmitted(true);
+    setForm(initialForm);
+    setTouched({});
+    setErrors(initialErrors);
+    addToast("Message sent successfully! We'll be in touch soon.", 'success');
+  } catch (error) {
+    addToast('Something went wrong. Please try again.', 'error');
+  } finally {
+    setLoading(false);
+  }
+}
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#fff", minHeight: "100vh" }}>

@@ -29,8 +29,17 @@ export default function BlogManagement() {
   const [editLoading, setEditLoading] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  useEffect(() => { checkAuth(); }, []);
-  useEffect(() => { if (!admin) navigate('/admin/login'); }, [admin, navigate]);
+ // Naya:
+useEffect(() => {
+  const init = async () => {
+    await checkAuth();
+    const { admin } = useAuthStore.getState();
+    if (!admin) navigate('/admin/login');
+  };
+  init();
+}, [])
+
+
   useEffect(() => { fetchBlogs(); }, [pagination.page]);
 
   const fetchBlogs = async () => {

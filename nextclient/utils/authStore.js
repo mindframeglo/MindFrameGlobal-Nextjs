@@ -70,82 +70,39 @@ export const useAuthStore = create(
         }
       },
 
-      // checkAuth: async () => {
-      //   set({ loading: true });
-        
-      //   if (!authService.isAuthenticated()) {
-      //     set({ isAuthenticated: false, authCheckComplete: true, loading: false });
-      //     return;
-      //   }
-
-      //   try {
-      //     const response = await authService.getMe();
-      //     const { loginTimestamp } = get();
-      //     const now = Date.now();
-          
-      //     // Check if 24 hours have passed
-      //     if (loginTimestamp && now - loginTimestamp > AUTO_LOGOUT_TIME) {
-      //       // Auto logout
-      //       get().logout();
-      //       return;
-      //     }
-
-      //     set({
-      //       admin: response.data.admin,
-      //       isAuthenticated: true,
-      //       authCheckComplete: true,
-      //       loading: false,
-      //     });
-
-      //     // Set auto-logout timer
-      //     get().setAutoLogoutTimer();
-      //   } catch (error) {
-      //     console.error('Auth check error:', error);
-      //     authService.removeToken();
-      //     set({
-      //       admin: null,
-      //       isAuthenticated: false,
-      //       authCheckComplete: true,
-      //       loading: false,
-      //     });
-      //   }
-      // },
-
-
-      checkAuth: async () => {
+checkAuth: async () => {
   set({ loading: true });
-  
+
   // SSR safe check
   if (typeof window === 'undefined') {
     set({ loading: false, authCheckComplete: true });
     return;
   }
 
+  // Zustand persist se already state hai toh seedha verify karo
+  const { admin, loginTimestamp, isAuthenticated } = get();
   const token = localStorage.getItem('authToken');
 
-  if (!token) {
+  if (!token || !isAuthenticated || !admin) {
     set({ admin: null, isAuthenticated: false, authCheckComplete: true, loading: false });
+    return;
+  }
+
+  // 24 hour check
+  const now = Date.now();
+  if (loginTimestamp && now - loginTimestamp > AUTO_LOGOUT_TIME) {
+    get().logout();
     return;
   }
 
   try {
     const response = await authService.getMe();
-    const { loginTimestamp } = get();
-    const now = Date.now();
-    
-    // Check if 24 hours have passed
-    if (loginTimestamp && now - loginTimestamp > AUTO_LOGOUT_TIME) {
-      get().logout();
-      return;
-    }
-
     set({
       admin: response.data.admin,
       isAuthenticated: true,
       authCheckComplete: true,
       loading: false,
     });
-
     get().setAutoLogoutTimer();
   } catch (error) {
     console.error('Auth check error:', error);

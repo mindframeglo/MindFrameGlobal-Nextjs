@@ -241,8 +241,15 @@ export default function ContactManagement() {
   const [pagination, setPagination] = useState({ page: 1, limit: 20, total: 0, pages: 0 });
   const [selectedContact, setSelectedContact] = useState(null);
 
-  useEffect(() => { checkAuth(); }, []);
-  useEffect(() => { if (!admin) navigate('/admin/login'); }, [admin, navigate]);
+  // Naya:
+useEffect(() => {
+  const init = async () => {
+    await checkAuth();
+    const { admin } = useAuthStore.getState();
+    if (!admin) navigate('/admin/login');
+  };
+  init();
+}, [])
   useEffect(() => { fetchContacts(); }, [pagination.page, statusFilter]);
 
   const fetchContacts = async () => {

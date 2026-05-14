@@ -306,3 +306,56 @@ export const submitQuickContact = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
+
+
+
+
+
+
+/**
+ * @desc    Submit TV/Service page contact form — sends email via Nodemailer (no DB)
+ * @route   POST /api/contact/service
+ * @access  Public
+ */
+export const submitServiceContact = async (req, res, next) => {
+  try {
+    const { name, email, mobile, location, message } = req.body;
+
+    if (!name || !email || !mobile || !location || !message) {
+      return res.status(400).json({
+        success: false,
+        message: 'All fields are required.',
+      });
+    }
+
+    const mailOptions = {
+      from: `"Mind Frame India Website" <${process.env.MAIL_USER}>`,
+      to: process.env.MAIL_RECEIVER,
+      replyTo: email,
+      subject: `New Service Enquiry: ${name} — ${location}`,
+      html: `
+        <h2 style="color:#b08d57;font-family:Arial,sans-serif;">New Service Page Enquiry</h2>
+        <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
+          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${name}</td></tr>
+          <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Mobile</strong></td><td>${mobile}</td></tr>
+          <tr><td><strong>Location</strong></td><td>${location}</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Message</strong></td><td>${message}</td></tr>
+        </table>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return res.status(200).json({
+      success: true,
+      message: "Thank you! We'll be in touch shortly.",
+    });
+  } catch (error) {
+    console.error('Nodemailer error:', error);
+    next(error);
+  }
+};

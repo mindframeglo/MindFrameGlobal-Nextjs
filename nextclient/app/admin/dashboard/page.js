@@ -38,8 +38,16 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({ totalBlogs: 0, totalViews: 0 });
 
-  useEffect(() => { checkAuth(); }, []);
-  useEffect(() => { if (!admin) navigate('/admin/login'); }, [admin, navigate]);
+
+  // Naya — dono ko ek saath handle karo:
+useEffect(() => {
+  const init = async () => {
+    await checkAuth();
+    const { admin } = useAuthStore.getState();
+    if (!admin) navigate('/admin/login');
+  };
+  init();
+}, []);
   
   useEffect(() => {
     fetchBlogs();
