@@ -67,7 +67,7 @@ useEffect(() => {
     });
     if (!response.ok) throw new Error('Image upload failed');
     const data = await response.json();
-    setFormData({ ...formData, image: data.image });
+    setFormData({ ...formData, image: data.image, imagePublicId: data.imagePublicId });
     toast.success('Image uploaded successfully!');
   } catch (error) {
     toast.error('Failed to upload image');

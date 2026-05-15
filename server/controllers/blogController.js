@@ -177,6 +177,8 @@ export const updateBlog = asyncHandler(async (req, res, next) => {
  * @route   DELETE /api/blogs/:id
  * @access  Private (Admin)
  */
+
+
 export const deleteBlog = asyncHandler(async (req, res, next) => {
   const blog = await Blog.findById(req.params.id);
 
@@ -184,23 +186,27 @@ export const deleteBlog = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('Blog not found', 404));
   }
 
-  // Verify ownership
   if (blog.createdBy.toString() !== req.adminUser._id.toString()) {
     return next(new ErrorResponse('Not authorized to delete this blog', 403));
   }
 
+  // // DEBUG - console mein dekho kya aa raha hai
+  // console.log('blog.image:', blog.image);
+  // console.log('blog.imagePublicId:', blog.imagePublicId);
+  
   const publicId = blog.imagePublicId || extractPublicIdFromUrl(blog.image);
+  // console.log('Extracted publicId:', publicId);
+
   if (publicId) {
-    await deleteCloudinaryResource(publicId, 'image');
+    const result = await deleteCloudinaryResource(publicId, 'image');
+    // console.log('Cloudinary delete result:', result);
   }
 
   await Blog.findByIdAndDelete(req.params.id);
 
-  res.status(200).json({
-    success: true,
-    message: 'Blog deleted successfully',
-  });
+  res.status(200).json({ success: true, message: 'Blog deleted successfully' });
 });
+
 
 /**
  * @desc    Get admin blogs (only unpublished and all)
@@ -250,6 +256,7 @@ export const uploadImage = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('No file uploaded', 400));
   }
 
+  
   // Get the secure HTTPS URL from Cloudinary response
   const imageUrl = req.file.secure_url || req.file.path || req.file.url;
   const imagePublicId = req.file.public_id || req.file.filename || extractPublicIdFromUrl(imageUrl);
