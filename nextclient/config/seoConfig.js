@@ -286,7 +286,7 @@ export const getBlogSEOData = (blog) => ({
   title: blog.title,
   description: blog.excerpt || blog.description?.substring(0, 160),
   keywords: blog.category || 'digital marketing, blog',
-  path: `/blog/${blog._id}`,
+  path: `/blogs/${blog.slug || blog._id}`,
   type: 'article',
   image: blog.image || `${BASE_URL}/default-blog-image.png`,
 });
@@ -316,6 +316,6 @@ export const createArticleSchema = (blog) => ({
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': `${BASE_URL}/blog/${blog._id}`,
+    '@id': `${BASE_URL}/blogs/${blog.slug || blog._id}`,
   },
 });

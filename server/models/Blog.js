@@ -5,6 +5,17 @@
 
 import mongoose from 'mongoose';
 
+// Function to generate slug from description
+const generateSlug = (text) => {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .trim()
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+};
+
 const blogSchema = new mongoose.Schema(
   {
     title: {
@@ -48,6 +59,10 @@ const blogSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    slug: {
+      type: String,
+      unique: true,
+    },
     views: {
       type: Number,
       default: 0,
@@ -66,6 +81,23 @@ const blogSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+// Pre-save middleware to generate slug
+blogSchema.pre('save', async function (next) {
+  if (this.isModified('description') || this.isNew) {
+    let slugSource = this.description || this.title || 'blog';
+    let slug = generateSlug(slugSource);
+    let existingBlog = await mongoose.model('Blog').findOne({ slug });
+    let counter = 1;
+    while (existingBlog && existingBlog._id.toString() !== this._id.toString()) {
+      slug = `${generateSlug(slugSource)}-${counter}`;
+      existingBlog = await mongoose.model('Blog').findOne({ slug });
+      counter++;
+    }
+    this.slug = slug;
+  }
+  next();
+});
 
 // Index for search functionality
 blogSchema.index({ title: 'text', description: 'text', content: 'text' });

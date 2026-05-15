@@ -246,7 +246,7 @@ export default function BlogCard({ blog }) {
               <span className="bc-date">{formatDate(blog.createdAt)}</span>
               <span className="bc-views">{blog.views} views</span>
             </div>
-            <Link href={`/blogs/${blog._id}`} className="bc-read">
+            <Link href={`/blogs/${blog.slug}`} className="bc-read">
               Read More <span className="bc-read-arrow">→</span>
             </Link>
           </div>

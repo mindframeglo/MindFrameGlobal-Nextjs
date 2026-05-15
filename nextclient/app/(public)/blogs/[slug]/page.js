@@ -14,7 +14,7 @@ import { getBlogSEOData, createArticleSchema } from '@/config/seoConfig';
 import { formatDate } from '@/utils/formatters';
 
 export default function SingleBlog() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ export default function SingleBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await blogService.getBlogById(id);
+        const response = await blogService.getBlogBySlug(slug);
         setBlog(response.data.blog);
       } catch (error) {
         setError('Failed to load blog');
@@ -32,7 +32,7 @@ export default function SingleBlog() {
       }
     };
     fetchBlog();
-  }, [id]);
+  }, [slug]);
 
   if (loading)
     return (

@@ -5,6 +5,7 @@
 
 import Career from '../models/Career.js';
 import { resumeUpload } from '../config/cloudinary.js';
+import { deleteCloudinaryResource, extractPublicIdFromUrl } from '../utils/cloudinaryUtils.js';
 import https from 'https';
 import http from 'http';
 
@@ -28,6 +29,9 @@ export const createApplication = async (req, res, next) => {
       });
     }
 
+    const resumeUrl = req.file ? req.file.path : '';
+    const resumePublicId = req.file ? (req.file.public_id || req.file.filename || extractPublicIdFromUrl(req.file.path || req.file.secure_url)) : undefined;
+
     const application = await Career.create({
       name: name.trim(),
       email: email.toLowerCase().trim(),
@@ -37,7 +41,8 @@ export const createApplication = async (req, res, next) => {
       experience: experience.trim(),
       location: location.trim(),
       applyFor,
-      resumeUrl: req.file ? req.file.path : '',
+      resumeUrl,
+      resumePublicId,
       resumeOriginalName: req.file ? req.file.originalname : '',
     });
 
@@ -189,10 +194,17 @@ export const updateApplicationStatus = async (req, res, next) => {
  */
 export const deleteApplication = async (req, res, next) => {
   try {
-    const application = await Career.findByIdAndDelete(req.params.id);
+    const application = await Career.findById(req.params.id);
     if (!application) {
       return res.status(404).json({ success: false, message: 'Application not found' });
     }
+
+    const publicId = application.resumePublicId || extractPublicIdFromUrl(application.resumeUrl);
+    if (publicId) {
+      await deleteCloudinaryResource(publicId, 'raw');
+    }
+
+    await Career.findByIdAndDelete(req.params.id);
     res.status(200).json({ success: true, message: 'Application deleted successfully' });
   } catch (error) {
     next(error);

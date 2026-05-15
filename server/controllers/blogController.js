@@ -4,8 +4,10 @@
  */
 
 import asyncHandler from '../utils/asyncHandler.js';
+import mongoose from 'mongoose';
 import ErrorResponse from '../utils/errorResponse.js';
 import Blog from '../models/Blog.js';
+import { deleteCloudinaryResource, extractPublicIdFromUrl } from '../utils/cloudinaryUtils.js';
 
 /**
  * @desc    Get all blogs with pagination and search
@@ -55,12 +57,17 @@ export const getAllBlogs = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @desc    Get single blog by ID
- * @route   GET /api/blogs/:id
+ * @desc    Get single blog by slug
+ * @route   GET /api/blogs/:slug
  * @access  Public
  */
-export const getBlogById = asyncHandler(async (req, res, next) => {
-  const blog = await Blog.findById(req.params.id).populate('createdBy', 'name email');
+export const getBlogBySlug = asyncHandler(async (req, res, next) => {
+  const slugOrId = req.params.slug;
+  let blog = await Blog.findOne({ slug: slugOrId }).populate('createdBy', 'name email');
+
+  if (!blog && mongoose.isValidObjectId(slugOrId)) {
+    blog = await Blog.findById(slugOrId).populate('createdBy', 'name email');
+  }
 
   if (!blog) {
     return next(new ErrorResponse('Blog not found', 404));
@@ -101,12 +108,15 @@ export const createBlog = asyncHandler(async (req, res, next) => {
     }
   }
 
+  const imagePublicId = req.body.imagePublicId || extractPublicIdFromUrl(image);
+
   // Create blog
   const blog = await Blog.create({
     title,
     description,
     content,
     image,
+    imagePublicId,
     tags: tagsArray,
     category: category || 'Other',
     featured: featured || false,
@@ -145,6 +155,10 @@ export const updateBlog = asyncHandler(async (req, res, next) => {
     updateData.tags = updateData.tags.split(',').map((tag) => tag.trim());
   }
 
+  if (updateData.image) {
+    updateData.imagePublicId = updateData.imagePublicId || extractPublicIdFromUrl(updateData.image);
+  }
+
   // Update blog
   blog = await Blog.findByIdAndUpdate(req.params.id, updateData, {
     new: true,
@@ -173,6 +187,11 @@ export const deleteBlog = asyncHandler(async (req, res, next) => {
   // Verify ownership
   if (blog.createdBy.toString() !== req.adminUser._id.toString()) {
     return next(new ErrorResponse('Not authorized to delete this blog', 403));
+  }
+
+  const publicId = blog.imagePublicId || extractPublicIdFromUrl(blog.image);
+  if (publicId) {
+    await deleteCloudinaryResource(publicId, 'image');
   }
 
   await Blog.findByIdAndDelete(req.params.id);
@@ -233,10 +252,12 @@ export const uploadImage = asyncHandler(async (req, res, next) => {
 
   // Get the secure HTTPS URL from Cloudinary response
   const imageUrl = req.file.secure_url || req.file.path || req.file.url;
+  const imagePublicId = req.file.public_id || req.file.filename || extractPublicIdFromUrl(imageUrl);
 
   res.status(200).json({
     success: true,
     message: 'Image uploaded successfully',
     image: imageUrl,
+    imagePublicId,
   });
 });

@@ -45,6 +45,9 @@ const careerSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Resume is required'],
   },
+  resumePublicId: {
+    type: String,
+  },
   resumeOriginalName: {
     type: String,
   },
