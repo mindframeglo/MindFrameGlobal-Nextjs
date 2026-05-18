@@ -120,11 +120,14 @@ export default function Header() {
     closeTimeoutRef.current = setTimeout(() => setActiveSubMenu(null), 150);
   };
 
-  const isActive = (to) => pathname === to;
+  const isActive = (to) => {
+    if (to === "/") return pathname === "/";
+    return pathname.startsWith(to);
+  };
 
   const linkStyle = (to) => ({
     fontSize: 13.5,
-    color: "#1a1a1a",
+    color: isActive(to) ? gold : "#1a1a1a",
     textDecoration: "none",
     whiteSpace: "nowrap",
     paddingBottom: 3,
