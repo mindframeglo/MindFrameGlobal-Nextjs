@@ -159,7 +159,7 @@ const portfolioData = {
     desc: "Bringing Metro Grande's Vision to Life Through Blockbuster Outdoor Campaign — massive scale, high-impact real estate advertising.",
     category: "Design, Hoarding, Our Work",
     date: "2023",
-    images: ["/assets/work/wrk10.jpg"],
+    images: ["/assets/campaign/camp3.jpg"],
   },
   "nesco-hoardings-food-beverages-hospitality": {
     title: "Nesco Hoardings – Food & Beverages, Hospitality Industry",

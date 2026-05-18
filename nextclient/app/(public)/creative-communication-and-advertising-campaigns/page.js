@@ -11,7 +11,6 @@ const projects = [
     slug: "dil-se-rock",
     title: "Dil Se Rock",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk1.png',
   },
   {
@@ -19,7 +18,6 @@ const projects = [
     slug: "mysticity-packaging-design",
     title: "Mysticity Packaging Design",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk2.jpg',
   },
   {
@@ -27,7 +25,6 @@ const projects = [
     slug: "ummeed",
     title: "Ummeed",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk3.png',
   },
   {
@@ -35,7 +32,6 @@ const projects = [
     slug: "supreme-furnitures",
     title: "Supreme Furnitures",
     category: "DESIGN · HOARDING · OUR WORK",
-    tag: "Events",
     image: '/assets/work/wrk4.png',
   },
   {
@@ -43,7 +39,6 @@ const projects = [
     slug: "tots-couture-week-registration-campaign",
     title: "Tots Couture Week (Registration Campaign)",
     category: "DESIGN · HOARDING · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk5.jpg',
   },
   {
@@ -51,7 +46,6 @@ const projects = [
     slug: "metro-grande-gudi-padwa-outdoor-campaign",
     title: "Metro Grande - Gudi Padwa (Outdoor Campaign)",
     category: "DESIGN · HOARDING · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk6.jpg',
   },
   {
@@ -59,7 +53,6 @@ const projects = [
     slug: "metro-grande-plus-kya-hai-outdoor-campaign",
     title: "Metro Grande: Plus Kya Hai? (Outdoor Campaign)",
     category: "DESIGN · HOARDING · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk7.jpg',
   },
   {
@@ -67,7 +60,6 @@ const projects = [
     slug: "soul-packaging-design",
     title: "Soul Packaging Design",
     category: "DESIGN · HOARDING · BRANDING · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk8.jpg',
   },
   {
@@ -75,7 +67,6 @@ const projects = [
     slug: "metro-grande-200-outdoor-campaign",
     title: "Metro Grande 200+ Outdoor Campaign",
     category: "DESIGN · HOARDING · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk9.jpg',
   },
   {
@@ -83,31 +74,27 @@ const projects = [
     slug: "metro-grande-blockbuster-outdoor-campaign",
     title: "Metro Grande Blockbuster Outdoor Campaign",
     category: "DESIGN · HOARDING · OUR WORK",
-    tag: "Outdoor",
-    image: '/assets/work/wrk10.jpg',
+    image: '/assets/campaign/camp3.jpg',
   },
   {
     id: 11,
     slug: "oishi-oishi-packagin-design",
     title: "Oishi Oishi Packaging Design",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
-    image: '/assets/work/wrk11.png',
+    image: '/assets/package/pack1.png',
   },
   {
     id: 12,
     slug: "sqiinful-packaging-design",
     title: "Sqiinful Packaging Design",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
-    image: '/assets/work/wrk12.png',
+    image: '/assets/package/pack2.png',
   },
   {
     id: 13,
     slug: "sqiinful-catalogue-design",
     title: "Sqiinful Catalogue Design",
     category: "DESIGN · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk13.jpg',
   },
   {
@@ -115,7 +102,6 @@ const projects = [
     slug: "nesco-hoardings-food-beverages-hospitality",
     title: "Nesco Hoardings – Advertising for Food & Beverages, Hospitality Industry",
     category: "DESIGN · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk14.jpg',
   },
   {
@@ -123,7 +109,6 @@ const projects = [
     slug: "donear-catalogue-design",
     title: "Donear Catalogue Design",
     category: "DESIGN · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk15.jpg',
   },
   {
@@ -131,7 +116,6 @@ const projects = [
     slug: "pd-ramadan-food-photoshoot",
     title: "PD Ramadan Food Photoshoot",
     category: "DESIGN · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk16.jpg',
   },
   {
@@ -139,7 +123,6 @@ const projects = [
     slug: "imperial-decor-catalogue-design-2",
     title: "Magnum Catalogue Design",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk17.jpg',
   },
   {
@@ -147,7 +130,6 @@ const projects = [
     slug: "metro-grande-200-outdoor-campaign-2",
     title: "Metro Grande 200+ Outdoor Campaign",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk18.jpg',
   },
   {
@@ -155,7 +137,6 @@ const projects = [
     slug: "metro-grande-blockbuster-outdoor-campaign-2",
     title: "Metro Grande Blockbuster Outdoor Campaign",
     category: "DESIGN · OUR WORK",
-    tag: "Events",
     image: '/assets/work/wrk19.jpg',
   },
   {
@@ -163,7 +144,6 @@ const projects = [
     slug: "my-beauty-world-catalogue-design",
     title: "My Beauty World Catalogue Design",
     category: "DESIGN · OUR WORK",
-    tag: "Events",
     image: '/assets/work/wrk20.jpg',
   },
   {
@@ -171,7 +151,6 @@ const projects = [
     slug: "oishi-oishi-packagin-design",
     title: "Oishi Oishi Packaging Design",
     category: "DESIGN · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk21.jpg',
   },
   {
@@ -179,7 +158,6 @@ const projects = [
     slug: "earthbased-catalogue-design",
     title: "EarthBased Catalogue Design",
     category: "DESIGN · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk22.jpg',
   },
   {
@@ -187,7 +165,6 @@ const projects = [
     slug: "imperial-decor-catalogue-design",
     title: "Imperial Decor Catalogue Design",
     category: "DESIGN · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk23.jpg',
   },
   {
@@ -195,7 +172,6 @@ const projects = [
     slug: "travel-industry",
     title: "Travel Industry",
     category: "DESIGN · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk24.jpg',
   },
   {
@@ -203,7 +179,6 @@ const projects = [
     slug: "lifestyle-and-luxury",
     title: "Lifestyle and Luxury",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk25.jpg',
   },
   {
@@ -211,7 +186,6 @@ const projects = [
     slug: "travel-industry-2",
     title: "Travel Industry",
     category: "DESIGN · OUR WORK",
-    tag: "Packaging",
     image: '/assets/work/wrk26.jpg',
   },
   {
@@ -219,7 +193,6 @@ const projects = [
     slug: "food-and-beverages",
     title: "Food & Beverages",
     category: "DESIGN · OUR WORK",
-    tag: "Events",
     image: '/assets/work/wrk27.jpg',
   },
   {
@@ -227,7 +200,6 @@ const projects = [
     slug: "magazine-advertising-fmcg",
     title: "Magazine Advertising for FMCG Industry",
     category: "DESIGN · OUR WORK",
-    tag: "Events",
     image: '/assets/work/wrk28.jpg',
   },
   {
@@ -235,7 +207,6 @@ const projects = [
     slug: "fmcg-otc-campaign",
     title: "FMCG / OTC Campaign",
     category: "DESIGN · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk29.jpg',
   },
   {
@@ -243,7 +214,6 @@ const projects = [
     slug: "creative-designing-food-beverages",
     title: "Creative Designing for Food & Beverages",
     category: "DESIGN · OUR WORK",
-    tag: "Campaign",
     image: '/assets/work/wrk30.jpg',
   },
   {
@@ -251,7 +221,6 @@ const projects = [
     slug: "ooh-advertising-food-beverages-hospitality",
     title: "OOH Advertising for Food & Beverages, Hospitality Industry",
     category: "DESIGN · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk31.jpg',
   },
   {
@@ -259,29 +228,11 @@ const projects = [
     slug: "brand-awareness-healthcare",
     title: "Brand Awareness For HealthCare Industry",
     category: "DESIGN · OUR WORK",
-    tag: "Outdoor",
     image: '/assets/work/wrk32.jpg',
   },
 ];
 
-const tags = ["All", "Packaging", "Campaign", "Outdoor", "Events"];
-
-const tagColors = {
-  Packaging: "#b08d57",
-  Campaign: "#7a9e7e",
-  Outdoor: "#5b7fa6",
-  Events: "#a0748a",
-  All: "#888",
-};
-
 export default function OurWork() {
-  const [activeTag, setActiveTag] = useState("All");
-
-  const filtered =
-    activeTag === "All"
-      ? projects
-      : projects.filter((p) => p.tag === activeTag);
-
   return (
     <>
       <SEO
@@ -355,31 +306,6 @@ export default function OurWork() {
             padding-bottom: 2px;
           }
 
-          .filter-btn {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 12px;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-            padding: 7px 18px;
-            border-radius: 2px;
-            border: 1px solid #ccc;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.22s ease;
-            color: #888;
-          }
-
-          .filter-btn:hover {
-            border-color: #b08d57;
-            color: #b08d57;
-          }
-
-          .filter-btn.active {
-            background: #b08d57;
-            border-color: #b08d57;
-            color: #fff;
-          }
-
           .work-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -409,14 +335,6 @@ export default function OurWork() {
             .work-header {
               padding: 40px 16px 24px !important;
             }
-            .work-filters {
-              padding: 0 16px !important;
-              gap: 8px !important;
-            }
-            .filter-btn {
-              font-size: 11px !important;
-              padding: 6px 13px !important;
-            }
           }
         `}</style>
 
@@ -430,22 +348,9 @@ export default function OurWork() {
           <div style={styles.divider} />
         </div>
 
-        {/* Filter Tabs */}
-        <div className="work-filters" style={styles.filters}>
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              className={`filter-btn ${activeTag === tag ? "active" : ""}`}
-              onClick={() => setActiveTag(tag)}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-
         {/* Grid */}
         <div className="work-grid">
-          {filtered.map((project) => (
+          {projects.map((project) => (
             <Link
               key={project.id}
               href={`/portfolio-item/${project.slug}`}
@@ -463,16 +368,6 @@ export default function OurWork() {
               </div>
 
               <div style={styles.cardBody}>
-                <span
-                  style={{
-                    ...styles.tag,
-                    background: tagColors[project.tag] + "18",
-                    color: tagColors[project.tag],
-                    borderColor: tagColors[project.tag] + "40",
-                  }}
-                >
-                  {project.tag}
-                </span>
                 <h3 style={styles.cardTitle}>{project.title}</h3>
                 <p style={styles.cardCategory}>{project.category}</p>
               </div>
@@ -516,29 +411,9 @@ const styles = {
     background: "#b08d57",
     margin: "0 auto 40px",
   },
-  filters: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "10px",
-    maxWidth: "1100px",
-    margin: "0 auto 40px",
-    padding: "0 24px",
-  },
   cardBody: {
     padding: "16px 18px 20px",
     background: "#fff",
-  },
-  tag: {
-    display: "inline-block",
-    fontSize: "10px",
-    letterSpacing: "1px",
-    textTransform: "uppercase",
-    padding: "3px 10px",
-    borderRadius: "2px",
-    border: "1px solid",
-    marginBottom: "10px",
-    fontWeight: 500,
   },
   cardTitle: {
     fontFamily: "'Cormorant Garamond', serif",
