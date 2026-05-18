@@ -118,7 +118,7 @@ export const seoConfig = {
         'Custom web development services for responsive, fast, and SEO-friendly websites. Mindframe builds scalable web solutions that drive business growth.',
       keywords:
         'web development, website design, responsive design, web design, custom websites, web development company, website development services',
-      path: '/services/web-development',
+      path: '/services/website-development',
       type: 'website',
     },
 
@@ -128,7 +128,7 @@ export const seoConfig = {
         'Custom iOS and Android mobile app development. Mindframe creates user-friendly, feature-rich applications that enhance user engagement and drive business results.',
       keywords:
         'mobile app development, iOS app development, Android app development, app development company, custom app development, app design',
-      path: '/services/app-development',
+      path: '/services/best-mobile-app-development-company-in-mumbai',
       type: 'website',
     },
 
@@ -137,7 +137,7 @@ export const seoConfig = {
       description:
         'Professional brand identity and logo design services. Mindframe creates memorable, unique brands that stand out in the market and resonate with your audience.',
       keywords: 'logo design, brand identity, branding, logo creation, visual identity, brand design, graphic design, brand strategy',
-      path: '/services/brand-identity',
+      path: '/services/branding-agency-in-mumbai',
       type: 'website',
     },
 
@@ -146,7 +146,7 @@ export const seoConfig = {
       description:
         'Complete brand services including brand strategy, positioning, development, and brand experience. Mindframe helps build strong brands that grow your business.',
       keywords: 'brand services, brand strategy, brand positioning, branding services, brand development, brand consulting',
-      path: '/services/brand-services',
+      path: '/services/leading-branding-companies-in-mumbai',
       type: 'website',
     },
 
@@ -164,7 +164,7 @@ export const seoConfig = {
       description:
         'BTL marketing for targeted audience engagement, event marketing, activations, and promotional campaigns. Mindframe creates memorable experiences that drive conversions.',
       keywords: 'BTL marketing, below the line, promotional marketing, event marketing, targeted advertising, activations, consumer engagement',
-      path: '/services/btl',
+      path: '/services/btl-advertising-services-in-mumbai',
       type: 'website',
     },
 
@@ -173,7 +173,7 @@ export const seoConfig = {
       description:
         'Expert media buying services to maximize advertising reach and ROI across multiple channels. Mindframe negotiates best rates for optimal ad placement.',
       keywords: 'media buying, ad placement, media planning, advertising media, media strategy, programmatic advertising, media negotiation',
-      path: '/services/media-buying',
+      path: '/services/media-buying-agency-in-mumbai',
       type: 'website',
     },
 
@@ -182,7 +182,7 @@ export const seoConfig = {
       description:
         'Professional PR services for brand reputation management, media relations, press releases, and corporate communications. Build trust and credibility with Mindframe.',
       keywords: 'public relations, PR services, media relations, crisis management, reputation management, press releases, corporate communication',
-      path: '/services/public-realations',
+      path: '/services/pr-agency-in-mumbai',
       type: 'website',
     },
 
@@ -192,7 +192,7 @@ export const seoConfig = {
         'Comprehensive digital marketing services including SEO, SEM, social media marketing, email marketing, and content marketing. Grow online with Mindframe.',
       keywords:
         'digital marketing, online marketing, internet marketing, digital advertising, SEO services, SEM, social media marketing, email marketing, content marketing',
-      path: '/services/digital-marketing',
+      path: '/services/digital-marketing-agency-in-mumbai',
       type: 'website',
     },
 
@@ -201,7 +201,7 @@ export const seoConfig = {
       description:
         'Integrated marketing and branding solutions to build strong brands and drive sustainable business growth. Mindframe combines strategy with creative execution.',
       keywords: 'marketing branding, brand marketing, integrated marketing, marketing solutions, brand growth, marketing strategy, marketing campaigns',
-      path: '/services/marketing-branding',
+      path: '/services/unlocking-the-power-of-innovative-c-mind-frame-india',
       type: 'website',
     },
 
@@ -210,7 +210,7 @@ export const seoConfig = {
       description:
         'Custom campaign design services tailored to your brand goals, target audience, and marketing objectives. Mindframe creates campaigns that deliver results.',
       keywords: 'campaign design, custom campaigns, marketing campaigns, campaign strategy, campaign development, advertising campaigns, creative campaigns',
-      path: '/services/customize-campaign',
+      path: '/services/advertising-campaign-designing',
       type: 'website',
     },
 
@@ -220,7 +220,7 @@ export const seoConfig = {
         'Comprehensive advertising services including creative campaigns, media buying, brand promotion, and strategic planning across all channels. Partner with Mindframe.',
       keywords:
         'advertising services, ad creation, advertising agency, ad campaigns, marketing advertising, creative advertising, brand advertising, promotional advertising',
-      path: '/services/advertizing-services',
+      path: '/services/top-digital-marketing-agency-in-india',
       type: 'website',
     },
 
@@ -229,7 +229,7 @@ export const seoConfig = {
       description:
         'Professional creative design services including graphic design, UI/UX design, and visual content creation. Mindframe transforms ideas into stunning visuals.',
       keywords: 'graphic design, creative design, UI design, UX design, visual design, design services, branding design, web design, print design',
-      path: '/services/creative-design',
+      path: '/services/creative-design-agency-in-mumbai',
       type: 'website',
     },
 
@@ -238,7 +238,7 @@ export const seoConfig = {
       description:
         'Innovative AR technology solutions for immersive brand experiences and interactive marketing campaigns. Mindframe brings brands to life with AR technology.',
       keywords: 'augmented reality, AR technology, AR solutions, immersive marketing, interactive experiences, AR apps, virtual experiences',
-      path: '/services/augumented-reality',
+      path: '/services/augmented-reality-and-virtual-reality',
       type: 'website',
     },
 
@@ -248,7 +248,7 @@ export const seoConfig = {
         'Professional animation and video production services for engaging content, brand storytelling, and compelling visual communication. Create impact with Mindframe.',
       keywords:
         'animation, video production, animated videos, motion graphics, video animation, corporate videos, explainer videos, 3D animation, video marketing',
-      path: '/services/animation-videos',
+      path: '/services/2d-and-3d-animation-services',
       type: 'website',
     },
 
@@ -258,7 +258,7 @@ export const seoConfig = {
         'Professional television advertising services for creating compelling commercials and broadcast campaigns. Mindframe brings your brand message to TV audiences.',
       keywords:
         'television advertising, TV commercials, broadcast advertising, TV ads, television agency, commercial production, TV media buying, broadcast campaigns',
-      path: '/services/best-television-advertising-agency',
+      path: '/services/best-television-advertising-agency-in-mumbai-tv-ads-campaigns',
       type: 'website',
     },
   },

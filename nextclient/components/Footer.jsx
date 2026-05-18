@@ -52,7 +52,7 @@ export default function Footer() {
     { label: 'About Us', to: '/about-us', external: false },
     { label: 'Our Team', to: '/our-team', external: false },
     { label: 'Our Work', to: '/creative-communication-and-advertising-campaigns', external: false },
-    { label: 'Brand Presentation', to: '/services/brand-identity', external: false },
+    { label: 'Brand Presentation', to: '/services/branding-agency-in-mumbai', external: false },
     { label: 'Blogs', to: '/blogs', external: false },
     { label: 'Careers', to: '/careers', external: false },
     { label: 'Disclaimer', to: '/disclaimer', external: false },
@@ -61,13 +61,13 @@ export default function Footer() {
   ];
 
   const services = [
-    { label: 'Brand Identity', to: '/services/brand-identity' },
-    { label: 'Branding and Marketing', to: '/services/marketing-branding' },
-    { label: 'Digital Marketing', to: '/services/digital-marketing' },
-    { label: 'Advertising Services', to: '/services/advertizing-services' },
-    { label: 'Best Television Advertising Agency in Mumbai | TV Ads Campaigns', to: '/services/best-television-advertising-agency' },
-    { label: 'Website Development', to: '/services/web-development' },
-    { label: 'Mobile App Development', to: '/services/app-development' },
+    { label: 'Brand Identity', to: '/services/branding-agency-in-mumbai' },
+    { label: 'Branding and Marketing', to: '/services/unlocking-the-power-of-innovative-c-mind-frame-india' },
+    { label: 'Digital Marketing', to: '/services/digital-marketing-agency-in-mumbai' },
+    { label: 'Advertising Services', to: '/services/top-digital-marketing-agency-in-india' },
+    { label: 'Best Television Advertising Agency in Mumbai | TV Ads Campaigns', to: '/services/best-television-advertising-agency-in-mumbai-tv-ads-campaigns' },
+    { label: 'Website Development', to: '/services/website-development' },
+    { label: 'Mobile App Development', to: '/services/best-mobile-app-development-company-in-mumbai' },
   ];
 
   const locations = [
