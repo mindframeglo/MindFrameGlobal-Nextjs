@@ -1,4 +1,7 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const brandServices = [
   {
@@ -180,9 +183,17 @@ function ServiceCard({ svc }) {
 
 export default function BrandServices() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.brandServices.title}
+        description={seoConfig.services.brandServices.description}
+        keywords={seoConfig.services.brandServices.keywords}
+        path={seoConfig.services.brandServices.path}
+      />
+      
     <div style={styles.page}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         .svc-card {
@@ -494,7 +505,9 @@ export default function BrandServices() {
 
     
     </div>
-  );
+  
+    </>
+);
 }
 
 

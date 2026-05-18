@@ -1,4 +1,7 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const digitalServices = [
   {
@@ -170,10 +173,18 @@ function DigitalServiceCard({ svc }) {
 
 export default function DigitalMarketing() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.digitalMarketing.title}
+        description={seoConfig.services.digitalMarketing.description}
+        keywords={seoConfig.services.digitalMarketing.keywords}
+        path={seoConfig.services.digitalMarketing.path}
+      />
+      
     <div style={styles.page}>
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
           * { box-sizing: border-box; margin: 0; padding: 0; }
 
           .digital-card {
@@ -371,7 +382,9 @@ export default function DigitalMarketing() {
         </div>
       </div>
     </div>
-  );
+  
+    </>
+);
 }
 
 

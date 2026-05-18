@@ -1,4 +1,7 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const services = [
   {
@@ -190,10 +193,18 @@ function BenefitCard({ benefit }) {
 
 export default function CustomizedCampaignDesign() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.customizeCampaign.title}
+        description={seoConfig.services.customizeCampaign.description}
+        keywords={seoConfig.services.customizeCampaign.keywords}
+        path={seoConfig.services.customizeCampaign.path}
+      />
+      
     <div style={styles.page}>
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
           * { box-sizing: border-box; margin: 0; padding: 0; }
 
           .service-card {
@@ -446,7 +457,9 @@ export default function CustomizedCampaignDesign() {
 
 
     </div>
-  );
+  
+    </>
+);
 }
 
 

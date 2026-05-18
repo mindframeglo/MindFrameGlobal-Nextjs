@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 /**
  * Blogs Page
@@ -54,7 +54,6 @@ export default function Blogs() {
       />
       <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#fff', minHeight: '100vh' }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── HERO ── */

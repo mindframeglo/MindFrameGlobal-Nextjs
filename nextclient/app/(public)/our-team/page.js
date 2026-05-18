@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 const Shanawaz = '/assets/team/Shanawaz-sir.jpg';
 const Hina = '/assets/team/hina-mam.jpg';
@@ -326,7 +326,6 @@ export default function OurTeam() {
         }}
       >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         @media (max-width: 560px) {

@@ -1,4 +1,7 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const services = [
   {
@@ -275,10 +278,18 @@ function WhyChooseCard({ item }) {
 
 export default function MarketingAndBranding() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.marketingBranding.title}
+        description={seoConfig.services.marketingBranding.description}
+        keywords={seoConfig.services.marketingBranding.keywords}
+        path={seoConfig.services.marketingBranding.path}
+      />
+      
     <div style={styles.page}>
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
           * { box-sizing: border-box; margin: 0; padding: 0; }
 
           .service-card {
@@ -586,7 +597,9 @@ export default function MarketingAndBranding() {
 
    
     </div>
-  );
+  
+    </>
+);
 }
 
 

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
@@ -138,7 +138,6 @@ export default function PrivacyPolicy() {
       />
       <div style={{ background: "#f9f8f6", minHeight: "100vh", padding: "60px 24px 80px" }}>
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap');
           * { box-sizing: border-box; margin: 0; padding: 0; }
         `}</style>
 

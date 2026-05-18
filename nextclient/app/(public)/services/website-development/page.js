@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 const services = [
   {
@@ -219,7 +219,6 @@ export default function WebDevelopment() {
       />
     <div style={styles.page}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         .service-card {

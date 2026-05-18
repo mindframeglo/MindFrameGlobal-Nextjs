@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from "react";
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const reasons = [
   "Increased Brand Visibility.",
@@ -145,10 +147,16 @@ function AccordionSection({ items }) {
 
 export default function MobileAppDevelopment() {
   return (
-    <div style={styles.page}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+    <>
+      <SEO 
+        title={seoConfig.services.appDevelopment.title}
+        description={seoConfig.services.appDevelopment.description}
+        keywords={seoConfig.services.appDevelopment.keywords}
+        path={seoConfig.services.appDevelopment.path}
+      />
+      <div style={styles.page}>
+        <style>{`
+          * { box-sizing: border-box; margin: 0; padding: 0; }
 
         .store-btn {
           display: inline-flex;
@@ -395,6 +403,7 @@ export default function MobileAppDevelopment() {
 
       </div>
     </div>
+    </>
   );
 }
 

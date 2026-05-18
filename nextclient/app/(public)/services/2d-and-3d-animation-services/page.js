@@ -1,10 +1,21 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 export default function Animation() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.animation.title}
+        description={seoConfig.services.animation.description}
+        keywords={seoConfig.services.animation.keywords}
+        path={seoConfig.services.animation.path}
+      />
+      
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#fff", minHeight: "100vh" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* HERO */
@@ -169,7 +180,9 @@ export default function Animation() {
 
       </div>
     </div>
-  );
+  
+    </>
+);
 }
 
 

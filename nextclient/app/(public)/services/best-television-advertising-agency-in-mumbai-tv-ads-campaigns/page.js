@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import contactService from '@/services/contactService';
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const videos = [
   { id: 1, title: "Supreme Furnitures TVC 60 Sec AD by Mind Frame India", ytId: "YQch1ko8Lgs" },
@@ -122,10 +124,16 @@ export default function Television() {
 }
 
   return (
-    <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#fff", minHeight: "100vh" }}>
+    <>
+      <SEO 
+        title={seoConfig.services.television.title}
+        description={seoConfig.services.television.description}
+        keywords={seoConfig.services.television.keywords}
+        path={seoConfig.services.television.path}
+      />
+      <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#fff", minHeight: "100vh" }}>
       <Toast toasts={toasts} />
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         @keyframes toastIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
@@ -303,5 +311,6 @@ export default function Television() {
         </div>
       </div>
     </div>
+    </>
   );
 }

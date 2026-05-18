@@ -1,4 +1,7 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const styles = {
   page: { fontFamily: "'DM Sans', sans-serif", background: "#fff", minHeight: "100vh" },
@@ -61,9 +64,17 @@ const mediaCards = [
 
 export default function AboveTheLine() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.atl.title}
+        description={seoConfig.services.atl.description}
+        keywords={seoConfig.services.atl.keywords}
+        path={seoConfig.services.atl.path}
+      />
+      
     <div style={styles.page}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         .media-card {
@@ -263,7 +274,9 @@ export default function AboveTheLine() {
 
       </div>
     </div>
-  );
+  
+    </>
+);
 }
 
 

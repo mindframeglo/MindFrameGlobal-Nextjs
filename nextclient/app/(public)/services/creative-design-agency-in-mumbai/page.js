@@ -1,4 +1,7 @@
-'use client'
+﻿'use client'
+
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const creativeServices = [
   {
@@ -147,9 +150,17 @@ function CreativeServiceCard({ svc }) {
 
 export default function CreativeDesign() {
   return (
+    <>
+
+      <SEO 
+        title={seoConfig.services.creativeDesign.title}
+        description={seoConfig.services.creativeDesign.description}
+        keywords={seoConfig.services.creativeDesign.keywords}
+        path={seoConfig.services.creativeDesign.path}
+      />
+      
     <div style={styles.page}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── CARD ── */
@@ -335,7 +346,9 @@ export default function CreativeDesign() {
       </div>
 
     </div>
-  );
+  
+    </>
+);
 }
 
 

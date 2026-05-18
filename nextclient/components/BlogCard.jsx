@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link';
 import { formatDate, truncateText } from '@/utils/formatters';
@@ -7,7 +7,6 @@ export default function BlogCard({ blog }) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
 
         .bc-card {
           position: relative;

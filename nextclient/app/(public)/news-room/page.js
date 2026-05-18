@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from "react";
 import SEO from '@/components/SEO';
@@ -107,7 +107,6 @@ export default function NewsRoom() {
       />
       <div style={styles.page}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap');
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 

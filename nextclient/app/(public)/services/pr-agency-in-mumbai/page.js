@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react';
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
 
 const prServices = [
   {
@@ -204,10 +206,16 @@ export default function PublicRelation() {
   }
 
   return (
-    <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#f5f3ef", minHeight: "100vh" }}>
+    <>
+      <SEO 
+        title={seoConfig.services.publicRelations.title}
+        description={seoConfig.services.publicRelations.description}
+        keywords={seoConfig.services.publicRelations.keywords}
+        path={seoConfig.services.publicRelations.path}
+      />
+      <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#f5f3ef", minHeight: "100vh" }}>
       <Toast toasts={toasts} />
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         @keyframes toastIn {
@@ -502,5 +510,6 @@ export default function PublicRelation() {
         </div>
       </div>
     </div>
+    </>
   );
 }
