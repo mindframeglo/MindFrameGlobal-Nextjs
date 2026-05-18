@@ -163,49 +163,30 @@ const outdoorMedia = [
 
 
 
-// const catalogueDesign = [
-//   { img: '/assets/catalogue/cat1.jpg', title: 'Fashion Lookbook', desc: 'Premium fashion catalogue design for apparel brands' },
-//   { img: '/assets/catalogue/cat2.jpg', title: 'Product Brochure', desc: 'Elegant open brochure layout for product showcasing' },
-//   { img: '/assets/catalogue/cat3.jpg', title: 'Pet Product Catalog', desc: 'Delivering happiness and care for your pets' },
-//   { img: '/assets/catalogue/cat4.jpg', title: 'Beauty Catalogue', desc: 'Luxury beauty and skincare catalogue design' },
-//   { img: '/assets/catalogue/cat5.jpg', title: 'Skincare Range', desc: 'Minimalist skincare product catalogue design' },
-//   { img: '/assets/catalogue/cat6.jpg', title: 'Beauty Magazine', desc: 'Editorial magazine spread for beauty brands' },
-//   { img: '/assets/catalogue/cat7.jpg', title: 'Furniture Catalogue', desc: 'Interior and furniture product brochure design' },
-//   { img: '/assets/catalogue/cat8.jpg', title: 'Hardware Catalogue', desc: 'Solid brass mortise & pulls — product index design' },
-// ];
 
-
-
-// const packagingDesign = [
-//   { img: '/assets/package/pack1.png', title: 'Food Box Packaging', desc: 'Creative packaging design for food delivery brands' },
-//   { img: '/assets/package/pack2.png', title: 'Vitamin Serum Bottles', desc: 'Premium vitamin C serum packaging design — Mysticity' },
-//   { img: '/assets/package/pack3.png', title: 'FMCG Product Range', desc: 'Complete FMCG product line packaging — dairy & snacks' },
-//   { img: '/assets/package/pack4.png', title: 'Nutrition Supplements', desc: 'Soul Nutritions — slim, strength, super greens range' },
-//   { img: '/assets/package/pack5.png', title: 'Skincare Bottle Range', desc: 'Clean & minimal skincare packaging design' },
-// ];
 
 
 // ─── Responsive Celebrity Shoot Auto-Slide Carousel ─────────────────────────────────────
 
 
 const catalogueDesign = [
-  { slug: 'fashion-lookbook',    img: '/assets/catalogue/cat1.jpg', title: 'Fashion Lookbook',    desc: 'Premium fashion catalogue design for apparel brands' },
-  { slug: 'product-brochure',    img: '/assets/catalogue/cat2.jpg', title: 'Product Brochure',    desc: 'Elegant open brochure layout for product showcasing' },
-  { slug: 'pet-product-catalog', img: '/assets/catalogue/cat3.jpg', title: 'Pet Product Catalog', desc: 'Delivering happiness and care for your pets' },
-  { slug: 'beauty-catalogue',    img: '/assets/catalogue/cat4.jpg', title: 'Beauty Catalogue',    desc: 'Luxury beauty and skincare catalogue design' },
-  { slug: 'skincare-range',      img: '/assets/catalogue/cat5.jpg', title: 'Skincare Range',      desc: 'Minimalist skincare product catalogue design' },
-  { slug: 'beauty-magazine',     img: '/assets/catalogue/cat6.jpg', title: 'Beauty Magazine',     desc: 'Editorial magazine spread for beauty brands' },
-  { slug: 'furniture-catalogue', img: '/assets/catalogue/cat7.jpg', title: 'Furniture Catalogue', desc: 'Interior and furniture product brochure design' },
-  { slug: 'hardware-catalogue',  img: '/assets/catalogue/cat8.jpg', title: 'Hardware Catalogue',  desc: 'Solid brass mortise & pulls — product index design' },
+  { slug: 'earthbased-catalogue-design',    img: '/assets/catalogue/cat1.jpg', title: 'Earthbased Catalogue Design',    desc: 'Showcasing Earthbased: Creative Catalogue Design That Captures Eyes' },
+  { slug: 'imperial-decor-catalogue-design-2',    img: '/assets/catalogue/cat2.jpg', title: 'Magnum Catalogue Design',    desc: 'Crafting a Secure Look for Magnum with Sleek Catalogue Design.' },
+  { slug: 'my-beauty-world-catalogue-design', img: '/assets/catalogue/cat3.jpg', title: 'My Beauty World Catalogue Design', desc: 'My Beauty World Catalogue: Showcasing Beauty in Every Page.' },
+  { slug: 'donear-catalogue-design',    img: '/assets/catalogue/cat4.jpg', title: 'Donear Catalogue Design',    desc: 'Visualizing Donear’s Products Through Innovative Catalogue Design' },
+  { slug: 'bwb-catalogue-design',      img: '/assets/catalogue/cat5.jpg', title: 'BWB Catalogue Design',      desc: 'Designing Impactful Catalogue for BWB: A Creative Approach.' },
+  { slug: 'mysticity-catalogue-design',     img: '/assets/catalogue/cat6.jpg', title: 'Mysticity Catalogue Design',     desc: 'Showcasing Mysticity’s Skin Products with Innovative Catalogue Design.' },
+  { slug: 'imperial-decor-catalogue-design', img: '/assets/catalogue/cat7.jpg', title: 'Imperial Decor Catalogue Design', desc: 'Imperial Decor: Crafting Timeless Catalogue Designs with Style.' },
+  { slug: 'sqiinful-catalogue-design',  img: '/assets/catalogue/cat8.jpg', title: 'Sqiinful Catalogue Design',  desc: 'Elevating Sqiinful with Innovative Catalogue Design Solution.' },
 ];
 
 
 const packagingDesign = [
-  { slug: 'food-box-packaging',    img: '/assets/package/pack1.png', title: 'Food Box Packaging',    desc: 'Creative packaging design for food delivery brands' },
-  { slug: 'vitamin-serum-bottles', img: '/assets/package/pack2.png', title: 'Vitamin Serum Bottles', desc: 'Premium vitamin C serum packaging design — Mysticity' },
-  { slug: 'fmcg-product-range',    img: '/assets/package/pack3.png', title: 'FMCG Product Range',    desc: 'Complete FMCG product line packaging — dairy & snacks' },
-  { slug: 'nutrition-supplements', img: '/assets/package/pack4.png', title: 'Nutrition Supplements', desc: 'Soul Nutritions — slim, strength, super greens range' },
-  { slug: 'skincare-bottle-range', img: '/assets/package/pack5.png', title: 'Skincare Bottle Range', desc: 'Clean & minimal skincare packaging design' },
+  { slug: 'oishi-oishi-packagin-design',    img: '/assets/package/pack1.png', title: 'Oishi oishi Packagin Design',    desc: 'Oishi oishi Packaging Design Bringing Flavour to Life with Every Box..' },
+  { slug: 'sqiinful-packaging-design', img: '/assets/package/pack2.png', title: 'Sqiinful Packaging Design', desc: 'Creative Packaging Design for Sqiinful.' },
+  { slug: 'mysticity-packaging-design',    img: '/assets/package/pack3.png', title: 'Mysticity Packaging Design',    desc: 'Creative Packaging Design for Mysticity: Making a Lasting Impression' },
+  { slug: 'jgf-packaging-design', img: '/assets/package/pack4.png', title: 'JGF Packaging Design', desc: 'Bringing JGF’s Vision to Life Through Packaging Design.' },
+  { slug: 'soul-packaging-design', img: '/assets/package/pack5.png', title: 'Soul Packaging Design', desc: 'Transforming Soul with Captivating Packaging Design.' },
 ];
 
 
@@ -814,38 +795,9 @@ export default function Home() {
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
           gap: isMobile ? 8 : 4,
         }}>
-          {/* {catalogueDesign.map((c, i) => (
-            <div
-              key={i}
-              style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
-              onMouseOver={(e) => { if (!isMobile) e.currentTarget.querySelector('.cat-overlay').style.opacity = 1; }}
-              onMouseOut={(e) => { if (!isMobile) e.currentTarget.querySelector('.cat-overlay').style.opacity = 0; }}
-            >
-              <img
-                src={c.img}
-                alt={c.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s' }}
-                onMouseOver={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1.05)'; }}
-                onMouseOut={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1)'; }}
-              />
-              <div
-                className="cat-overlay"
-                style={{
-                  position: 'absolute', inset: 0,
-                  background: 'rgba(20,18,14,0.62)',
-                  display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-                  padding: 16,
-                  opacity: isMobile ? 1 : 0,
-                  transition: 'opacity 0.3s',
-                }}
-              >
-                <p style={{ fontSize: 13, fontWeight: 700, color: '#fff', margin: '0 0 5px', lineHeight: 1.3 }}>{c.title}</p>
-                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
-              </div>
-            </div>
-          ))} */}
+        
           {catalogueDesign.map((c, i) => (
-  <Link key={i} href={`/catalogue/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+  <Link key={i} href={`/portfolio-item/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
     <div
       style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
       onMouseOver={(e) => { if (!isMobile) e.currentTarget.querySelector('.cat-overlay').style.opacity = 1; }}
@@ -886,40 +838,9 @@ export default function Home() {
           gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
           gap: isMobile ? 8 : 4,
         }}>
-          {/* {packagingDesign.map((c, i) => (
-            <div
-              key={i}
-              style={{ position: 'relative', aspectRatio: isMobile ? '4/3' : '3/4', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
-              onMouseOver={(e) => { if (!isMobile) e.currentTarget.querySelector('.pkg-overlay').style.opacity = 1; }}
-              onMouseOut={(e) => { if (!isMobile) e.currentTarget.querySelector('.pkg-overlay').style.opacity = 0; }}
-            >
-              <img
-                src={c.img}
-                alt={c.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s' }}
-                onMouseOver={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1.05)'; }}
-                onMouseOut={(e) => { if (!isMobile) e.currentTarget.style.transform = 'scale(1)'; }}
-              />
-              <div
-                className="pkg-overlay"
-                style={{
-                  position: 'absolute', inset: 0,
-                  background: 'rgba(20,18,14,0.62)',
-                  display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-                  padding: 16,
-                  opacity: isMobile ? 1 : 0,
-                  transition: 'opacity 0.3s',
-                }}
-              >
-                <p style={{ fontSize: 13, fontWeight: 700, color: '#fff', margin: '0 0 5px', lineHeight: 1.3 }}>{c.title}</p>
-                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
-              </div>
-            </div>
-          ))} */}
-
-
+        
           {packagingDesign.map((c, i) => (
-  <Link key={i} href={`/packaging/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+  <Link key={i} href={`/portfolio-item/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
     <div
       style={{ position: 'relative', aspectRatio: isMobile ? '4/3' : '3/4', overflow: 'hidden', borderRadius: isMobile ? 8 : 0, cursor: 'pointer' }}
       onMouseOver={(e) => { if (!isMobile) e.currentTarget.querySelector('.pkg-overlay').style.opacity = 1; }}
