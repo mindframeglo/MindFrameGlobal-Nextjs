@@ -15,6 +15,9 @@ export const blogService = {
   getBlogBySlug: (slug) =>
     apiClient.get(`/blogs/${slug}`),
 
+  getBlogById: (id) =>
+    apiClient.get(`/blogs/${id}`),
+
   // Admin endpoints
   createBlog: (blogData) =>
     apiClient.post('/blogs', blogData),
