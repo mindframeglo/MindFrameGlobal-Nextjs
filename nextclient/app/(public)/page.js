@@ -15,6 +15,7 @@
  * 10. Testimonials component
  */
 
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
@@ -465,7 +466,8 @@ export default function Home() {
           playsInline
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
         >
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          {/* <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" /> */}
+        <source src="https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4" type="video/mp4" />
         </video>
 
         {/* Dark overlay */}
