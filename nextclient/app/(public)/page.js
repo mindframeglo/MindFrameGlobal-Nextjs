@@ -26,9 +26,6 @@ import contactService from '@/services/contactService';
 import Testimonial from '@/components/Testimonial';
 
 
-
-
-
 const gold = '#c9a84c';
 
 // Celebrity photos array using string paths
@@ -36,6 +33,7 @@ const celebrityPhotos = [
   '/assets/celebrity/clb-1.jpg', '/assets/celebrity/clb-2.jpg', '/assets/celebrity/clb-3.jpg', '/assets/celebrity/clb-4.jpg', '/assets/celebrity/clb-5.jpg', '/assets/celebrity/clb-6.jpg',
   '/assets/celebrity/clb-7.jpg', '/assets/celebrity/clb-8.jpg', '/assets/celebrity/clb-9.jpg', '/assets/celebrity/clb-10.jpg', '/assets/celebrity/clb-11.jpg', '/assets/celebrity/clb-12.jpg'
 ];
+
 
 const sectionTitle = (text) => (
   <div style={{ textAlign: 'center', marginBottom: 48 }}>

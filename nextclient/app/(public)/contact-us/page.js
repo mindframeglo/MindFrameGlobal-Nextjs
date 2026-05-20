@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
-import axios from 'axios';
+import apiClient from '@/services/apiClient';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -111,7 +111,8 @@ export default function Contact() {
     onSubmit: async (values, { resetForm }) => {
       setLoading(true);
       try {
-        const response = await axios.post('/api/contact', values);
+        const response = await apiClient.post('/contact', values);
+
         if (response.data.success) {
           toast.success('Thank you! We will get back to you soon.');
           resetForm();
