@@ -10,7 +10,7 @@ import axios from 'axios';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 if (typeof window !== 'undefined') {
-  console.log('🔗 API Base URL:', API_BASE_URL);
+  // console.log('🔗 API Base URL:', API_BASE_URL);
 }
 
 const apiClient = axios.create({
