@@ -93,7 +93,7 @@ const validationSchema = Yup.object({
   applyFor: Yup.string().required("Please select a position"),
   resume: Yup.mixed()
     .required("Resume is required")
-    .test("fileSize", "File size must be less than 5MB", (file) => {
+    .test("fileSize", "File size must be less than 2MB", (file) => {
       if (!file) return false;
       return file.size <= 5 * 1024 * 1024;
     })
@@ -482,7 +482,7 @@ export default function Careers() {
                       />
                     </label>
                     <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "11px", color: "#888" }}>
-                      {formik.values.resume ? formik.values.resume.name : "No file chosen (PDF only, max 5MB)"}
+                      {formik.values.resume ? formik.values.resume.name : "No file chosen (PDF only, max 2MB)"}
                     </span>
                   </div>
                   {formik.touched.resume && formik.errors.resume && (

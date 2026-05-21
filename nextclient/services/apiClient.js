@@ -9,9 +9,11 @@ import axios from 'axios';
 // In production: uses NEXT_PUBLIC_API_URL environment variable
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
+
 if (typeof window !== 'undefined') {
   // console.log('🔗 API Base URL:', API_BASE_URL);
 }
+
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -19,6 +21,7 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
 
 // Add token to request headers
 apiClient.interceptors.request.use((config) => {
@@ -31,6 +34,7 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
+
 // Handle response errors
 apiClient.interceptors.response.use(
   (response) => response,
@@ -42,5 +46,6 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 
 export default apiClient;
