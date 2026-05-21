@@ -13,7 +13,8 @@ import { useAuthStore } from '@/utils/authStore';
 import AdminLayout from '@/components/AdminLayout';
 import Loader from '@/components/Loader';
 import toast from 'react-hot-toast';
-import axios from 'axios';
+import apiClient from '@/services/apiClient';
+
 import {
   MdDelete, MdEmail, MdPhone, MdLocationOn, MdWork,
   MdAccessTime, MdDone, MdClose, MdVisibility, MdPerson,
@@ -306,10 +307,11 @@ useEffect(() => {
   useEffect(() => {
     const fetchPositions = async () => {
       try {
-        const response = await axios.get('/api/positions');
+        
+       const response = await apiClient.get('/positions');
         if (response.data.success) {
-          setAvailablePositions(response.data.data);
-        }
+  setAvailablePositions(response.data.data.map(p => p.title));
+}
       } catch (error) {
         console.error('Failed to fetch positions:', error);
       }
@@ -327,7 +329,8 @@ useEffect(() => {
       if (positionFilter) params.set('applyFor', positionFilter);
       if (searchTerm) params.set('search', searchTerm);
 
-      const response = await axios.get(`/api/careers?${params.toString()}`);
+            const response = await apiClient.get('/careers?' + params.toString())
+
       setApplications(response.data.data);
       setPagination(prev => ({
         ...prev,
@@ -343,7 +346,8 @@ useEffect(() => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('/api/careers/stats');
+            const response = await apiClient.get('/careers/stats');
+
       setStats(response.data.data);
     } catch {
       // Stats are optional
@@ -352,7 +356,8 @@ useEffect(() => {
 
   const handleStatusChange = async (appId, newStatus) => {
     try {
-      await axios.put(`/api/career/${appId}/status`, { status: newStatus });
+          await apiClient.put(`/career/${appId}/status`, { status: newStatus }); 
+
       toast.success('Status updated');
       setApplications(prev => prev.map(a => a._id === appId ? { ...a, status: newStatus } : a));
       if (selectedApp?._id === appId) setSelectedApp(prev => ({ ...prev, status: newStatus }));
@@ -365,7 +370,8 @@ useEffect(() => {
   const handleDelete = async (appId) => {
     if (!confirm('Delete this application?')) return;
     try {
-      await axios.delete(`/api/career/${appId}`);
+          await apiClient.delete(`/career/${appId}`); 
+
       toast.success('Application deleted');
       fetchApplications();
       fetchStats();
