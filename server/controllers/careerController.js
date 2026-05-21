@@ -85,7 +85,15 @@ export const downloadResume = async (req, res, next) => {
 
     const fileUrl = application.resumeUrl;
     const originalName = application.resumeOriginalName || 'resume.pdf';
-    const filename = originalName.endsWith('.pdf') ? originalName : `${originalName}.pdf`;
+
+    // Dynamically determine the correct MIME type based on file extension
+    const isDocx = originalName.endsWith('.docx');
+    const isDoc = originalName.endsWith('.doc');
+    const contentType = isDocx
+      ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      : isDoc
+      ? 'application/msword'
+      : 'application/pdf';
 
     const response = await fetch(fileUrl);
     if (!response.ok) {
@@ -93,8 +101,8 @@ export const downloadResume = async (req, res, next) => {
       return res.status(502).json({ success: false, message: 'Failed to fetch resume from storage' });
     }
 
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Disposition', `attachment; filename="${originalName}"`);
 
     const nodeStream = Readable.fromWeb(response.body);
     nodeStream.pipe(res);

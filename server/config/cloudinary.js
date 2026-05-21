@@ -35,15 +35,11 @@ const imageStorage = new CloudinaryStorage({
 const resumeStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: async (req, file) => {
-    const ext = file.originalname.split('.').pop();
     const originalName = file.originalname.replace(/\.[^/.]+$/, '').replace(/\s+/g, '_');
     return {
       folder: 'mindframe/resumes',
-      resource_type: 'auto',  // ✅ raw ki jagah auto
-      format: ext,
-      public_id: `${originalName}`,
-      use_filename: true,
-      unique_filename: true,
+      resource_type: 'raw', // Force raw to bypass PDF restrictions
+      public_id: `${originalName}_${Date.now()}`, // Keep it unique and extension-free
     };
   },
 });
