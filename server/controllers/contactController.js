@@ -4,15 +4,27 @@
  */
 // contactController.js ke top pe add karo (existing imports ke baad)
 import nodemailer from 'nodemailer';
+import Contact from '../models/Contact.js';
+
+
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: process.env.MAIL_USER,
+//     pass: process.env.MAIL_PASS,
+//   },
+// });
+
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SMTP_HOST,       
+  port: parseInt(process.env.SMTP_PORT),  
+  secure: process.env.SMTP_SECURE === 'true',  
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
-import Contact from '../models/Contact.js';
 
 /**
  * @desc    Create new contact submission
@@ -278,8 +290,8 @@ export const submitQuickContact = async (req, res, next) => {
     }
 
     const mailOptions = {
-      from: `"Mind Frame India Website" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_RECEIVER,
+      from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
+      to: "hussainkhan5march@gmail.com",
       replyTo: email,
       subject: `New Lead: ${name} — ${company || 'No Company'}`,
       html: `
@@ -332,8 +344,8 @@ export const submitServiceContact = async (req, res, next) => {
     }
 
     const mailOptions = {
-      from: `"Mind Frame India Website" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_RECEIVER,
+      from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
+      to: "hussainkhan5march@gmail.com",
       replyTo: email,
       subject: `New Service Enquiry: ${name} — ${location}`,
       html: `

@@ -19,7 +19,7 @@ export const upload = resumeUpload;
  */
 export const createApplication = async (req, res, next) => {
   try {
-        console.log('req.file:', req.file);
+        // console.log('req.file:', req.file);
     const { name, email, mobile, subject, age, experience, location, applyFor } = req.body;
 
     const hasRecent = await Career.hasRecentApplication(email, applyFor);
@@ -33,8 +33,8 @@ export const createApplication = async (req, res, next) => {
     const resumeUrl = req.file ? req.file.path : '';
     const resumePublicId = req.file ? (req.file.public_id || req.file.filename || extractPublicIdFromUrl(req.file.path || req.file.secure_url)) : undefined;
    // ✅ Yeh bhi add karo
-    console.log('resumeUrl:', resumeUrl);
-    console.log('resumeOriginalName:', req.file?.originalname);
+    // console.log('resumeUrl:', resumeUrl);
+    // console.log('resumeOriginalName:', req.file?.originalname);
     
     const application = await Career.create({
       name: name.trim(),
@@ -112,8 +112,6 @@ export const downloadResume = async (req, res, next) => {
     next(error);
   }
 };
-
-
 
 
 
@@ -331,3 +329,4 @@ export const getActivePositions = async (req, res, next) => {
     next(error);
   }
 };
+

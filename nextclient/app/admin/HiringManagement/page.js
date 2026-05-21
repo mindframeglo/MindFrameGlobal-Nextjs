@@ -361,7 +361,6 @@ export default function HiringManagement() {
       if (searchTerm) params.set('search', searchTerm);
 
       const res = await api.get(`/positions?${params.toString()}`);
-        // console.log('positions data:', res.data.data); // <-- add this
 
       setPositions(res.data.data || []);
       if (res.data.pagination) {
