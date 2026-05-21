@@ -4,7 +4,7 @@ const nextConfig = {
       beforeFiles: [
         {
           source: '/api/:path*',
-          destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'}/api/:path*`,
+          destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001'}/:path*`, 
         },
         {
           source: '/uploads/:path*',
@@ -18,7 +18,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'res.cloudinary.com' },
       { protocol: 'http', hostname: 'localhost' },
-      { protocol: 'https', hostname: 'api.mindframeindia.com' }, // production add karo
+      { protocol: 'https', hostname: 'api.mindframeindia.com' },
     ],
   },
 };

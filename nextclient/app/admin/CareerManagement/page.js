@@ -176,7 +176,9 @@ function CareerModal({ application, onClose, onStatusChange, onDelete }) {
                 </div>
                 {/* ✅ Backend proxy — same-origin, downloads as proper PDF */}
                 <a
+                  // href={`/api/career/${application._id}/download`}
                   href={`/api/career/${application._id}/download`}
+
                   style={{
                     fontSize: '11px', color: gold, textDecoration: 'none',
                     display: 'flex', alignItems: 'center', gap: '3px',
