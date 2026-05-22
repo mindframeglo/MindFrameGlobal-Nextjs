@@ -21,13 +21,13 @@ const transporter = nodemailer.createTransport({
 
 
 // ✅ Transporter verify karo — server start hone pe pata chalega SMTP connected hai ya nahi
-transporter.verify((error, success) => {
-  if (error) {
-    console.error('❌ SMTP Connection Failed:', error.message);
-  } else {
-    console.log('✅ SMTP Server Ready — Mails bhej sakte hain');
-  }
-});
+// transporter.verify((error, success) => {
+//   if (error) {
+//     console.error('❌ SMTP Connection Failed:', error.message);
+//   } else {
+//     console.log('✅ SMTP Server Ready — Mails bhej sakte hain');
+//   }
+// });
 
 
 /**
