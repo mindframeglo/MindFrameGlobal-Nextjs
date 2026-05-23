@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { useState, use } from "react";
 
-// ── image imports — same as your NewsRoom page ────────────────────────────
+// ── image imports ────────────────────────────────────────────────────────
 const img1  = "/assets/news-room/2016-1.jpg";
 const img2  = "/assets/news-room/2016-2.jpg";
 const img3  = "/assets/news-room/2017-1.jpg";
@@ -31,7 +31,7 @@ const img23 = "/assets/news-room/2024-1.jpg";
 const img24 = "/assets/news-room/2024-2.png";
 const img25 = "/assets/news-room/2024-3.jpg";
 
-// ── newsData (copy same updated newsData here) ────────────────────────────
+// ── newsData ─────────────────────────────────────────────────────────────
 const newsData = {
   2024: [
     {
@@ -383,18 +383,21 @@ export default function NewsRoomDetail({ params }) {
           min-height: 100vh;
         }
 
+        /* ── Desktop: side-by-side, full viewport height ── */
         .nr-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          height: 100vh;
-          min-height: 600px;
+          min-height: 100vh;
         }
 
         /* ── Image Panel ── */
         .nr-image-panel {
           background: #111;
           overflow: hidden;
-          height: 100%;
+          /* On desktop, stretch to grid row height */
+          position: sticky;
+          top: 0;
+          height: 100vh;
         }
 
         .nr-carousel-wrapper {
@@ -499,7 +502,6 @@ export default function NewsRoomDetail({ params }) {
           flex-direction: column;
           justify-content: center;
           overflow-y: auto;
-          height: 100%;
           background: #faf8f5;
         }
 
@@ -579,23 +581,31 @@ export default function NewsRoomDetail({ params }) {
         @media (max-width: 768px) {
           .nr-grid {
             grid-template-columns: 1fr;
-            height: auto;
             min-height: unset;
           }
+
+          /* On mobile the image panel is NOT sticky — it's a fixed-height block */
           .nr-image-panel {
-            height: 75vw;
-            max-height: 460px;
-            min-height: 260px;
+            position: relative;
+            height: 56vw;
+            min-height: 220px;
+            max-height: 420px;
           }
+
           .nr-arrow { width: 36px; height: 36px; font-size: 18px; }
           .nr-arrow.prev { left: 10px; }
           .nr-arrow.next { right: 10px; }
+
           .nr-details {
-            padding: 32px 20px 48px;
-            height: auto;
+            padding: 32px 20px 56px;
             overflow-y: visible;
+            justify-content: flex-start;
           }
-          .nr-title { font-size: clamp(18px, 5.5vw, 26px); }
+
+          .nr-title {
+            font-size: clamp(18px, 5.5vw, 26px);
+          }
+
           .nr-back {
             align-self: stretch;
             text-align: center;

@@ -53,8 +53,7 @@ export const newsData = {
     {
       id: 2,
       slug: "mind-frame-india-tots-couture-week",
-      title:
-        "Mind Frame India Secures Fashion Week Brand Mandate for TOTS Couture Week",
+      title: "Mind Frame India Secures Fashion Week Brand Mandate for TOTS Couture Week",
       year: "2024",
       category: "Fashion, Brand Mandate",
       image: img24,
@@ -64,8 +63,7 @@ export const newsData = {
     {
       id: 3,
       slug: "mind-frame-india-wins-rirasa",
-      title:
-        "Mind Frame India Wins Rirasa: Elevating Luxury Indian Fashion to New Heights",
+      title: "Mind Frame India Wins Rirasa: Elevating Luxury Indian Fashion to New Heights",
       year: "2024",
       category: "Luxury Fashion, Brand Strategy",
       image: img23,
@@ -77,8 +75,7 @@ export const newsData = {
     {
       id: 4,
       slug: "realty-brands-post-pandemic-digital-campaigns",
-      title:
-        "Mind Frame India Revamps Realty Brands Post-Pandemic with Strategic Digital Campaigns",
+      title: "Mind Frame India Revamps Realty Brands Post-Pandemic with Strategic Digital Campaigns",
       year: "2023",
       category: "Real Estate, Digital Marketing",
       image: img22,
@@ -88,8 +85,7 @@ export const newsData = {
     {
       id: 5,
       slug: "revamping-jayashri-gaytri-foods-bhopal-to-new-york",
-      title:
-        "Revamping Jayashri Gaytri Foods Pvt Ltd – From Bhopal to New York",
+      title: "Revamping Jayashri Gaytri Foods Pvt Ltd – From Bhopal to New York",
       year: "2023",
       category: "FMCG, Brand Revamp",
       image: img21,
@@ -99,8 +95,7 @@ export const newsData = {
     {
       id: 6,
       slug: "influencer-campaigns-kolorr",
-      title:
-        "Mind Frame India's Influencer Campaigns Propel Kolorr to New Heights",
+      title: "Mind Frame India's Influencer Campaigns Propel Kolorr to New Heights",
       year: "2023",
       category: "Influencer Marketing, D2C",
       image: img20,
@@ -110,8 +105,7 @@ export const newsData = {
     {
       id: 7,
       slug: "nesco-foods-qsr-launches-gourmet-craft",
-      title:
-        "Mind Frame India Transforms Nesco Foods With Successful QSR Launches & Branding of Gourmet Craft",
+      title: "Mind Frame India Transforms Nesco Foods With Successful QSR Launches & Branding of Gourmet Craft",
       year: "2023",
       category: "F&B, QSR Branding",
       image: img19,
@@ -121,8 +115,7 @@ export const newsData = {
     {
       id: 8,
       slug: "barter-strategy-persian-darbar",
-      title:
-        "Mind Frame India's Barter Strategy Delivers Massive Reach for Persian Darbar",
+      title: "Mind Frame India's Barter Strategy Delivers Massive Reach for Persian Darbar",
       year: "2023",
       category: "F&B, Influencer Marketing",
       image: img18,
@@ -132,8 +125,7 @@ export const newsData = {
     {
       id: 9,
       slug: "transforming-geeta-aluminium-strategic-branding",
-      title:
-        "Transforming Geeta Aluminium: A Case Study of Strategic Branding Success",
+      title: "Transforming Geeta Aluminium: A Case Study of Strategic Branding Success",
       year: "2023",
       category: "B2B, Brand Strategy",
       image: img17,
@@ -145,8 +137,7 @@ export const newsData = {
     {
       id: 10,
       slug: "arijit-singh-pankaj-udhas-concerts-arizona",
-      title:
-        "Mind Frame India Drives Online Sales For Arijit Singh and Pankaj Udhas Ji Concerts in Arizona",
+      title: "Mind Frame India Drives Online Sales For Arijit Singh and Pankaj Udhas Ji Concerts in Arizona",
       year: "2022",
       category: "Entertainment, Event Marketing",
       image: img16,
@@ -156,8 +147,7 @@ export const newsData = {
     {
       id: 11,
       slug: "nawazuddin-siddiqui-bharat-agri-kisan-app",
-      title:
-        "Mind Frame India Chooses Nawazuddin Siddiqui for Bharat Agri Kisan App Campaign",
+      title: "Mind Frame India Chooses Nawazuddin Siddiqui for Bharat Agri Kisan App Campaign",
       year: "2022",
       category: "AgriTech, Celebrity Campaign",
       image: img15,
@@ -167,8 +157,7 @@ export const newsData = {
     {
       id: 12,
       slug: "thane-realty-four-competing-brands",
-      title:
-        "Mind Frame India Takes Thane Realty by Storm With Strategic Campaigns for Four Competing Brands",
+      title: "Mind Frame India Takes Thane Realty by Storm With Strategic Campaigns for Four Competing Brands",
       year: "2022",
       category: "Real Estate, Multi-Brand Strategy",
       image: img14,
@@ -178,8 +167,7 @@ export const newsData = {
     {
       id: 13,
       slug: "shreyas-prarthana-west-pioneer-metro-grande",
-      title:
-        "Roping in Celebrity Couple Shreyas & Prarthana for West Pioneer's Metro Grande: A Mind Frame India Success Story",
+      title: "Roping in Celebrity Couple Shreyas & Prarthana for West Pioneer's Metro Grande",
       year: "2022",
       category: "Real Estate, Celebrity Endorsement",
       image: img13,
@@ -201,8 +189,7 @@ export const newsData = {
     {
       id: 15,
       slug: "ayuska-avadh-organic-life",
-      title:
-        "Creating a Landmark AYUSKA by Avadh: Your Organic Life Begins Here",
+      title: "Creating a Landmark AYUSKA by Avadh: Your Organic Life Begins Here",
       year: "2021",
       category: "Real Estate, Wellness Branding",
       image: img11,
@@ -212,8 +199,7 @@ export const newsData = {
     {
       id: 16,
       slug: "hdfc-largest-retail-webinar",
-      title:
-        "Mind Frame India Powers HDFC's Largest Retail Webinar to Unprecedented Success",
+      title: "Mind Frame India Powers HDFC's Largest Retail Webinar to Unprecedented Success",
       year: "2021",
       category: "BFSI, Digital Event",
       image: img10,
@@ -235,8 +221,7 @@ export const newsData = {
     {
       id: 18,
       slug: "travel-brands-innovative-marketing-strategies",
-      title:
-        "Mind Frame India Elevates Travel Brands to New Heights With Innovative Marketing Strategies",
+      title: "Mind Frame India Elevates Travel Brands to New Heights With Innovative Marketing Strategies",
       year: "2020",
       category: "Travel & Tourism, Brand Marketing",
       image: img8,
@@ -248,8 +233,7 @@ export const newsData = {
     {
       id: 19,
       slug: "supreme-market-presence-vibrant-campaign",
-      title:
-        "Mind Frame India Reignites Supreme's Market Presence with a Vibrant Campaign",
+      title: "Mind Frame India Reignites Supreme's Market Presence with a Vibrant Campaign",
       year: "2018",
       category: "FMCG, Brand Campaign",
       image: img5,
@@ -269,8 +253,7 @@ export const newsData = {
     {
       id: 21,
       slug: "innovative-campaign-aditya-birla-memorial-hospital",
-      title:
-        "Mind Frame India's Innovative Campaign for Aditya Birla Memorial Hospital",
+      title: "Mind Frame India's Innovative Campaign for Aditya Birla Memorial Hospital",
       year: "2018",
       category: "Healthcare, Brand Campaign",
       image: img7,
@@ -282,8 +265,7 @@ export const newsData = {
     {
       id: 22,
       slug: "aditya-birla-ummeed-cancer-hope-campaign",
-      title:
-        "Ummeed: Aditya Birla Memorial Hospital Gives Hope to Cancer Patients",
+      title: "Ummeed: Aditya Birla Memorial Hospital Gives Hope to Cancer Patients",
       year: "2017",
       category: "Healthcare, Social Campaign",
       image: img3,
@@ -293,8 +275,7 @@ export const newsData = {
     {
       id: 23,
       slug: "javed-ali-music-director-ummeed-cancer-awareness",
-      title:
-        "Javed Ali Marks Debut as Music Director for Ummeed Cancer Awareness Campaign",
+      title: "Javed Ali Marks Debut as Music Director for Ummeed Cancer Awareness Campaign",
       year: "2017",
       category: "Healthcare, Music, Social Campaign",
       image: img4,
@@ -316,8 +297,7 @@ export const newsData = {
     {
       id: 25,
       slug: "ummeed-journey-behind-music-cancer-awareness-abmh",
-      title:
-        "Ummeed: The Journey Behind the Music – Raising Cancer Awareness for ABMH",
+      title: "Ummeed: The Journey Behind the Music – Raising Cancer Awareness for ABMH",
       year: "2016",
       category: "Healthcare, Music, Social Campaign",
       image: img2,
@@ -346,138 +326,156 @@ export default function NewsRoom() {
       />
       <div style={styles.page}>
         <style>{`
+          * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+          .hero-title-black {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(56px, 10vw, 120px);
+            font-weight: 900;
+            color: #111;
+            line-height: 1;
+            letter-spacing: -2px;
+          }
+          .hero-title-gold {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(56px, 10vw, 120px);
+            font-weight: 700;
+            color: #b08d57;
+            line-height: 1;
+            letter-spacing: -2px;
+          }
 
-        .hero-title-black {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(56px, 10vw, 120px);
-          font-weight: 900;
-          color: #111;
-          line-height: 1;
-          letter-spacing: -2px;
-        }
-        .hero-title-gold {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(56px, 10vw, 120px);
-          font-weight: 700;
-          color: #b08d57;
-          line-height: 1;
-          letter-spacing: -2px;
-        }
+          /* KEY FIX: scroll-outer clips overflow so cards don't get cut,
+             and padding-bottom makes room for the scrollbar */
+          .scroll-outer {
+            overflow: hidden;
+          }
 
-        .news-card {
-          position: relative;
-          border-radius: 6px;
-          overflow: hidden;
-          cursor: pointer;
-          flex: 0 0 300px;
-          height: 200px;
-          transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease;
-        }
+          .scroll-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            /* padding: top right bottom left */
+            /* right padding ensures last card fully visible */
+            padding: 6px 24px 20px 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #b08d57 #f0ece4;
+          }
 
-        .news-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 18px 48px rgba(0,0,0,0.2);
-        }
+          .scroll-track::-webkit-scrollbar { height: 4px; }
+          .scroll-track::-webkit-scrollbar-thumb { background: #b08d57; border-radius: 2px; }
+          .scroll-track::-webkit-scrollbar-track { background: #f0ece4; }
 
-        .news-card img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
-        }
+          .news-card {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            /* Fixed size — never shrink below this */
+            flex: 0 0 300px;
+            width: 300px;
+            height: 200px;
+            transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease;
+          }
 
-        .news-card:hover img {
-          transform: scale(1.08);
-        }
+          .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 48px rgba(0,0,0,0.2);
+          }
 
-        .card-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to top, rgba(10,8,5,0.85) 0%, rgba(10,8,5,0.1) 55%, transparent 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          display: flex;
-          align-items: flex-end;
-          padding: 16px;
-        }
+          .news-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+          }
 
-        .news-card:hover .card-overlay {
-          opacity: 1;
-        }
+          .news-card:hover img {
+            transform: scale(1.08);
+          }
 
-        .card-overlay-text {
-          color: #fff;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13px;
-          font-weight: 400;
-          line-height: 1.4;
-        }
+          .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,8,5,0.85) 0%, rgba(10,8,5,0.1) 55%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+          }
 
-        .year-row {
-          border-top: 1px solid #e0d9ce;
-          padding: 18px 0;
-          cursor: pointer;
-          transition: background 0.2s;
-          user-select: none;
-        }
+          .news-card:hover .card-overlay {
+            opacity: 1;
+          }
 
-        .year-row:hover .year-label {
-          color: #b08d57;
-        }
+          .card-overlay-text {
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.4;
+          }
 
-        .year-label {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: #555;
-          transition: color 0.2s;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
+          .year-row {
+            border-top: 1px solid #e0d9ce;
+            padding: 18px 0;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+          }
 
-        .year-label.open {
-          color: #1a1510;
-          font-weight: 500;
-        }
+          .year-row:hover .year-label {
+            color: #b08d57;
+          }
 
-        .scroll-track {
-          display: flex;
-          gap: 20px;
-          overflow-x: auto;
-          padding: 6px 0 20px;
-          scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: thin;
-          scrollbar-color: #b08d57 #f0ece4;
-        }
+          .year-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #555;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
 
-        .scroll-track::-webkit-scrollbar { height: 4px; }
-        .scroll-track::-webkit-scrollbar-thumb { background: #b08d57; border-radius: 2px; }
-        .scroll-track::-webkit-scrollbar-track { background: #f0ece4; }
+          .year-label.open {
+            color: #1a1510;
+            font-weight: 500;
+          }
 
-        .accordion-body {
-          overflow: hidden;
-          transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
-        }
+          .accordion-body {
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+          }
 
-        .breadcrumb {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 12px;
-          color: #b08d57;
-          letter-spacing: 1px;
-          margin-bottom: 24px;
-        }
+          /* ── Mobile ── */
+          @media (max-width: 600px) {
+            .news-card {
+              flex: 0 0 200px;
+              width: 200px;
+              height: 140px;
+            }
+            .hero-section { height: 240px !important; }
+            .scroll-track {
+              gap: 14px;
+              padding: 6px 16px 20px 0;
+            }
+          }
 
-        @media (max-width: 600px) {
-          .news-card { flex: 0 0 240px; height: 160px; }
-          .hero-section { height: 240px !important; }
-        }
-      `}</style>
+          @media (max-width: 380px) {
+            .news-card {
+              flex: 0 0 170px;
+              width: 170px;
+              height: 120px;
+            }
+          }
+        `}</style>
 
         {/* HERO BANNER */}
         <div
@@ -508,7 +506,6 @@ export default function NewsRoom() {
                 "linear-gradient(to bottom, rgba(250,248,245,0.55) 0%, rgba(250,248,245,0.15) 100%)",
             }}
           />
-
           <div
             style={{
               position: "absolute",
@@ -562,25 +559,28 @@ export default function NewsRoom() {
                 <div
                   className="accordion-body"
                   style={{
-                    maxHeight: isOpen ? "400px" : "0px",
+                    maxHeight: isOpen ? "500px" : "0px",
                     opacity: isOpen ? 1 : 0,
                   }}
                 >
-                  <div className="scroll-track">
-                    {items.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={`/news-room/${item.slug}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <div className="news-card">
-                          <img src={item.image} alt={item.title} />
-                          <div className="card-overlay">
-                            <p className="card-overlay-text">{item.title}</p>
+                  {/* scroll-outer prevents the cards from being clipped by overflow:hidden on accordion-body */}
+                  <div className="scroll-outer">
+                    <div className="scroll-track">
+                      {items.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={`/news-room/${item.slug}`}
+                          style={{ textDecoration: "none", display: "block", flexShrink: 0 }}
+                        >
+                          <div className="news-card">
+                            <img src={item.image} alt={item.title} />
+                            <div className="card-overlay">
+                              <p className="card-overlay-text">{item.title}</p>
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    ))}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
