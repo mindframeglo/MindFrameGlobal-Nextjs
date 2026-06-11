@@ -15,7 +15,7 @@ const Pranay = '/assets/team/Pranay.jpg';
 const sanket = '/assets/assets/team/sanket.png';
 const riyansh = '/assets/assets/team/riyansh.png';
 const kavya = '/assets/assets/team/kavya.png';
-const irfan = '/assets/team/irfan.png';
+const irfan = '/assets/assets/team/irfan.png';
 const hussain = '/assets/team/hussain.png';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
