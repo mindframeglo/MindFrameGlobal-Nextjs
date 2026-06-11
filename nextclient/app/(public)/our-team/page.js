@@ -3,7 +3,6 @@
 const Shanawaz = '/assets/team/Shanawaz-sir.jpg';
 const Hina = '/assets/team/hina-mam.jpg';
 const Aaqib = '/assets/team/Aaqib.jpg';
-const Harsha = '/assets/team/Harsha.png';
 const Shadab = '/assets/team/shadab.png';
 const Veena = '/assets/team/veena.png';
 const Aashi = '/assets/team/aashi.png';
@@ -13,6 +12,11 @@ const Altaf = '/assets/team/altaf.png';
 const Aman = '/assets/team/Aman.png';
 const salome = '/assets/team/salome.png';
 const Pranay = '/assets/team/Pranay.jpg';
+const sanket = '/assets/assets/team/sanket.png';
+const riyansh = '/assets/assets/team/riyansh.png';
+const kavya = '/assets/assets/team/kavya.png';
+const irfan = '/assets/assets/team/irfan.png';
+const hussain = '/assets/assets/team/hussain.png';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -44,9 +48,9 @@ const teams = [
     title: "Operations Management Team",
     members: [
       {
-        name: "Harsha Vishwakarma",
+        name: "kavya Nagaraj",
         role: "Human Resources",
-        img: Harsha,
+        img: kavya,
         nameGold: true,
       },
       null,
@@ -86,9 +90,14 @@ const teams = [
         img: null,
       },
       {
-        name: "Neha Lad",
+        name: "Riyansh Asrani",
         role: "Graphic Designer",
-        img: null, // no import provided for Neha
+        img: riyansh,
+      },
+      {
+        name: "Sanket Dait",
+        role: "Graphic Designer",
+        img: sanket, // no import provided for Neha
       },
       {
         name: "Salome Chetty",
@@ -106,6 +115,20 @@ const teams = [
         name: "Pranay Ramani",
         role: "UI / UX Designer",
         img: Pranay,
+        nameGold: true,
+      },
+      null,
+    ],
+  },
+   {
+    id: "video",
+    title: "Video Editor",
+    members: [
+      null,
+      {
+        name: "Irfan Shaikh",
+        role: "Video Editor",
+        img: irfan,
         nameGold: true,
       },
       null,
@@ -143,6 +166,11 @@ const teams = [
         name: "Aitaf Ali",
         role: "Web Developer",
         img: Altaf,
+      },
+       {
+        name: "Hussain khan",
+        role: "Mern Stack Developer",
+        img: hussain,
       },
     ],
   },
