@@ -15,8 +15,8 @@ const Pranay = '/assets/team/Pranay.jpg';
 const sanket = '/assets/assets/team/sanket.png';
 const riyansh = '/assets/assets/team/riyansh.png';
 const kavya = '/assets/assets/team/kavya.png';
-const irfan = '/assets/assets/team/irfan.png';
-const hussain = '/assets/assets/team/hussain.png';
+const irfan = '/assets/team/irfan.png';
+const hussain = '/assets/team/hussain.png';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -26,16 +26,16 @@ const teams = [
     title: "Directors",
     isHeader: true,
     members: [
-      {
-        name: "Mir Shahnawaz Ali",
-        role: "Director – Creative & Digital Branding",
-        img: Shanawaz,
-      },
-      {
-        name: "Hina Ali",
-        role: "Creative Director (Health Care)",
-        img: Hina,
-      },
+      // {
+      //   name: "Mir Shahnawaz Ali",
+      //   role: "Director – Creative & Digital Branding",
+      //   img: null,
+      // },
+      // {
+      //   name: "Hina Ali",
+      //   role: "Creative Director (Health Care)",
+      //   img: null,
+      // },
       {
         name: "Aaqib Ali",
         role: "Brand Management & Digital Marketing",
@@ -48,7 +48,7 @@ const teams = [
     title: "Operations Management Team",
     members: [
       {
-        name: "kavya Nagaraj",
+        name: "kaviya Nagaraj",
         role: "Human Resources",
         img: kavya,
         nameGold: true,
@@ -99,11 +99,11 @@ const teams = [
         role: "Graphic Designer",
         img: sanket, // no import provided for Neha
       },
-      {
-        name: "Salome Chetty",
-        role: "Graphic Designer",
-        img: salome,
-      },
+      // {
+      //   name: "Salome Chetty",
+      //   role: "Graphic Designer",
+      //   img: null,
+      // },
     ],
   },
   {
@@ -163,7 +163,7 @@ const teams = [
         img: Taufiq,
       },
       {
-        name: "Aitaf Ali",
+        name: "Altaf Ali",
         role: "Web Developer",
         img: Altaf,
       },
