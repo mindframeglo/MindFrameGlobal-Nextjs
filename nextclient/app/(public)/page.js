@@ -52,19 +52,76 @@ const sectionTitle = (text) => (
 );
 
 // ─── YouTube Embed ───────────────────────────────────────────────────────────
+// function YTEmbed({ videoId, title }) {
+//   return (
+//     <div style={{ borderRadius: 4, overflow: 'hidden', background: '#000', aspectRatio: '16/9', width: '100%' }}>
+//       <iframe
+//         width="100%"
+//         height="100%"
+//         src={`https://www.youtube.com/embed/${videoId}`}
+//         title={title}
+//         frameBorder="0"
+//         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//         allowFullScreen
+//         style={{ display: 'block' }}
+//       />
+//     </div>
+//   );
+// }
+
+
+// ─── YouTube Embed (Lazy / Click-to-Load) ────────────────────────────────────
 function YTEmbed({ videoId, title }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div style={{ borderRadius: 4, overflow: 'hidden', background: '#000', aspectRatio: '16/9', width: '100%' }}>
-      <iframe
-        width="100%"
-        height="100%"
-        src={`https://www.youtube.com/embed/${videoId}`}
-        title={title}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        style={{ display: 'block' }}
-      />
+    <div
+      style={{ borderRadius: 4, overflow: 'hidden', background: '#000', aspectRatio: '16/9', width: '100%', position: 'relative', cursor: 'pointer' }}
+      onClick={() => setLoaded(true)}
+    >
+      {!loaded ? (
+        <>
+          {/* Thumbnail image instead of iframe */}
+          <img
+            src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+            alt={title}
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+          {/* Play button overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: 'rgba(0,0,0,0.3)',
+          }}>
+            <div style={{
+              width: 64, height: 64, borderRadius: '50%',
+              background: 'rgba(255,0,0,0.85)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              {/* Triangle play icon */}
+              <div style={{
+                width: 0, height: 0,
+                borderTop: '12px solid transparent',
+                borderBottom: '12px solid transparent',
+                borderLeft: '22px solid white',
+                marginLeft: 4,
+              }} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <iframe
+          width="100%"
+          height="100%"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          title={title}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{ display: 'block', position: 'absolute', inset: 0 }}
+        />
+      )}
     </div>
   );
 }
@@ -457,7 +514,7 @@ export default function Home() {
         justifyContent: 'center' 
       }}>
         {/* Background video */}
-        <video
+         <video
           autoPlay
           muted
           loop
@@ -467,7 +524,6 @@ export default function Home() {
           {/* <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" /> */}
         <source src="https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4" type="video/mp4" />
         </video>
-
         {/* Dark overlay */}
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,10,20,0.62)', zIndex: 1 }} />
 
