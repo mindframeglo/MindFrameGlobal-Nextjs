@@ -7,6 +7,8 @@ const Shadab = '/assets/team/shadab.png';
 const Veena = '/assets/team/veena.png';
 const Aashi = '/assets/team/aashi.png';
 const Abdul = '/assets/team/Abdul.png';
+const Abdul2 = '/assets/team/abdul2.png';
+
 const Taufiq = '/assets/team/taufiq.png';
 const Altaf = '/assets/team/altaf.png';
 const Aman = '/assets/team/Aman.png';
@@ -26,22 +28,14 @@ const teams = [
     title: "Directors",
     isHeader: true,
     members: [
-      // {
-      //   name: "Mir Shahnawaz Ali",
-      //   role: "Director – Creative & Digital Branding",
-      //   img: null,
-      // },
-      // {
-      //   name: "Hina Ali",
-      //   role: "Creative Director (Health Care)",
-      //   img: null,
-      // },
-      {
-        name: "Aaqib Ali",
-        role: "Brand Management & Digital Marketing",
-        img: Aaqib,
-      },
-    ],
+  null,
+  {
+    name: "Aaqib Ali",
+    role: "Brand Management & Digital Marketing",
+    img: Aaqib,
+  },
+  null,
+],
   },
   {
     id: "operations",
@@ -151,28 +145,29 @@ const teams = [
   {
     id: "it",
     title: "IT & Development Team",
-    members: [
-      {
-        name: "Abdul Ansari",
-        role: "Sr. Full Stack Developer",
-        img: Abdul,
-      },
-      {
-        name: "Taufiq Mulla",
-        role: "App Developer",
-        img: Taufiq,
-      },
-      {
-        name: "Altaf Ali",
-        role: "Web Developer",
-        img: Altaf,
-      },
-       {
-        name: "Hussain khan",
-        role: "Mern Stack Developer",
-        img: hussain,
-      },
-    ],
+  members: [
+  {
+    name: "Abdul Ansari",
+    role: "Sr. Full Stack Developer",
+    img: Abdul2,
+  },
+  {
+    name: "Hussain khan",
+    role: "Mern Stack Developer",
+    img: hussain,
+  },
+  {
+    name: "Altaf Ali",
+    role: "Web Developer",
+    img: Altaf,
+  },
+  null,
+  {
+    name: "Taufiq Mulla",
+    role: "App Developer",
+    img: Taufiq,
+  },
+],
   },
 ];
 
