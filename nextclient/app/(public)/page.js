@@ -247,6 +247,120 @@ const packagingDesign = [
 
 
 
+// ─── FAQ DATA ─────────────────────────────────────────────────────────────────
+const faqs = [
+  {
+    question: 'What is a digital marketing agency?',
+    answer:
+      'A digital marketing agency helps businesses grow online through SEO, PPC, social media marketing, content marketing, and analytics.',
+  },
+  {
+    question: 'What is a digital marketing company?',
+    answer:
+      'A digital marketing company plans and runs online campaigns that improve visibility, generate leads, and increase sales.',
+  },
+  {
+    question: 'What is a digital agency?',
+    answer:
+      'A digital agency provides services such as digital strategy, paid media, social media, website support, and online brand growth.',
+  },
+  {
+    question: 'What are digital marketing services?',
+    answer:
+      'Digital marketing services include SEO, Google Ads, social media marketing, content marketing, email marketing, and online advertising.',
+  },
+  {
+    question: 'What are digital marketing services near me?',
+    answer:
+      'Digital marketing services near you help businesses get local visibility and more qualified leads.',
+  },
+  {
+    question: 'What is a digital marketing agency near me?',
+    answer:
+      'A digital marketing agency near you is a local team that helps businesses in your area with online growth, leads, and brand visibility.',
+  },
+  {
+    question: 'Why choose a marketing agency in Mumbai?',
+    answer:
+      'A marketing agency in Mumbai understands the local market, audience behavior, and competitive landscape, which helps create more effective campaigns.',
+  },
+  {
+    question: 'What does a digital marketing company do?',
+    answer:
+      'A digital marketing company creates and manages campaigns that help businesses attract the right audience and convert them into customers.',
+  },
+  {
+    question: 'What is a marketing company for small business?',
+    answer:
+      'A marketing company for small business offers affordable services that help small brands grow online and reach local customers.',
+  },
+  {
+    question: 'What is a digital marketing website?',
+    answer:
+      'A digital marketing website is built to attract traffic, capture leads, and convert visitors into customers through optimized design and content.',
+  },
+  {
+    question: 'What is a marketing agency in Mumbai?',
+    answer:
+      'A marketing agency in Mumbai helps local businesses grow through branding, digital marketing, advertising, and lead generation tailored to the Mumbai market.',
+  },
+  {
+    question: 'What is the best digital marketing agency in Mumbai?',
+    answer:
+      'The best digital marketing agency in Mumbai combines strategy, creativity, and measurable results across SEO, ads, and social media. Mind Frame India is a full-service example based in Mumbai with over a decade of experience.',
+  },
+  {
+    question: 'What is a full-service advertising agency?',
+    answer:
+      'A full-service advertising agency handles branding, creative, digital marketing, media buying, and production under one roof, so one team manages a brand end to end.',
+  },
+  {
+    question: 'What is a full-service advertising agency in Mumbai?',
+    answer:
+      'A full-service advertising agency in Mumbai offers branding, digital, ATL, BTL, and media services locally, helping Mumbai brands run integrated campaigns from a single team.',
+  },
+  {
+    question: 'What is an advertising agency?',
+    answer:
+      'An advertising agency plans, creates, and places ad campaigns across TV, print, outdoor, and digital media to build brand awareness and drive sales.',
+  },
+  {
+    question: 'What is an advertising agency in Mumbai?',
+    answer:
+      'An advertising agency in Mumbai creates and runs campaigns for local and national brands across traditional and digital channels from a Mumbai base.',
+  },
+  {
+    question: 'What does a marketing agency do?',
+    answer:
+      'A marketing agency develops strategy, creates campaigns, and manages channels like SEO, ads, and social media to help businesses attract and convert customers.',
+  },
+  {
+    question: 'Why hire a digital marketing agency in Mumbai?',
+    answer:
+      'Hiring a digital marketing agency in Mumbai gives you local market knowledge, specialist skills, and measurable campaigns without building a full in-house team.',
+  },
+  {
+    question: 'What is a creative agency?',
+    answer:
+      'A creative agency develops the ideas, design, and content behind campaigns, including visuals, copy, video, and brand storytelling.',
+  },
+  {
+    question: 'What is a branding agency?',
+    answer:
+      'A branding agency builds a brand\'s identity, including logo, colors, voice, and positioning, to make it recognizable and trusted.',
+  },
+  {
+    question: 'What is integrated marketing?',
+    answer:
+      'Integrated marketing coordinates one consistent message across digital, social, print, and outdoor channels so each reinforces the others.',
+  },
+  {
+    question: 'What is a 360 degree marketing agency?',
+    answer:
+      'A 360 degree marketing agency covers every stage of marketing, from strategy and branding to digital, media, and performance, as a single partner.',
+  },
+];
+
 function CelebCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -476,6 +590,93 @@ function QuickContactForm() {
     </div>
   );
 }
+
+
+
+// ─── FAQ Accordion Item ────────────────────────────────────────────────────────
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+ 
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #ddd',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`home-faq-btn-${index}`}
+          aria-controls={`home-faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 700,
+              color: '#1a1a1a',
+              fontFamily: 'Georgia, serif',
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: gold,
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+ 
+      <div
+        id={`home-faq-panel-${index}`}
+        aria-labelledby={`home-faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#444',
+            lineHeight: 1.9,
+            margin: '0 0 18px',
+            fontFamily: 'Georgia, serif',
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
 
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 export default function Home() {
@@ -929,12 +1130,67 @@ export default function Home() {
         </div>
       </Section>
 
+
+
+
+      {/* ── 10. FAQ SECTION ────────────────────────────────────────────────── */}
+      <Section bg="#fff" py={isMobile ? 48 : 72}>
+        <style>{`
+          .home-faq-section {
+            margin-top: 16px;
+            max-width: 880px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+ 
+          .home-faq-intro {
+            font-size: 13px;
+            color: #444;
+            line-height: 1.9;
+            margin: 0 0 32px;
+            text-align: center;
+          }
+        `}</style>
+ 
+        {sectionTitle('Frequently Asked Questions')}
+        <div className="home-faq-section">
+          <p className="home-faq-intro">
+            Quick answers about Mind Frame India and what to expect from a full-service advertising and digital marketing agency in Mumbai.
+          </p>
+ 
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      
+
       {/* ── 10. TESTIMONIALS ───────────────────────────────────────────────── */}
       <Testimonial />
 
       </div>
+         {/* ── FAQ Schema (JSON-LD) ───────────────────────────────────────────── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": "https://mindframeindia.com/#faq",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
     </>
   );
 }
-
-

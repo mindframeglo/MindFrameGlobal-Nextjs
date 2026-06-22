@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -124,6 +125,180 @@ const whyChoose = [
   },
 ];
 
+// ── FAQ Data ──
+const faqs = [
+  {
+    question: "What are digital marketing firms near me?",
+    answer: "Digital marketing firms near you help businesses with SEO, PPC, social media, and online brand promotion. Mind Frame India, based in Mumbai, offers comprehensive digital marketing services to businesses across India and globally."
+  },
+  {
+    question: "What are marketing agency near me services?",
+    answer: "Marketing agency near me services usually include digital marketing, branding, PPC, social media, and SEO. Mind Frame India provides all these services and more under one roof."
+  },
+  {
+    question: "What are local marketing agencies?",
+    answer: "Local marketing agencies help brands connect with customers in a specific city or region. Mind Frame India specializes in helping businesses connect with their local audience in Mumbai and beyond."
+  },
+  {
+    question: "What are local digital marketing agencies?",
+    answer: "Local digital marketing agencies specialize in location-based online growth and lead generation. Mind Frame India offers targeted local digital marketing strategies for businesses in Mumbai."
+  },
+  {
+    question: "What are online marketing companies near me?",
+    answer: "Online marketing companies near you manage internet-based campaigns for brand growth and conversions. Mind Frame India provides expert online marketing services that deliver measurable results."
+  },
+  {
+    question: "What are marketing firms for small business?",
+    answer: "Marketing firms for small business provide affordable services that support growth, leads, and brand recognition. Mind Frame India offers cost-effective marketing solutions tailored to small businesses."
+  },
+  {
+    question: "What are full service digital marketing agencies?",
+    answer: "Full service digital marketing agencies handle SEO, PPC, social media, content, website, and analytics under one roof. Mind Frame India is a full-service digital marketing agency that covers all your online needs."
+  },
+  {
+    question: "What are performance marketing companies?",
+    answer: "Performance marketing companies focus on measurable results such as leads, sales, and return on ad spend. Mind Frame India runs performance-driven campaigns that deliver tangible business outcomes."
+  },
+  {
+    question: "What are best marketing agencies?",
+    answer: "The best marketing agencies combine strategy, creativity, and measurable performance across channels. Mind Frame India is recognized as one of the best marketing agencies in Mumbai."
+  },
+  {
+    question: "What is an online marketing agency near me?",
+    answer: "An online marketing agency near you supports local businesses with SEO, ads, social media, and website growth. Mind Frame India helps local businesses grow their online presence effectively."
+  },
+  {
+    question: "What is a digital marketing agency near me in Mumbai?",
+    answer: "A digital marketing agency near you in Mumbai offers local support for SEO, ads, social media, and website growth in your area. Mind Frame India is a trusted digital marketing agency in Mumbai with a proven track record."
+  },
+  {
+    question: "What is a marketing agency in Andheri?",
+    answer: "A marketing agency in Andheri provides branding, digital marketing, and advertising services to businesses in and around Andheri, Mumbai. Mind Frame India is a leading marketing agency serving the Andheri business community."
+  },
+  {
+    question: "What are advertising agencies in Mumbai?",
+    answer: "Advertising agencies in Mumbai create and run campaigns across digital and traditional media for local and national brands. Mind Frame India is a full-service advertising agency with offices in Mumbai."
+  },
+  {
+    question: "What are the top marketing agencies in Mumbai?",
+    answer: "The top marketing agencies in Mumbai combine strong strategy, creative work, and measurable results across multiple channels. Mind Frame India is consistently ranked among the top marketing agencies in Mumbai."
+  },
+  {
+    question: "What is an affordable digital marketing agency?",
+    answer: "An affordable digital marketing agency offers cost-effective packages that help small and growing businesses get results within budget. Mind Frame India provides affordable digital marketing solutions without compromising on quality."
+  },
+  {
+    question: "What is a results-driven marketing agency?",
+    answer: "A results-driven marketing agency focuses on measurable outcomes like leads, sales, and ROI rather than activity alone. Mind Frame India is a results-driven agency that prioritizes your business outcomes."
+  },
+  {
+    question: "What is a data-driven marketing agency?",
+    answer: "A data-driven marketing agency uses analytics and testing to guide decisions and continuously improve campaign performance. Mind Frame India leverages data to optimize every marketing campaign."
+  },
+  {
+    question: "What is an ROI-focused marketing agency?",
+    answer: "An ROI-focused marketing agency prioritizes profitable growth and ties every campaign to clear return on investment. Mind Frame India ensures every marketing dollar delivers measurable ROI."
+  },
+  {
+    question: "What is a one-stop marketing agency?",
+    answer: "A one-stop marketing agency handles branding, digital, creative, and media in one place, removing the need for multiple vendors. Mind Frame India is a one-stop marketing agency for all your brand needs."
+  },
+  {
+    question: "What is an outsourced marketing team?",
+    answer: "An outsourced marketing team gives you agency specialists who work as an extension of your business without in-house hiring. Mind Frame India can serve as your outsourced marketing team."
+  },
+  {
+    question: "What is a performance marketing agency in Mumbai?",
+    answer: "A performance marketing agency in Mumbai runs paid campaigns focused on measurable results like leads, sales, and return on ad spend. Mind Frame India is a leading performance marketing agency in Mumbai."
+  },
+  {
+    question: "What is a lead generation agency?",
+    answer: "A lead generation agency uses ads, landing pages, and content to capture qualified prospects for your sales team. Mind Frame India specializes in lead generation strategies that fill your sales pipeline."
+  }
+];
+
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const styles = {
   page: { 
     fontFamily: "'DM Sans', sans-serif", 
@@ -239,6 +414,35 @@ export default function BrandServices() {
           gap: 28px;
         }
 
+        /* ── FAQ ── */
+        .faq-container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 0 0px;
+        }
+        .faq-section-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(22px, 3vw, 28px);
+          font-weight: 600;
+          color: #b08d57;
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .faq-intro {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: #555;
+          text-align: center;
+          line-height: 1.8;
+          max-width: 700px;
+          margin: 0 auto 32px;
+        }
+        .faq-section {
+          background: #fff;
+          padding: 60px 24px 40px;
+          border-top: 1px solid #e8e2d9;
+        }
+
         @media (max-width: 1024px) {
           .grid-3, .grid-2 {
             gap: 24px;
@@ -261,6 +465,7 @@ export default function BrandServices() {
             grid-template-columns: 1fr;
             gap: 20px;
           }
+          .faq-container { padding: 0 0 0px; }
         }
 
         .hero-overlay {
@@ -503,11 +708,44 @@ export default function BrandServices() {
         </div>
       </div>
 
-    
+      {/* ── FAQ SECTION ── */}
+      <div className="faq-section">
+        <div className="faq-container">
+          <h2 className="faq-section-title">Frequently Asked Questions</h2>
+          <div style={styles.underline} />
+          <p className="faq-intro">
+            Everything you need to know about Mind Frame India's branding, digital marketing, and advertising services in Mumbai.
+          </p>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── SCHEMA MARKUP ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </div>
   
     </>
-);
+  );
 }
-
-

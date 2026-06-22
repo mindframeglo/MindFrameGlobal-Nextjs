@@ -1,5 +1,9 @@
 ﻿'use client'
 
+import { useState } from 'react';
+import SEO from '@/components/SEO';
+import { seoConfig } from '@/config/seoConfig';
+
 const services = [
   {
     id: 1,
@@ -162,6 +166,180 @@ const services = [
   },
 ];
 
+// ── FAQ Data ──
+const faqs = [
+  {
+    question: "What is a digital marketing website?",
+    answer: "A digital marketing website is built to generate traffic, capture leads, and convert visitors into customers. Mind Frame India creates digital marketing websites that are optimized for visibility, engagement, and conversions."
+  },
+  {
+    question: "What is a digital agency website?",
+    answer: "A digital agency website showcases services, portfolio, client proof, and clear calls to action. Mind Frame India designs digital agency websites that effectively communicate your expertise and drive client inquiries."
+  },
+  {
+    question: "What is a website marketing agency?",
+    answer: "A website marketing agency uses SEO, PPC, and content to turn a website into a business growth tool. Mind Frame India offers comprehensive website marketing services to help businesses achieve their online goals."
+  },
+  {
+    question: "What is website marketing for law firms?",
+    answer: "Website marketing for law firms uses search, content, and conversion-focused design to generate legal leads. Mind Frame India creates specialized marketing strategies for law firms to attract and convert clients."
+  },
+  {
+    question: "What is a website design and digital marketing company?",
+    answer: "A website design and digital marketing company builds websites and promotes them using online marketing strategies. Mind Frame India is a full-service agency that combines expert web design with powerful digital marketing."
+  },
+  {
+    question: "What is a digital marketing website design service?",
+    answer: "A digital marketing website design service creates websites that are optimized for visibility and conversions. Mind Frame India designs websites with SEO, user experience, and conversion rate optimization in mind."
+  },
+  {
+    question: "What is a digital agency web design service?",
+    answer: "A digital agency web design service focuses on visually strong, user-friendly, and conversion-ready websites. Mind Frame India delivers web design that aligns with your brand and business objectives."
+  },
+  {
+    question: "What is a website and digital marketing service?",
+    answer: "A website and digital marketing service combines web development with growth strategies like SEO and PPC. Mind Frame India offers integrated services to ensure your website drives real business results."
+  },
+  {
+    question: "What is a digital web agency?",
+    answer: "A digital web agency provides website design, development, and online marketing support. Mind Frame India is a leading digital web agency in Mumbai with expertise across all aspects of web presence."
+  },
+  {
+    question: "What is a web design marketing agency?",
+    answer: "A web design marketing agency builds websites that support brand growth and lead generation. Mind Frame India creates websites that are both visually stunning and optimized for marketing success."
+  },
+  {
+    question: "What is a web development company in Mumbai?",
+    answer: "A web development company in Mumbai designs and builds websites for local businesses, often alongside SEO and digital marketing support. Mind Frame India is a trusted web development company in Mumbai with years of experience."
+  },
+  {
+    question: "What is responsive web design?",
+    answer: "Responsive web design ensures a website adapts and works smoothly across mobile, tablet, and desktop screens. Mind Frame India follows a mobile-first approach to deliver seamless user experiences on all devices."
+  },
+  {
+    question: "What is a landing page?",
+    answer: "A landing page is a single focused web page built to convert campaign traffic toward one action, like a form or purchase. Mind Frame India creates high-converting landing pages for PPC, email, and social media campaigns."
+  },
+  {
+    question: "What is a WordPress development agency?",
+    answer: "A WordPress development agency builds and customizes websites on WordPress, the most widely used content management system. Mind Frame India offers expert WordPress development services for businesses of all sizes."
+  },
+  {
+    question: "What is a Shopify development agency?",
+    answer: "A Shopify development agency builds and customizes online stores on Shopify for ecommerce businesses. Mind Frame India creates Shopify stores that are secure, fast, and optimized for sales."
+  },
+  {
+    question: "What is ecommerce website development?",
+    answer: "Ecommerce website development builds online stores with product catalogs, secure payments, and conversion-focused design. Mind Frame India develops ecommerce websites that drive sales and customer loyalty."
+  },
+  {
+    question: "What is UI/UX design?",
+    answer: "UI/UX design shapes how a website or app looks and feels so it is easy, intuitive, and enjoyable to use. Mind Frame India creates user-centered designs that enhance engagement and conversions."
+  },
+  {
+    question: "What is a website maintenance service?",
+    answer: "A website maintenance service keeps your site secure, updated, fast, and running smoothly after launch. Mind Frame India offers ongoing maintenance to ensure your website performs at its best."
+  },
+  {
+    question: "What is a website redesign service?",
+    answer: "A website redesign service modernizes an existing site's design, speed, and usability while protecting its SEO value. Mind Frame India delivers website redesigns that boost performance and user satisfaction."
+  },
+  {
+    question: "What is website speed optimization?",
+    answer: "Website speed optimization improves load times through better code, images, and hosting, boosting rankings and conversions. Mind Frame India optimizes websites for lightning-fast performance."
+  },
+  {
+    question: "What is a mobile app development company?",
+    answer: "A mobile app development company designs, builds, tests, and launches apps for iOS and Android. Mind Frame India offers end-to-end mobile app development services for businesses seeking to expand their mobile presence."
+  },
+  {
+    question: "What is a mobile app development company in Mumbai?",
+    answer: "A mobile app development company in Mumbai builds iOS and Android apps for local businesses, from concept to launch and support. Mind Frame India is a leading mobile app development company in Mumbai with a proven track record."
+  }
+];
+
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const styles = {
   page: {
     fontFamily: "'DM Sans', sans-serif",
@@ -205,9 +383,6 @@ const styles = {
   },
 };
 
-import SEO from '@/components/SEO';
-import { seoConfig } from '@/config/seoConfig';
-
 export default function WebDevelopment() {
   return (
     <>
@@ -250,11 +425,43 @@ export default function WebDevelopment() {
           grid-template-columns: repeat(3, 1fr);
           gap: 20px;
         }
+
+        /* ── FAQ ── */
+        .faq-container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 0 0px;
+        }
+        .faq-section-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(22px, 3vw, 28px);
+          font-weight: 600;
+          color: #b08d57;
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .faq-intro {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: #555;
+          text-align: center;
+          line-height: 1.8;
+          max-width: 700px;
+          margin: 0 auto 32px;
+        }
+        .faq-section {
+          background: #fff;
+          padding: 60px 24px 40px;
+          border-top: 1px solid #e8e2d9;
+          margin-top: 60px;
+        }
+
         @media (max-width: 900px) {
           .grid-3 { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 560px) {
           .grid-3 { grid-template-columns: 1fr; }
+          .faq-container { padding: 0 0 0px; }
         }
       `}</style>
 
@@ -337,9 +544,44 @@ export default function WebDevelopment() {
         </div>
 
       </div>
+
+      {/* ── FAQ SECTION ── */}
+      <div className="faq-section">
+        <div className="faq-container">
+          <h2 className="faq-section-title">Frequently Asked Questions</h2>
+          <div style={styles.titleUnderline} />
+          <p className="faq-intro">
+            Everything you need to know about Mind Frame India's web development, website design, and digital marketing services in Mumbai.
+          </p>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── SCHEMA MARKUP ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </div>
     </>
   );
 }
-
-

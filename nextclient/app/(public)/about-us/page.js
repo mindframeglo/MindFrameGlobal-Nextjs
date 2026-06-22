@@ -416,6 +416,7 @@ function FAQItem({ question, answer, index }) {
   );
 }
 
+
 export default function About() {
   const skillsRef = useRef(null);
   const [animate, setAnimate] = useState(false);

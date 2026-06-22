@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -110,6 +111,180 @@ const services = [
   },
 ];
 
+// ── FAQ Data ──
+const faqs = [
+  {
+    question: "What is a professional digital marketing agency?",
+    answer: "A professional digital marketing agency offers strategy, execution, reporting, and long-term support. Mind Frame India is a professional digital marketing agency that provides end-to-end solutions for businesses of all sizes."
+  },
+  {
+    question: "What makes a top digital marketing agency?",
+    answer: "A top digital marketing agency combines experience, creativity, data, and measurable results. Mind Frame India is recognized as a top digital marketing agency in Mumbai for its proven track record."
+  },
+  {
+    question: "What is an online marketing company?",
+    answer: "An online marketing company helps businesses attract customers and grow through internet-based channels. Mind Frame India is a leading online marketing company with expertise across all digital channels."
+  },
+  {
+    question: "What is a marketing agency website?",
+    answer: "A marketing agency website should show services, results, team expertise, and easy contact options. Mind Frame India's website showcases our comprehensive capabilities and client success stories."
+  },
+  {
+    question: "What is a digital marketing consultancy?",
+    answer: "A digital marketing consultancy advises businesses on strategy, channels, and growth opportunities. Mind Frame India offers strategic consulting to help businesses maximize their digital potential."
+  },
+  {
+    question: "What is a digital marketing company website?",
+    answer: "A digital marketing company website communicates services, case studies, and trust signals clearly. Mind Frame India's website is designed to demonstrate our expertise and build client confidence."
+  },
+  {
+    question: "What is a digital marketing agency services list?",
+    answer: "A digital marketing agency services list includes SEO, PPC, social media, content, email, and analytics. Mind Frame India offers a comprehensive services list covering all aspects of digital marketing."
+  },
+  {
+    question: "What is a marketing agency digital?",
+    answer: "A marketing agency digital means a business that plans and runs online marketing campaigns. Mind Frame India is a full-service digital marketing agency that handles all your online marketing needs."
+  },
+  {
+    question: "What is a top digital agency?",
+    answer: "A top digital agency delivers strong strategy, execution, and measurable business outcomes. Mind Frame India is consistently ranked among the top digital agencies in Mumbai."
+  },
+  {
+    question: "What is a best online marketing company?",
+    answer: "A best online marketing company helps brands grow through a strong mix of search, social, and paid media. Mind Frame India is recognized as one of the best online marketing companies in Mumbai."
+  },
+  {
+    question: "What is a 360 degree digital marketing agency?",
+    answer: "A 360 degree digital marketing agency covers every channel, from SEO and ads to social and content, as a complete growth partner. Mind Frame India is a 360 degree digital marketing agency that offers end-to-end solutions."
+  },
+  {
+    question: "What is an ATL advertising agency?",
+    answer: "An ATL advertising agency runs mass-media campaigns on TV, radio, print, and outdoor to build broad brand awareness. Mind Frame India offers ATL advertising services for large-scale brand building."
+  },
+  {
+    question: "What is a BTL advertising agency?",
+    answer: "A BTL advertising agency runs targeted activities like events, activations, and in-store promotions to engage specific audiences. Mind Frame India provides BTL advertising solutions that drive engagement."
+  },
+  {
+    question: "What is a media buying agency?",
+    answer: "A media buying agency purchases ad space and time across channels at the best rates and placements for maximum reach. Mind Frame India is a media buying agency that optimizes your advertising spend."
+  },
+  {
+    question: "What is a PR agency?",
+    answer: "A PR agency manages a brand's reputation through media relations, press coverage, events, and communications. Mind Frame India offers PR services to build and protect your brand reputation."
+  },
+  {
+    question: "What is a brand strategy agency?",
+    answer: "A brand strategy agency defines a brand's positioning, audience, and messaging before any design or campaign work begins. Mind Frame India is a brand strategy agency that builds strong brand foundations."
+  },
+  {
+    question: "What is a video production agency?",
+    answer: "A video production agency creates brand films, ads, and social videos from concept and scripting through to final edit. Mind Frame India offers video production services that bring your brand stories to life."
+  },
+  {
+    question: "What is an award-winning digital marketing agency?",
+    answer: "An award-winning digital marketing agency has been recognized by the industry for creative or performance excellence, signaling proven quality. Mind Frame India is an award-winning agency with a track record of excellence."
+  },
+  {
+    question: "How do I choose a digital marketing agency in Mumbai?",
+    answer: "Choose a Mumbai agency by matching its strengths to your goals, checking real results and reviews, and confirming who manages your account. Mind Frame India is a full-service option to consider for your digital marketing needs."
+  },
+  {
+    question: "How much does a digital marketing agency in Mumbai cost?",
+    answer: "Costs depend on scope and channels; project work is a one-time fee while ongoing marketing is a monthly retainer. Mumbai agencies like Mind Frame India quote after a free consultation."
+  },
+  {
+    question: "Why choose Mind Frame India as your marketing agency?",
+    answer: "Mind Frame India is a full-service advertising and digital marketing agency in Mumbai with over a decade of experience across branding, performance marketing, media buying, and web and app development."
+  },
+  {
+    question: "What services does a full-service digital agency in Mumbai offer?",
+    answer: "A full-service digital agency in Mumbai offers SEO, PPC, social media, content, branding, web development, and media buying under one roof. Mind Frame India provides all these services and more."
+  }
+];
+
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const styles = {
   page: {
     fontFamily: "'DM Sans', sans-serif",
@@ -206,6 +381,35 @@ export default function BrandingIdentity() {
           padding: 20px 24px 60px;
         }
 
+        /* ── FAQ ── */
+        .faq-container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 0 0px;
+        }
+        .faq-section-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(22px, 3vw, 28px);
+          font-weight: 600;
+          color: #b08d57;
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .faq-intro {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: #555;
+          text-align: center;
+          line-height: 1.8;
+          max-width: 700px;
+          margin: 0 auto 32px;
+        }
+        .faq-section {
+          background: #fff;
+          padding: 60px 24px 40px;
+          border-top: 1px solid #e8e2d9;
+        }
+
         @media (max-width: 1024px) {
           .services-grid {
             gap: 24px;
@@ -230,6 +434,7 @@ export default function BrandingIdentity() {
             gap: 20px;
             padding: 20px 16px 50px;
           }
+          .faq-container { padding: 0 0 0px; }
         }
 
         .hero-overlay {
@@ -439,10 +644,45 @@ export default function BrandingIdentity() {
           margin: "24px auto 0",
         }} />
       </div>
+
+      {/* ── FAQ SECTION ── */}
+      <div className="faq-section">
+        <div className="faq-container">
+          <h2 className="faq-section-title">Frequently Asked Questions</h2>
+          <div style={{ width: "50px", height: "2px", background: "#b08d57", margin: "0 auto 24px" }} />
+          <p className="faq-intro">
+            Everything you need to know about Mind Frame India's branding, digital marketing, and advertising services in Mumbai.
+          </p>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── SCHEMA MARKUP ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </div>
   
     </>
-);
+  );
 }
-
-

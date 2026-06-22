@@ -1,5 +1,6 @@
-﻿'use client'
-
+﻿
+'use client'
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -209,6 +210,180 @@ const whyChoose = [
   },
 ];
 
+// ── FAQ Data ──
+const faqs = [
+  {
+    question: "What is digital marketing SEO?",
+    answer: "Digital marketing SEO refers to using search optimization as part of an overall online growth strategy. It integrates SEO with broader digital marketing efforts like content, social media, and paid ads to drive sustainable visibility and conversions."
+  },
+  {
+    question: "What is search engine optimization in digital marketing?",
+    answer: "Search engine optimization in digital marketing improves website visibility on search engines like Google. It involves on-page, off-page, and technical tactics to help your pages rank higher for relevant queries and attract qualified organic traffic."
+  },
+  {
+    question: "What is an SEO agency near me?",
+    answer: "An SEO agency near you helps improve your website rankings and local search presence. Mind Frame India, based in Mumbai, serves clients globally with expert SEO strategies tailored to your business goals and target locations."
+  },
+  {
+    question: "What are content marketing agencies?",
+    answer: "Content marketing agencies create blogs, videos, guides, and other content to build authority and attract leads. Mind Frame India develops content strategies that engage your audience, support SEO, and drive measurable business growth."
+  },
+  {
+    question: "What is marketing and SEO?",
+    answer: "Marketing and SEO together help businesses reach customers online through visibility, relevance, and trust. SEO ensures your brand appears in search results, while marketing strategies convert that visibility into loyal customers."
+  },
+  {
+    question: "What are search engine optimization companies?",
+    answer: "Search engine optimization companies specialize in improving rankings, traffic, and organic leads. Mind Frame India is a leading SEO company in Mumbai, offering data-driven SEO solutions for businesses across industries."
+  },
+  {
+    question: "What is local SEO agency?",
+    answer: "A local SEO agency helps businesses rank in location-based searches and attract nearby customers. Mind Frame India offers expert local SEO services in Mumbai to help businesses dominate local search results and Google Maps."
+  },
+  {
+    question: "What is content marketing in digital marketing?",
+    answer: "Content marketing in digital marketing uses helpful content to attract, engage, and convert audiences. It builds trust and authority while supporting SEO through valuable, shareable, and keyword-optimized materials."
+  },
+  {
+    question: "What is digital marketing SEO agency?",
+    answer: "A digital marketing SEO agency combines website optimization, content, and search strategy to grow visibility. Mind Frame India provides integrated SEO and digital marketing services that drive traffic, leads, and revenue."
+  },
+  {
+    question: "What is SEO and PPC agency?",
+    answer: "An SEO and PPC agency manages both organic and paid search strategies for stronger search presence. Mind Frame India balances long-term SEO growth with immediate PPC results to maximize your search marketing ROI."
+  },
+  {
+    question: "What is an SEO company in Mumbai?",
+    answer: "An SEO company in Mumbai improves your website rankings on Google and helps local businesses attract more organic traffic and leads. Mind Frame India is a trusted SEO company in Mumbai with a proven track record of delivering results."
+  },
+  {
+    question: "What is on-page SEO?",
+    answer: "On-page SEO optimizes elements on your website, like titles, content, headings, and structure, to improve search rankings. Mind Frame India ensures every page is fully optimized for target keywords and user experience."
+  },
+  {
+    question: "What is off-page SEO?",
+    answer: "Off-page SEO builds your website's authority through external signals like backlinks, mentions, and reviews. Mind Frame India uses ethical link-building and brand-building strategies to strengthen your domain authority."
+  },
+  {
+    question: "What is technical SEO?",
+    answer: "Technical SEO improves a website's speed, structure, indexing, and mobile-friendliness so search engines can crawl and rank it well. Mind Frame India conducts comprehensive technical audits to fix issues and optimize site performance."
+  },
+  {
+    question: "What is link building?",
+    answer: "Link building earns quality backlinks from other websites to boost your authority and search rankings. Mind Frame India builds high-quality, relevant links that improve your site's credibility and organic visibility."
+  },
+  {
+    question: "What is keyword research?",
+    answer: "Keyword research identifies the terms your customers search for so you can target them with content and ads. Mind Frame India uses advanced tools and strategies to find high-intent keywords that drive conversions."
+  },
+  {
+    question: "What is local SEO in Mumbai?",
+    answer: "Local SEO in Mumbai helps businesses rank for location-based searches and appear in Google Maps results for nearby customers. Mind Frame India specializes in local SEO strategies tailored to Mumbai's competitive market."
+  },
+  {
+    question: "What is an SEO audit?",
+    answer: "An SEO audit reviews your website's technical health, content, and backlinks to find issues and opportunities to rank higher. Mind Frame India provides in-depth SEO audits with actionable recommendations for improvement."
+  },
+  {
+    question: "What is Google Business Profile optimization?",
+    answer: "Google Business Profile optimization improves your local listing so your business shows up in Maps and local search with accurate details and reviews. Mind Frame India helps you maximize visibility and engagement on Google."
+  },
+  {
+    question: "What is a content writing service?",
+    answer: "A content writing service produces blogs, web pages, and marketing copy that engage audiences and support SEO. Mind Frame India crafts compelling, SEO-friendly content that builds authority and drives action."
+  },
+  {
+    question: "What is blog writing for SEO?",
+    answer: "Blog writing for SEO creates keyword-targeted articles that attract organic traffic and build topical authority. Mind Frame India develops blog content that ranks well and resonates with your target audience."
+  },
+  {
+    question: "What is the difference between SEO and content marketing?",
+    answer: "SEO optimizes your site to rank on search engines, while content marketing creates the valuable content that earns those rankings and engages users. Mind Frame India integrates both to deliver a complete digital growth strategy."
+  }
+];
+
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '800px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const styles = {
   page: {
     fontFamily: "'DM Sans', sans-serif",
@@ -279,7 +454,6 @@ function WhyChooseCard({ item }) {
 export default function MarketingAndBranding() {
   return (
     <>
-
       <SEO 
         title={seoConfig.services.marketingBranding.title}
         description={seoConfig.services.marketingBranding.description}
@@ -287,319 +461,363 @@ export default function MarketingAndBranding() {
         path={seoConfig.services.marketingBranding.path}
       />
       
-    <div style={styles.page}>
-      <style>
-        {`
-          * { box-sizing: border-box; margin: 0; padding: 0; }
+      <div style={styles.page}>
+        <style>
+          {`
+            * { box-sizing: border-box; margin: 0; padding: 0; }
 
-          .service-card {
-            background: #fff;
-            border: 1px solid #e8e2d9;
-            border-radius: 12px;
-            padding: 40px 28px 36px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-          }
-          .service-card:hover {
-            box-shadow: 0 20px 40px rgba(176, 141, 87, 0.12);
-            transform: translateY(-6px);
-            border-color: #b08d57;
-          }
-          .service-icon {
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-          }
-          .service-card:hover .service-icon {
-            transform: scale(1.08) rotate(-3deg);
-          }
-          .service-icon svg stroke {
-            transition: stroke 0.3s ease;
-          }
-          .service-card:hover .service-icon svg stroke {
-            stroke: #9a7842;
-          }
-
-          .why-card {
-            background: #fff;
-            border: 1px solid #e8e2d9;
-            border-radius: 12px;
-            padding: 32px 24px 28px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-          }
-          .why-card:hover {
-            box-shadow: 0 15px 30px rgba(176, 141, 87, 0.1);
-            transform: translateY(-4px);
-            border-color: #b08d57;
-          }
-          .why-icon {
-            transition: transform 0.3s ease;
-          }
-          .why-card:hover .why-icon {
-            transform: scale(1.05);
-          }
-
-          .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px 24px 60px;
-          }
-
-          .why-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 24px;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px 24px 60px;
-          }
-
-          @media (max-width: 1024px) {
-            .services-grid {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 24px;
-            }
-            .why-grid {
-              grid-template-columns: repeat(3, 1fr);
-              gap: 24px;
-            }
-          }
-          @media (max-width: 768px) {
-            .why-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          @media (max-width: 640px) {
-            .services-grid, .why-grid {
-              grid-template-columns: 1fr;
-              gap: 20px;
-            }
             .service-card {
+              background: #fff;
+              border: 1px solid #e8e2d9;
+              border-radius: 12px;
+              padding: 40px 28px 36px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+              height: 100%;
+            }
+            .service-card:hover {
+              box-shadow: 0 20px 40px rgba(176, 141, 87, 0.12);
+              transform: translateY(-6px);
+              border-color: #b08d57;
+            }
+            .service-icon {
+              transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+              display: inline-flex;
+            }
+            .service-card:hover .service-icon {
+              transform: scale(1.08) rotate(-3deg);
+            }
+            .service-icon svg stroke {
+              transition: stroke 0.3s ease;
+            }
+            .service-card:hover .service-icon svg stroke {
+              stroke: #9a7842;
+            }
+
+            .why-card {
+              background: #fff;
+              border: 1px solid #e8e2d9;
+              border-radius: 12px;
               padding: 32px 24px 28px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+              height: 100%;
             }
-          }
+            .why-card:hover {
+              box-shadow: 0 15px 30px rgba(176, 141, 87, 0.1);
+              transform: translateY(-4px);
+              border-color: #b08d57;
+            }
+            .why-icon {
+              transition: transform 0.3s ease;
+            }
+            .why-card:hover .why-icon {
+              transform: scale(1.05);
+            }
 
-          .hero-section {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-          }
-          .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-          }
-          .hero-title {
-            font-family: 'DM Sans', sans-serif;
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -1.5px;
-            line-height: 1.2;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 24px;
-          }
-          .hero-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(16px, 2vw, 20px);
-            color: #b08d57;
-            margin-top: 20px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-          }
-          .breadcrumb {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.7);
-            text-transform: uppercase;
-          }
+            .services-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 28px;
+              max-width: 1300px;
+              margin: 0 auto;
+              padding: 20px 24px 60px;
+            }
 
-          .intro-section {
-            background: #fff;
-            padding: 64px 24px 56px;
-            border-bottom: 1px solid #e8e2d9;
-          }
+            .why-grid {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 24px;
+              max-width: 1300px;
+              margin: 0 auto;
+              padding: 20px 24px 60px;
+            }
 
-          .services-section {
-            background: #f5f3ef;
-            padding: 60px 0 40px;
-          }
+            .faq-container {
+              max-width: 900px;
+              margin: 0 auto;
+              padding: 0 24px 60px;
+            }
 
-          .why-section {
-            background: #fff;
-            padding: 60px 0 40px;
-          }
+            .faq-section-title {
+              font-family: 'Cormorant Garamond', serif;
+              font-size: clamp(22px, 3vw, 28px);
+              font-weight: 600;
+              color: #b08d57;
+              text-align: center;
+              margin-bottom: 12px;
+            }
 
-          .approach-section {
-            background: #f5f3ef;
-            padding: 60px 24px;
-            text-align: center;
-          }
+            .faq-intro {
+              font-family: 'DM Sans', sans-serif;
+              font-size: 14px;
+              color: #555;
+              text-align: center;
+              line-height: 1.8;
+              max-width: 700px;
+              margin: 0 auto 32px;
+            }
 
-          .footer-strip {
-            border-top: 1px solid #e8e2d9;
-            padding: 28px 24px;
-            text-align: center;
-            background: #fff;
-          }
+            @media (max-width: 1024px) {
+              .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+              }
+              .why-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+              }
+            }
+            @media (max-width: 768px) {
+              .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (max-width: 640px) {
+              .services-grid, .why-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+              }
+              .service-card {
+                padding: 32px 24px 28px;
+              }
+              .faq-container {
+                padding: 0 16px 40px;
+              }
+            }
 
-          .mid-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-          }
-          @media (max-width: 768px) {
+            .hero-section {
+              position: relative;
+              height: 500px;
+              overflow: hidden;
+            }
+            .hero-overlay {
+              position: absolute;
+              inset: 0;
+              background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+            }
+            .hero-title {
+              font-family: 'DM Sans', sans-serif;
+              font-size: clamp(32px, 5vw, 56px);
+              font-weight: 800;
+              color: #fff;
+              letter-spacing: -1.5px;
+              line-height: 1.2;
+              text-align: center;
+              max-width: 900px;
+              margin: 0 24px;
+            }
+            .hero-subtitle {
+              font-family: 'Cormorant Garamond', serif;
+              font-size: clamp(16px, 2vw, 20px);
+              color: #b08d57;
+              margin-top: 20px;
+              letter-spacing: 4px;
+              text-transform: uppercase;
+            }
+
+            .intro-section {
+              background: #fff;
+              padding: 64px 24px 56px;
+              border-bottom: 1px solid #e8e2d9;
+            }
+
+            .services-section {
+              background: #f5f3ef;
+              padding: 60px 0 40px;
+            }
+
+            .why-section {
+              background: #fff;
+              padding: 60px 0 40px;
+            }
+
+            .approach-section {
+              background: #f5f3ef;
+              padding: 60px 24px;
+              text-align: center;
+            }
+
+            .faq-section {
+              background: #fff;
+              padding: 60px 0 40px;
+              border-top: 1px solid #e8e2d9;
+            }
+
             .mid-image {
-              height: 250px;
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
             }
-          }
-        `}
-      </style>
+            @media (max-width: 768px) {
+              .mid-image {
+                height: 250px;
+              }
+            }
+          `}
+        </style>
 
-      {/* HERO SECTION */}
-      <div className="hero-section">
-        <img
-          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&q=85"
-          alt="Marketing and Branding Agency"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-        <div className="hero-overlay">
-          <div className="hero-title">
-            Unlocking the Power of<br />Innovative Brand Advertising
+        {/* HERO SECTION */}
+        <div className="hero-section">
+          <img
+            src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&q=85"
+            alt="Marketing and Branding Agency"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+          <div className="hero-overlay">
+            <div className="hero-title">
+              Unlocking the Power of<br />Innovative Brand Advertising
+            </div>
+            <div className="hero-subtitle">CREATIVE AGENCY IN MUMBAI</div>
           </div>
-          <div className="hero-subtitle">CREATIVE AGENCY IN MUMBAI</div>
         </div>
-      </div>
 
-      {/* INTRO SECTION */}
-      <div className="intro-section">
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8, marginBottom: "24px" }}>
-            In today's highly competitive business landscape, effective advertising and creative brand campaigns are crucial for capturing the attention of consumers and driving business growth. That's where a creative ad agency comes into play. A creative ad agency combines art, strategy, and innovation to develop compelling advertising campaigns that resonate with the target audience and deliver tangible results.
-          </p>
-          <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
-            At Creative Ad Agency, we are a leading creative agency in Mumbai, specializing in brand advertising and digital media solutions. With our expertise and passion for creativity, we help businesses stand out in a crowded marketplace and connect with their customers in meaningful ways. From concept to execution, we bring ideas to life, creating engaging campaigns that leave a lasting impression.
-          </p>
+        {/* INTRO SECTION */}
+        <div className="intro-section">
+          <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+            <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8, marginBottom: "24px" }}>
+              In today's highly competitive business landscape, effective advertising and creative brand campaigns are crucial for capturing the attention of consumers and driving business growth. That's where a creative ad agency comes into play. A creative ad agency combines art, strategy, and innovation to develop compelling advertising campaigns that resonate with the target audience and deliver tangible results.
+            </p>
+            <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
+              At Creative Ad Agency, we are a leading creative agency in Mumbai, specializing in brand advertising and digital media solutions. With our expertise and passion for creativity, we help businesses stand out in a crowded marketplace and connect with their customers in meaningful ways. From concept to execution, we bring ideas to life, creating engaging campaigns that leave a lasting impression.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* OUR SERVICES SECTION */}
-      <div className="services-section">
-        <div style={{ textAlign: "center", marginBottom: "20px", padding: "0 24px" }}>
-          <h2 style={styles.goldTitle}>Our Services</h2>
-          <div style={styles.underline} />
-          <p style={{ ...styles.body, maxWidth: "700px", margin: "16px auto 0", textAlign: "center" }}>
-            As a full-service advertising company, we offer a wide range of services to meet the diverse needs of our clients. Whether you're a small startup or an established brand, our team of experts is dedicated to crafting tailored solutions that align with your objectives and drive business growth.
-          </p>
+        {/* OUR SERVICES SECTION */}
+        <div className="services-section">
+          <div style={{ textAlign: "center", marginBottom: "20px", padding: "0 24px" }}>
+            <h2 style={styles.goldTitle}>Our Services</h2>
+            <div style={styles.underline} />
+            <p style={{ ...styles.body, maxWidth: "700px", margin: "16px auto 0", textAlign: "center" }}>
+              As a full-service advertising company, we offer a wide range of services to meet the diverse needs of our clients. Whether you're a small startup or an established brand, our team of experts is dedicated to crafting tailored solutions that align with your objectives and drive business growth.
+            </p>
+          </div>
+          <div className="services-grid">
+            {services.map((svc) => (
+              <ServiceCard key={svc.id} svc={svc} />
+            ))}
+          </div>
         </div>
-        <div className="services-grid">
-          {services.map((svc) => (
-            <ServiceCard key={svc.id} svc={svc} />
-          ))}
-        </div>
-      </div>
 
-      {/* CREATIVE CAMPAIGN DEVELOPMENT SECTION */}
-      <div className="why-section">
-        <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center", padding: "0 24px" }}>
-          <h2 style={styles.goldTitle}>Creative Campaign Development</h2>
-          <div style={styles.underline} />
-          <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Delivering impactful Brand Advertising</h3>
-          <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
-            Our creative campaign agency specializes in developing impactful brand advertising strategies that capture attention and leave a lasting impression. We understand that every brand has unique story to tell, and we work closely with our clients to understand their values, target audiences, and goals. With our deep understanding of consumer behavior and market trends, we create compelling campaigns that evoke emotions, drive engagement, and inspire action.
-          </p>
+        {/* CREATIVE CAMPAIGN DEVELOPMENT SECTION */}
+        <div className="why-section">
+          <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center", padding: "0 24px" }}>
+            <h2 style={styles.goldTitle}>Creative Campaign Development</h2>
+            <div style={styles.underline} />
+            <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Delivering impactful Brand Advertising</h3>
+            <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
+              Our creative campaign agency specializes in developing impactful brand advertising strategies that capture attention and leave a lasting impression. We understand that every brand has unique story to tell, and we work closely with our clients to understand their values, target audiences, and goals. With our deep understanding of consumer behavior and market trends, we create compelling campaigns that evoke emotions, drive engagement, and inspire action.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* DIGITAL MEDIA SOLUTIONS SECTION */}
-      <div className="approach-section">
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <h2 style={styles.goldTitle}>Digital Media Solutions</h2>
-          <div style={styles.underline} />
-          <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Transforming Brands in the Digital Age</h3>
-          <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
-            In today's digital era, having a strong online presence is essential for success. Our digital media agency in Mumbai combines creativity with data-driven insights to deliver digital solutions that drive your brand's visibility and impact. From social media marketing and search engine optimization (SEO) to pay-per-click (PPC) advertising and content creation, we leverage the power of digital platforms to reach and engage your target audience effectively.
-          </p>
+        {/* DIGITAL MEDIA SOLUTIONS SECTION */}
+        <div className="approach-section">
+          <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+            <h2 style={styles.goldTitle}>Digital Media Solutions</h2>
+            <div style={styles.underline} />
+            <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Transforming Brands in the Digital Age</h3>
+            <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
+              In today's digital era, having a strong online presence is essential for success. Our digital media agency in Mumbai combines creativity with data-driven insights to deliver digital solutions that drive your brand's visibility and impact. From social media marketing and search engine optimization (SEO) to pay-per-click (PPC) advertising and content creation, we leverage the power of digital platforms to reach and engage your target audience effectively.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* GRAPHIC DESIGN AND WEBSITE DEVELOPMENT SECTION */}
-      <div className="why-section">
-        <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center", padding: "0 24px" }}>
-          <h2 style={styles.goldTitle}>Graphic Design and Website Development</h2>
-          <div style={styles.underline} />
-          <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Bringing Visuals to Life</h3>
-          <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
-            Visual communication is a powerful tool for brand storytelling and engaging consumers. Our graphic design agency uses your offers as a canvas to showcase your brand identity, including logos, brochures, packaging, and more. We collaborate with talented designers who have a keen eye for aesthetics and a deep understanding of brand identity. Additionally, our website development company in Mumbai creates user-friendly and visually appealing websites that provide a seamless user experience and drive conversions.
-          </p>
+        {/* GRAPHIC DESIGN AND WEBSITE DEVELOPMENT SECTION */}
+        <div className="why-section">
+          <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center", padding: "0 24px" }}>
+            <h2 style={styles.goldTitle}>Graphic Design and Website Development</h2>
+            <div style={styles.underline} />
+            <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Bringing Visuals to Life</h3>
+            <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
+              Visual communication is a powerful tool for brand storytelling and engaging consumers. Our graphic design agency uses your offers as a canvas to showcase your brand identity, including logos, brochures, packaging, and more. We collaborate with talented designers who have a keen eye for aesthetics and a deep understanding of brand identity. Additionally, our website development company in Mumbai creates user-friendly and visually appealing websites that provide a seamless user experience and drive conversions.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* MEDIA BUYING AND PLANNING SECTION */}
-      <div className="approach-section">
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <h2 style={styles.goldTitle}>Media Buying and Planning</h2>
-          <div style={styles.underline} />
-          <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Maximizing Advertising ROI</h3>
-          <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
-            Investor media buying is crucial for optimizing advertising budgets and ensuring maximum reach and impact. As an experienced advertising agency company, we have established strong relationships with media partners, enabling us to negotiate favorable rates and placements for our clients. Our media buying agency combines market research, audience insights, and strategic planning to identify the most effective media channels for reaching your target audience and achieving your advertising goals.
-          </p>
+        {/* MEDIA BUYING AND PLANNING SECTION */}
+        <div className="approach-section">
+          <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+            <h2 style={styles.goldTitle}>Media Buying and Planning</h2>
+            <div style={styles.underline} />
+            <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Maximizing Advertising ROI</h3>
+            <p style={{ ...styles.body, textAlign: "center", fontSize: "15px", lineHeight: 1.8 }}>
+              Investor media buying is crucial for optimizing advertising budgets and ensuring maximum reach and impact. As an experienced advertising agency company, we have established strong relationships with media partners, enabling us to negotiate favorable rates and placements for our clients. Our media buying agency combines market research, audience insights, and strategic planning to identify the most effective media channels for reaching your target audience and achieving your advertising goals.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* WHY CHOOSE US SECTION */}
-      <div className="why-section">
-        <div style={{ textAlign: "center", marginBottom: "20px", padding: "0 24px" }}>
-          <h2 style={styles.goldTitle}>Why Choose Our Creative Agency in Mumbai?</h2>
-          <div style={styles.underline} />
-          <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Unleashing the Power of Creativity</h3>
+        {/* WHY CHOOSE US SECTION */}
+        <div className="why-section">
+          <div style={{ textAlign: "center", marginBottom: "20px", padding: "0 24px" }}>
+            <h2 style={styles.goldTitle}>Why Choose Our Creative Agency in Mumbai?</h2>
+            <div style={styles.underline} />
+            <h3 style={{ ...styles.darkTitle, fontSize: "clamp(20px, 2.5vw, 24px)" }}>Unleashing the Power of Creativity</h3>
+          </div>
+          <div className="why-grid">
+            {whyChoose.map((item) => (
+              <WhyChooseCard key={item.id} item={item} />
+            ))}
+          </div>
         </div>
-        <div className="why-grid">
-          {whyChoose.map((item) => (
-            <WhyChooseCard key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
 
-      {/* MIDDLE IMAGE SECTION */}
-      <div style={{ padding: "0 24px", marginBottom: "60px" }}>
-        <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=85"
-          alt="Creative Agency Team"
-          className="mid-image"
-          style={{ borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
+        {/* MIDDLE IMAGE SECTION */}
+        <div style={{ padding: "0 24px", marginBottom: "60px" }}>
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=85"
+            alt="Creative Agency Team"
+            className="mid-image"
+            style={{ borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
+          />
+        </div>
+
+        {/* ── FAQ SECTION ── */}
+        <div className="faq-section">
+          <div className="faq-container">
+            <h2 className="faq-section-title">Frequently Asked Questions</h2>
+            <div style={styles.underline} />
+            <p className="faq-intro">
+              Everything you need to know about Mind Frame India's SEO, digital marketing, and branding services in Mumbai.
+            </p>
+
+            <div>
+              {faqs.map((faq, i) => (
+                <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── SCHEMA MARKUP ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map((faq) => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            })
+          }}
         />
       </div>
-
-   
-
-   
-    </div>
-  
     </>
-);
+  );
 }
-
-

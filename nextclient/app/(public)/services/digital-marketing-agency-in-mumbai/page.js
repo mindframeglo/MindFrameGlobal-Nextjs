@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -114,6 +115,130 @@ const digitalServices = [
   },
 ];
 
+// ─── FAQ DATA ─────────────────────────────────────────────────────────────────
+const faqs = [
+  {
+    question: "What digital marketing services does a digital marketing agency offer?",
+    answer:
+      "A digital marketing agency can offer SEO, SEM, PPC, content marketing, social media marketing, email marketing, and performance marketing.",
+  },
+  {
+    question: "What is SEO and why is it important?",
+    answer:
+      "SEO, or search engine optimization, improves your website visibility on Google and helps attract organic traffic.",
+  },
+  {
+    question: "What is SEM?",
+    answer:
+      "SEM, or search engine marketing, uses paid search ads to increase visibility and drive traffic from search engines.",
+  },
+  {
+    question: "What is PPC advertising?",
+    answer:
+      "PPC advertising lets you place ads on search engines and social platforms and pay only when someone clicks.",
+  },
+  {
+    question: "What is performance marketing?",
+    answer:
+      "Performance marketing is a results-driven approach where success is measured by clicks, leads, conversions, or sales.",
+  },
+  {
+    question: "How long does digital marketing take to show results?",
+    answer:
+      "PPC can show results quickly, while SEO and content marketing usually take several months to build momentum.",
+  },
+  {
+    question: "What is the cost of digital marketing services?",
+    answer:
+      "Digital marketing pricing depends on your goals, scope, channels, and campaign complexity.",
+  },
+  {
+    question: "Can a digital marketing agency manage my full strategy?",
+    answer:
+      "Yes, a full-service agency can manage strategy, execution, optimization, and reporting across multiple channels.",
+  },
+  {
+    question: "What is a digital marketing services list?",
+    answer:
+      "A digital marketing services list usually includes SEO, PPC, social media, content, email, analytics, and website optimization.",
+  },
+  {
+    question: "What is a digital marketing service provider?",
+    answer:
+      "A digital marketing service provider offers specialized online growth services based on business goals and audience needs.",
+  },
+  {
+    question: "What is a digital marketing agency in Mumbai?",
+    answer:
+      "A digital marketing agency in Mumbai helps local businesses grow online through SEO, paid ads, social media, and content built for the Mumbai audience.",
+  },
+  {
+    question: "What is a digital marketing company in Mumbai?",
+    answer:
+      "A digital marketing company in Mumbai plans and runs online campaigns that improve visibility, generate leads, and increase sales for businesses in the region.",
+  },
+  {
+    question: "What is email marketing?",
+    answer:
+      "Email marketing uses targeted emails and automated flows to nurture leads, retain customers, and drive repeat sales.",
+  },
+  {
+    question: "What is online advertising?",
+    answer:
+      "Online advertising places paid ads across search engines, social media, and websites to reach a targeted audience and drive measurable results.",
+  },
+  {
+    question: "What is conversion rate optimization?",
+    answer:
+      "Conversion rate optimization (CRO) improves a website or campaign so a higher share of visitors take action, such as buying or submitting a form.",
+  },
+  {
+    question: "What is marketing automation?",
+    answer:
+      "Marketing automation uses software to run repetitive tasks like email flows, lead scoring, and follow-ups, saving time and improving consistency.",
+  },
+  {
+    question: "What is a digital marketing strategy?",
+    answer:
+      "A digital marketing strategy is a plan that defines your goals, audience, channels, and budget to grow a business online effectively.",
+  },
+  {
+    question: "What is ROI in digital marketing?",
+    answer:
+      "ROI in digital marketing measures the return earned compared to the amount spent, showing whether campaigns are profitable.",
+  },
+  {
+    question: "What is a digital marketing audit?",
+    answer:
+      "A digital marketing audit reviews your website, SEO, ads, and social presence to find gaps and opportunities for growth.",
+  },
+  {
+    question: "What is lead generation in digital marketing?",
+    answer:
+      "Lead generation in digital marketing attracts potential customers and captures their interest through forms, ads, content, and landing pages.",
+  },
+  {
+    question: "What is B2B digital marketing?",
+    answer:
+      "B2B digital marketing targets other businesses through channels like LinkedIn, search ads, and content to generate qualified leads.",
+  },
+  {
+    question: "What is omnichannel marketing?",
+    answer:
+      "Omnichannel marketing gives customers a seamless, connected experience across website, social media, email, and offline touchpoints.",
+  },
+  {
+    question: "What is the difference between SEO and SEM?",
+    answer:
+      "SEO earns unpaid rankings on search engines over time, while SEM uses paid search ads for immediate visibility. They work best together.",
+  },
+  {
+    question: "What is a digital marketing retainer?",
+    answer:
+      "A digital marketing retainer is an ongoing monthly agreement where an agency manages your campaigns continuously for a fixed fee.",
+  },
+];
+
 const styles = {
   page: {
     fontFamily: "'DM Sans', sans-serif",
@@ -167,6 +292,89 @@ function DigitalServiceCard({ svc }) {
       <div className="digital-icon">{svc.icon}</div>
       <h3 style={styles.cardTitle}>{svc.title}</h3>
       <p style={styles.body}>{svc.desc}</p>
+    </div>
+  );
+}
+
+// ─── FAQ Accordion Item ────────────────────────────────────────────────────────
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`dm-faq-btn-${index}`}
+          aria-controls={`dm-faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 15,
+              fontWeight: 700,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 22,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`dm-faq-panel-${index}`}
+        aria-labelledby={`dm-faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 14,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
     </div>
   );
 }
@@ -310,6 +518,21 @@ export default function DigitalMarketing() {
             padding: 60px 24px;
           }
 
+          .faq-section {
+            background: #fff;
+            padding: 64px 24px 72px;
+            border-top: 1px solid #e8e2d9;
+          }
+
+          .faq-intro {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 32px;
+          }
+
           .footer-strip {
             border-top: 1px solid #e8e2d9;
             padding: 28px 24px;
@@ -381,10 +604,45 @@ export default function DigitalMarketing() {
           ))}
         </div>
       </div>
+
+      {/* FAQ SECTION */}
+      <div className="faq-section">
+        <div style={{ maxWidth: "880px", margin: "0 auto" }}>
+          <h2 style={styles.darkTitle}>Frequently Asked Questions</h2>
+          <div style={styles.underline} />
+          <p className="faq-intro">
+            Common questions about digital marketing services, strategy, and what to expect when working with a digital marketing agency in Mumbai.
+          </p>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
+
+    {/* FAQ Schema (JSON-LD) */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://mindframeindia.com/services/digital-marketing#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })
+      }}
+    />
   
     </>
 );
 }
-
-

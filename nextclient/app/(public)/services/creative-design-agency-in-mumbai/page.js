@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -100,6 +101,180 @@ const creativeServices = [
   },
 ];
 
+// ── FAQ Data ──
+const faqs = [
+  {
+    question: "What is a social media marketing agency?",
+    answer: "A social media marketing agency manages content, ads, and audience engagement on platforms like Instagram, Facebook, and LinkedIn. Mind Frame India offers comprehensive social media marketing services to help brands build visibility and grow their online presence."
+  },
+  {
+    question: "What is a social media marketing agency for small business?",
+    answer: "A social media marketing agency for small business helps brands build visibility, engagement, and leads on a manageable budget. Mind Frame India creates tailored social media strategies that deliver results without breaking the bank."
+  },
+  {
+    question: "What is a social media marketing company near me?",
+    answer: "A social media marketing company near you provides local support for content creation, paid ads, and profile growth. Mind Frame India, based in Mumbai, offers expert social media services to businesses across India and globally."
+  },
+  {
+    question: "What is a paid social media agency?",
+    answer: "A paid social media agency runs advertising campaigns on social platforms to reach targeted audiences. Mind Frame India manages paid social campaigns on Meta, LinkedIn, and other platforms to drive awareness, leads, and sales."
+  },
+  {
+    question: "What is a social media ads agency?",
+    answer: "A social media ads agency creates and optimizes paid campaigns for awareness, leads, and sales. Mind Frame India's ad experts leverage data-driven targeting to maximize your advertising ROI."
+  },
+  {
+    question: "What are top social media marketing companies?",
+    answer: "Top social media marketing companies offer strategy, content, ad management, and performance tracking. Mind Frame India is among the leading social media marketing agencies in Mumbai, delivering results-driven solutions."
+  },
+  {
+    question: "What is a boutique social media agency?",
+    answer: "A boutique social media agency is a smaller, specialized team that provides focused and customized social media support. Mind Frame India offers personalized, boutique-style service with the expertise of a full-scale agency."
+  },
+  {
+    question: "What is a social media management company for small business?",
+    answer: "A social media management company for small business handles planning, posting, engagement, and reporting for growing brands. Mind Frame India helps small businesses build consistent, engaging social presences."
+  },
+  {
+    question: "What is a social media digital marketing agency?",
+    answer: "A social media digital marketing agency combines content, ads, and analytics to grow online brand presence. Mind Frame India integrates social media with broader digital marketing strategies for holistic growth."
+  },
+  {
+    question: "What is digital marketing agency Facebook ads?",
+    answer: "A digital marketing agency for Facebook ads creates and manages Meta campaigns that drive clicks, leads, and sales. Mind Frame India specializes in Facebook and Instagram advertising that delivers measurable results."
+  },
+  {
+    question: "What is a social media marketing agency in Mumbai?",
+    answer: "A social media marketing agency in Mumbai manages content, ads, and engagement on Instagram, Facebook, and LinkedIn for local brands. Mind Frame India is a trusted social media marketing agency in Mumbai with a proven track record."
+  },
+  {
+    question: "What is Instagram marketing?",
+    answer: "Instagram marketing uses posts, reels, stories, and ads to build brand awareness, engagement, and sales on Instagram. Mind Frame India creates Instagram strategies that connect brands with their target audiences."
+  },
+  {
+    question: "What is influencer marketing?",
+    answer: "Influencer marketing partners with creators who have engaged audiences to promote a brand authentically. Mind Frame India connects brands with relevant influencers to drive awareness and conversions."
+  },
+  {
+    question: "What is an influencer marketing agency?",
+    answer: "An influencer marketing agency finds, manages, and runs campaigns with creators to reach targeted audiences and drive results. Mind Frame India offers end-to-end influencer marketing services for brands of all sizes."
+  },
+  {
+    question: "What is social media management?",
+    answer: "Social media management handles planning, posting, engagement, and reporting to grow and maintain a brand's social presence. Mind Frame India provides comprehensive social media management services that keep your brand active and engaging."
+  },
+  {
+    question: "What is a content calendar?",
+    answer: "A content calendar is a schedule that plans what content gets posted, when, and on which platforms for consistency. Mind Frame India develops strategic content calendars that ensure consistent, timely social media presence."
+  },
+  {
+    question: "What is LinkedIn marketing?",
+    answer: "LinkedIn marketing uses content and ads on LinkedIn to reach professionals and generate B2B leads. Mind Frame India creates LinkedIn strategies that position your brand as an industry authority."
+  },
+  {
+    question: "What is community management?",
+    answer: "Community management responds to comments, messages, and conversations to build relationships and trust with a brand's audience. Mind Frame India manages social communities to foster engagement and loyalty."
+  },
+  {
+    question: "What is YouTube channel management?",
+    answer: "YouTube channel management handles video strategy, optimization, and growth to build an audience and visibility on YouTube. Mind Frame India helps brands leverage YouTube for long-term visibility and engagement."
+  },
+  {
+    question: "What is social media branding?",
+    answer: "Social media branding creates a consistent look, tone, and identity across social profiles so a brand is instantly recognizable. Mind Frame India ensures your social media branding aligns with your overall brand identity."
+  },
+  {
+    question: "What is WhatsApp marketing?",
+    answer: "WhatsApp marketing uses WhatsApp Business to send updates, offers, and support messages directly to customers. Mind Frame India leverages WhatsApp marketing for personalized customer engagement and lead nurturing."
+  },
+  {
+    question: "What is a reels and short video marketing agency?",
+    answer: "A reels and short video marketing agency creates short-form video content for Instagram, YouTube Shorts, and similar platforms to boost reach and engagement. Mind Frame India produces engaging short-form video content that captures attention and drives results."
+  }
+];
+
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const styles = {
   page: {
     fontFamily: "'DM Sans', sans-serif",
@@ -198,12 +373,43 @@ export default function CreativeDesign() {
           margin: 0 auto;
           padding: 20px 24px 60px;
         }
+
+        /* ── FAQ ── */
+        .faq-container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 24px 60px;
+        }
+        .faq-section-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(22px, 3vw, 28px);
+          font-weight: 600;
+          color: #b08d57;
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .faq-intro {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px;
+          color: #555;
+          text-align: center;
+          line-height: 1.8;
+          max-width: 700px;
+          margin: 0 auto 32px;
+        }
+        .faq-section {
+          background: #fff;
+          padding: 60px 0 40px;
+          border-top: 1px solid #e8e2d9;
+        }
+
         @media (max-width: 1024px) {
           .cs-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
         }
         @media (max-width: 640px) {
           .cs-grid { grid-template-columns: 1fr; gap: 16px; }
           .cs-card { padding: 32px 22px 28px; }
+          .faq-container { padding: 0 16px 40px; }
         }
 
         /* ── HERO ── */
@@ -345,10 +551,44 @@ export default function CreativeDesign() {
         </div>
       </div>
 
+      {/* ── FAQ SECTION ── */}
+      <div className="faq-section">
+        <div className="faq-container">
+          <h2 className="faq-section-title">Frequently Asked Questions</h2>
+          <div style={styles.underline} />
+          <p className="faq-intro">
+            Everything you need to know about Mind Frame India's creative design, social media marketing, and branding services in Mumbai.
+          </p>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── SCHEMA MARKUP ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </div>
   
     </>
-);
+  );
 }
-
-

@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -123,6 +124,180 @@ const benefits = [
     ),
   },
 ];
+
+// ── FAQ Data ──
+const faqs = [
+  {
+    question: "What is an ecommerce marketing agency?",
+    answer: "An ecommerce marketing agency helps online stores grow through ads, SEO, remarketing, email, and conversion-focused strategies. Mind Frame India offers comprehensive ecommerce marketing services to help online retailers scale their businesses."
+  },
+  {
+    question: "What is an ecommerce digital marketing agency?",
+    answer: "An ecommerce digital marketing agency focuses on driving traffic and sales for online stores. Mind Frame India specializes in ecommerce digital marketing that delivers measurable growth for online retailers."
+  },
+  {
+    question: "What is an ecommerce PPC agency?",
+    answer: "An ecommerce PPC agency runs shopping, search, and remarketing ads to increase online sales. Mind Frame India manages ecommerce PPC campaigns that maximize return on ad spend."
+  },
+  {
+    question: "What is a Shopify SEO agency?",
+    answer: "A Shopify SEO agency improves the visibility, structure, and search rankings of Shopify stores. Mind Frame India offers expert Shopify SEO services to help stores rank higher and drive more organic traffic."
+  },
+  {
+    question: "What is digital marketing for ecommerce?",
+    answer: "Digital marketing for ecommerce helps online stores attract shoppers and convert visits into purchases. Mind Frame India delivers end-to-end ecommerce digital marketing solutions."
+  },
+  {
+    question: "What is a digital marketing agency for law firms?",
+    answer: "A digital marketing agency for law firms helps legal businesses generate leads through SEO, PPC, and local search strategies. Mind Frame India specializes in law firm marketing that drives qualified client inquiries."
+  },
+  {
+    question: "What is a healthcare digital marketing agency?",
+    answer: "A healthcare digital marketing agency helps hospitals, clinics, and medical brands build trust and attract patients online. Mind Frame India offers HIPAA-compliant healthcare marketing solutions."
+  },
+  {
+    question: "What is a real estate digital marketing agency?",
+    answer: "A real estate digital marketing agency promotes property listings, generates leads, and supports agent visibility online. Mind Frame India helps real estate professionals grow their business through targeted digital strategies."
+  },
+  {
+    question: "What is a digital marketing agency for startups?",
+    answer: "A digital marketing agency for startups builds awareness, leads, and early traction through scalable online campaigns. Mind Frame India helps startups grow with cost-effective marketing solutions."
+  },
+  {
+    question: "What is a digital marketing agency for financial services?",
+    answer: "A digital marketing agency for financial services helps financial brands grow with trust-based content, lead generation, and paid media. Mind Frame India understands the compliance needs of financial marketing."
+  },
+  {
+    question: "What is an ecommerce marketing agency in Mumbai?",
+    answer: "An ecommerce marketing agency in Mumbai helps online stores grow through ads, SEO, email, and conversion-focused strategies tailored to local and national shoppers. Mind Frame India is a trusted ecommerce marketing agency in Mumbai."
+  },
+  {
+    question: "What is an Amazon advertising agency?",
+    answer: "An Amazon advertising agency manages sponsored product, brand, and display ads to increase visibility and sales on Amazon. Mind Frame India helps brands maximize their presence on Amazon marketplace."
+  },
+  {
+    question: "What is a marketplace marketing agency?",
+    answer: "A marketplace marketing agency promotes products and manages ads across platforms like Amazon, Flipkart, and other online marketplaces. Mind Frame India offers marketplace marketing solutions for multi-channel selling."
+  },
+  {
+    question: "What is a D2C marketing agency?",
+    answer: "A D2C marketing agency helps direct-to-consumer brands grow online through performance ads, retention, and brand building. Mind Frame India specializes in D2C marketing that drives customer acquisition and loyalty."
+  },
+  {
+    question: "What is a digital marketing agency for restaurants?",
+    answer: "A digital marketing agency for restaurants drives footfall and orders through local SEO, social media, and delivery-platform promotions. Mind Frame India helps restaurants attract more customers online."
+  },
+  {
+    question: "What is a digital marketing agency for hotels?",
+    answer: "A digital marketing agency for hotels increases bookings through search ads, social media, and travel-focused campaigns. Mind Frame India helps hotels and resorts maximize occupancy through digital marketing."
+  },
+  {
+    question: "What is a digital marketing agency for education?",
+    answer: "A digital marketing agency for education helps schools, colleges, and edtech brands generate admissions and student leads online. Mind Frame India specializes in education marketing that drives enrollment."
+  },
+  {
+    question: "What is a digital marketing agency for fashion brands?",
+    answer: "A digital marketing agency for fashion brands builds visibility and sales through social media, influencer, and performance campaigns. Mind Frame India helps fashion brands stand out in a competitive market."
+  },
+  {
+    question: "What is a digital marketing agency for FMCG?",
+    answer: "A digital marketing agency for FMCG builds brand awareness and demand through campaigns, content, and media at scale. Mind Frame India delivers FMCG marketing strategies that drive mass-market engagement."
+  },
+  {
+    question: "What is a B2B marketing agency?",
+    answer: "A B2B marketing agency helps businesses reach other businesses through targeted content, LinkedIn, and lead-generation campaigns. Mind Frame India specializes in B2B marketing that generates qualified leads."
+  },
+  {
+    question: "What is a SaaS marketing agency?",
+    answer: "A SaaS marketing agency helps software companies grow signups and subscriptions through SEO, paid ads, and content marketing. Mind Frame India understands the unique needs of SaaS companies."
+  },
+  {
+    question: "What is a digital marketing agency for travel brands?",
+    answer: "A digital marketing agency for travel brands drives bookings and engagement through search, social media, and seasonal campaigns. Mind Frame India helps travel brands reach more customers online."
+  }
+];
+
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`faq-btn-${index}`}
+          aria-controls={`faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 20,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`faq-panel-${index}`}
+        aria-labelledby={`faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 const styles = {
   page: {
@@ -280,6 +455,35 @@ export default function CustomizedCampaignDesign() {
             padding: 20px 24px 60px;
           }
 
+          /* ── FAQ ── */
+          .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 0 0px;
+          }
+          .faq-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 3vw, 28px);
+            font-weight: 600;
+            color: #b08d57;
+            text-align: center;
+            margin-bottom: 12px;
+          }
+          .faq-intro {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 32px;
+          }
+          .faq-section {
+            background: #fff;
+            padding: 60px 24px 40px;
+            border-top: 1px solid #e8e2d9;
+          }
+
           @media (max-width: 1024px) {
             .services-grid {
               grid-template-columns: repeat(2, 1fr);
@@ -298,6 +502,7 @@ export default function CustomizedCampaignDesign() {
             .service-card {
               padding: 32px 24px 28px;
             }
+            .faq-container { padding: 0 0 0px; }
           }
 
           .hero-section {
@@ -453,13 +658,44 @@ export default function CustomizedCampaignDesign() {
         </div>
       </div>
 
-   
+      {/* ── FAQ SECTION ── */}
+      <div className="faq-section">
+        <div className="faq-container">
+          <h2 className="faq-section-title">Frequently Asked Questions</h2>
+          <div style={styles.underline} />
+          <p className="faq-intro">
+            Everything you need to know about Mind Frame India's campaign design, ecommerce marketing, and industry-specific digital marketing services in Mumbai.
+          </p>
 
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── SCHEMA MARKUP ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
 
     </div>
   
     </>
-);
+  );
 }
-
-

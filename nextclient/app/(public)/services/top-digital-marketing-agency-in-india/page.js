@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
 
@@ -131,6 +132,120 @@ const expertiseServices = [
   },
 ];
 
+// ─── FAQ DATA ─────────────────────────────────────────────────────────────────
+const faqs = [
+  {
+    question: "What is a PPC agency?",
+    answer:
+      "A PPC agency manages paid campaigns on Google and other platforms to drive targeted traffic and conversions.",
+  },
+  {
+    question: "What does a PPC management company do?",
+    answer:
+      "A PPC management company creates, monitors, and optimizes ad campaigns to improve return on ad spend.",
+  },
+  {
+    question: "What is a Google PPC agency?",
+    answer:
+      "A Google PPC agency specializes in Google Ads campaigns including search, display, shopping, and remarketing.",
+  },
+  {
+    question: "What are PPC management services?",
+    answer:
+      "PPC management services include keyword research, ad creation, bid optimization, tracking, and reporting.",
+  },
+  {
+    question: "What is a paid media agency?",
+    answer:
+      "A paid media agency manages advertising across Google Ads, Meta Ads, YouTube, and other paid channels.",
+  },
+  {
+    question: "What is a paid advertising agency?",
+    answer:
+      "A paid advertising agency helps businesses run campaigns that pay for placement and reach the right audience faster.",
+  },
+  {
+    question: "What are digital advertising agencies?",
+    answer:
+      "Digital advertising agencies create and manage online ad campaigns to generate measurable results.",
+  },
+  {
+    question: "What is PPC in digital marketing?",
+    answer:
+      "PPC in digital marketing means pay-per-click advertising where you pay only when someone clicks your ad.",
+  },
+  {
+    question: "What is Google Ads in digital marketing?",
+    answer:
+      "Google Ads in digital marketing helps businesses appear at the top of search results and reach people actively searching for their services.",
+  },
+  {
+    question: "What is a PPC agency near me?",
+    answer:
+      "A PPC agency near you provides local support for Google Ads and paid campaign management.",
+  },
+  {
+    question: "What is a PPC agency in Mumbai?",
+    answer:
+      "A PPC agency in Mumbai manages Google and Meta ad campaigns for local businesses to drive targeted traffic, leads, and sales.",
+  },
+  {
+    question: "What is a Google Ads agency?",
+    answer:
+      "A Google Ads agency plans, runs, and optimizes search, display, shopping, and remarketing campaigns to maximize return on ad spend.",
+  },
+  {
+    question: "What is a Google Ads agency in Mumbai?",
+    answer:
+      "A Google Ads agency in Mumbai helps local businesses appear at the top of search results and reach customers actively searching nearby.",
+  },
+  {
+    question: "What is a Meta ads agency?",
+    answer:
+      "A Meta ads agency creates and manages advertising campaigns on Facebook and Instagram to drive clicks, leads, and sales.",
+  },
+  {
+    question: "What is remarketing in PPC?",
+    answer:
+      "Remarketing in PPC shows ads to people who already visited your website, encouraging them to return and convert.",
+  },
+  {
+    question: "What is display advertising?",
+    answer:
+      "Display advertising places visual banner ads on websites and apps across the Google Display Network to build awareness and reach.",
+  },
+  {
+    question: "What is YouTube advertising?",
+    answer:
+      "YouTube advertising runs video ads before or during YouTube content to reach a large, targeted audience cost-effectively.",
+  },
+  {
+    question: "What is cost per click (CPC)?",
+    answer:
+      "Cost per click (CPC) is the amount you pay each time someone clicks your ad in a pay-per-click campaign.",
+  },
+  {
+    question: "What is return on ad spend (ROAS)?",
+    answer:
+      "Return on ad spend (ROAS) measures the revenue earned for every unit of currency spent on advertising.",
+  },
+  {
+    question: "What is a quality score in Google Ads?",
+    answer:
+      "Quality score in Google Ads rates the relevance of your keywords, ads, and landing pages, affecting cost and ad position.",
+  },
+  {
+    question: "What is conversion tracking?",
+    answer:
+      "Conversion tracking measures the actions users take after clicking an ad, such as purchases or form fills, to show campaign performance.",
+  },
+  {
+    question: "What is programmatic advertising?",
+    answer:
+      "Programmatic advertising uses automated technology to buy and place digital ads in real time to the right audience.",
+  },
+];
+
 const styles = {
   page: {
     fontFamily: "'DM Sans', sans-serif",
@@ -145,6 +260,15 @@ const styles = {
     textAlign: "center",
     marginBottom: "16px",
     letterSpacing: "-0.3px",
+  },
+  darkTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "clamp(28px, 4vw, 38px)",
+    fontWeight: 700,
+    color: "#1a1510",
+    textAlign: "center",
+    marginBottom: "16px",
+    letterSpacing: "-0.5px",
   },
   underline: {
     width: "60px",
@@ -185,6 +309,89 @@ function ExpertiseCard({ service }) {
       <div className="expertise-icon">{service.icon}</div>
       <h3 style={{ ...styles.cardTitle, fontSize: "18px", margin: "16px 0 10px" }}>{service.title}</h3>
       <p style={{ ...styles.body, fontSize: "13px", textAlign: "center" }}>{service.desc}</p>
+    </div>
+  );
+}
+
+// ─── FAQ Accordion Item ────────────────────────────────────────────────────────
+function FAQItem({ question, answer, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{
+        borderBottom: '1px solid #e8e2d9',
+        padding: '0',
+      }}
+    >
+      <h3 style={{ margin: 0, padding: 0 }}>
+        <button
+          id={`adv-faq-btn-${index}`}
+          aria-controls={`adv-faq-panel-${index}`}
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          style={{
+            width: '100%',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '18px 0',
+            textAlign: 'left',
+            gap: 16,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 15,
+              fontWeight: 700,
+              color: '#1a1510',
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: 1.5,
+            }}
+          >
+            {question}
+          </span>
+          <span
+            style={{
+              fontSize: 22,
+              color: '#b08d57',
+              fontWeight: 400,
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+              transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+            }}
+          >
+            +
+          </span>
+        </button>
+      </h3>
+
+      <div
+        id={`adv-faq-panel-${index}`}
+        aria-labelledby={`adv-faq-btn-${index}`}
+        role="region"
+        style={{
+          maxHeight: open ? '600px' : '0',
+          overflow: 'hidden',
+          transition: 'max-height 0.4s ease',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 14,
+            color: '#555',
+            lineHeight: 1.8,
+            margin: '0 0 18px',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          {answer}
+        </p>
+      </div>
     </div>
   );
 }
@@ -370,6 +577,21 @@ export default function AdvertisingServices() {
             text-align: center;
           }
 
+          .faq-section {
+            background: #fff;
+            padding: 64px 24px 72px;
+            border-top: 1px solid #e8e2d9;
+          }
+
+          .faq-intro {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 32px;
+          }
+
           .footer-strip {
             border-top: 1px solid #e8e2d9;
             padding: 28px 24px;
@@ -475,11 +697,45 @@ export default function AdvertisingServices() {
         </div>
       </div>
 
-  
+      {/* FAQ SECTION */}
+      <div className="faq-section">
+        <div style={{ maxWidth: "880px", margin: "0 auto" }}>
+          <h2 style={styles.darkTitle}>Frequently Asked Questions</h2>
+          <div style={styles.underline} />
+          <p className="faq-intro">
+            Common questions about PPC, Google Ads, and paid advertising services for businesses across India and Dubai.
+          </p>
+
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} index={i} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    {/* FAQ Schema (JSON-LD) */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://mindframeindia.com/services/advertising-services#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })
+      }}
+    />
   
     </>
 );
 }
-
-
