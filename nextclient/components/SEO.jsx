@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Mindframe India",
-  "url": "https://mindframeindia.com",
-  "logo": "https://mindframeindia.com/assets/favicon.png",
+  "name": "Mindframe global",
+  "url": "https://mindframeglobal.com",
+  "logo": "https://mindframeglobal.com/assets/favicon.png",
   "sameAs": [
-    "https://www.facebook.com/mindframeindia",
-    "https://twitter.com/mindframeindia",
-    "https://www.instagram.com/mindframeindia",
-    "https://www.linkedin.com/company/mindframe-india"
+    "https://www.facebook.com/mindframeglobal",
+    "https://twitter.com/mindframeglobal",
+    "https://www.instagram.com/mindframeglobal",
+    "https://www.linkedin.com/company/mindframe-global"
   ]
 };
 

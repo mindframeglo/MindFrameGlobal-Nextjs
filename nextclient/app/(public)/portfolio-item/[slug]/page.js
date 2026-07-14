@@ -9,248 +9,91 @@ const goldLight = "#e8c87a";
 
 const portfolioData = {
 
-  // ── Packaging ──────────────────────────────────────────────────────────────
-  "oishi-oishi-packagin-design": {
-    title: "Oishi oishi Packaging Design",
-    desc: "Oishi Oishi Packaging Design: Bringing Flavor to Life with Every Box",
-    category: "Design, Our Work",
-    date: "December 6, 2023",
-    images: ["/assets/package/pack1.png", "/assets/package/osh2.jpg", "/assets/package/osh3.jpg"],
-  },
-  "sqiinful-packaging-design": {
-    title: "Sqiinful Packaging Design",
-    desc: "Creative Packaging Design for Sqiinful.",
-    category: "Design, Our Work",
-    date: "December 6, 2023",
-    images: ["/assets/package/pack2.png", "/assets/package/sqp2.jpg", "/assets/package/sqp3.jpg", "/assets/package/sqp4.jpg", "/assets/package/sqp5.jpg", "/assets/package/sqp6.jpg", "/assets/package/sqp7.jpg", "/assets/package/sqp8.jpg"],
-  },
-  "mysticity-packaging-design": {
-    title: "Mysticity Packaging Design",
-    desc: "Creative Packaging Design for Mysticity: Making a Lasting Impression.",
-    category: "Design, Our Work",
-    date: "September 16, 2024",
-    images: ["/assets/package/pack3.png", "/assets/package/mp2.png", "/assets/package/mp3.png", "/assets/package/mp4.png", "/assets/package/mp5.png", "/assets/package/mp6.png", "/assets/package/mp7.png", "/assets/package/mp8.png", "/assets/package/mp9.png"],
-  },
-  "jgf-packaging-design": {
-    title: "JGF Packaging Design",
-    desc: "Bringing JGF's Vision to Life Through Packaging Design.",
-    category: "Design, Our Work",
-    date: "September 16, 2024",
-    images: ["/assets/package/pack4.png", "/assets/package/jg2.png", "/assets/package/jg3.png", "/assets/package/jg4.png", "/assets/package/jg5.png", "/assets/package/jg6.png", "/assets/package/jg7.png", "/assets/package/jg8.png", "/assets/package/jg9.png", "/assets/package/jg10.png", "/assets/package/jg11.png", "/assets/package/jg12.png", "/assets/package/jg13.png"],
-  },
-  "soul-packaging-design": {
-    title: "Soul Packaging Design",
-    desc: "Transforming Soul with Captivating Packaging Design.",
-    category: "Design, Our Work",
-    date: "September 18, 2024",
-    images: ["/assets/package/pack5.png", "/assets/package/so2.jpg", "/assets/package/so3.jpg", "/assets/package/so4.jpg", "/assets/package/so5.jpg", "/assets/package/so6.jpg", "/assets/package/so7.jpg", "/assets/package/so8.jpg", "/assets/package/so9.jpg", "/assets/package/so10.jpg", "/assets/package/so11.jpg"],
-  },
+  "mind-frame-india-drives-online-sales-for-arijit-singh-and-pankaj-udhas-ji-concerts-in-arizona": {
+    title: "Mind Frame India Drives Online Sales for Arijit Singh and Pankaj Udhas Ji Concerts in Arizona",
+    desc: "Mind Frame India successfully managed the online ticket sales for highly anticipated concerts featuring Arijit Singh and Pankaj Udhas Ji in Arizona. By targeting both Indian and non-Indian communities, the campaign sold 7,000 tickets in just a couple of weeks, showcasing the agency’s prowess in event marketing. The Challenge Organizing ticket sales for major concerts involves reaching a diverse audience and ensuring high turnout. The challenge was to generate significant online sales and create excitement among both Indian and non-Indian communities in Arizona.",
+    ProjectType: "Live Concert Management, Social Media Campaigns for Concerts",
+    ClientName: "Desi Jhatka",
+    images: [
+  "/assets/work/wrk1-1.png",
+  "/assets/work/wrk1-2.png",
+  "/assets/work/wrk1-3.png",
+  "/assets/work/wrk1-4.png",
+  "/assets/work/wrk1-5.png",
+  "/assets/work/wrk1-6.png",
+  "/assets/work/wrk1-7.png",
+    "/assets/work/wrk1-8.png",
+  "/assets/work/wrk1-9.png",
+  "/assets/work/wrk1-10.png",
 
-  // ── Catalogue ──────────────────────────────────────────────────────────────
-  "earthbased-catalogue-design": {
-    title: "Earthbased Catalogue Design",
-    desc: "Showcasing Earthbased: Creative Catalogue Design That Captures Eyes",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat1.jpg", "/assets/catalogue/earth2.jpg", "/assets/catalogue/earth3.jpg", "/assets/catalogue/earth4.jpg", "/assets/catalogue/earth5.jpg", "/assets/catalogue/earth6.jpg"],
-  },
-  "imperial-decor-catalogue-design-2": {
-    title: "Magnum Catalogue Design",
-    desc: "Crafting a Secure Look for Magnum with Sleek Catalogue Design.",
-    category: "Design, Brochure, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat2.jpg", "/assets/catalogue/mg2.jpg", "/assets/catalogue/mg3.jpg", "/assets/catalogue/mg4.jpg", "/assets/catalogue/mg5.jpg", "/assets/catalogue/mg6.jpg", "/assets/catalogue/mg7.jpg", "/assets/catalogue/mg8.jpg"],
-  },
-  "my-beauty-world-catalogue-design": {
-    title: "My Beauty World Catalogue Design",
-    desc: "My Beauty World Catalogue: Showcasing Beauty in Every Page.",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat3.jpg", "/assets/catalogue/mb2.jpg", "/assets/catalogue/mb3.jpg", "/assets/catalogue/mb4.jpg", "/assets/catalogue/mb4-1.jpg", "/assets/catalogue/mb5.jpg", "/assets/catalogue/mb5-1.jpg", "/assets/catalogue/mb6.jpg", "/assets/catalogue/mb7.jpg", "/assets/catalogue/mb8.jpg", "/assets/catalogue/mb9.jpg"],
-  },
-  "donear-catalogue-design": {
-    title: "Donear Catalogue Design",
-    desc: "Visualizing Donear's Products Through Innovative Catalogue Design.",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat4.jpg", "/assets/catalogue/dev2-1.jpg", "/assets/catalogue/dev3-1.jpg", "/assets/catalogue/dev4-1.jpg", "/assets/catalogue/dev5-1.jpg", "/assets/catalogue/dev6-1.jpg", "/assets/catalogue/dev7-1.jpg"],
-  },
-  "bwb-catalogue-design": {
-    title: "BWB Catalogue Design",
-    desc: "Designing Impactful Catalogue for BWB: A Creative Approach.",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat5.jpg", "/assets/catalogue/bwb2.png", "/assets/catalogue/bwb3.png", "/assets/catalogue/bwb4.png", "/assets/catalogue/bwb5.png", "/assets/catalogue/bwb6.png", "/assets/catalogue/bwb7.png"],
-  },
-  "mysticity-catalogue-design": {
-    title: "Mysticity Catalogue Design",
-    desc: "Showcasing Mysticity's Skin Products with Innovative Catalogue Design.",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat6.jpg", "/assets/catalogue/ms2.jpg", "/assets/catalogue/ms3.jpg", "/assets/catalogue/ms4.jpg", "/assets/catalogue/ms5.jpg", "/assets/catalogue/ms6.jpg", "/assets/catalogue/ms7.jpg", "/assets/catalogue/ms8.jpg"],
-  },
-  "imperial-decor-catalogue-design": {
-    title: "Imperial Decor Catalogue Design",
-    desc: "Imperial Decor: Crafting Timeless Catalogue Designs with Style.",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat7.jpg", "/assets/catalogue/dec2.jpg", "/assets/catalogue/dec3.jpg", "/assets/catalogue/dec4.jpg", "/assets/catalogue/dec5.jpg"],
-  },
-  "sqiinful-catalogue-design": {
-    title: "Sqiinful Catalogue Design",
-    desc: "Elevating Sqiinful with Innovative Catalogue Design Solution.",
-    category: "Design, Magazine, Our Work",
-    date: "November 22, 2023",
-    images: ["/assets/catalogue/cat8.jpg", "/assets/catalogue/sq2-1.jpg", "/assets/catalogue/sq3-1.jpg", "/assets/catalogue/sq4-1.jpg", "/assets/catalogue/sq5-1.jpg", "/assets/catalogue/sq6-1.jpg", "/assets/catalogue/sq7-1.jpg"],
-  },
+],
 
-  // ── Our Work (Creative Communication & Advertising) ───────────────────────
-  "dil-se-rock": {
-    title: "Dil Se Rock",
-    desc: "A bold and energetic packaging design for Dil Se Rock — capturing the spirit of music and culture through creative visual communication.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk1.png"],
+
+
+
   },
-  "ummeed": {
-    title: "Ummeed",
-    desc: "Ummeed — a powerful creative campaign spreading hope and awareness through compelling visual storytelling.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk3.png"],
+    "hdfc-indias-largest-webinar-and-digital-marketing-strategy": {
+    title: "HDFC - India's Largest Webinar & Digital Marketing Strategy",
+    desc: "In an era where digital engagement is paramount, HDFC sought to revolutionize its approach to customer interaction and brand positioning. Collaborating with Mind Frame India, HDFC aimed to conduct India’s largest webinar, “Let’s Talk Retail,” coupled with an extensive digital marketing strategy to reinforce its market leadership.",
+    ProjectType: "Creative for Retail Webinar, Webinar Planning and Promotion, Email Marketing",
+    ClientName: "HDFC",
+    images: [  "/assets/work/work2.png"],
   },
-  "supreme-furnitures": {
-    title: "Supreme Furnitures",
-    desc: "Supreme Furnitures — a creative event and branding design that showcases premium furniture through impactful visual communication.",
-    category: "Design, Hoarding, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk4.png"],
+  "content-creation-and-design-solutions-for-canon": {
+    title: "Canon - Content Creation and Design Solutions for Canon",
+    desc: "Mind Frame Global partnered with Canon to deliver a range of content writing and creative design services. Our work included print design, outdoor design, and the creation of brochures, emailers, and product brochures. We crafted engaging content and visually appealing designs to enhance Canon’s marketing materials and product presentations.",
+    ProjectType: "Content Creation and Design Solutions for Canon",
+    ClientName: "Canon - Photograph Company",
+    images: ["/assets/work/wrk3-1.png",
+      "/assets/work/wrk3-2.png",
+            "/assets/work/wrk3-3.png",
+      "/assets/work/wrk3-4.png",
+      "/assets/work/wrk3-5.png",
+      "/assets/work/wrk3-6.png",
+      "/assets/work/wrk3-7.png",
+    ],
   },
-  "tots-couture-week-registration-campaign": {
-    title: "Tots Couture Week (Registration Campaign)",
-    desc: "In-mall display campaign targeting Mumbai parents for the Tots Couture Week audition event — bold, playful, and attention-grabbing design.",
-    category: "Design, Hoarding, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk5.jpg"],
+  "us-india": {
+    title: "USIPI - Marketing, Website Development for Usipis Donation Drive",
+    desc: "Mind Frame Global supported Usipi with a full-service approach for their donation drive and fundraising events. We provided website development and design, content creation, social media marketing, Google advertising, lead generation, and creative designing. Our strategy enhanced Usipis online presence, driving more donations and engagement through targeted campaigns and optimized user experiences. The Challenge Usipi needed an integrated digital marketing solution to promote their donation drive and fundraising events. They required a website, compelling content, and advertising strategies to increase visibility, attract donors, and generate leads for their cause.",
+    ProjectType: "Marketing, Website Development for Usipis Donation Drive",
+     ClientName: "USIPI - US India Policy Institute",
+    images: ["/assets/work/work4.png"],
   },
-  "metro-grande-gudi-padwa-outdoor-campaign": {
-    title: "Metro Grande - Gudi Padwa (Outdoor Campaign)",
-    desc: "A festive outdoor hoarding campaign for Metro Grande celebrating Gudi Padwa — vibrant, celebratory, and strategically placed across Mumbai.",
-    category: "Design, Hoarding, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk6.jpg"],
+  "bismaa-corp": {
+    title: "USIPI - UI/UX Design, Website Development & SEO for BISMA",
+    desc: " Mind Frame Global partnered with BISMA to deliver a comprehensive suite of services, including UI/UX design, website development, content creation, SEO, and creative business presentations. Our team designed a user-friendly website with optimized content, ensuring a seamless user experience. We also implemented strategic SEO to enhance BISMAs online visibility and drive organic traffic.",
+    ProjectType: "UI/UX Design, Website Development & SEO for BISMA",
+    ClientName: "BISMA CORP - dedicated to revolutionizing your data management journey for BISMA",
+    images: ["/assets/work/work5.png"],
   },
-  "metro-grande-plus-kya-hai-outdoor-campaign": {
-    title: "Metro Grande: Plus Kya Hai? (Outdoor Campaign)",
-    desc: "An engaging outdoor campaign for Metro Grande asking 'Plus Kya Hai?' — creating curiosity and driving footfall through strategic hoarding placement.",
-    category: "Design, Hoarding, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk7.jpg"],
+  "shahi-zaikha": {
+    title: "Branding Solutions for Shahi Zaikha",
+    desc: "Mind Frame Global provided comprehensive branding services for Shahi Zaikha, a premium catering service based in San Francisco. Our team developed a cohesive brand identity that reflected the essence of their culinary offerings, including logo design, color schemes, and visual aesthetics that positioned them as a standout in the catering industry",
+    ProjectType: "Branding Solutions for Shahi Zaikha",
+    ClientName: "Shahi Zaikha - Family Restaurant",
+    images: ["/assets/work/work6.png"],
   },
-  "metro-grande-200-outdoor-campaign": {
-    title: "Metro Grande 200+ Outdoor Campaign",
-    desc: "Metro Grande's 200+ outdoor hoarding campaign — large-scale real estate advertising across Mumbai with bold, impactful creative communication.",
-    category: "Design, Hoarding, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk9.jpg"],
+  "perkin-elmer": {
+    title: "PerkinElmer Digital Growth Strategy",
+    desc: "PerkinElmer aimed to enhance its market presence and drive business growth with a focused Digital Strategy. We provided a suite of services, including Creative Designing, Social Media Marketing, Digital Marketing, Event Pramotion, and Performance Marketing. Our approach was designed to elevate brand visibility, foster engagement, and ultimately boost their market share.",
+    ProjectType: "PerkinElmer Digital Growth Strategy",
+    ClientName: "PerkinElmer’s - Analytical & Enterprise Solutions business",
+    images: [
+      
+      "/assets/work/wrk7-1.png",
+      "/assets/work/wrk7-2.png",
+      "/assets/work/wrk7-3.png",
+      "/assets/work/wrk7-4.png",
+    ],
+    
   },
-  "metro-grande-blockbuster-outdoor-campaign": {
-    title: "Metro Grande Blockbuster Outdoor Campaign",
-    desc: "Bringing Metro Grande's Vision to Life Through Blockbuster Outdoor Campaign — massive scale, high-impact real estate advertising.",
-    category: "Design, Hoarding, Our Work",
-    date: "2023",
-    images: ["/assets/campaign/camp3.jpg"],
-  },
-  "nesco-hoardings-food-beverages-hospitality": {
-    title: "Nesco Hoardings – Food & Beverages, Hospitality Industry",
-    desc: "Strategic hoarding advertising for the food, beverages, and hospitality industry at Nesco — capturing the right audience at the right place.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk14.jpg"],
-  },
-  "pd-ramadan-food-photoshoot": {
-    title: "PD Ramadan Food Photoshoot",
-    desc: "A visually rich food photoshoot for PD during Ramadan — capturing the essence of the festive season through warm tones and authentic food styling.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk16.jpg"],
-  },
-  "metro-grande-200-outdoor-campaign-2": {
-    title: "Metro Grande 200+ Outdoor Campaign",
-    desc: "Another milestone outdoor campaign for Metro Grande — 200+ hoardings placed strategically across Mumbai for maximum real estate brand visibility.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk18.jpg"],
-  },
-  "metro-grande-blockbuster-outdoor-campaign-2": {
-    title: "Metro Grande Blockbuster Outdoor Campaign",
-    desc: "A blockbuster-scale outdoor advertising campaign for Metro Grande real estate — bold creative, strategic placement, and maximum impact.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk19.jpg"],
-  },
-  "travel-industry": {
-    title: "Travel Industry",
-    desc: "Creative advertising and branding solutions for the travel industry — inspiring wanderlust through stunning visuals and strategic communication.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk24.jpg"],
-  },
-  "lifestyle-and-luxury": {
-    title: "Lifestyle and Luxury",
-    desc: "Premium lifestyle and luxury brand communication — elegant design, refined aesthetics, and aspirational visual storytelling.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk25.jpg"],
-  },
-  "travel-industry-2": {
-    title: "Travel Industry",
-    desc: "Creative branding and advertising for travel brands — evoking the joy of exploration through compelling design and photography.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk26.jpg"],
-  },
-  "food-and-beverages": {
-    title: "Food & Beverages",
-    desc: "Mouth-watering creative communication for food and beverage brands — vibrant, appetizing, and strategically designed to drive consumer engagement.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk27.jpg"],
-  },
-  "magazine-advertising-fmcg": {
-    title: "Magazine Advertising for FMCG Industry",
-    desc: "High-impact magazine advertising for FMCG brands — editorial-quality design that stands out on the page and in the minds of consumers.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk28.jpg"],
-  },
-  "fmcg-otc-campaign": {
-    title: "FMCG / OTC Campaign",
-    desc: "A strategic FMCG and OTC campaign — consumer-centric creative communication designed to drive awareness, trial, and purchase.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk29.jpg"],
-  },
-  "creative-designing-food-beverages": {
-    title: "Creative Designing for Food & Beverages",
-    desc: "Creative design solutions for food and beverage brands — from packaging to print, every touchpoint crafted to delight and engage consumers.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk30.jpg"],
-  },
-  "ooh-advertising-food-beverages-hospitality": {
-    title: "OOH Advertising for Food & Beverages, Hospitality Industry",
-    desc: "Out-of-home advertising for the food, beverages, and hospitality sector — bold outdoor creatives that command attention in high-traffic locations.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk31.jpg"],
-  },
-  "brand-awareness-healthcare": {
-    title: "Brand Awareness For HealthCare Industry",
-    desc: "Impactful brand awareness campaigns for the healthcare industry — clear, trustworthy, and empathetic communication designed to build credibility.",
-    category: "Design, Our Work",
-    date: "2023",
-    images: ["/assets/work/wrk32.jpg"],
+  "marashli-shoes": {
+    title: "Website Design & Branding for Marashali",
+    desc: "Mind Frame Global partnered with Marashali to deliver a holistic approach, including website design, branding, social media management, creative designing, and performance marketing. Our team also assisted with personal branding strategies, helping Marashali establish a strong digital identity and effectively engage their target audience.",
+    ProjectType: "Website Design & Branding for Marashali",
+    ClientName: "Marashli Shoes - Step into Luxury with Handcrafted Leather Shoes",
+    images: ["/assets/work/work8.png"],
   },
 };
 
@@ -553,15 +396,15 @@ export default function PortfolioDetail({ params }) {
             <p className="product-desc">{product.desc}</p>
             <div className="meta-section">
               <div>
-                <p className="meta-label">Date:</p>
-                <p className="meta-value">{product.date}</p>
+                <p className="meta-label">Client Name:</p>
+                <p className="meta-value">{product.ClientName}</p>
               </div>
               <div>
-                <p className="meta-label">Category:</p>
-                <p className="meta-value cat">{product.category}</p>
+                <p className="meta-label">ProjectType:</p>
+                <p className="meta-value cat">{product.ProjectType}</p>
               </div>
             </div>
-            <Link href="/creative-communication-and-advertising-campaigns" className="back-btn">
+            <Link href="/our-work" className="back-btn">
               ← Back to Our Work
             </Link>
           </div>

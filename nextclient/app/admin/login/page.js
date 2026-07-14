@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/utils/authStore';
 import { MdEmail, MdLock, MdLogin, MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import toast from 'react-hot-toast';
-const logo = '/assets/Logo-MFI.png';
+const logo = '/assets/logo-MFG.png';
 
 
 const gold = '#c9a84c';
@@ -69,27 +69,66 @@ export default function AdminLogin() {
 
       <div style={{ width: '100%', maxWidth: '480px', position: 'relative', zIndex: 1 }}>
 
-        {/* Logo Area */}
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{
-            width: 80, height: 80, borderRadius: '50%',
-            border: `2px solid ${gold}`, background: '#fff',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto', boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-            overflow: 'hidden',
-          }}>
-            <img src={logo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-          <h2 style={{
-            fontSize: '24px', fontWeight: 600, color: '#1a1a1a',
-            margin: '12px 0 4px', letterSpacing: '-0.5px',
-          }}>
-            Admin Portal
-          </h2>
-          <p style={{ color: '#888', fontSize: '13px', marginTop: '4px' }}>
-            Secure access to Mindframe India dashboard
-          </p>
-        </div>
+       {/* Logo Area */}
+<div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+  <div style={{
+    width: 90,
+    height: 90,
+    borderRadius: '50%',
+    border: `2.5px solid ${gold}`,
+    background: '#ffffff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto',
+    boxShadow: '0 8px 30px rgba(201,168,76,0.15)',
+    overflow: 'hidden',
+    padding: '8px',
+    transition: 'transform 0.3s ease',
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = 'scale(1.05)';
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = 'scale(1)';
+  }}>
+    <img 
+      src={logo} 
+      alt="Mind Frame Global Logo" 
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        objectFit: 'contain',
+        display: 'block',
+      }} 
+    />
+  </div>
+  <h2 style={{
+    fontSize: '26px',
+    fontWeight: 700,
+    color: '#1a1a1a',
+    margin: '16px 0 4px',
+    fontFamily: "'Cormorant Garamond', serif",
+    letterSpacing: '-0.5px',
+  }}>
+    Admin Portal
+  </h2>
+  <p style={{
+    color: '#8a7a6a',
+    fontSize: '14px',
+    marginTop: '4px',
+    fontWeight: 400,
+  }}>
+    Secure access to Mind Frame Global dashboard
+  </p>
+  <div style={{
+    width: 40,
+    height: 2,
+    background: gold,
+    margin: '12px auto 0',
+    borderRadius: 2,
+  }} />
+</div>
 
         {/* Card */}
         <div style={{
@@ -236,7 +275,7 @@ export default function AdminLogin() {
           🔒 Secure Admin Access · Protected by JWT
         </p>
         <p style={{ textAlign: 'center', color: '#bbb', fontSize: '10px', marginTop: '8px' }}>
-          © 2024 Mindframe India. All rights reserved.
+          © 2024 Mindframe Global. All rights reserved.
         </p>
 
       </div>

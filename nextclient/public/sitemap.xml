@@ -1,90 +1,379 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
   <!-- Homepage -->
   <url>
-    <loc>https://mindframeindia.com/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://mindframeglobal.com/</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- About Page -->
+  <!-- Main Pages -->
   <url>
-    <loc>https://mindframeindia.com/about-us</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://mindframeglobal.com/about-us</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Services/Work -->
   <url>
-    <loc>https://mindframeindia.com/creative-communication-and-advertising-campaigns</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://mindframeglobal.com/contact-us</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/creative-communication-and-advertising-campaigns</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Blog -->
   <url>
-    <loc>https://mindframeindia.com/blogs</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>twice-a-week</changefreq>
+    <loc>https://mindframeglobal.com/blogs</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Testimonials -->
   <url>
-    <loc>https://mindframeindia.com/testimonial</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- News/Press -->
-  <url>
-    <loc>https://mindframeindia.com/news-room</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Team -->
-  <url>
-    <loc>https://mindframeindia.com/our-team</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://mindframeglobal.com/testimonial</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Careers -->
+
   <url>
-    <loc>https://mindframeindia.com/careers</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mindframeglobal.com/our-team</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Contact -->
   <url>
-    <loc>https://mindframeindia.com/contact-us</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://mindframeglobal.com/careers</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/privacy</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/disclaimer</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Industry Pages -->
+  <url>
+    <loc>https://mindframeglobal.com/industries</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Privacy Policy -->
   <url>
-    <loc>https://mindframeindia.com/privacy</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://mindframeglobal.com/dental-marketing-agency-phoenix</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
-  <!-- Terms & Conditions -->
   <url>
-    <loc>https://mindframeindia.com/terms</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://mindframeglobal.com/health-care-industry</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/finance-industry</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/food-and-beverage-industry</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/real-estate-industry</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/fmcg-industry</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/small-businesses-industry</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Services Landing Pages -->
+  <url>
+    <loc>https://mindframeglobal.com/services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Creative Solutions -->
+  <url>
+    <loc>https://mindframeglobal.com/logo-designing-service</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/ui-ux-design-service</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/graphic-design-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/video-animation-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/corporate-video-production-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/ads-print-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Branding Solutions -->
+  <url>
+    <loc>https://mindframeglobal.com/branding-strategy-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/brand-identity-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/brand-guideline-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/brand-architecture-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/campaign-ideation-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Performance Marketing -->
+  <url>
+    <loc>https://mindframeglobal.com/search-engine-marketing-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/search-engine-optimization-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/social-media-advertising-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/email-marketing-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/content-marketing-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- IT Solutions -->
+  <url>
+    <loc>https://mindframeglobal.com/web-development-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/mobile-app-development-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/software-as-a-service-saas</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/customer-relationship-management-crm</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/cloud-computing-solutions</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/cyber-security-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/database-management-and-mining</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/managed-services</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Service Areas -->
+  <url>
+    <loc>https://mindframeglobal.com/service-areas</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/marketing-agency-in-phoenix</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/marketing-agency-in-arizona</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/marketing-agency-in-tempe</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/marketing-agency-in-scottsdale</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/digital-marketing-agency-los-angeles</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/digital-marketing-agency-silicon-valley</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/digital-marketing-agency-seattle</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mindframeglobal.com/digital-marketing-agency-new-york</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
