@@ -12,7 +12,7 @@ import contactService from '@/services/contactService';
 import AdminLayout from '@/components/AdminLayout';
 import Loader from '@/components/Loader';
 import toast from 'react-hot-toast';
-import { MdDelete, MdEmail, MdPhone, MdBusiness, MdAccessTime, MdDone, MdClose, MdVisibility } from 'react-icons/md';
+import { MdDelete, MdEmail, MdPhone, MdAccessTime, MdDone, MdClose, MdVisibility } from 'react-icons/md';
 
 const gold = '#c9a84c';
 
@@ -121,39 +121,11 @@ function ContactModal({ contact, onClose, onStatusChange, onDelete }) {
             </div>
           </div>
 
-          {/* Company */}
-          {contact.company && (
-            <div style={{ background: '#f8f9fa', borderRadius: '10px', padding: '12px 14px' }}>
-              <p style={{ fontSize: '10px', fontWeight: '700', color: THEME.textMuted, textTransform: 'uppercase', letterSpacing: '1px', margin: '0 0 6px' }}>Company</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <MdBusiness style={{ color: gold, fontSize: '15px' }} />
-                <span style={{ fontSize: '13px', color: THEME.text }}>{contact.company}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Services */}
-          {contact.services?.length > 0 && (
-            <div style={{ background: '#f8f9fa', borderRadius: '10px', padding: '12px 14px' }}>
-              <p style={{ fontSize: '10px', fontWeight: '700', color: THEME.textMuted, textTransform: 'uppercase', letterSpacing: '1px', margin: '0 0 10px' }}>Services Interested In</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                {contact.services.map((s, i) => (
-                  <span key={i} style={{
-                    background: `${gold}15`, color: gold,
-                    padding: '4px 10px', borderRadius: '6px',
-                    fontSize: '12px', fontWeight: '600',
-                    border: `1px solid ${gold}30`,
-                  }}>{s}</span>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Message */}
-          {contact.anything && (
+          {contact.message && (
             <div style={{ background: '#f8f9fa', borderRadius: '10px', padding: '12px 14px' }}>
               <p style={{ fontSize: '10px', fontWeight: '700', color: THEME.textMuted, textTransform: 'uppercase', letterSpacing: '1px', margin: '0 0 6px' }}>Message</p>
-              <p style={{ fontSize: '13px', color: THEME.text, lineHeight: '1.6', margin: 0 }}>{contact.anything}</p>
+              <p style={{ fontSize: '13px', color: THEME.text, lineHeight: '1.6', margin: 0 }}>{contact.message}</p>
             </div>
           )}
 
@@ -241,15 +213,15 @@ export default function ContactManagement() {
   const [pagination, setPagination] = useState({ page: 1, limit: 20, total: 0, pages: 0 });
   const [selectedContact, setSelectedContact] = useState(null);
 
-  // Naya:
-useEffect(() => {
-  const init = async () => {
-    await checkAuth();
-    const { admin } = useAuthStore.getState();
-    if (!admin) navigate('/admin/login');
-  };
-  init();
-}, [])
+  useEffect(() => {
+    const init = async () => {
+      await checkAuth();
+      const { admin } = useAuthStore.getState();
+      if (!admin) navigate('/admin/login');
+    };
+    init();
+  }, [])
+
   useEffect(() => { fetchContacts(); }, [pagination.page, statusFilter]);
 
   const fetchContacts = async () => {
@@ -275,7 +247,6 @@ useEffect(() => {
     try {
       await contactService.updateContactStatus(contactId, newStatus);
       toast.success('Status updated');
-      // update locally too so modal reflects change
       setContacts(prev => prev.map(c => c._id === contactId ? { ...c, status: newStatus } : c));
       if (selectedContact?._id === contactId) setSelectedContact(prev => ({ ...prev, status: newStatus }));
     } catch {
@@ -357,7 +328,7 @@ useEffect(() => {
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
                   <thead>
                     <tr style={{ background: '#f8f9fa', borderBottom: THEME.border }}>
-                      {['Name', 'Email', 'Phone', 'Company', 'Services', 'Status', 'View'].map(h => (
+                      {['Name', 'Email', 'Phone', 'Message', 'Status', 'View'].map(h => (
                         <th key={h} style={{
                           textAlign: 'left', padding: '12px 16px',
                           color: THEME.textMuted, fontWeight: '600',
@@ -392,26 +363,15 @@ useEffect(() => {
                               <span style={{ fontSize: '12px' }}>{contact.phone}</span>
                             </div>
                           </td>
-                          <td style={{ padding: '12px 16px', color: THEME.textMuted, fontSize: '12px' }}>
-                            {contact.company || <span style={{ color: '#c0c0c0' }}>—</span>}
-                          </td>
-                          <td style={{ padding: '12px 16px' }}>
-                            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                              {contact.services?.slice(0, 2).map((s, i) => (
-                                <span key={i} style={{
-                                  background: `${gold}15`, color: gold,
-                                  padding: '3px 8px', borderRadius: '4px',
-                                  fontSize: '11px', fontWeight: '500', whiteSpace: 'nowrap',
-                                }}>{s}</span>
-                              ))}
-                              {contact.services?.length > 2 && (
-                                <span style={{
-                                  background: `${gold}15`, color: gold,
-                                  padding: '3px 8px', borderRadius: '4px',
-                                  fontSize: '11px', fontWeight: '500',
-                                }}>+{contact.services.length - 2}</span>
-                              )}
-                            </div>
+                          <td style={{ padding: '12px 16px', color: THEME.textMuted, fontSize: '12px', maxWidth: '220px' }}>
+                            <span style={{
+                              display: 'block',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap',
+                            }}>
+                              {contact.message || <span style={{ color: '#c0c0c0' }}>—</span>}
+                            </span>
                           </td>
                           <td style={{ padding: '12px 16px' }}>
                             <span style={{
@@ -494,5 +454,3 @@ useEffect(() => {
     </AdminLayout>
   );
 }
-
-

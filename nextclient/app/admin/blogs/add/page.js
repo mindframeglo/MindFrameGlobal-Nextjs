@@ -78,22 +78,25 @@ useEffect(() => {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.title || !formData.description || !formData.content || !formData.image) {
-      toast.error('Please fill in all required fields');
-      return;
-    }
-    setLoading(true);
-    try {
-      await blogService.createBlog(formData);
-      toast.success('Blog created successfully!');
-      navigate('/admin/blogs/add');
-    } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to create blog');
-    } finally {
-      setLoading(false);
-    }
-  };
+  e.preventDefault();
+  if (!formData.title || !formData.description || !formData.content || !formData.image || !formData.category) {
+    toast.error('Please fill in all required fields');
+    return;
+  }
+  setLoading(true);
+  try {
+    await blogService.createBlog(formData);
+    toast.success('Blog created successfully!');
+    // Blog create hone ke baad page ko refresh karo (form reset + fresh state)
+    setTimeout(() => {
+      window.location.reload();
+    }, 800);
+  } catch (error) {
+    toast.error(error.response?.data?.message || 'Failed to create blog');
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (!admin) return null;
 
@@ -175,18 +178,30 @@ useEffect(() => {
               )}
             </div>
 
-            {/* Category */}
-            <div>
-              <label style={labelStyle}>Category</label>
-              <select name="category" value={formData.category} onChange={handleChange}
-                style={{ ...inputStyle }}
-                disabled={loading || uploadingImage}
-              >
-                {['Marketing', 'Social Media', 'SEO', 'Content', 'Design', 'Other'].map(c => (
-                  <option key={c} value={c}>{c}</option>
-                ))}
-              </select>
-            </div>
+           {/* Category */}
+<div>
+  <label style={labelStyle}>Category <span style={{ color: '#e53e3e' }}>*</span></label>
+  <select name="category" value={formData.category} onChange={handleChange}
+    style={{ ...inputStyle }}
+    required
+    disabled={loading || uploadingImage}
+    onFocus={e => e.target.style.borderColor = gold}
+    onBlur={e => e.target.style.borderColor = '#e2e8f0'}
+  >
+    <option value="">Select Category</option>
+    {[
+      'Advertising Agency',
+      'AI',
+      'Brand Building',
+      'Chatbot Service',
+      'Digital Marketing',
+      'Influencer Marketing',
+      'IT Consulting',
+    ].map(c => (
+      <option key={c} value={c}>{c}</option>
+    ))}
+  </select>
+</div>
 
             {/* Checkboxes */}
             <div style={{
@@ -238,6 +253,3 @@ useEffect(() => {
     </AdminLayout>
   );
 }
-
-
-

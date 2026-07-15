@@ -37,9 +37,8 @@ const transporter = nodemailer.createTransport({
  */
 export const createContact = async (req, res, next) => {
   try {
-    const { name, email, phone, company, anything, services } = req.body;
+    const { name, email, phone, message } = req.body;
 
-    // Check for recent submission (spam prevention)
     const hasRecent = await Contact.hasRecentSubmission(email, phone);
     if (hasRecent) {
       return res.status(429).json({
@@ -48,14 +47,11 @@ export const createContact = async (req, res, next) => {
       });
     }
 
-    // Create new contact
     const contact = await Contact.create({
       name: name.trim(),
       email: email.toLowerCase().trim(),
       phone: phone.trim(),
-      company: company ? company.trim() : '',
-      anything: anything ? anything.trim() : '',
-      services
+      message: message.trim(),
     });
 
     res.status(201).json({
@@ -70,8 +66,7 @@ export const createContact = async (req, res, next) => {
     });
   } catch (error) {
     console.error('Error creating contact:', error);
-    
-    // Handle validation errors
+
     if (error.name === 'ValidationError') {
       const errors = Object.values(error.errors).map(err => err.message);
       return res.status(400).json({
@@ -81,7 +76,6 @@ export const createContact = async (req, res, next) => {
       });
     }
 
-    // Pass to error handler middleware
     next(error);
   }
 };
@@ -377,104 +371,3 @@ export const submitQuickContact = async (req, res, next) => {
 //   }
 // };
 
-
-
-
-
-
-/**
- * @desc    Submit TV/Service page contact form — sends email via Nodemailer (no DB)
- * @route   POST /api/contact/service
- * @access  Public
- */
-export const submitServiceContact = async (req, res, next) => {
-  try {
-    const { name, email, mobile, location, message } = req.body;
-
-    if (!name || !email || !mobile || !location || !message) {
-      return res.status(400).json({
-        success: false,
-        message: 'All fields are required.',
-      });
-    }
-
-    const mailOptions = {
-      from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
-      to: "msali@mindframeindia.com",
-      cc: "seo@mindframeindia.com",
-      replyTo: email,
-      subject: `New Service Enquiry: ${name} — ${location}`,
-      html: `
-        <h2 style="color:#b08d57;font-family:Arial,sans-serif;">New Service Page Enquiry</h2>
-        <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
-          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${name}</td></tr>
-          <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
-          <tr style="background:#f9f9f9"><td><strong>Mobile</strong></td><td>${mobile}</td></tr>
-          <tr><td><strong>Location</strong></td><td>${location}</td></tr>
-          <tr style="background:#f9f9f9"><td><strong>Message</strong></td><td>${message}</td></tr>
-        </table>
-      `,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    return res.status(200).json({
-      success: true,
-      message: "Thank you! We'll be in touch shortly.",
-    });
-  } catch (error) {
-    console.error('Nodemailer error:', error);
-    next(error);
-  }
-};
-
-
-
-
-
-
-/**
- * @desc    Submit [PageName] contact form
- * @route   POST /api/contact/[pagename]
- * @access  Public
- */
-export const submitTelevisionContact = async (req, res, next) => {
-  try {
-    const { name, email, mobile, location, message } = req.body;
-
-    if (!name || !email || !mobile || !location || !message) {
-      return res.status(400).json({
-        success: false,
-        message: 'All fields are required.',
-      });
-    }
-
-    const mailOptions = {
-      from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
-      to: "msali@mindframeindia.com",
-      cc: "seo@mindframeindia.com",
-      replyTo: email,
-      subject: `New television Enquiry: ${name} — ${location}`,
-      html: `
-        <h2 style="color:#b08d57;font-family:Arial,sans-serif;">New [PageName] Page Enquiry</h2>
-        <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
-          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${name}</td></tr>
-          <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
-          <tr style="background:#f9f9f9"><td><strong>Mobile</strong></td><td>${mobile}</td></tr>
-          <tr><td><strong>Location</strong></td><td>${location}</td></tr>
-          <tr style="background:#f9f9f9"><td><strong>Message</strong></td><td>${message}</td></tr>
-        </table>
-      `,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    return res.status(200).json({
-      success: true,
-      message: "Thank you! We'll be in touch shortly.",
-    });
-  } catch (error) {
-    console.error('Nodemailer error:', error);
-    next(error);
-  }
-};

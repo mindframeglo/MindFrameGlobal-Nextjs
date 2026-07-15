@@ -27,7 +27,7 @@ const migrateBlogs = async () => {
     console.log(`Found ${blogs.length} blogs for slug migration`);
 
     for (const blog of blogs) {
-      let slugSource = blog.description || blog.title || 'blog';
+      let slugSource = blog.title || blog.description || 'blog';
       let slug = generateSlug(slugSource);
       let existingBlog = await Blog.findOne({ slug });
       let counter = 1;

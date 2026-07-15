@@ -27,27 +27,12 @@ const contactSchema = new mongoose.Schema({
     minlength: [10, 'Phone number must be at least 10 digits'],
     maxlength: [20, 'Phone number cannot exceed 20 digits']
   },
-  company: {
+  message: {
     type: String,
+    required: [true, 'Message is required'],
     trim: true,
-    maxlength: [200, 'Company name cannot exceed 200 characters'],
-    default: ''
-  },
-  anything: {
-    type: String,
-    trim: true,
-    maxlength: [1000, 'Message cannot exceed 1000 characters'],
-    default: ''
-  },
-  services: {
-    type: [String],
-    required: [true, 'At least one service must be selected'],
-    validate: {
-      validator: function(services) {
-        return services && services.length > 0;
-      },
-      message: 'Please select at least one service'
-    }
+    minlength: [10, 'Message must be at least 10 characters'],
+    maxlength: [2000, 'Message cannot exceed 2000 characters']
   },
   status: {
     type: String,
@@ -55,22 +40,19 @@ const contactSchema = new mongoose.Schema({
     default: 'pending'
   }
 }, {
-  timestamps: true // Automatically adds createdAt and updatedAt
+  timestamps: true
 });
 
-// Indexes for better query performance
 contactSchema.index({ createdAt: -1 });
 contactSchema.index({ email: 1 });
 contactSchema.index({ status: 1 });
 
-// Remove __v when sending response
 contactSchema.methods.toJSON = function() {
   const obj = this.toObject();
   delete obj.__v;
   return obj;
 };
 
-// Static method for spam prevention
 contactSchema.statics.hasRecentSubmission = async function(email, phone) {
   const recent = await this.findOne({
     $or: [{ email }, { phone }],

@@ -28,8 +28,6 @@ const MENU_ITEMS = [
   { id: 'dashboard', label: 'Dashboard', icon: MdDashboard, description: 'View overview', path: '/admin/dashboard' },
   { id: 'blogs', label: 'Manage Blogs', icon: MdArticle, description: 'Edit & manage posts', path: '/admin/BlogManagement' },
   { id: 'contacts', label: 'Contact Forms', icon: MdEmail, description: 'View submissions', path: '/admin/ContactManagement' },
-  { id: 'careers', label: 'Career Applications', icon: MdWork, description: 'Job applications', path: '/admin/CareerManagement' },
-  { id: 'hiring', label: 'Hiring Management', icon: MdBusinessCenter, description: 'Manage job positions', path: '/admin/HiringManagement' },
 ];
 
 export default function AdminLayout({ children, pageTitle, pageSubtitle }) {
@@ -131,7 +129,7 @@ if (!admin) {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <img
-                src="/assets/logo2.png"
+                src="/assets/logo-MFG.png"
                 alt="Mindframe India Logo"
                 style={{
                   height: '42px',

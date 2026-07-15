@@ -5,7 +5,7 @@
 
 import mongoose from 'mongoose';
 
-// Function to generate slug from description
+// Function to generate slug from text (preferably title)
 const generateSlug = (text) => {
   return text
     .toLowerCase()
@@ -52,7 +52,15 @@ const blogSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['Marketing', 'Social Media', 'SEO', 'Content', 'Design', 'Other'],
+      enum: [ 
+        'Advertising Agency',
+    'AI',
+    'Brand Building',
+    'Chatbot Service',
+    'Digital Marketing',
+    'Influencer Marketing',
+    'IT Consulting',
+  ],
       default: 'Other',
     },
     featured: {
@@ -82,10 +90,10 @@ const blogSchema = new mongoose.Schema(
   }
 );
 
-// Pre-save middleware to generate slug
+// Pre-save middleware to generate slug from title
 blogSchema.pre('save', async function (next) {
-  if (this.isModified('description') || this.isNew) {
-    let slugSource = this.description || this.title || 'blog';
+  if (this.isModified('title') || this.isNew) {
+    let slugSource = this.title || this.description || 'blog';
     let slug = generateSlug(slugSource);
     let existingBlog = await mongoose.model('Blog').findOne({ slug });
     let counter = 1;

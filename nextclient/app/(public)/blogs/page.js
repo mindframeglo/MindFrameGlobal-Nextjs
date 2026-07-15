@@ -24,7 +24,15 @@ export default function Blogs() {
   const [offsetY, setOffsetY] = useState(0);
   const ctaRef = useRef(null);
 
-  const categories = ['Marketing', 'Social Media', 'SEO', 'Content', 'Design'];
+  const categories = [
+    'Advertising Agency',
+    'AI',
+    'Brand Building',
+    'Chatbot Service',
+    'Digital Marketing',
+    'Influencer Marketing',
+    'IT Consulting',
+  ];
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -65,12 +73,32 @@ export default function Blogs() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={seoConfig.blogs.title}
         description={seoConfig.blogs.description}
         keywords={seoConfig.blogs.keywords}
         path={seoConfig.blogs.path}
       />
+
+      {/* JSON-LD Schema for Blog */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: 'Mind Frame India Digital Marketing Blog',
+            description: 'Expert digital marketing insights and strategies',
+            url: 'https://mindframeglobal.com/blogs',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Mind Frame Global',
+              logo: 'https://mindframeglobal.com/logo.png',
+            },
+          }),
+        }}
+      />
+
       <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#faf8f5', minHeight: '100vh' }}>
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -105,10 +133,11 @@ export default function Blogs() {
           margin-bottom: 20px;
           font-weight: 600;
           backdrop-filter: blur(4px);
+          white-space: nowrap;
         }
         .bl-hero-title {
           font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(34px, 5.5vw, 60px);
+          font-size: clamp(30px, 5.5vw, 60px);
           font-weight: 700; color: #fff;
           letter-spacing: -0.5px; line-height: 1.15;
           text-align: center; max-width: 860px;
@@ -161,6 +190,8 @@ export default function Blogs() {
           color: #333; outline: none;
           transition: border-color 0.25s, box-shadow 0.25s;
           background: #faf8f5;
+          width: 100%;
+          min-width: 0;
         }
         .bl-search-input:focus {
           border-color: #b08d57;
@@ -177,6 +208,7 @@ export default function Blogs() {
           transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
           white-space: nowrap;
           box-shadow: 0 6px 20px rgba(176, 141, 87, 0.3);
+          flex-shrink: 0;
         }
         .bl-search-btn:hover {
           background: #9a7842;
@@ -198,6 +230,12 @@ export default function Blogs() {
           width: 4px; height: 16px;
           background: #b08d57;
           border-radius: 2px;
+          flex-shrink: 0;
+        }
+
+        /* Category wrapper — wraps on desktop, scrolls horizontally on mobile */
+        .bl-cats-wrap {
+          position: relative;
         }
         .bl-cats {
           display: flex; flex-wrap: wrap; gap: 10px;
@@ -211,6 +249,8 @@ export default function Blogs() {
           color: #5a4f44; cursor: pointer; border-radius: 50px;
           transition: all 0.25s;
           font-family: 'DM Sans', sans-serif;
+          white-space: nowrap;
+          flex-shrink: 0;
         }
         .bl-cat-btn:hover {
           border-color: #b08d57; color: #b08d57;
@@ -376,7 +416,7 @@ export default function Blogs() {
         }
         .bl-cta-title {
           font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(30px, 4.5vw, 48px);
+          font-size: clamp(28px, 4.5vw, 48px);
           font-weight: 600; color: #fff;
           line-height: 1.18; margin-bottom: 16px;
         }
@@ -411,22 +451,84 @@ export default function Blogs() {
           padding: 70px 0;
         }
 
-        /* ── RESPONSIVE ── */
+        /* ══════════════ RESPONSIVE ══════════════ */
+
+        /* Tablet */
         @media (max-width: 1024px) {
-          .bl-grid { grid-template-columns: repeat(2, 1fr); }
+          .bl-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
           .bl-filter-wrap { padding: 32px 24px; }
           .bl-content { padding: 24px 24px 60px; }
           .bl-results-info { padding: 28px 24px 0; }
+          .bl-hero { height: 380px; }
         }
+
+        /* Mobile */
         @media (max-width: 640px) {
-          .bl-grid { grid-template-columns: 1fr; gap: 22px; }
-          .bl-hero { height: 340px; }
-          .bl-hero-title { font-size: 30px !important; }
-          .bl-search-row { flex-direction: column; }
-          .bl-search-btn { width: 100%; }
-          .bl-cta-content { padding: 50px 20px !important; }
-          .bl-cta-title { font-size: 28px !important; }
-          .bl-cta-sub { font-size: 14px !important; }
+          .bl-grid { grid-template-columns: 1fr; gap: 20px; margin-bottom: 44px; }
+
+          /* Hero */
+          .bl-hero { height: 300px; }
+          .bl-hero-overlay { padding: 18px; }
+          .bl-hero-badge { font-size: 9.5px; letter-spacing: 2px; padding: 5px 14px; margin-bottom: 14px; }
+          .bl-hero-title { font-size: 28px !important; line-height: 1.2; }
+          .bl-hero-divider { margin: 14px auto; }
+          .bl-hero-sub-text { font-size: 13px; line-height: 1.6; }
+
+          /* Filter bar */
+          .bl-filter-wrap { padding: 22px 16px; }
+          .bl-search-row { flex-direction: column; gap: 10px; margin-bottom: 22px; }
+          .bl-search-input { padding: 13px 16px 13px 42px; font-size: 13px; }
+          .bl-search-btn { width: 100%; padding: 13px 24px; }
+          .bl-filter-label { font-size: 14.5px; margin-bottom: 12px; }
+
+          /* Category chips: horizontal scroll strip, no wrapping,
+             so buttons stay full-size and tappable instead of shrinking */
+          .bl-cats {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            gap: 8px;
+            margin: 0 -16px;
+            padding: 2px 16px 10px;
+            scroll-snap-type: x proximity;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .bl-cats::-webkit-scrollbar { display: none; }
+          .bl-cat-btn {
+            scroll-snap-align: start;
+            padding: 8px 18px;
+            font-size: 10.5px;
+          }
+
+          /* Results info + content */
+          .bl-results-info { padding: 20px 16px 0; font-size: 12px; }
+          .bl-content { padding: 18px 16px 50px; }
+
+          /* Pagination */
+          .bl-pagination { gap: 6px; }
+          .bl-page-info { width: 100%; text-align: center; margin: 0 0 10px; }
+          .bl-pg-btn { padding: 9px 16px; font-size: 10px; }
+          .bl-pg-num { width: 34px; height: 34px; font-size: 11.5px; }
+
+          /* Empty state */
+          .bl-empty { padding: 60px 18px; }
+          .bl-empty-title { font-size: 24px; }
+
+          /* CTA */
+          .bl-cta-parallax-bg { min-height: 320px; background-attachment: scroll; }
+          .bl-cta-content { padding: 46px 20px !important; }
+          .bl-cta-title { font-size: 26px !important; }
+          .bl-cta-sub { font-size: 13.5px !important; margin-bottom: 24px; }
+          .bl-cta-btn { padding: 13px 32px; font-size: 11px; width: 100%; }
+        }
+
+        /* Small phones */
+        @media (max-width: 400px) {
+          .bl-hero { height: 260px; }
+          .bl-hero-title { font-size: 24px !important; }
+          .bl-hero-sub-text { max-width: 92%; }
+          .bl-cat-btn { padding: 7px 15px; font-size: 10px; }
         }
       `}</style>
 
@@ -434,7 +536,8 @@ export default function Blogs() {
       <div className="bl-hero">
         <img
           src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=85"
-          alt="Mind Frame India Blog"
+          alt="Mind Frame India Digital Marketing Blog - Read Latest Insights and Strategies"
+          loading="lazy"
         />
         <div className="bl-hero-overlay">
           <span className="bl-hero-badge">Insights &amp; Strategies</span>
@@ -443,7 +546,7 @@ export default function Blogs() {
           </h1>
           <div className="bl-hero-divider" />
           <p className="bl-hero-sub-text">
-            Insights, strategies, and tips to help your business succeed in the digital landscape.
+            Discover proven strategies, expert tips, and actionable insights to elevate your digital marketing game.
           </p>
         </div>
       </div>
@@ -464,34 +567,39 @@ export default function Blogs() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="bl-search-input"
+              aria-label="Search blogs"
             />
             <button type="submit" className="bl-search-btn">Search</button>
           </form>
 
           <div className="bl-filter-label">Filter by Category</div>
-          <div className="bl-cats">
-            <button
-              className={`bl-cat-btn${category === '' ? ' active' : ''}`}
-              onClick={() => { setCategory(''); setPage(1); }}
-            >
-              All Categories
-            </button>
-            {categories.map((cat) => (
+          <div className="bl-cats-wrap">
+            <div className="bl-cats" role="group" aria-label="Blog categories">
               <button
-                key={cat}
-                className={`bl-cat-btn${category === cat ? ' active' : ''}`}
-                onClick={() => { setCategory(cat); setPage(1); }}
+                className={`bl-cat-btn${category === '' ? ' active' : ''}`}
+                onClick={() => { setCategory(''); setPage(1); }}
+                aria-pressed={category === ''}
               >
-                {cat}
+                All Categories
               </button>
-            ))}
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`bl-cat-btn${category === cat ? ' active' : ''}`}
+                  onClick={() => { setCategory(cat); setPage(1); }}
+                  aria-pressed={category === cat}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* ── RESULTS INFO ── */}
       {blogs.length > 0 && (
-        <div className="bl-results-info">
+        <div className="bl-results-info" role="status" aria-live="polite">
           Showing <strong>{blogs.length}</strong> of <strong>{totalBlogs}</strong> articles
         </div>
       )}
@@ -504,15 +612,17 @@ export default function Blogs() {
         ) : blogs.length > 0 ? (
           <>
             {/* Grid */}
-            <div className="bl-grid">
+            <div className="bl-grid" role="list">
               {blogs.map((blog) => (
-                <BlogCard key={blog._id} blog={blog} />
+                <div key={blog._id} role="listitem">
+                  <BlogCard blog={blog} />
+                </div>
               ))}
             </div>
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="bl-pagination">
+              <nav className="bl-pagination" aria-label="Blog pagination">
                 <span className="bl-page-info">
                   Page <strong>{page}</strong> of <strong>{totalPages}</strong>
                 </span>
@@ -521,6 +631,7 @@ export default function Blogs() {
                   className="bl-pg-btn"
                   onClick={() => setPage(Math.max(1, page - 1))}
                   disabled={page === 1}
+                  aria-label="Previous page"
                 >
                   ← Prev
                 </button>
@@ -538,14 +649,16 @@ export default function Blogs() {
 
                   return (
                     <span key={pageNum} style={{ display: 'contents' }}>
-                      {showEllipsisBefore && <span className="bl-pg-ellipsis">···</span>}
+                      {showEllipsisBefore && <span className="bl-pg-ellipsis" aria-hidden="true">···</span>}
                       <button
                         className={`bl-pg-num${page === pageNum ? ' active' : ''}`}
                         onClick={() => setPage(pageNum)}
+                        aria-label={`Go to page ${pageNum}`}
+                        aria-current={page === pageNum ? 'page' : undefined}
                       >
                         {pageNum}
                       </button>
-                      {showEllipsisAfter && <span className="bl-pg-ellipsis">···</span>}
+                      {showEllipsisAfter && <span className="bl-pg-ellipsis" aria-hidden="true">···</span>}
                     </span>
                   );
                 })}
@@ -554,10 +667,11 @@ export default function Blogs() {
                   className="bl-pg-btn"
                   onClick={() => setPage(Math.min(totalPages, page + 1))}
                   disabled={page === totalPages}
+                  aria-label="Next page"
                 >
                   Next →
                 </button>
-              </div>
+              </nav>
             )}
           </>
         ) : (
@@ -586,11 +700,11 @@ export default function Blogs() {
           <div className="bl-cta-overlay" />
           <div className="bl-cta-content">
             <span className="bl-cta-badge">Get Started</span>
-            <h3 className="bl-cta-title">
-              Interested in Our <em>Services?</em>
-            </h3>
+            <h2 className="bl-cta-title">
+              Ready to Transform Your <em>Business?</em>
+            </h2>
             <p className="bl-cta-sub">
-              Explore our digital marketing services and let&rsquo;s grow your business together.
+              Let our expert team help you implement these strategies and grow your business.
             </p>
             <a href="/contact-us" className="bl-cta-btn">
               Contact Us Today

@@ -7,23 +7,18 @@ import {
   deleteContact,
   getContactStats,
   submitQuickContact,
-  submitServiceContact,
-    submitTelevisionContact,   // ← add karo
 } from '../controllers/contactController.js';
 
 const router = express.Router();
 
-// ── Public routes (no :id conflict) ──────────────────────
-router.post('/contact', createContact);
-router.post('/contact/quick', submitQuickContact);       // ← pehle
-router.post('/contact/service', submitServiceContact);   // ← pehle
-router.post('/contact/television', submitTelevisionContact);  // ← add karo
+// ── Public routes ──────────────────────
+router.post('/contact', createContact);                   // DB में save होगा
+router.post('/quick', submitQuickContact);                // सिर्फ email भेजेगा
 
-// ── Admin routes ──────────────────────────────────────────
+// ── Admin routes ──────────────────────
 router.get('/contacts', getAllContacts);
 router.get('/contacts/stats', getContactStats);
-router.get('/contact/:id', getContactById);              // ← :id baad mein
-
+router.get('/contact/:id', getContactById);
 router.put('/contact/:id/status', updateContactStatus);
 router.delete('/contact/:id', deleteContact);
 

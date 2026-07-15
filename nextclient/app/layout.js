@@ -4,28 +4,28 @@ import AuthInitializer from "@/components/AuthInitializer";
 
 export const metadata = {
   title: {
-    default: "Digital Marketing & Advertising Agency in India | Mindframe India",
-    template: "%s | Mindframe India",
+    default: "Digital Marketing & Advertising Agency in global | Mindframe global",
+    template: "%s | Mindframe global",
   },
   description:
-    "Leading digital marketing & advertising agency in India offering web development, mobile app development, branding, SEO, and media buying. Grow your business with Mindframe.",
+    "Leading digital marketing & advertising agency in global offering web development, mobile app development, branding, SEO, and media buying. Grow your business with Mindframe.",
   keywords:
-    "digital marketing agency, advertising agency India, web development, mobile app development, branding services, media buying, SEO company",
-  authors: [{ name: "Mindframe India" }],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://mindframeindia.com"),
+    "digital marketing agency, advertising agency global, web development, mobile app development, branding services, media buying, SEO company",
+  authors: [{ name: "Mindframe global" }],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://mindframeglobal.com"),
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName: "Mindframe India",
-    title: "Mindframe India - Digital Marketing & Advertising Agency",
+    siteName: "Mindframe global",
+    title: "Mindframe global - Digital Marketing & Advertising Agency",
     description:
-      "Leading digital marketing & advertising agency in India offering web development, mobile app development, branding, and media buying services.",
+      "Leading digital marketing & advertising agency in global offering web development, mobile app development, branding, and media buying services.",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@mindframeindia",
-    creator: "@mindframeindia",
+    site: "@mindframeglobal",
+    creator: "@mindframeglobal",
   },
   robots: {
     index: true,
