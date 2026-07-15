@@ -473,6 +473,47 @@ export const seoConfig = {
   },
 };
 
+// Backwards-compatible `services` mapping
+// Many pages reference `seoConfig.services.<key>` — map those keys
+// to the appropriate entries in the structured config above.
+seoConfig.services = {
+  // Branding
+  brandingStrategy: seoConfig.brandingSolutions.brandStrategy,
+  brandIdentity: seoConfig.brandingSolutions.brandIdentity,
+  brandGuidelines: seoConfig.brandingSolutions.brandGuidelines,
+  brandArchitecture: seoConfig.brandingSolutions.brandArchitecture,
+  campaignIdeation: seoConfig.brandingSolutions.campaignIdeation,
+
+  // Creative / Design
+  logoDesigning: seoConfig.creativeSolutions.logoDesigning,
+  uiUxDesign: seoConfig.creativeSolutions.uiUxDesigning,
+  uiUxDesigning: seoConfig.creativeSolutions.uiUxDesigning,
+  creativeDesign: seoConfig.creativeSolutions.creativeDesigning,
+  graphicDesign: seoConfig.creativeSolutions.creativeDesigning,
+  videoAnimation: seoConfig.creativeSolutions.twoDThreeDAnimation,
+  corporateVideoProduction: seoConfig.creativeSolutions.corporateFilmsTvcs,
+  adsPrintServices: seoConfig.creativeSolutions.printAds,
+
+  // Performance Marketing
+  searchEngineOptimization: seoConfig.performanceMarketing.searchEngineOptimization,
+  searchEngineMarketing: seoConfig.performanceMarketing.searchEngineMarketing,
+  socialMediaAdvertising: seoConfig.performanceMarketing.socialMediaAdvertising,
+  emailMarketing: seoConfig.performanceMarketing.emailMarketing,
+  contentMarketing: seoConfig.performanceMarketing.contentMarketing,
+
+  // IT / Dev
+  webDevelopment: seoConfig.itSolutions.websiteDevelopment,
+  webDevelopmentServices: seoConfig.itSolutions.websiteDevelopment,
+  appDevelopment: seoConfig.itSolutions.mobileAppDevelopment,
+  mobileAppDevelopment: seoConfig.itSolutions.mobileAppDevelopment,
+  saas: seoConfig.itSolutions.saasDevelopment,
+  crm: seoConfig.itSolutions.crmSolutions,
+  cloudComputing: seoConfig.itSolutions.cloudComputing,
+  cyberSecurity: seoConfig.itSolutions.cyberSecurity,
+  databaseManagement: seoConfig.itSolutions.databaseManagement,
+  managedServices: seoConfig.itSolutions.managedServices,
+};
+
 /**
  * Get SEO data for a page
  * Supports dotted-path lookups, e.g. getSEOData('creativeSolutions.logoDesigning')

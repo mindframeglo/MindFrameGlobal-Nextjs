@@ -269,7 +269,7 @@ function HeroSection() {
             Get In Touch
             <ArrowRight size={18} strokeWidth={2.5} />
           </Link>
-          <Link href="/creative-communication-and-advertising-campaigns" style={{
+          <Link href="/our-work" style={{
             padding: '14px 36px',
             background: 'rgba(255,255,255,0.04)',
             color: '#fff',

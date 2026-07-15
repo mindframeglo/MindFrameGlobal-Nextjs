@@ -1074,7 +1074,7 @@ export default function About() {
                 <Link className="btn-primary" href="/contact-us">
                   Start Your Project <FaArrowRight size={14} />
                 </Link>
-                <Link className="btn-secondary" href="/creative-communication-and-advertising-campaigns">
+                <Link className="btn-secondary" href="/our-work">
                   View Our Work <FaArrowRight size={14} />
                 </Link>
               </div>
