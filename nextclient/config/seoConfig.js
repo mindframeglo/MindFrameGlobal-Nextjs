@@ -71,14 +71,6 @@ export const seoConfig = {
     type: 'website',
   },
 
-  careers: {
-    title: 'Careers at Mindframe Global - Join Our Creative Team',
-    description:
-      'Join Mindframe Global! Explore exciting career opportunities in digital marketing, design, development, and creative services. Build your future with us.',
-    keywords: 'careers, jobs, employment opportunities, digital marketing jobs, design jobs, development jobs, mindframe careers',
-    path: '/careers',
-    type: 'website',
-  },
 
   team: {
     title: 'Our Team - Meet the Mindframe Global Experts',

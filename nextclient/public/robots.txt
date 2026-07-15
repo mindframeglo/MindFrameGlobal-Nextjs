@@ -19,4 +19,4 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemaps
-Sitemap: https://mindframeindia.com/sitemap.xml
+Sitemap: https://mindframeglobal.com/sitemap.xml

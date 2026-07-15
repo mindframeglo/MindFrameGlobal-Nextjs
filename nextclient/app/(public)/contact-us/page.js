@@ -41,14 +41,14 @@ const locations = [
     type: 'Head Office',
     address: '302, 3rd Floor, Crescent Towers, Behind Crystal Plaza, Next to Mourya House, Off Link Road, Andheri West, Mumbai, Maharashtra 400053',
     phone: '+91 9892000733',
-    email: 'info@mindframeindia.com',
+    email: 'info@mindframeglobal.com',
     mapUrl: 'https://maps.google.com/maps?q=Crescent+Towers+Andheri+West+Mumbai',
   },
   {
     type: 'Branch Office',
     address: 'B28 Venue - 6th Floor Bhukanvala Chambers, Behind Crystal Plaza, Next to Mourya House, Off Link Road, Andheri West, Mumbai, Maharashtra 400053',
     phone: '+91 9892000733',
-    email: 'info@mindframeindia.com',
+    email: 'info@mindframeglobal.com',
     mapUrl: 'https://maps.google.com/maps?q=Bhukanvala+Chambers+Andheri+West+Mumbai',
   },
 ];

@@ -290,8 +290,8 @@ export const submitQuickContact = async (req, res, next) => {
 
     const mailOptions = {
       from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
-      to: "msali@mindframeindia.com",
-      cc: "seo@mindframeindia.com",
+      to: "msali@mindframeglobal.com",
+      cc: "seo@mindframeglobal.com",
       replyTo: email,
       subject: `New Lead: ${name} — ${company || 'No Company'}`,
       html: `

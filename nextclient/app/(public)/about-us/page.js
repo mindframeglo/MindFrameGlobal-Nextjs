@@ -1091,25 +1091,25 @@ export default function About() {
             '@graph': [
               {
                 '@type': 'AboutPage',
-                '@id': 'https://mindframeindia.com/about-us#webpage',
-                url: 'https://mindframeindia.com/about-us',
+                '@id': 'https://mindframeglobal.com/about-us#webpage',
+                url: 'https://mindframeglobal.com/about-us',
                 name: 'About Mindframe India - Our Mission, Vision & Expert Team',
                 description:
                   'Learn about Mindframe India - our history, expertise, and full-service advertising & digital marketing capabilities in Mumbai and globally.',
-                about: { '@id': 'https://mindframeindia.com/#organization' },
+                about: { '@id': 'https://mindframeglobal.com/#organization' },
               },
               {
                 '@type': 'AdvertisingAgency',
-                '@id': 'https://mindframeindia.com/#organization',
+                '@id': 'https://mindframeglobal.com/#organization',
                 name: 'Mind Frame India',
-                url: 'https://mindframeindia.com',
-                logo: 'https://mindframeindia.com/assets/favicon.png',
-                image: 'https://mindframeindia.com/og-image.png',
+                url: 'https://mindframeglobal.com',
+                logo: 'https://mindframeglobal.com/assets/favicon.png',
+                image: 'https://mindframeglobal.com/og-image.png',
                 foundingDate: '2009-10-06',
                 description:
                   'Mind Frame India is a full-service advertising, branding, and digital marketing agency established in 2009, with offices in Mumbai, Hyderabad, Dubai, and California.',
                 telephone: '+91 9892000733',
-                email: 'info@mindframeindia.com',
+                email: 'info@mindframeglobal.com',
                 priceRange: '$$',
                 address: {
                   '@type': 'PostalAddress',
@@ -1139,15 +1139,15 @@ export default function About() {
                   '3D Animation',
                 ],
                 sameAs: [
-                  'https://www.facebook.com/mindframeindia',
-                  'https://twitter.com/mindframeindia',
-                  'https://www.instagram.com/mindframeindia',
+                  'https://www.facebook.com/mindframeglobal',
+                  'https://twitter.com/mindframeglobal',
+                  'https://www.instagram.com/mindframeglobal',
                   'https://www.linkedin.com/company/mindframe-india',
                 ],
               },
               {
                 '@type': 'FAQPage',
-                '@id': 'https://mindframeindia.com/about-us#faq',
+                '@id': 'https://mindframeglobal.com/about-us#faq',
                 mainEntity: faqs.map((faq) => ({
                   '@type': 'Question',
                   name: faq.question,

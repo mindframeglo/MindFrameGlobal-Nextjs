@@ -18,8 +18,8 @@ export function generateMetadata(seoData) {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@mindframeindia',
-      creator: '@mindframeindia',
+      site: '@mindframeglobal',
+      creator: '@mindframeglobal',
     },
     robots: {
       index: true,

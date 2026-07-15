@@ -146,8 +146,8 @@ const sections = [
   {
     id: "contact-info",
     content: [
-      { type: "bold-para", bold: "Official Website:", text: " www.mindframeindia.com" },
-      { type: "bold-para", bold: "Email:", text: " info@mindframeindia.com or careers@mindframindia.com" },
+      { type: "bold-para", bold: "Official Website:", text: " www.mindframeglobal.com" },
+      { type: "bold-para", bold: "Email:", text: " info@mindframeglobal.com or careers@mindframindia.com" },
       { type: "bold-para", bold: "Phone:", text: " 022-40125517" },
     ],
   },

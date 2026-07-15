@@ -3,6 +3,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { useState, use } from "react";
+import SEO from '@/components/SEO';
 
 
 // ── image imports ────────────────────────────────────────────────────────
@@ -376,6 +377,14 @@ export default function NewsRoomDetail({ params }) {
 
   return (
     <>
+      <SEO
+        title={item.title}
+        description={item.desc}
+        keywords={item.category}
+        path={`/news-room/${item.slug}`}
+        image={item.image}
+        type="article"
+      />
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
 

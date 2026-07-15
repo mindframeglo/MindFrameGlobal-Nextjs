@@ -3,6 +3,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { useState, use } from "react";
+import SEO from '@/components/SEO';
 
 const gold = "#c9a84c";
 const goldLight = "#e8c87a";
@@ -387,6 +388,14 @@ export default function PortfolioDetail({ params }) {
 
   return (
     <>
+      <SEO
+        title={product.title}
+        description={product.desc}
+        keywords={product.ProjectType}
+        path={`/portfolio-item/${slug}`}
+        image={product.images?.[0]}
+        type="article"
+      />
       <style>{styles}</style>
       <div className="portfolio-page">
         <div className="portfolio-grid">

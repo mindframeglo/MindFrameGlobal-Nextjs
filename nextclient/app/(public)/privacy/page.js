@@ -9,7 +9,7 @@ const sections = [
     content: [
       {
         type: "para",
-        text: "Mind Frame India Advertising and Creative Communications Pvt Ltd recognise the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Policy describes how we treat user information we collect on https://www.mindframeindia.com and other offline sources. This Privacy Policy applies to current and former visitors to our website and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy.",
+        text: "Mind Frame India Advertising and Creative Communications Pvt Ltd recognise the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Policy describes how we treat user information we collect on https://www.mindframeglobal.com and other offline sources. This Privacy Policy applies to current and former visitors to our website and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy.",
       },
       {
         type: "para",
@@ -65,7 +65,7 @@ const sections = [
     heading: "Email Opt-Out",
     headingStyle: "bold",
     content: [
-      { type: "para", text: "You can opt out of receiving our marketing emails. To stop receiving our promotional emails, please email info@mindframeindia.com. It may take about ten days to process your request." },
+      { type: "para", text: "You can opt out of receiving our marketing emails. To stop receiving our promotional emails, please email info@mindframeglobal.com. It may take about ten days to process your request." },
     ],
   },
   {
@@ -99,7 +99,7 @@ const sections = [
     headingStyle: "bold",
     content: [
       { type: "para", text: "If you choose to visit the website, your visit and any dispute over privacy are subject to this Policy and the website's terms of use. In addition to the foregoing, any disputes arising under this Policy shall be governed by the laws of India." },
-      { type: "para", text: "If you have any questions about this Policy or other privacy concerns, you can also email us at info@mindframeindia.com" },
+      { type: "para", text: "If you have any questions about this Policy or other privacy concerns, you can also email us at info@mindframeglobal.com" },
     ],
   },
 ];
