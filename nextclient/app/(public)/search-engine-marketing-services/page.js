@@ -256,12 +256,12 @@ export default function SearchEngineMarketing() {
 
   return (
     <>
-      {/* <SEO 
+      <SEO 
         title={seoConfig.services.searchEngineMarketing.title}
         description={seoConfig.services.searchEngineMarketing.description}
         keywords={seoConfig.services.searchEngineMarketing.keywords}
         path={seoConfig.services.searchEngineMarketing.path}
-      /> */}
+      />
 
       <style>{`
         @keyframes fadeInUp {

@@ -525,10 +525,10 @@ export default function CampaignIdeation() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.campaignIdeation.title}
-        // description={seoConfig.services.campaignIdeation.description}
-        // keywords={seoConfig.services.campaignIdeation.keywords}
-        // path={seoConfig.services.campaignIdeation.path}
+         title={seoConfig.services.campaignIdeation.title}
+         description={seoConfig.services.campaignIdeation.description}
+         keywords={seoConfig.services.campaignIdeation.keywords}
+         path={seoConfig.services.campaignIdeation.path}
       />
 
       <style>{`

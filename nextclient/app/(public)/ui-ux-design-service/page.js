@@ -525,10 +525,10 @@ export default function UxUiDesign() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.uiUxDesign.title}
-        // description={seoConfig.services.uiUxDesign.description}
-        // keywords={seoConfig.services.uiUxDesign.keywords}
-        // path={seoConfig.services.uiUxDesign.path}
+        title={seoConfig.services.uiUxDesign.title}
+       description={seoConfig.services.uiUxDesign.description}
+         keywords={seoConfig.services.uiUxDesign.keywords}
+         path={seoConfig.services.uiUxDesign.path}
       />
 
       <style>{`

@@ -249,10 +249,10 @@ export default function ManagedServices() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.managedServices.title}
-        // description={seoConfig.services.managedServices.description}
-        // keywords={seoConfig.services.managedServices.keywords}
-        // path={seoConfig.services.managedServices.path}
+         title={seoConfig.services.managedServices.title}
+         description={seoConfig.services.managedServices.description}
+         keywords={seoConfig.services.managedServices.keywords}
+         path={seoConfig.services.managedServices.path}
       />
 
       <style>{`

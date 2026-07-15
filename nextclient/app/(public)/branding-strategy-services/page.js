@@ -324,10 +324,10 @@ export default function BrandingStrategy() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.brandingStrategy.title}
-        // description={seoConfig.services.brandingStrategy.description}
-        // keywords={seoConfig.services.brandingStrategy.keywords}
-        // path={seoConfig.services.brandingStrategy.path}
+         title={seoConfig.services.brandingStrategy.title}
+         description={seoConfig.services.brandingStrategy.description}
+         keywords={seoConfig.services.brandingStrategy.keywords}
+       path={seoConfig.services.brandingStrategy.path}
       />
 
       <style>{`

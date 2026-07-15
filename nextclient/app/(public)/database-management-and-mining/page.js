@@ -249,10 +249,10 @@ export default function DatabaseManagement() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.databaseManagement.title}
-        // description={seoConfig.services.databaseManagement.description}
-        // keywords={seoConfig.services.databaseManagement.keywords}
-        // path={seoConfig.services.databaseManagement.path}
+        title={seoConfig.services.databaseManagement.title}
+         description={seoConfig.services.databaseManagement.description}
+         keywords={seoConfig.services.databaseManagement.keywords}
+         path={seoConfig.services.databaseManagement.path}
       />
 
       <style>{`

@@ -262,10 +262,10 @@ export default function SEOServices() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.searchEngineOptimization.title}
-        // description={seoConfig.services.searchEngineOptimization.description}
-        // keywords={seoConfig.services.searchEngineOptimization.keywords}
-        // path={seoConfig.services.searchEngineOptimization.path}
+         title={seoConfig.services.searchEngineOptimization.title}
+         description={seoConfig.services.searchEngineOptimization.description}
+         keywords={seoConfig.services.searchEngineOptimization.keywords}
+         path={seoConfig.services.searchEngineOptimization.path}
       />
 
       <style>{`

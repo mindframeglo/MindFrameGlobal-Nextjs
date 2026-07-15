@@ -251,10 +251,10 @@ export default function WebDevelopment() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.webDevelopment.title}
-        // description={seoConfig.services.webDevelopment.description}
-        // keywords={seoConfig.services.webDevelopment.keywords}
-        // path={seoConfig.services.webDevelopment.path}
+         title={seoConfig.services.webDevelopment.title}
+         description={seoConfig.services.webDevelopment.description}
+         keywords={seoConfig.services.webDevelopment.keywords}
+         path={seoConfig.services.webDevelopment.path}
       />
 
       <style>{`

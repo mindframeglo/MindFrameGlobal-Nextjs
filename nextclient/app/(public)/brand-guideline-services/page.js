@@ -389,10 +389,10 @@ export default function BrandGuidelines() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.brandGuidelines.title}
-        // description={seoConfig.services.brandGuidelines.description}
-        // keywords={seoConfig.services.brandGuidelines.keywords}
-        // path={seoConfig.services.brandGuidelines.path}
+        title={seoConfig.services.brandGuidelines.title}
+         description={seoConfig.services.brandGuidelines.description}
+         keywords={seoConfig.services.brandGuidelines.keywords}
+         path={seoConfig.services.brandGuidelines.path}
       />
 
       <style>{`

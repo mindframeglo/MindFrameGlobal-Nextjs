@@ -297,10 +297,10 @@ export default function EmailMarketing() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.emailMarketing.title}
-        // description={seoConfig.services.emailMarketing.description}
-        // keywords={seoConfig.services.emailMarketing.keywords}
-        // path={seoConfig.services.emailMarketing.path}
+        title={seoConfig.services.emailMarketing.title}
+         description={seoConfig.services.emailMarketing.description}
+         keywords={seoConfig.services.emailMarketing.keywords}
+         path={seoConfig.services.emailMarketing.path}
       />
 
       <style>{`

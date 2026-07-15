@@ -427,10 +427,10 @@ export default function BrandArchitecture() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.brandArchitecture.title}
-        // description={seoConfig.services.brandArchitecture.description}
-        // keywords={seoConfig.services.brandArchitecture.keywords}
-        // path={seoConfig.services.brandArchitecture.path}
+         title={seoConfig.services.brandArchitecture.title}
+         description={seoConfig.services.brandArchitecture.description}
+         keywords={seoConfig.services.brandArchitecture.keywords}
+         path={seoConfig.services.brandArchitecture.path}
       />
 
       <style>{`

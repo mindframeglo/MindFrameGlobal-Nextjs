@@ -525,10 +525,10 @@ export default function LogoDesigning() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.logoDesigning.title}
-        // description={seoConfig.services.logoDesigning.description}
-        // keywords={seoConfig.services.logoDesigning.keywords}
-        // path={seoConfig.services.logoDesigning.path}
+         title={seoConfig.services.logoDesigning.title}
+         description={seoConfig.services.logoDesigning.description}
+         keywords={seoConfig.services.logoDesigning.keywords}
+         path={seoConfig.services.logoDesigning.path}
       />
 
       <style>{`

@@ -246,10 +246,10 @@ export default function SaaSDevelopment() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.saas.title}
-        // description={seoConfig.services.saas.description}
-        // keywords={seoConfig.services.saas.keywords}
-        // path={seoConfig.services.saas.path}
+         title={seoConfig.services.saas.title}
+         description={seoConfig.services.saas.description}
+         keywords={seoConfig.services.saas.keywords}
+         path={seoConfig.services.saas.path}
       />
 
       <style>{`

@@ -253,10 +253,10 @@ export default function CRMDevelopment() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.crm.title}
-        // description={seoConfig.services.crm.description}
-        // keywords={seoConfig.services.crm.keywords}
-        // path={seoConfig.services.crm.path}
+         title={seoConfig.services.crm.title}
+       description={seoConfig.services.crm.description}
+         keywords={seoConfig.services.crm.keywords}
+         path={seoConfig.services.crm.path}
       />
 
       <style>{`

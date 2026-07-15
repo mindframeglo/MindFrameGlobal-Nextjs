@@ -250,10 +250,10 @@ export default function CloudComputing() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.cloudComputing.title}
-        // description={seoConfig.services.cloudComputing.description}
-        // keywords={seoConfig.services.cloudComputing.keywords}
-        // path={seoConfig.services.cloudComputing.path}
+         title={seoConfig.services.cloudComputing.title}
+         description={seoConfig.services.cloudComputing.description}
+         keywords={seoConfig.services.cloudComputing.keywords}
+         path={seoConfig.services.cloudComputing.path}
       />
 
       <style>{`

@@ -250,10 +250,10 @@ export default function CyberSecurityServices() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.cyberSecurity.title}
-        // description={seoConfig.services.cyberSecurity.description}
-        // keywords={seoConfig.services.cyberSecurity.keywords}
-        // path={seoConfig.services.cyberSecurity.path}
+         title={seoConfig.services.cyberSecurity.title}
+         description={seoConfig.services.cyberSecurity.description}
+         keywords={seoConfig.services.cyberSecurity.keywords}
+         path={seoConfig.services.cyberSecurity.path}
       />
 
       <style>{`

@@ -525,10 +525,10 @@ export default function VideoAnimation() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.videoAnimation.title}
-        // description={seoConfig.services.videoAnimation.description}
-        // keywords={seoConfig.services.videoAnimation.keywords}
-        // path={seoConfig.services.videoAnimation.path}
+        title={seoConfig.services.videoAnimation.title}
+         description={seoConfig.services.videoAnimation.description}
+         keywords={seoConfig.services.videoAnimation.keywords}
+         path={seoConfig.services.videoAnimation.path}
       />
 
       <style>{`

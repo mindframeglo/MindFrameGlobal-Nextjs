@@ -272,10 +272,10 @@ export default function SocialMediaAdvertising() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.socialMediaAdvertising.title}
-        // description={seoConfig.services.socialMediaAdvertising.description}
-        // keywords={seoConfig.services.socialMediaAdvertising.keywords}
-        // path={seoConfig.services.socialMediaAdvertising.path}
+        title={seoConfig.services.socialMediaAdvertising.title}
+         description={seoConfig.services.socialMediaAdvertising.description}
+         keywords={seoConfig.services.socialMediaAdvertising.keywords}
+         path={seoConfig.services.socialMediaAdvertising.path}
       />
 
       <style>{`

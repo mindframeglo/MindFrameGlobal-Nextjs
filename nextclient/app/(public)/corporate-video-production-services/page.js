@@ -525,10 +525,10 @@ export default function CorporateVideoProduction() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.corporateVideoProduction.title}
-        // description={seoConfig.services.corporateVideoProduction.description}
-        // keywords={seoConfig.services.corporateVideoProduction.keywords}
-        // path={seoConfig.services.corporateVideoProduction.path}
+        title={seoConfig.services.corporateVideoProduction.title}
+         description={seoConfig.services.corporateVideoProduction.description}
+         keywords={seoConfig.services.corporateVideoProduction.keywords}
+         path={seoConfig.services.corporateVideoProduction.path}
       />
 
       <style>{`

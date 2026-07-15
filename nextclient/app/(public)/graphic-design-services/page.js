@@ -525,10 +525,10 @@ export default function GraphicDesign() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.graphicDesign.title}
-        // description={seoConfig.services.graphicDesign.description}
-        // keywords={seoConfig.services.graphicDesign.keywords}
-        // path={seoConfig.services.graphicDesign.path}
+         title={seoConfig.services.graphicDesign.title}
+         description={seoConfig.services.graphicDesign.description}
+         keywords={seoConfig.services.graphicDesign.keywords}
+         path={seoConfig.services.graphicDesign.path}
       />
 
       <style>{`

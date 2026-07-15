@@ -299,10 +299,10 @@ export default function ContentMarketing() {
   return (
     <>
       <SEO 
-        // title={seoConfig.services.contentMarketing.title}
-        // description={seoConfig.services.contentMarketing.description}
-        // keywords={seoConfig.services.contentMarketing.keywords}
-        // path={seoConfig.services.contentMarketing.path}
+         title={seoConfig.services.contentMarketing.title}
+         description={seoConfig.services.contentMarketing.description}
+         keywords={seoConfig.services.contentMarketing.keywords}
+         path={seoConfig.services.contentMarketing.path}
       />
 
       <style>{`
