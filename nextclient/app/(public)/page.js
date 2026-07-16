@@ -845,7 +845,6 @@ function IndustriesSection() {
     { title: 'Travel & Tourism', desc: 'Destination branding and visitor automation.', icon: Plane, image: unsplash('photo-1488646953014-85cb44e25828', 800, 70) },
     { title: 'Coaching Classes', desc: 'Scaling student enrollment for educational institutions.', icon: GraduationCap, image: unsplash('photo-1523240795612-9a054b0db644', 800, 70) },
     { title: 'E-commerce', desc: 'ROI-focused scaling for online retail brands.', icon: ShoppingCart, image: unsplash('photo-1556742049-0cfed4f6a45d', 800, 70) },
-    { title: 'Manufacturing', desc: 'B2B lead generation and digital inventory visibility.', icon: Factory, image: unsplash('photo-1581091226825-a6a2a5aee158', 800, 70) },
   ];
 
   return (
