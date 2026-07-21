@@ -4,12 +4,18 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
+import { FaArrowRight, FaCheckCircle, FaBriefcase, FaUsers, FaTrophy } from 'react-icons/fa';
+
+const gold = '#c9a84c';
+const goldDark = '#b38f3d';
+const goldLight = '#f5f0e8';
+const goldLikeBorder = '#c3a06f';
 
 const projects = [
   {
     id: 1,
     slug: "mind-frame-india-drives-online-sales-for-arijit-singh-and-pankaj-udhas-ji-concerts-in-arizona",
-    title: " Online Sales for Arijit Singh and Pankaj Udhas Ji Concerts in Arizona",
+    title: "Online Sales for Arijit Singh and Pankaj Udhas Ji Concerts in Arizona",
     category: "Case Study · OUR WORK",
     image: '/assets/work/work1.png',
   },
@@ -51,14 +57,14 @@ const projects = [
   {
     id: 7,
     slug: "perkin-elmer",
-    title: " PerkinElmer Digital Growth Strategy",
+    title: "PerkinElmer Digital Growth Strategy",
     category: "Case Study · OUR WORK",
     image: '/assets/work/work7.png',
   },
   {
     id: 8,
     slug: "marashli-shoes",
-    title: " Website Design & Branding for Marashali",
+    title: "Website Design & Branding for Marashali",
     category: "Case Study · OUR WORK",
     image: '/assets/work/work8.png',
   },
@@ -67,31 +73,18 @@ const projects = [
 export default function OurWork() {
   const [filter, setFilter] = useState('all');
   const [hoveredId, setHoveredId] = useState(null);
-  const [offsetY, setOffsetY] = useState(0);
-  const ctaRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Extract unique categories for filter
-  const categories = ['all', ...new Set(projects.map(p => p.category.split(' · ')[0]))];
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(p => p.category.includes(filter));
-
-  // Parallax effect on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (ctaRef.current) {
-        const rect = ctaRef.current.getBoundingClientRect();
-        const scrollPosition = window.scrollY;
-        const elementPosition = rect.top + scrollPosition;
-        const distanceFromTop = scrollPosition - elementPosition;
-        setOffsetY(distanceFromTop * 0.3);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
@@ -101,26 +94,29 @@ export default function OurWork() {
         keywords={seoConfig.ourWork.keywords}
         path={seoConfig.ourWork.path}
       />
+      
       <div style={styles.page}>
         <style>{`
           * { box-sizing: border-box; margin: 0; padding: 0; }
 
           .project-card {
             background: #fff;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             display: block;
             color: inherit;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(201, 168, 76, 0.08);
           }
 
           .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(176, 141, 87, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(201, 168, 76, 0.15);
+            border-color: rgba(201, 168, 76, 0.2);
           }
 
           .card-img-wrap {
@@ -131,14 +127,14 @@ export default function OurWork() {
 
           .card-img {
             width: 100%;
-            height: 260px;
+            height: 280px;
             object-fit: cover;
             display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           }
 
           .project-card:hover .card-img {
-            transform: scale(1.05);
+            transform: scale(1.06);
           }
 
           .hover-overlay {
@@ -164,46 +160,45 @@ export default function OurWork() {
             font-size: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            border: 1.5px solid rgba(255,255,255,0.4);
-            padding: 10px 28px;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            padding: 10px 32px;
             border-radius: 50px;
             transform: translateY(20px);
             transition: all 0.4s ease;
-            background: rgba(176, 141, 87, 0.15);
+            background: rgba(201, 168, 76, 0.15);
             backdrop-filter: blur(4px);
           }
 
           .project-card:hover .hover-cta {
             transform: translateY(0);
-            border-color: #b08d57;
-            background: rgba(176, 141, 87, 0.3);
+            border-color: ${gold};
+            background: rgba(201, 168, 76, 0.3);
           }
 
           .card-body {
-            padding: 20px 24px 24px;
+            padding: 22px 26px 26px;
             background: #fff;
-            border-top: 1px solid rgba(0,0,0,0.04);
           }
 
           .card-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 600;
             color: #1a1510;
             line-height: 1.3;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             transition: color 0.3s ease;
           }
 
           .project-card:hover .card-title {
-            color: #b08d57;
+            color: ${gold};
           }
 
           .card-category {
             font-size: 10px;
-            letter-spacing: 1.2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #b08d57;
+            color: ${gold};
             font-weight: 500;
             font-family: 'DM Sans', sans-serif;
           }
@@ -213,10 +208,10 @@ export default function OurWork() {
             top: 16px;
             right: 16px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
             background: rgba(0,0,0,0.3);
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             backdrop-filter: blur(4px);
             z-index: 2;
@@ -228,14 +223,26 @@ export default function OurWork() {
             opacity: 1;
           }
 
+          .gold-accent-line {
+            width: 40px;
+            height: 2px;
+            background: ${gold};
+            margin-top: 10px;
+            transition: width 0.3s ease;
+          }
+
+          .project-card:hover .gold-accent-line {
+            width: 60px;
+          }
+
           .filter-btn {
-            padding: 8px 22px;
+            padding: 10px 28px;
             border: 1.5px solid #e0d8ce;
             border-radius: 50px;
             background: transparent;
             color: #5a4f44;
             font-family: 'DM Sans', sans-serif;
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -243,47 +250,50 @@ export default function OurWork() {
           }
 
           .filter-btn:hover {
-            border-color: #b08d57;
-            color: #b08d57;
-            background: rgba(176, 141, 87, 0.05);
+            border-color: ${gold};
+            color: ${gold};
+            background: rgba(201, 168, 76, 0.05);
           }
 
           .filter-btn.active {
-            background: #b08d57;
+            background: ${gold};
             color: #fff;
-            border-color: #b08d57;
+            border-color: ${gold};
           }
 
           .filter-btn.active:hover {
-            background: #9a7a4a;
-            border-color: #9a7a4a;
+            background: ${goldDark};
+            border-color: ${goldDark};
           }
 
           .work-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px 80px;
           }
 
-          .cta-parallax-bg {
-            background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-            transform: translateY(0);
-            transition: transform 0.1s ease-out;
+          .stat-card {
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
           }
 
-          .cta-parallax-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(26, 21, 16, 0.92) 0%, rgba(26, 21, 16, 0.75) 100%);
-            z-index: 1;
+          .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(201, 168, 76, 0.1);
+            border-color: rgba(201, 168, 76, 0.2);
+          }
+
+          .stat-icon {
+            color: ${gold};
+            margin-bottom: 12px;
           }
 
           @media (max-width: 1024px) {
@@ -292,7 +302,7 @@ export default function OurWork() {
               gap: 24px;
             }
             .card-img {
-              height: 220px !important;
+              height: 240px !important;
             }
           }
 
@@ -300,10 +310,10 @@ export default function OurWork() {
             .work-grid {
               grid-template-columns: 1fr !important;
               gap: 20px;
-              padding: 0 16px 60px !important;
+              padding: 0 16px 50px !important;
             }
             .card-img {
-              height: 240px !important;
+              height: 220px !important;
             }
             .work-header {
               padding: 40px 16px 20px !important;
@@ -314,14 +324,14 @@ export default function OurWork() {
               gap: 8px !important;
             }
             .filter-btn {
-              padding: 6px 16px !important;
+              padding: 7px 18px !important;
               font-size: 11px !important;
             }
             .heading {
               font-size: 28px !important;
             }
             .cta-content {
-              padding: 50px 20px !important;
+              padding: 40px 20px !important;
             }
             .cta-title {
               font-size: 28px !important;
@@ -329,28 +339,42 @@ export default function OurWork() {
             .cta-description {
               font-size: 14px !important;
             }
-            .stats-container {
-              gap: 20px !important;
-            }
-            .stat-divider {
-              display: none !important;
+            .stats-grid {
+              grid-template-columns: 1fr !important;
+              gap: 16px !important;
             }
           }
         `}</style>
 
         {/* Header */}
         <div className="work-header" style={styles.header}>
-          <div style={styles.headerBadge}>PORTFOLIO</div>
+          <div style={styles.headerBadge}>
+            <span style={styles.badgeDot}></span>
+            PORTFOLIO
+          </div>
           <h1 style={styles.heading}>
-            Where 
-            <br /><span style={styles.headingAccent}>Creativity Meets Strategy</span>
+            Where <br />
+            <span style={styles.headingAccent}>Creativity Meets Strategy</span>
           </h1>
           <p style={styles.description}>
-            Explore our curated collection of impactful campaigns across industries
+            Explore our curated collection of impactful campaigns that drive results
           </p>
           <div style={styles.divider} />
           
-         
+          <div className="filter-bar" style={styles.filterBar}>
+            <button
+              className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
+              onClick={() => setFilter('all')}
+            >
+              All Work
+            </button>
+            <button
+              className={`filter-btn ${filter === 'Case Study' ? 'active' : ''}`}
+              onClick={() => setFilter('Case Study')}
+            >
+              Case Studies
+            </button>
+          </div>
         </div>
 
         {/* Grid */}
@@ -371,7 +395,7 @@ export default function OurWork() {
                   loading="lazy"
                 />
                 <div className="hover-overlay">
-                  <span className="hover-cta">Explore Project</span>
+                  <span className="hover-cta">View Case Study</span>
                 </div>
                 <span className="card-number">0{index + 1}</span>
               </div>
@@ -379,6 +403,7 @@ export default function OurWork() {
               <div className="card-body">
                 <h3 className="card-title">{project.title}</h3>
                 <p className="card-category">{project.category}</p>
+                <div className="gold-accent-line" />
               </div>
             </Link>
           ))}
@@ -387,50 +412,46 @@ export default function OurWork() {
         {/* Stats Section */}
         <div style={styles.statsSection}>
           <div style={styles.statsContainer}>
-            <div style={styles.statItem}>
-              <span style={styles.statNumber}>32+</span>
-              <span style={styles.statLabel}>Projects Delivered</span>
-            </div>
-            <div style={styles.statDivider} />
-            <div style={styles.statItem}>
-              <span style={styles.statNumber}>12+</span>
-              <span style={styles.statLabel}>Industries Served</span>
-            </div>
-            <div style={styles.statDivider} />
-            <div style={styles.statItem}>
-              <span style={styles.statNumber}>8+</span>
-              <span style={styles.statLabel}>Years of Excellence</span>
+            <div className="stats-grid" style={styles.statsGrid}>
+              <div className="stat-card">
+                <div className="stat-icon"><FaBriefcase size={32} /></div>
+                <span style={styles.statNumber}>32+</span>
+                <span style={styles.statLabel}>Projects Delivered</span>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon"><FaUsers size={32} /></div>
+                <span style={styles.statNumber}>12+</span>
+                <span style={styles.statLabel}>Industries Served</span>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon"><FaTrophy size={32} /></div>
+                <span style={styles.statNumber}>8+</span>
+                <span style={styles.statLabel}>Years of Excellence</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* CTA Section with Parallax Background */}
-        <div 
-          ref={ctaRef}
-          className="cta-parallax-bg"
-          style={{
-            ...styles.ctaSection,
-            transform: `translateY(${offsetY * 0.05}px)`,
-          }}
-        >
-          <div style={styles.ctaOverlay}>
-            <div style={styles.ctaContent}>
-              <div style={styles.ctaBadge}>GET STARTED</div>
-              <h2 style={styles.ctaTitle}>
-                Have a Project? <br />
-                <span style={styles.ctaAccent}>Let Us Help.</span>
-              </h2>
-              <p style={styles.ctaDescription}>
-                Boost your business growth with a professionally optimized website that attracts new visitors and leads. 
-                Let MFG create a tailored strategy to fuel your success online.
-              </p>
-              <Link href="/contact-us" style={styles.ctaButton}>
-                Contact Us
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: 10 }}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
+        {/* CTA Section */}
+        <div style={styles.ctaSection}>
+          <div style={styles.ctaOverlay} />
+          <div style={styles.ctaContent}>
+            <div style={styles.ctaBadge}>
+              <FaCheckCircle size={14} style={{ marginRight: 8 }} />
+              GET STARTED
             </div>
+            <h2 style={styles.ctaTitle}>
+              Have a Project? <br />
+              <span style={styles.ctaAccent}>Let's Make It Happen.</span>
+            </h2>
+            <p style={styles.ctaDescription}>
+              Boost your business growth with a professionally optimized website that attracts new visitors and leads. 
+              Let MFG create a tailored strategy to fuel your success online.
+            </p>
+            <Link href="/contact-us" style={styles.ctaButton}>
+              Start Your Project
+              <FaArrowRight size={16} style={{ marginLeft: 12 }} />
+            </Link>
           </div>
         </div>
       </div>
@@ -451,106 +472,109 @@ const styles = {
     margin: "0 auto",
   },
   headerBadge: {
-    display: "inline-block",
+    display: "inline-flex",
+    alignItems: "center",
     fontFamily: "'DM Sans', sans-serif",
     fontSize: "11px",
     letterSpacing: "3px",
     textTransform: "uppercase",
-    color: "#b08d57",
-    background: "rgba(176, 141, 87, 0.1)",
-    padding: "6px 20px",
+    color: gold,
+    background: "rgba(201, 168, 76, 0.1)",
+    padding: "8px 22px",
     borderRadius: "50px",
-    marginBottom: "16px",
+    marginBottom: "20px",
     fontWeight: 600,
+    border: "1px solid rgba(201, 168, 76, 0.15)",
+  },
+  badgeDot: {
+    width: "6px",
+    height: "6px",
+    background: gold,
+    borderRadius: "50%",
+    marginRight: "10px",
+    display: "inline-block",
+    animation: "pulse 2s infinite",
   },
   heading: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "clamp(32px, 4.5vw, 48px)",
+    fontSize: "clamp(32px, 4.5vw, 52px)",
     fontWeight: 600,
     color: "#1a1510",
-    lineHeight: 1.2,
-    marginBottom: "12px",
+    lineHeight: 1.15,
+    marginBottom: "14px",
   },
   headingAccent: {
-    color: "#b08d57",
+    color: gold,
+    position: "relative",
   },
   description: {
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: "15px",
+    fontSize: "16px",
     color: "#6b5f53",
-    lineHeight: 1.6,
-    maxWidth: "520px",
-    margin: "0 auto 20px",
+    lineHeight: 1.7,
+    maxWidth: "540px",
+    margin: "0 auto 24px",
   },
   divider: {
     width: "60px",
     height: "2px",
-    background: "linear-gradient(to right, #b08d57, #d4c4a8)",
-    margin: "0 auto 28px",
+    background: `linear-gradient(to right, ${gold}, #d4c4a8)`,
+    margin: "0 auto 32px",
     borderRadius: "2px",
   },
   filterBar: {
     display: "flex",
-    gap: "10px",
+    gap: "12px",
     justifyContent: "center",
     flexWrap: "wrap",
-    marginTop: "8px",
+    marginTop: "4px",
   },
   statsSection: {
-    background: "linear-gradient(135deg, #f5f2ed 0%, #faf8f5 100%)",
-    padding: "40px 24px 60px",
-    borderTop: "1px solid rgba(176, 141, 87, 0.15)",
+    background: "#fff",
+    padding: "50px 24px 60px",
+    borderTop: "1px solid rgba(201, 168, 76, 0.08)",
+    borderBottom: "1px solid rgba(201, 168, 76, 0.08)",
     marginTop: "20px",
   },
   statsContainer: {
     maxWidth: "900px",
     margin: "0 auto",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "40px",
-    flexWrap: "wrap",
   },
-  statItem: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "4px",
+  statsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "24px",
   },
   statNumber: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "36px",
+    fontSize: "38px",
     fontWeight: 600,
     color: "#1a1510",
     lineHeight: 1.1,
+    display: "block",
+    marginBottom: "4px",
   },
   statLabel: {
     fontFamily: "'DM Sans', sans-serif",
-    fontSize: "12px",
-    letterSpacing: "1px",
-    textTransform: "uppercase",
+    fontSize: "13px",
+    letterSpacing: "0.5px",
     color: "#8a7a6a",
+    display: "block",
   },
-  statDivider: {
-    width: "1px",
-    height: "36px",
-    background: "rgba(176, 141, 87, 0.25)",
-  },
-  // CTA Section Styles
   ctaSection: {
     position: "relative",
     overflow: "hidden",
-    minHeight: "400px",
+    minHeight: "420px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundAttachment: "fixed",
-     paddingBottom: "40px", // Add this line for bottom spacing
+    background: "linear-gradient(135deg, #1a1510 0%, #2a2218 100%)",
+    marginTop: "20px",
   },
   ctaOverlay: {
     position: "absolute",
     inset: 0,
-    background: "linear-gradient(135deg, rgba(26, 21, 16, 0.92) 0%, rgba(26, 21, 16, 0.75) 100%)",
+    background: "radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05) 0%, transparent 70%)",
     zIndex: 1,
   },
   ctaContent: {
@@ -562,18 +586,19 @@ const styles = {
     margin: "0 auto",
   },
   ctaBadge: {
-    display: "inline-block",
+    display: "inline-flex",
+    alignItems: "center",
     fontFamily: "'DM Sans', sans-serif",
     fontSize: "11px",
     letterSpacing: "3px",
     textTransform: "uppercase",
-    color: "#b08d57",
-    background: "rgba(176, 141, 87, 0.15)",
-    padding: "6px 20px",
+    color: gold,
+    background: "rgba(201, 168, 76, 0.12)",
+    padding: "8px 22px",
     borderRadius: "50px",
-    marginBottom: "16px",
+    marginBottom: "20px",
     fontWeight: 600,
-    border: "1px solid rgba(176, 141, 87, 0.2)",
+    border: "1px solid rgba(201, 168, 76, 0.15)",
   },
   ctaTitle: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -584,33 +609,42 @@ const styles = {
     marginBottom: "16px",
   },
   ctaAccent: {
-    color: "#b08d57",
+    color: gold,
   },
   ctaDescription: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: "16px",
-    color: "rgba(255,255,255,0.85)",
-    lineHeight: 1.7,
+    color: "rgba(255,255,255,0.8)",
+    lineHeight: 1.8,
     maxWidth: "550px",
-    margin: "0 auto 32px",
+    margin: "0 auto 34px",
   },
   ctaButton: {
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "14px 36px",
-    background: "#b08d57",
+    padding: "16px 40px",
+    background: gold,
     color: "#fff",
     fontFamily: "'DM Sans', sans-serif",
     fontSize: "14px",
     fontWeight: 600,
-    letterSpacing: "1px",
-    textTransform: "uppercase",
+    letterSpacing: "0.5px",
     textDecoration: "none",
     borderRadius: "50px",
     transition: "all 0.3s ease",
-    boxShadow: "0 8px 30px rgba(176, 141, 87, 0.35)",
+    boxShadow: "0 8px 35px rgba(201, 168, 76, 0.3)",
     border: "none",
     cursor: "pointer",
   },
 };
+
+// Add keyframes for pulse animation
+const styleTag = document.createElement('style');
+styleTag.textContent = `
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+`;
+document.head.appendChild(styleTag);

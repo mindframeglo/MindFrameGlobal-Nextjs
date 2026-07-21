@@ -3,7 +3,7 @@
 /**
  * Blogs Page
  * Display all published blogs with pagination and search
- * UI aligned with the "Our Work" page's premium gold theme
+ * UI aligned with the premium gold theme
  */
 
 import { useState, useEffect, useRef } from 'react';
@@ -12,6 +12,11 @@ import BlogCard from '@/components/BlogCard';
 import Loading from '@/components/Loading';
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
+import { FaSearch, FaArrowRight, FaCheckCircle, FaTag, FaBookOpen } from 'react-icons/fa';
+
+const gold = '#c9a84c';
+const goldDark = '#b38f3d';
+const goldLight = '#f5f0e8';
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -23,6 +28,14 @@ export default function Blogs() {
   const [totalBlogs, setTotalBlogs] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
   const ctaRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const categories = [
     'Advertising Agency',
@@ -51,7 +64,7 @@ export default function Blogs() {
     fetchBlogs();
   }, [page, search, category]);
 
-  // Parallax effect on scroll for CTA (matches Our Work page)
+  // Parallax effect on scroll for CTA
   useEffect(() => {
     const handleScroll = () => {
       if (ctaRef.current) {
@@ -100,621 +113,640 @@ export default function Blogs() {
       />
 
       <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#faf8f5', minHeight: '100vh' }}>
-      <style>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        <style>{`
+          * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* ── HERO ── */
-        .bl-hero {
-          position: relative;
-          height: 440px;
-          overflow: hidden;
-        }
-        .bl-hero img {
-          width: 100%; height: 100%;
-          object-fit: cover; object-position: center 40%;
-        }
-        .bl-hero-overlay {
-          position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(26,21,16,0.92) 0%, rgba(26,21,16,0.65) 45%, rgba(26,21,16,0.92) 100%);
-          display: flex; align-items: center; justify-content: center; flex-direction: column;
-          padding: 24px;
-        }
-        .bl-hero-badge {
-          display: inline-block;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 11px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: #d4b483;
-          background: rgba(176, 141, 87, 0.15);
-          border: 1px solid rgba(176, 141, 87, 0.35);
-          padding: 6px 20px;
-          border-radius: 50px;
-          margin-bottom: 20px;
-          font-weight: 600;
-          backdrop-filter: blur(4px);
-          white-space: nowrap;
-        }
-        .bl-hero-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(30px, 5.5vw, 60px);
-          font-weight: 700; color: #fff;
-          letter-spacing: -0.5px; line-height: 1.15;
-          text-align: center; max-width: 860px;
-        }
-        .bl-hero-title em {
-          font-style: italic; color: #d4b483;
-        }
-        .bl-hero-divider {
-          width: 60px; height: 2px;
-          background: linear-gradient(to right, #b08d57, #d4c4a8);
-          margin: 20px auto;
-          border-radius: 2px;
-        }
-        .bl-hero-sub-text {
-          font-size: 15px; font-weight: 300;
-          color: rgba(255,255,255,0.75);
-          max-width: 540px; text-align: center;
-          line-height: 1.75;
-        }
-
-        /* ── SEARCH & FILTER BAR ── */
-        .bl-filter-wrap {
-          background: #fff;
-          border-bottom: 1px solid #eee4d6;
-          padding: 40px 60px;
-          box-shadow: 0 4px 20px rgba(176, 141, 87, 0.06);
-          position: relative;
-          z-index: 2;
-        }
-        .bl-filter-inner {
-          max-width: 1200px; margin: 0 auto;
-        }
-        .bl-search-row {
-          display: flex; gap: 12px; margin-bottom: 28px;
-          position: relative;
-        }
-        .bl-search-icon {
-          position: absolute;
-          left: 18px; top: 50%;
-          transform: translateY(-50%);
-          color: #b08d57;
-          pointer-events: none;
-          display: flex;
-          align-items: center;
-        }
-        .bl-search-input {
-          flex: 1; padding: 14px 18px 14px 46px;
-          border: 1.5px solid #e0d8ce; border-radius: 50px;
-          font-size: 13.5px; font-family: 'DM Sans', sans-serif;
-          color: #333; outline: none;
-          transition: border-color 0.25s, box-shadow 0.25s;
-          background: #faf8f5;
-          width: 100%;
-          min-width: 0;
-        }
-        .bl-search-input:focus {
-          border-color: #b08d57;
-          background: #fff;
-          box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.1);
-        }
-        .bl-search-input::placeholder { color: #aaa; }
-        .bl-search-btn {
-          padding: 14px 34px;
-          background: #b08d57; color: #fff;
-          font-size: 12px; font-weight: 700;
-          letter-spacing: 1.5px; text-transform: uppercase;
-          border: none; cursor: pointer; border-radius: 50px;
-          transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-          white-space: nowrap;
-          box-shadow: 0 6px 20px rgba(176, 141, 87, 0.3);
-          flex-shrink: 0;
-        }
-        .bl-search-btn:hover {
-          background: #9a7842;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 26px rgba(176, 141, 87, 0.4);
-        }
-
-        /* Filter label */
-        .bl-filter-label {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 16px; font-weight: 600;
-          color: #1a1510; margin-bottom: 14px;
-          letter-spacing: 0.3px;
-          display: flex; align-items: center; gap: 8px;
-        }
-        .bl-filter-label::before {
-          content: '';
-          display: inline-block;
-          width: 4px; height: 16px;
-          background: #b08d57;
-          border-radius: 2px;
-          flex-shrink: 0;
-        }
-
-        /* Category wrapper — wraps on desktop, scrolls horizontally on mobile */
-        .bl-cats-wrap {
-          position: relative;
-        }
-        .bl-cats {
-          display: flex; flex-wrap: wrap; gap: 10px;
-        }
-        .bl-cat-btn {
-          padding: 9px 22px;
-          border: 1.5px solid #e0d8ce;
-          background: transparent;
-          font-size: 11.5px; font-weight: 600;
-          letter-spacing: 1px; text-transform: uppercase;
-          color: #5a4f44; cursor: pointer; border-radius: 50px;
-          transition: all 0.25s;
-          font-family: 'DM Sans', sans-serif;
-          white-space: nowrap;
-          flex-shrink: 0;
-        }
-        .bl-cat-btn:hover {
-          border-color: #b08d57; color: #b08d57;
-          background: rgba(176, 141, 87, 0.06);
-          transform: translateY(-1px);
-        }
-        .bl-cat-btn.active {
-          background: #b08d57; border-color: #b08d57;
-          color: #fff;
-          box-shadow: 0 4px 14px rgba(176, 141, 87, 0.3);
-        }
-        .bl-cat-btn.active:hover { background: #9a7a4a; border-color: #9a7a4a; }
-
-        /* ── RESULTS INFO ── */
-        .bl-results-info {
-          max-width: 1200px; margin: 0 auto;
-          padding: 32px 60px 0;
-          font-size: 13px; color: #8a7a6a; font-weight: 400;
-          letter-spacing: 0.3px;
-        }
-        .bl-results-info strong { color: #b08d57; font-weight: 700; }
-
-        /* ── CONTENT AREA ── */
-        .bl-content {
-          max-width: 1200px; margin: 0 auto;
-          padding: 24px 60px 90px;
-        }
-
-        /* ── BLOGS GRID ── */
-        .bl-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin-bottom: 64px;
-        }
-        .bl-grid > * {
-          transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
-          border-radius: 12px;
-        }
-        .bl-grid > *:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 16px 40px rgba(176, 141, 87, 0.15);
-        }
-
-        /* ── PAGINATION ── */
-        .bl-pagination {
-          display: flex; align-items: center;
-          justify-content: center; gap: 8px;
-          flex-wrap: wrap; margin-top: 20px;
-        }
-        .bl-page-info {
-          font-size: 12px; color: #8a7a6a; font-weight: 400;
-          margin-right: 18px; letter-spacing: 0.5px;
-        }
-        .bl-page-info strong { color: #b08d57; font-weight: 700; }
-        .bl-pg-btn {
-          padding: 10px 22px;
-          border: 1.5px solid #e0d8ce;
-          background: #fff; color: #5a4f44;
-          font-size: 11px; font-weight: 700;
-          letter-spacing: 1px; text-transform: uppercase;
-          cursor: pointer; border-radius: 50px;
-          transition: all 0.25s;
-          font-family: 'DM Sans', sans-serif;
-        }
-        .bl-pg-btn:hover:not(:disabled) {
-          border-color: #b08d57; color: #fff;
-          background: #b08d57;
-        }
-        .bl-pg-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-        .bl-pg-num {
-          width: 38px; height: 38px;
-          display: flex; align-items: center; justify-content: center;
-          border: 1.5px solid #e0d8ce;
-          background: #fff; color: #5a4f44;
-          font-size: 12.5px; font-weight: 600;
-          cursor: pointer; border-radius: 50%;
-          transition: all 0.25s;
-          font-family: 'DM Sans', sans-serif;
-        }
-        .bl-pg-num:hover { border-color: #b08d57; color: #b08d57; transform: translateY(-1px); }
-        .bl-pg-num.active {
-          background: #b08d57; border-color: #b08d57;
-          color: #fff; font-weight: 700;
-          box-shadow: 0 4px 14px rgba(176, 141, 87, 0.3);
-        }
-        .bl-pg-ellipsis {
-          font-size: 13px; color: #c4b8a8;
-          padding: 0 4px; line-height: 38px;
-        }
-
-        /* ── EMPTY STATE ── */
-        .bl-empty {
-          text-align: center; padding: 90px 24px;
-          background: #fff;
-          border-radius: 16px;
-          border: 1px dashed #e0d8ce;
-        }
-        .bl-empty-icon {
-          width: 64px; height: 64px;
-          border-radius: 50%;
-          background: rgba(176, 141, 87, 0.1);
-          display: flex; align-items: center; justify-content: center;
-          margin: 0 auto 22px;
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 30px; color: #b08d57;
-        }
-        .bl-empty-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 30px; font-weight: 600;
-          color: #1a1510; margin-bottom: 10px;
-        }
-        .bl-empty-sub {
-          font-size: 13.5px; color: #8a7a6a;
-          font-weight: 400; margin-bottom: 30px;
-        }
-        .bl-clear-btn {
-          padding: 13px 38px;
-          background: #b08d57; color: #fff;
-          font-size: 11px; font-weight: 700;
-          letter-spacing: 2px; text-transform: uppercase;
-          border: none; cursor: pointer; border-radius: 50px;
-          transition: all 0.25s;
-          font-family: 'DM Sans', sans-serif;
-          box-shadow: 0 6px 20px rgba(176, 141, 87, 0.3);
-        }
-        .bl-clear-btn:hover { background: #9a7842; transform: translateY(-2px); }
-
-        /* ── CTA STRIP (parallax, matches Our Work page) ── */
-        .bl-cta-parallax-bg {
-          background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-          position: relative;
-          overflow: hidden;
-          min-height: 400px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .bl-cta-overlay {
-          position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(26,21,16,0.93) 0%, rgba(26,21,16,0.78) 100%);
-          z-index: 1;
-        }
-        .bl-cta-content {
-          position: relative; z-index: 2;
-          text-align: center;
-          max-width: 700px;
-          padding: 64px 40px;
-          margin: 0 auto;
-        }
-        .bl-cta-badge {
-          display: inline-block;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 11px; letter-spacing: 3px;
-          text-transform: uppercase; color: #b08d57;
-          background: rgba(176, 141, 87, 0.15);
-          padding: 6px 20px; border-radius: 50px;
-          margin-bottom: 18px; font-weight: 600;
-          border: 1px solid rgba(176, 141, 87, 0.2);
-        }
-        .bl-cta-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(28px, 4.5vw, 48px);
-          font-weight: 600; color: #fff;
-          line-height: 1.18; margin-bottom: 16px;
-        }
-        .bl-cta-title em { font-style: italic; color: #b08d57; }
-        .bl-cta-sub {
-          font-size: 15.5px; font-weight: 300;
-          color: rgba(255,255,255,0.80);
-          margin-bottom: 32px; max-width: 520px;
-          margin-left: auto; margin-right: auto;
-          line-height: 1.75;
-        }
-        .bl-cta-btn {
-          display: inline-flex; align-items: center; justify-content: center;
-          padding: 15px 40px;
-          background: #b08d57; color: #fff;
-          font-size: 12px; font-weight: 700;
-          letter-spacing: 2px; text-transform: uppercase;
-          border: none; cursor: pointer; text-decoration: none;
-          transition: all 0.3s ease;
-          border-radius: 50px;
-          box-shadow: 0 8px 30px rgba(176, 141, 87, 0.35);
-        }
-        .bl-cta-btn:hover {
-          background: #9a7842;
-          transform: translateY(-3px);
-          box-shadow: 0 12px 36px rgba(176, 141, 87, 0.45);
-        }
-
-        /* ── LOADING ── */
-        .bl-loading {
-          display: flex; justify-content: center;
-          padding: 70px 0;
-        }
-
-        /* ══════════════ RESPONSIVE ══════════════ */
-
-        /* Tablet */
-        @media (max-width: 1024px) {
-          .bl-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-          .bl-filter-wrap { padding: 32px 24px; }
-          .bl-content { padding: 24px 24px 60px; }
-          .bl-results-info { padding: 28px 24px 0; }
-          .bl-hero { height: 380px; }
-        }
-
-        /* Mobile */
-        @media (max-width: 640px) {
-          .bl-grid { grid-template-columns: 1fr; gap: 20px; margin-bottom: 44px; }
-
-          /* Hero */
-          .bl-hero { height: 300px; }
-          .bl-hero-overlay { padding: 18px; }
-          .bl-hero-badge { font-size: 9.5px; letter-spacing: 2px; padding: 5px 14px; margin-bottom: 14px; }
-          .bl-hero-title { font-size: 28px !important; line-height: 1.2; }
-          .bl-hero-divider { margin: 14px auto; }
-          .bl-hero-sub-text { font-size: 13px; line-height: 1.6; }
-
-          /* Filter bar */
-          .bl-filter-wrap { padding: 22px 16px; }
-          .bl-search-row { flex-direction: column; gap: 10px; margin-bottom: 22px; }
-          .bl-search-input { padding: 13px 16px 13px 42px; font-size: 13px; }
-          .bl-search-btn { width: 100%; padding: 13px 24px; }
-          .bl-filter-label { font-size: 14.5px; margin-bottom: 12px; }
-
-          /* Category chips: horizontal scroll strip, no wrapping,
-             so buttons stay full-size and tappable instead of shrinking */
-          .bl-cats {
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
+          /* ── HERO ── */
+          .bl-hero {
+            position: relative;
+            height: 440px;
+            overflow: hidden;
+          }
+          .bl-hero img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 40%;
+          }
+          .bl-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(26,21,16,0.92) 0%, rgba(26,21,16,0.65) 45%, rgba(26,21,16,0.92) 100%);
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            padding: 24px;
+          }
+          .bl-hero-badge {
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
-            margin: 0 -16px;
-            padding: 2px 16px 10px;
-            scroll-snap-type: x proximity;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: ${gold};
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            padding: 8px 22px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
           }
-          .bl-cats::-webkit-scrollbar { display: none; }
+          .bl-hero-badge svg {
+            color: ${gold};
+          }
+          .bl-hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(30px, 5.5vw, 60px);
+            font-weight: 700; color: #fff;
+            letter-spacing: -0.5px; line-height: 1.15;
+            text-align: center; max-width: 860px;
+          }
+          .bl-hero-title em {
+            font-style: italic; color: ${gold};
+          }
+          .bl-hero-divider {
+            width: 60px; height: 2px;
+            background: linear-gradient(to right, ${gold}, #d4c4a8);
+            margin: 20px auto;
+            border-radius: 2px;
+          }
+          .bl-hero-sub-text {
+            font-size: 15px; font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            max-width: 540px; text-align: center;
+            line-height: 1.75;
+          }
+
+          /* ── SEARCH & FILTER BAR ── */
+          .bl-filter-wrap {
+            background: #fff;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+            padding: 40px 60px;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.06);
+            position: relative;
+            z-index: 2;
+          }
+          .bl-filter-inner {
+            max-width: 1200px; margin: 0 auto;
+          }
+          .bl-search-row {
+            display: flex; gap: 12px; margin-bottom: 28px;
+            position: relative;
+          }
+          .bl-search-icon {
+            position: absolute;
+            left: 18px; top: 50%;
+            transform: translateY(-50%);
+            color: ${gold};
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+          }
+          .bl-search-input {
+            flex: 1; padding: 14px 18px 14px 46px;
+            border: 1.5px solid #e0d8ce; border-radius: 50px;
+            font-size: 13.5px; font-family: 'DM Sans', sans-serif;
+            color: #333; outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            background: #faf8f5;
+            width: 100%;
+            min-width: 0;
+          }
+          .bl-search-input:focus {
+            border-color: ${gold};
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.1);
+          }
+          .bl-search-input::placeholder { color: #aaa; }
+          .bl-search-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 34px;
+            background: ${gold}; color: #fff;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            border: none; cursor: pointer; border-radius: 50px;
+            transition: all 0.25s;
+            white-space: nowrap;
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
+            flex-shrink: 0;
+          }
+          .bl-search-btn:hover {
+            background: ${goldDark};
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(201, 168, 76, 0.4);
+          }
+
+          /* Filter label */
+          .bl-filter-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px; font-weight: 600;
+            color: #1a1510; margin-bottom: 14px;
+            letter-spacing: 0.3px;
+            display: flex; align-items: center; gap: 10px;
+          }
+          .bl-filter-label svg {
+            color: ${gold};
+          }
+          .bl-filter-label::after {
+            content: '';
+            display: inline-block;
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(201, 168, 76, 0.2), transparent);
+            margin-left: 8px;
+          }
+
+          /* Category wrapper */
+          .bl-cats-wrap {
+            position: relative;
+          }
+          .bl-cats {
+            display: flex; flex-wrap: wrap; gap: 10px;
+          }
           .bl-cat-btn {
-            scroll-snap-align: start;
-            padding: 8px 18px;
-            font-size: 10.5px;
+            padding: 9px 22px;
+            border: 1.5px solid #e0d8ce;
+            background: transparent;
+            font-size: 11.5px; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: #5a4f44; cursor: pointer; border-radius: 50px;
+            transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+            white-space: nowrap;
+            flex-shrink: 0;
+          }
+          .bl-cat-btn:hover {
+            border-color: ${gold}; color: ${gold};
+            background: rgba(201, 168, 76, 0.06);
+            transform: translateY(-1px);
+          }
+          .bl-cat-btn.active {
+            background: ${gold}; border-color: ${gold};
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.3);
+          }
+          .bl-cat-btn.active:hover { background: ${goldDark}; border-color: ${goldDark}; }
+
+          /* ── RESULTS INFO ── */
+          .bl-results-info {
+            max-width: 1200px; margin: 0 auto;
+            padding: 32px 60px 0;
+            font-size: 13px; color: #8a7a6a; font-weight: 400;
+            letter-spacing: 0.3px;
+          }
+          .bl-results-info strong { color: ${gold}; font-weight: 700; }
+
+          /* ── CONTENT AREA ── */
+          .bl-content {
+            max-width: 1200px; margin: 0 auto;
+            padding: 24px 60px 90px;
           }
 
-          /* Results info + content */
-          .bl-results-info { padding: 20px 16px 0; font-size: 12px; }
-          .bl-content { padding: 18px 16px 50px; }
+          /* ── BLOGS GRID ── */
+          .bl-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 64px;
+          }
+          .bl-grid > * {
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
+            border-radius: 16px;
+            border: 1px solid rgba(201, 168, 76, 0.06);
+          }
+          .bl-grid > *:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(201, 168, 76, 0.12);
+            border-color: rgba(201, 168, 76, 0.15);
+          }
 
-          /* Pagination */
-          .bl-pagination { gap: 6px; }
-          .bl-page-info { width: 100%; text-align: center; margin: 0 0 10px; }
-          .bl-pg-btn { padding: 9px 16px; font-size: 10px; }
-          .bl-pg-num { width: 34px; height: 34px; font-size: 11.5px; }
+          /* ── PAGINATION ── */
+          .bl-pagination {
+            display: flex; align-items: center;
+            justify-content: center; gap: 8px;
+            flex-wrap: wrap; margin-top: 20px;
+          }
+          .bl-page-info {
+            font-size: 12px; color: #8a7a6a; font-weight: 400;
+            margin-right: 18px; letter-spacing: 0.5px;
+          }
+          .bl-page-info strong { color: ${gold}; font-weight: 700; }
+          .bl-pg-btn {
+            padding: 10px 22px;
+            border: 1.5px solid #e0d8ce;
+            background: #fff; color: #5a4f44;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            cursor: pointer; border-radius: 50px;
+            transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+          }
+          .bl-pg-btn:hover:not(:disabled) {
+            border-color: ${gold}; color: #fff;
+            background: ${gold};
+          }
+          .bl-pg-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+          .bl-pg-num {
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            border: 1.5px solid #e0d8ce;
+            background: #fff; color: #5a4f44;
+            font-size: 12.5px; font-weight: 600;
+            cursor: pointer; border-radius: 50%;
+            transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+          }
+          .bl-pg-num:hover { border-color: ${gold}; color: ${gold}; transform: translateY(-1px); }
+          .bl-pg-num.active {
+            background: ${gold}; border-color: ${gold};
+            color: #fff; font-weight: 700;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.3);
+          }
+          .bl-pg-ellipsis {
+            font-size: 13px; color: #c4b8a8;
+            padding: 0 4px; line-height: 38px;
+          }
 
-          /* Empty state */
-          .bl-empty { padding: 60px 18px; }
-          .bl-empty-title { font-size: 24px; }
+          /* ── EMPTY STATE ── */
+          .bl-empty {
+            text-align: center; padding: 90px 24px;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px dashed rgba(201, 168, 76, 0.3);
+          }
+          .bl-empty-icon {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 22px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px; color: ${gold};
+          }
+          .bl-empty-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px; font-weight: 600;
+            color: #1a1510; margin-bottom: 10px;
+          }
+          .bl-empty-sub {
+            font-size: 13.5px; color: #8a7a6a;
+            font-weight: 400; margin-bottom: 30px;
+          }
+          .bl-clear-btn {
+            padding: 13px 38px;
+            background: ${gold}; color: #fff;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            border: none; cursor: pointer; border-radius: 50px;
+            transition: all 0.25s;
+            font-family: 'DM Sans', sans-serif;
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
+          }
+          .bl-clear-btn:hover { background: ${goldDark}; transform: translateY(-2px); }
 
-          /* CTA */
-          .bl-cta-parallax-bg { min-height: 320px; background-attachment: scroll; }
-          .bl-cta-content { padding: 46px 20px !important; }
-          .bl-cta-title { font-size: 26px !important; }
-          .bl-cta-sub { font-size: 13.5px !important; margin-bottom: 24px; }
-          .bl-cta-btn { padding: 13px 32px; font-size: 11px; width: 100%; }
-        }
+          /* ── CTA STRIP ── */
+          .bl-cta {
+            position: relative;
+            overflow: hidden;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1510 0%, #2a2218 100%);
+            margin-top: 20px;
+          }
+          .bl-cta-overlay {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+            z-index: 1;
+          }
+          .bl-cta-content {
+            position: relative; z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 64px 40px;
+            margin: 0 auto;
+          }
+          .bl-cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: ${gold};
+            background: rgba(201, 168, 76, 0.12);
+            padding: 8px 22px; border-radius: 50px;
+            margin-bottom: 18px; font-weight: 600;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+          }
+          .bl-cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4.5vw, 48px);
+            font-weight: 600; color: #fff;
+            line-height: 1.18; margin-bottom: 16px;
+          }
+          .bl-cta-title em { font-style: italic; color: ${gold}; }
+          .bl-cta-sub {
+            font-size: 15.5px; font-weight: 300;
+            color: rgba(255,255,255,0.80);
+            margin-bottom: 32px; max-width: 520px;
+            margin-left: auto; margin-right: auto;
+            line-height: 1.75;
+          }
+          .bl-cta-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: ${gold}; color: #fff;
+            font-size: 13px; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase;
+            border: none; cursor: pointer; text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.35);
+          }
+          .bl-cta-btn:hover {
+            background: ${goldDark};
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(201, 168, 76, 0.45);
+          }
 
-        /* Small phones */
-        @media (max-width: 400px) {
-          .bl-hero { height: 260px; }
-          .bl-hero-title { font-size: 24px !important; }
-          .bl-hero-sub-text { max-width: 92%; }
-          .bl-cat-btn { padding: 7px 15px; font-size: 10px; }
-        }
-      `}</style>
+          /* ── LOADING ── */
+          .bl-loading {
+            display: flex; justify-content: center;
+            padding: 70px 0;
+          }
 
-      {/* ── HERO ── */}
-      <div className="bl-hero">
-        <img
-          src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=85"
-          alt="Mind Frame India Digital Marketing Blog - Read Latest Insights and Strategies"
-          loading="lazy"
-        />
-        <div className="bl-hero-overlay">
-          <span className="bl-hero-badge">Insights &amp; Strategies</span>
-          <h1 className="bl-hero-title">
-            Our Digital Marketing <br /><em>Blog</em>
-          </h1>
-          <div className="bl-hero-divider" />
-          <p className="bl-hero-sub-text">
-            Discover proven strategies, expert tips, and actionable insights to elevate your digital marketing game.
-          </p>
-        </div>
-      </div>
+          /* ══════════════ RESPONSIVE ══════════════ */
 
-      {/* ── SEARCH & FILTER ── */}
-      <div className="bl-filter-wrap">
-        <div className="bl-filter-inner">
-          <form onSubmit={handleSearch} className="bl-search-row">
-            <span className="bl-search-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
+          /* Tablet */
+          @media (max-width: 1024px) {
+            .bl-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .bl-filter-wrap { padding: 32px 24px; }
+            .bl-content { padding: 24px 24px 60px; }
+            .bl-results-info { padding: 28px 24px 0; }
+            .bl-hero { height: 380px; }
+          }
+
+          /* Mobile */
+          @media (max-width: 640px) {
+            .bl-grid { grid-template-columns: 1fr; gap: 20px; margin-bottom: 44px; }
+
+            /* Hero */
+            .bl-hero { height: 300px; }
+            .bl-hero-overlay { padding: 18px; }
+            .bl-hero-badge { font-size: 9.5px; letter-spacing: 2px; padding: 6px 16px; margin-bottom: 14px; }
+            .bl-hero-title { font-size: 28px !important; line-height: 1.2; }
+            .bl-hero-divider { margin: 14px auto; }
+            .bl-hero-sub-text { font-size: 13px; line-height: 1.6; }
+
+            /* Filter bar */
+            .bl-filter-wrap { padding: 22px 16px; }
+            .bl-search-row { flex-direction: column; gap: 10px; margin-bottom: 22px; }
+            .bl-search-input { padding: 13px 16px 13px 42px; font-size: 13px; }
+            .bl-search-btn { width: 100%; padding: 13px 24px; justify-content: center; }
+            .bl-filter-label { font-size: 14.5px; margin-bottom: 12px; }
+
+            /* Category chips: horizontal scroll */
+            .bl-cats {
+              flex-wrap: nowrap;
+              overflow-x: auto;
+              overflow-y: hidden;
+              gap: 8px;
+              margin: 0 -16px;
+              padding: 2px 16px 10px;
+              scroll-snap-type: x proximity;
+              -webkit-overflow-scrolling: touch;
+              scrollbar-width: none;
+            }
+            .bl-cats::-webkit-scrollbar { display: none; }
+            .bl-cat-btn {
+              scroll-snap-align: start;
+              padding: 8px 18px;
+              font-size: 10.5px;
+            }
+
+            /* Results info + content */
+            .bl-results-info { padding: 20px 16px 0; font-size: 12px; }
+            .bl-content { padding: 18px 16px 50px; }
+
+            /* Pagination */
+            .bl-pagination { gap: 6px; }
+            .bl-page-info { width: 100%; text-align: center; margin: 0 0 10px; }
+            .bl-pg-btn { padding: 9px 16px; font-size: 10px; }
+            .bl-pg-num { width: 34px; height: 34px; font-size: 11.5px; }
+
+            /* Empty state */
+            .bl-empty { padding: 50px 18px; }
+            .bl-empty-title { font-size: 24px; }
+
+            /* CTA */
+            .bl-cta { min-height: 320px; }
+            .bl-cta-content { padding: 46px 20px !important; }
+            .bl-cta-title { font-size: 26px !important; }
+            .bl-cta-sub { font-size: 13.5px !important; margin-bottom: 24px; }
+            .bl-cta-btn { padding: 14px 32px; font-size: 12px; width: 100%; }
+          }
+
+          /* Small phones */
+          @media (max-width: 400px) {
+            .bl-hero { height: 260px; }
+            .bl-hero-title { font-size: 24px !important; }
+            .bl-hero-sub-text { max-width: 92%; }
+            .bl-cat-btn { padding: 7px 15px; font-size: 10px; }
+          }
+        `}</style>
+
+        {/* ── HERO ── */}
+        <div className="bl-hero">
+          <img
+            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=85"
+            alt="Mind Frame India Digital Marketing Blog - Read Latest Insights and Strategies"
+            loading="lazy"
+          />
+          <div className="bl-hero-overlay">
+            <span className="bl-hero-badge">
+              <FaBookOpen size={14} />
+              Insights &amp; Strategies
             </span>
-            <input
-              type="text"
-              placeholder="Search blogs by title or content..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="bl-search-input"
-              aria-label="Search blogs"
-            />
-            <button type="submit" className="bl-search-btn">Search</button>
-          </form>
+            <h1 className="bl-hero-title">
+              Our Digital Marketing <br /><em>Blog</em>
+            </h1>
+            <div className="bl-hero-divider" />
+            <p className="bl-hero-sub-text">
+              Discover proven strategies, expert tips, and actionable insights to elevate your digital marketing game.
+            </p>
+          </div>
+        </div>
 
-          <div className="bl-filter-label">Filter by Category</div>
-          <div className="bl-cats-wrap">
-            <div className="bl-cats" role="group" aria-label="Blog categories">
-              <button
-                className={`bl-cat-btn${category === '' ? ' active' : ''}`}
-                onClick={() => { setCategory(''); setPage(1); }}
-                aria-pressed={category === ''}
-              >
-                All Categories
+        {/* ── SEARCH & FILTER ── */}
+        <div className="bl-filter-wrap">
+          <div className="bl-filter-inner">
+            <form onSubmit={handleSearch} className="bl-search-row">
+              <span className="bl-search-icon">
+                <FaSearch size={16} />
+              </span>
+              <input
+                type="text"
+                placeholder="Search blogs by title or content..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="bl-search-input"
+                aria-label="Search blogs"
+              />
+              <button type="submit" className="bl-search-btn">
+                <FaSearch size={14} />
+                Search
               </button>
-              {categories.map((cat) => (
+            </form>
+
+            <div className="bl-filter-label">
+              <FaTag size={16} />
+              Filter by Category
+            </div>
+            <div className="bl-cats-wrap">
+              <div className="bl-cats" role="group" aria-label="Blog categories">
                 <button
-                  key={cat}
-                  className={`bl-cat-btn${category === cat ? ' active' : ''}`}
-                  onClick={() => { setCategory(cat); setPage(1); }}
-                  aria-pressed={category === cat}
+                  className={`bl-cat-btn${category === '' ? ' active' : ''}`}
+                  onClick={() => { setCategory(''); setPage(1); }}
+                  aria-pressed={category === ''}
                 >
-                  {cat}
+                  All Categories
                 </button>
-              ))}
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    className={`bl-cat-btn${category === cat ? ' active' : ''}`}
+                    onClick={() => { setCategory(cat); setPage(1); }}
+                    aria-pressed={category === cat}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* ── RESULTS INFO ── */}
-      {blogs.length > 0 && (
-        <div className="bl-results-info" role="status" aria-live="polite">
-          Showing <strong>{blogs.length}</strong> of <strong>{totalBlogs}</strong> articles
-        </div>
-      )}
-
-      {/* ── MAIN CONTENT ── */}
-      <div className="bl-content">
-
-        {loading ? (
-          <div className="bl-loading"><Loading /></div>
-        ) : blogs.length > 0 ? (
-          <>
-            {/* Grid */}
-            <div className="bl-grid" role="list">
-              {blogs.map((blog) => (
-                <div key={blog._id} role="listitem">
-                  <BlogCard blog={blog} />
-                </div>
-              ))}
-            </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <nav className="bl-pagination" aria-label="Blog pagination">
-                <span className="bl-page-info">
-                  Page <strong>{page}</strong> of <strong>{totalPages}</strong>
-                </span>
-
-                <button
-                  className="bl-pg-btn"
-                  onClick={() => setPage(Math.max(1, page - 1))}
-                  disabled={page === 1}
-                  aria-label="Previous page"
-                >
-                  ← Prev
-                </button>
-
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
-                  const show =
-                    pageNum <= 2 ||
-                    pageNum > totalPages - 2 ||
-                    (pageNum >= page - 1 && pageNum <= page + 1);
-
-                  const showEllipsisBefore = pageNum === 3 && page > 4;
-                  const showEllipsisAfter = pageNum === totalPages - 2 && page < totalPages - 3;
-
-                  if (!show) return null;
-
-                  return (
-                    <span key={pageNum} style={{ display: 'contents' }}>
-                      {showEllipsisBefore && <span className="bl-pg-ellipsis" aria-hidden="true">···</span>}
-                      <button
-                        className={`bl-pg-num${page === pageNum ? ' active' : ''}`}
-                        onClick={() => setPage(pageNum)}
-                        aria-label={`Go to page ${pageNum}`}
-                        aria-current={page === pageNum ? 'page' : undefined}
-                      >
-                        {pageNum}
-                      </button>
-                      {showEllipsisAfter && <span className="bl-pg-ellipsis" aria-hidden="true">···</span>}
-                    </span>
-                  );
-                })}
-
-                <button
-                  className="bl-pg-btn"
-                  onClick={() => setPage(Math.min(totalPages, page + 1))}
-                  disabled={page === totalPages}
-                  aria-label="Next page"
-                >
-                  Next →
-                </button>
-              </nav>
-            )}
-          </>
-        ) : (
-          /* Empty state */
-          <div className="bl-empty">
-            <div className="bl-empty-icon">✦</div>
-            <div className="bl-empty-title">No articles found</div>
-            <p className="bl-empty-sub">Try adjusting your search or category filter</p>
-            <button
-              className="bl-clear-btn"
-              onClick={() => { setSearch(''); setCategory(''); setPage(1); }}
-            >
-              Clear Filters
-            </button>
+        {/* ── RESULTS INFO ── */}
+        {blogs.length > 0 && (
+          <div className="bl-results-info" role="status" aria-live="polite">
+            Showing <strong>{blogs.length}</strong> of <strong>{totalBlogs}</strong> articles
           </div>
         )}
-      </div>
 
-      {/* ── CTA STRIP with Parallax Background ── */}
-      {!loading && blogs.length > 0 && (
-        <div
-          ref={ctaRef}
-          className="bl-cta-parallax-bg"
-          style={{ transform: `translateY(${offsetY * 0.05}px)` }}
-        >
-          <div className="bl-cta-overlay" />
-          <div className="bl-cta-content">
-            <span className="bl-cta-badge">Get Started</span>
-            <h2 className="bl-cta-title">
-              Ready to Transform Your <em>Business?</em>
-            </h2>
-            <p className="bl-cta-sub">
-              Let our expert team help you implement these strategies and grow your business.
-            </p>
-            <a href="/contact-us" className="bl-cta-btn">
-              Contact Us Today
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: 10 }}>
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
-          </div>
+        {/* ── MAIN CONTENT ── */}
+        <div className="bl-content">
+
+          {loading ? (
+            <div className="bl-loading"><Loading /></div>
+          ) : blogs.length > 0 ? (
+            <>
+              {/* Grid */}
+              <div className="bl-grid" role="list">
+                {blogs.map((blog) => (
+                  <div key={blog._id} role="listitem">
+                    <BlogCard blog={blog} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <nav className="bl-pagination" aria-label="Blog pagination">
+                  <span className="bl-page-info">
+                    Page <strong>{page}</strong> of <strong>{totalPages}</strong>
+                  </span>
+
+                  <button
+                    className="bl-pg-btn"
+                    onClick={() => setPage(Math.max(1, page - 1))}
+                    disabled={page === 1}
+                    aria-label="Previous page"
+                  >
+                    ← Prev
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+                    const show =
+                      pageNum <= 2 ||
+                      pageNum > totalPages - 2 ||
+                      (pageNum >= page - 1 && pageNum <= page + 1);
+
+                    const showEllipsisBefore = pageNum === 3 && page > 4;
+                    const showEllipsisAfter = pageNum === totalPages - 2 && page < totalPages - 3;
+
+                    if (!show) return null;
+
+                    return (
+                      <span key={pageNum} style={{ display: 'contents' }}>
+                        {showEllipsisBefore && <span className="bl-pg-ellipsis" aria-hidden="true">···</span>}
+                        <button
+                          className={`bl-pg-num${page === pageNum ? ' active' : ''}`}
+                          onClick={() => setPage(pageNum)}
+                          aria-label={`Go to page ${pageNum}`}
+                          aria-current={page === pageNum ? 'page' : undefined}
+                        >
+                          {pageNum}
+                        </button>
+                        {showEllipsisAfter && <span className="bl-pg-ellipsis" aria-hidden="true">···</span>}
+                      </span>
+                    );
+                  })}
+
+                  <button
+                    className="bl-pg-btn"
+                    onClick={() => setPage(Math.min(totalPages, page + 1))}
+                    disabled={page === totalPages}
+                    aria-label="Next page"
+                  >
+                    Next →
+                  </button>
+                </nav>
+              )}
+            </>
+          ) : (
+            /* Empty state */
+            <div className="bl-empty">
+              <div className="bl-empty-icon">✦</div>
+              <div className="bl-empty-title">No articles found</div>
+              <p className="bl-empty-sub">Try adjusting your search or category filter</p>
+              <button
+                className="bl-clear-btn"
+                onClick={() => { setSearch(''); setCategory(''); setPage(1); }}
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
         </div>
-      )}
+
+        {/* ── CTA STRIP ── */}
+        {!loading && blogs.length > 0 && (
+          <div
+            ref={ctaRef}
+            className="bl-cta"
+            style={{ transform: `translateY(${offsetY * 0.05}px)` }}
+          >
+            <div className="bl-cta-overlay" />
+            <div className="bl-cta-content">
+              <span className="bl-cta-badge">
+                <FaCheckCircle size={14} />
+                Get Started
+              </span>
+              <h2 className="bl-cta-title">
+                Ready to Transform Your <em>Business?</em>
+              </h2>
+              <p className="bl-cta-sub">
+                Let our expert team help you implement these strategies and grow your business.
+              </p>
+              <a href="/contact-us" className="bl-cta-btn">
+                Contact Us Today
+                <FaArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
