@@ -2,7 +2,7 @@
 
 /**
  * Testimonials Page — Professional Redesign
- * Features: Hero section, client logos, testimonials, "Get in Touch" modal (Formik + Yup)
+ * Features: Hero section, client logos, testimonials, video testimonial carousel (YouTube embeds, click-to-play), "Get in Touch" modal (Formik + Yup)
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -23,6 +23,7 @@ import {
   FaRegBuilding,
   FaTimes,
   FaChevronDown,
+  FaPlay,
 } from 'react-icons/fa';
 
 //our client
@@ -165,38 +166,96 @@ const clientsData = {
   ]
 };
 
+// ─── TEXT TESTIMONIALS (updated content) ────────────────────────────────────
 const testimonials = [
   {
-    text: "These days social media is the most sought after branding & communication medium and we could have no better partner than Mind Frame India for providing us with all the necessary assistance in making our presence felt on the social media platforms. I am particularly impressed with their creativity and agility to engage with our social media followers.",
-    author: 'Officer – Marketing',
-    company: 'Lilavati Hospital And Research Centre',
+    text: "One thing I wanted to say about Mindframe Global is that they make a big difference in our annual banquet that we have hosted for the last 16 years. They absolutely did a wonderful job. They made everybody in the room happy and appreciated all of the professional jobs that they had accomplished for the Arizona Muslim Police Advisory Board. We are absolutely floored with the professionalism and the design that they come up with. Thank you, Mindframe Global. We appreciate your work.",
+    author: 'Mohamed EL-Sharkawy',
+    company: 'AZMPAB',
     rating: 5,
   },
   {
-    text: "Mind Frame India has been an exceptional partner in our branding journey. Their team's deep understanding of digital marketing combined with their creative prowess has helped us build a strong online presence. The results have been outstanding and we couldn't be more pleased with their work.",
-    author: 'Director – Brand Strategy',
-    company: 'Leadership Mavericks',
+    text: "Our Company is glad to be associated with Mind Frame India. Extremely efficient and hard working team very well led by their Super efficient, energetic and brilliant director Shahnawaz. They understand the world of marketing in its true sense. Their ability to meet the timelines at short notice without compromising on quality, is commendable. We look forward to a mutually beneficial business association with them even in near future and wish them success.",
+    author: 'Dr.Aneesah Nadir',
+    company: 'Head of I.S.S.A',
     rating: 5,
   },
-  {
-    text: "Working with Mind Frame India has been a transformative experience for our brand. Their strategic approach to creative communication and their ability to understand our target audience has helped us grow significantly. We highly recommend their services.",
-    author: 'Head – Marketing & Communications',
-    company: 'InFocus',
-    rating: 5,
-  },
-  {
-    text: "The team at Mind Frame India brings unmatched creativity and professionalism to every project. From concept to execution, they have consistently delivered beyond our expectations. Their commitment to quality makes them a true partner in our success.",
-    author: 'General Manager',
-    company: 'Supreme Furniture',
-    rating: 5,
-  },
-  {
-    text: "Mind Frame has been instrumental in transforming our digital presence. Their holistic approach combining creativity with data-driven strategies has yielded remarkable results for our wellness brand. We are proud to have them as our marketing partners.",
-    author: 'Founder & Director',
-    company: 'Pratimoksha Yoga Center',
-    rating: 5,
-  },
+  // {
+  //   text: "These days social media is the most sought after branding & communication medium and we could have no better partner than Mind Frame India for providing us with all the necessary assistance in making our presence felt on the social media platforms. I am particularly impressed with their creativity and agility to engage with our social media followers. Their openness to input is a positive trait that makes us comfortable working with them. Simply want to say that you guys are doing a great job and keep up the good work.",
+  //   author: 'Officer – Marketing',
+  //   company: 'Lilavati Hospital and Research Centre',
+  //   rating: 5,
+  // },
+  // {
+  //   text: "We engaged Mind Frame as our back office support and IT hosting partner. The staff right from the CEO up to the junior most level person takes immense interest in all aspects of every project and are always available when needed. They offer very cost effective solutions.",
+  //   author: 'National Board Member',
+  //   company: 'USIPI',
+  //   rating: 5,
+  // },
+  // {
+  //   text: "\"Mind Frame\"; the name truly reflects the way a brief is approached by this dedicated and reliant team, I was surprised with the turn around time and the precision with which the concepts were laid out before us, I would recommend this creative set of individuals to anybody looking for an out of box 360 approach.",
+  //   author: 'Branding & Marketing Head',
+  //   company: 'Infocus & Sharp India',
+  //   rating: 5,
+  // },
 ];
+
+// ─── VIDEO TESTIMONIALS DATA ────────────────────────────────────────────────
+// `videoUrl` accepts any normal YouTube link — full watch link, share link,
+// shorts link, or youtu.be link. It's auto-converted into an embeddable URL below.
+const videoTestimonials = [
+  {
+    videoUrl: 'https://youtube.com/shorts/4m5r0SQyE7s?si=WNo11qrezJncCx4A',
+    author: 'Mohamed EL-Sharkawy',
+    company: 'AZMPAB',
+    text: "They made everybody in the room happy and appreciated all of the professional jobs that they had accomplished for the Arizona Muslim Police Advisory Board.",
+    rating: 5,
+  },
+  {
+    videoUrl: 'https://youtube.com/shorts/Z1pH_0_5_Ik?si=3QvkbF7s_UvTxork',
+    author: 'Dr.Aneesah Nadir',
+    company: 'Head of I.S.S.A',
+    text: "Extremely efficient and hard working team, very well led by their super efficient, energetic and brilliant director Shahnawaz.",
+    rating: 5,
+  },
+  // {
+  //   videoUrl: 'https://youtube.com/shorts/MV5HVnpf0jw?si=a2But55QD1Ogo7NO',
+  //   author: 'Officer – Marketing',
+  //   company: 'Lilavati Hospital and Research Centre',
+  //   text: "We could have no better partner than Mind Frame India for making our presence felt on social media platforms.",
+  //   rating: 5,
+  // },
+  // {
+  //   videoUrl: 'https://youtube.com/shorts/Z1pH_0_5_Ik?si=3QvkbF7s_UvTxork',
+  //   author: 'National Board Member',
+  //   company: 'USIPI',
+  //   text: "The staff right from the CEO up to the junior most level takes immense interest in all aspects of every project.",
+  //   rating: 5,
+  // },
+  // {
+  //   videoUrl: 'https://youtube.com/shorts/Z1pH_0_5_Ik?si=3QvkbF7s_UvTxork',
+  //   author: 'Branding & Marketing Head',
+  //   company: 'Infocus & Sharp India',
+  //   text: "I would recommend this creative set of individuals to anybody looking for an out of box 360 approach.",
+  //   rating: 5,
+  // },
+];
+
+// Extracts the 11-char YouTube video ID from watch / share / shorts / youtu.be links
+function getYouTubeId(url) {
+  if (!url) return null;
+  const patterns = [
+    /(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/,
+    /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+    /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+    /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
 
 // ─── VALIDATION SCHEMA ─────────────────────────────────────────────────────
 const ContactSchema = Yup.object().shape({
@@ -590,6 +649,251 @@ function ClientLogoCard({ client, isMobile }) {
   );
 }
 
+// ─── VIDEO TESTIMONIAL CAROUSEL ─────────────────────────────────────────────
+function VideoTestimonialCarousel({ isMobile }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const current = videoTestimonials[activeIndex];
+  const videoId = getYouTubeId(current.videoUrl);
+  const thumbnailSrc = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null;
+  const embedSrc = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` : null;
+
+  const goTo = (idx) => {
+    const nextIndex = (idx + videoTestimonials.length) % videoTestimonials.length;
+    setActiveIndex(nextIndex);
+    setIsPlaying(false);
+  };
+
+  const renderStars = (rating) =>
+    Array.from({ length: 5 }, (_, i) => (
+      <FaStar key={i} size={14} color={i < rating ? gold : '#e0e0e0'} style={{ marginRight: 3 }} />
+    ));
+
+  return (
+    <div style={{
+      padding: isMobile ? '50px 20px' : '80px 48px',
+      position: 'relative',
+      overflow: 'hidden',
+      background: 'linear-gradient(135deg, #f5f2ed 0%, #faf8f5 100%)',
+    }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <h2 style={{
+            fontSize: isMobile ? 28 : 38,
+            fontWeight: 700,
+            fontFamily: "'Cormorant Garamond', serif",
+            color: '#1a1a1a',
+            margin: '0 0 8px',
+          }}>
+            Hear It From <span style={{ color: gold }}>Our Clients</span>
+          </h2>
+          <div style={{ width: 50, height: 2, background: gold, margin: '0 auto' }} />
+        </div>
+
+        {/* Video + Review side by side */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1.15fr 1fr',
+          background: '#fff',
+          borderRadius: 18,
+          overflow: 'hidden',
+          border: '1px solid rgba(0,0,0,0.06)',
+          boxShadow: '0 16px 50px rgba(0,0,0,0.08)',
+        }}>
+          {/* Video side */}
+          <div style={{
+            position: 'relative',
+            aspectRatio: isMobile ? '16/10' : '4/3',
+            background: '#0a0a0a',
+          }}>
+            {isPlaying && embedSrc ? (
+              <iframe
+                key={embedSrc}
+                src={embedSrc}
+                title={`${current.company} video testimonial`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+              />
+            ) : thumbnailSrc ? (
+              <button
+                onClick={() => setIsPlaying(true)}
+                aria-label={`Play testimonial video from ${current.company}`}
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  display: 'block',
+                }}
+              >
+                <img
+                  src={thumbnailSrc}
+                  alt={`${current.company} testimonial thumbnail`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 100%)' }} />
+
+                {/* Gold corner frame accent */}
+                <div style={{ position: 'absolute', top: 18, left: 18, width: 32, height: 32, borderTop: `2px solid ${gold}`, borderLeft: `2px solid ${gold}`, opacity: 0.85 }} />
+                <div style={{ position: 'absolute', bottom: 18, right: 18, width: 32, height: 32, borderBottom: `2px solid ${gold}`, borderRight: `2px solid ${gold}`, opacity: 0.85 }} />
+
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: isMobile ? 60 : 76,
+                  height: isMobile ? 60 : 76,
+                  borderRadius: '50%',
+                  background: gold,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 10px 34px rgba(201,168,76,0.55)',
+                  transition: 'transform 0.25s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.08)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)'; }}
+                >
+                  <FaPlay size={isMobile ? 18 : 24} color="#fff" style={{ marginLeft: 4 }} />
+                </div>
+
+                {/* Company name chip on the thumbnail */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: 18,
+                  left: 18,
+                  right: 70,
+                  textAlign: 'left',
+                }}>
+                  <div style={{ fontSize: isMobile ? 13 : 15, fontWeight: 700, color: '#fff', fontFamily: "'Cormorant Garamond', serif" }}>
+                    {current.company}
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <div style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'rgba(255,255,255,0.4)',
+                fontSize: 13,
+                textAlign: 'center',
+                padding: 24,
+              }}>
+                Invalid or missing video URL for {current.company}
+              </div>
+            )}
+          </div>
+
+          {/* Review side */}
+          <div style={{
+            padding: isMobile ? '28px 22px' : '48px 44px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            background: '#fff',
+          }}>
+            <FaQuoteLeft size={26} color={gold} style={{ opacity: 0.35, marginBottom: 16 }} />
+
+            <div style={{ display: 'flex', marginBottom: 16 }}>
+              {renderStars(current.rating)}
+            </div>
+
+            <p style={{
+              fontSize: isMobile ? 15 : 17,
+              color: '#3a3a3a',
+              lineHeight: 1.8,
+              fontStyle: 'italic',
+              margin: '0 0 24px',
+            }}>
+              "{current.text}"
+            </p>
+
+            <div style={{ marginBottom: 28, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+              <div style={{ fontSize: isMobile ? 15 : 17, fontWeight: 700, color: '#1a1a1a', fontFamily: "'Cormorant Garamond', serif" }}>
+                {current.author}
+              </div>
+              <div style={{ fontSize: 13, color: gold, fontWeight: 600, marginTop: 2 }}>
+                {current.company}
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <button
+                onClick={() => goTo(activeIndex - 1)}
+                aria-label="Previous testimonial"
+                style={{
+                  width: 40, height: 40, borderRadius: '50%',
+                  border: '1.5px solid rgba(0,0,0,0.15)',
+                  background: 'transparent', color: '#1a1a1a',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.background = gold; e.currentTarget.style.color = '#fff'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; }}
+              >
+                <FaArrowLeft size={14} />
+              </button>
+
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                {videoTestimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    style={{
+                      width: i === activeIndex ? 22 : 7,
+                      height: 7,
+                      borderRadius: 4,
+                      background: i === activeIndex ? gold : 'rgba(0,0,0,0.15)',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => goTo(activeIndex + 1)}
+                aria-label="Next testimonial"
+                style={{
+                  width: 40, height: 40, borderRadius: '50%',
+                  border: '1.5px solid rgba(0,0,0,0.15)',
+                  background: 'transparent', color: '#1a1a1a',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.background = gold; e.currentTarget.style.color = '#fff'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; }}
+              >
+                <FaArrowRight size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -844,7 +1148,9 @@ const Testimonials = () => {
 
 
 
-      
+        {/* ============== VIDEO TESTIMONIALS CAROUSEL ============== */}
+        <VideoTestimonialCarousel isMobile={isMobile} />
+
         {/* ============== CTA SECTION ============== */}
         <div style={{
           padding: isMobile ? '50px 20px' : '70px 48px',
