@@ -2,7 +2,7 @@
 
 /**
  * Testimonials Page — Professional Redesign
- * Features: Hero section, client logos, testimonials, video testimonial carousel (YouTube embeds, click-to-play), "Get in Touch" modal (Formik + Yup)
+ * Features: Hero section, client logos, video testimonials carousel with reviews side by side, "Get in Touch" modal
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -16,14 +16,14 @@ import {
   FaQuoteLeft,
   FaArrowLeft,
   FaArrowRight,
-  FaUsers,
-  FaBuilding,
   FaGlobe,
-  FaCheckCircle,
   FaRegBuilding,
   FaTimes,
   FaChevronDown,
   FaPlay,
+  FaCheckCircle,
+  FaVideo,
+  FaComment,
 } from 'react-icons/fa';
 
 //our client
@@ -41,13 +41,13 @@ const client11 = '/assets/client-logo/client11.png';
 const client12 = '/assets/client-logo/client12.png';
 const client13 = '/assets/client-logo/client13.png';
 const client14 = '/assets/client-logo/client14.png';
-const client15= '/assets/client-logo/client15.png';
+const client15 = '/assets/client-logo/client15.png';
 const client16 = '/assets/client-logo/client16.png';
-const client17= '/assets/client-logo/client17.png';
-const client18= '/assets/client-logo/client18.png';
-const client19= '/assets/client-logo/client19.png';
+const client17 = '/assets/client-logo/client17.png';
+const client18 = '/assets/client-logo/client18.png';
+const client19 = '/assets/client-logo/client19.png';
 const client20 = '/assets/client-logo/client20.png';
-const client21= '/assets/client-logo/client21.png';
+const client21 = '/assets/client-logo/client21.png';
 const client22 = '/assets/client-logo/client22.png';
 const client23 = '/assets/client-logo/client23.png';
 const client24 = '/assets/client-logo/client24.png';
@@ -63,7 +63,6 @@ const non2 = '/assets/client-logo/non2.png';
 const non3 = '/assets/client-logo/non3.png';
 const non4 = '/assets/client-logo/non4.png';
 
-
 // More brand 
 const more1 = '/assets/client-logo/more1.png';
 const more2 = '/assets/client-logo/more2.png';
@@ -72,13 +71,12 @@ const more5 = '/assets/client-logo/more5.png';
 const more6 = '/assets/client-logo/more6.png';
 const more7 = '/assets/client-logo/more7.png';
 
-
 const gold = '#c9a84c';
 const goldDark = '#b38f3d';
+const goldLight = '#f5f0e8';
 const goldLikeBorder = '#c3a06f';
 
-
-// USA Flag SVG Component (matches the Contact page flag)
+// USA Flag SVG Component
 const USAFlag = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -87,48 +85,36 @@ const USAFlag = ({ size = 24 }) => (
     height={size * (2 / 3)}
     style={{ borderRadius: 2, flexShrink: 0, display: 'block' }}
   >
-    {/* Background - Stripes */}
     <rect width="60" height="40" fill="#B22234" />
-
-    {/* White stripes */}
     <rect y="4" width="60" height="4" fill="#FFFFFF" />
     <rect y="12" width="60" height="4" fill="#FFFFFF" />
     <rect y="20" width="60" height="4" fill="#FFFFFF" />
     <rect y="28" width="60" height="4" fill="#FFFFFF" />
     <rect y="36" width="60" height="4" fill="#FFFFFF" />
-
-    {/* Blue Canton */}
     <rect width="26" height="20" fill="#3C3B6E" />
-
-    {/* Stars - rows */}
     <circle cx="3" cy="2" r="1.2" fill="#FFFFFF" />
     <circle cx="8" cy="2" r="1.2" fill="#FFFFFF" />
     <circle cx="13" cy="2" r="1.2" fill="#FFFFFF" />
     <circle cx="18" cy="2" r="1.2" fill="#FFFFFF" />
     <circle cx="23" cy="2" r="1.2" fill="#FFFFFF" />
-
     <circle cx="5.5" cy="5.5" r="1.2" fill="#FFFFFF" />
     <circle cx="10.5" cy="5.5" r="1.2" fill="#FFFFFF" />
     <circle cx="15.5" cy="5.5" r="1.2" fill="#FFFFFF" />
     <circle cx="20.5" cy="5.5" r="1.2" fill="#FFFFFF" />
-
     <circle cx="3" cy="9" r="1.2" fill="#FFFFFF" />
     <circle cx="8" cy="9" r="1.2" fill="#FFFFFF" />
     <circle cx="13" cy="9" r="1.2" fill="#FFFFFF" />
     <circle cx="18" cy="9" r="1.2" fill="#FFFFFF" />
     <circle cx="23" cy="9" r="1.2" fill="#FFFFFF" />
-
     <circle cx="5.5" cy="12.5" r="1.2" fill="#FFFFFF" />
     <circle cx="10.5" cy="12.5" r="1.2" fill="#FFFFFF" />
     <circle cx="15.5" cy="12.5" r="1.2" fill="#FFFFFF" />
     <circle cx="20.5" cy="12.5" r="1.2" fill="#FFFFFF" />
-
     <circle cx="3" cy="16" r="1.2" fill="#FFFFFF" />
     <circle cx="8" cy="16" r="1.2" fill="#FFFFFF" />
     <circle cx="13" cy="16" r="1.2" fill="#FFFFFF" />
     <circle cx="18" cy="16" r="1.2" fill="#FFFFFF" />
     <circle cx="23" cy="16" r="1.2" fill="#FFFFFF" />
-
     <circle cx="5.5" cy="19.5" r="1.2" fill="#FFFFFF" />
     <circle cx="10.5" cy="19.5" r="1.2" fill="#FFFFFF" />
     <circle cx="15.5" cy="19.5" r="1.2" fill="#FFFFFF" />
@@ -136,7 +122,7 @@ const USAFlag = ({ size = 24 }) => (
   </svg>
 );
 
-// Logo data with imported images
+// Logo data
 const logos = [
   { name: 'New India Assurance', image: client1 },
   { name: 'InFocus', image: client2 },
@@ -148,7 +134,7 @@ const logos = [
   { name: 'Additional Client', image: client8 },
 ];
 
-// Non-Profit and More Brands - images only (no text)
+// Non-Profit and More Brands
 const clientsData = {
   nonProfit: [
     { image: non1 },
@@ -166,7 +152,7 @@ const clientsData = {
   ]
 };
 
-// ─── TEXT TESTIMONIALS (updated content) ────────────────────────────────────
+// ─── TEXT TESTIMONIALS ──────────────────────────────────────────────────────
 const testimonials = [
   {
     text: "One thing I wanted to say about Mindframe Global is that they make a big difference in our annual banquet that we have hosted for the last 16 years. They absolutely did a wonderful job. They made everybody in the room happy and appreciated all of the professional jobs that they had accomplished for the Arizona Muslim Police Advisory Board. We are absolutely floored with the professionalism and the design that they come up with. Thank you, Mindframe Global. We appreciate your work.",
@@ -176,72 +162,32 @@ const testimonials = [
   },
   {
     text: "Our Company is glad to be associated with Mind Frame India. Extremely efficient and hard working team very well led by their Super efficient, energetic and brilliant director Shahnawaz. They understand the world of marketing in its true sense. Their ability to meet the timelines at short notice without compromising on quality, is commendable. We look forward to a mutually beneficial business association with them even in near future and wish them success.",
-    author: 'Dr.Aneesah Nadir',
+    author: 'Dr. Aneesah Nadir',
     company: 'Head of I.S.S.A',
     rating: 5,
   },
-  // {
-  //   text: "These days social media is the most sought after branding & communication medium and we could have no better partner than Mind Frame India for providing us with all the necessary assistance in making our presence felt on the social media platforms. I am particularly impressed with their creativity and agility to engage with our social media followers. Their openness to input is a positive trait that makes us comfortable working with them. Simply want to say that you guys are doing a great job and keep up the good work.",
-  //   author: 'Officer – Marketing',
-  //   company: 'Lilavati Hospital and Research Centre',
-  //   rating: 5,
-  // },
-  // {
-  //   text: "We engaged Mind Frame as our back office support and IT hosting partner. The staff right from the CEO up to the junior most level person takes immense interest in all aspects of every project and are always available when needed. They offer very cost effective solutions.",
-  //   author: 'National Board Member',
-  //   company: 'USIPI',
-  //   rating: 5,
-  // },
-  // {
-  //   text: "\"Mind Frame\"; the name truly reflects the way a brief is approached by this dedicated and reliant team, I was surprised with the turn around time and the precision with which the concepts were laid out before us, I would recommend this creative set of individuals to anybody looking for an out of box 360 approach.",
-  //   author: 'Branding & Marketing Head',
-  //   company: 'Infocus & Sharp India',
-  //   rating: 5,
-  // },
 ];
 
-// ─── VIDEO TESTIMONIALS DATA ────────────────────────────────────────────────
-// `videoUrl` accepts any normal YouTube link — full watch link, share link,
-// shorts link, or youtu.be link. It's auto-converted into an embeddable URL below.
+// ─── VIDEO TESTIMONIALS DATA ──────────────────────────────────────────────
 const videoTestimonials = [
   {
     videoUrl: 'https://youtube.com/shorts/4m5r0SQyE7s?si=WNo11qrezJncCx4A',
     author: 'Mohamed EL-Sharkawy',
     company: 'AZMPAB',
+    logo: non3,
     text: "They made everybody in the room happy and appreciated all of the professional jobs that they had accomplished for the Arizona Muslim Police Advisory Board.",
     rating: 5,
   },
   {
     videoUrl: 'https://youtube.com/shorts/Z1pH_0_5_Ik?si=3QvkbF7s_UvTxork',
-    author: 'Dr.Aneesah Nadir',
+    author: 'Dr. Aneesah Nadir',
     company: 'Head of I.S.S.A',
+    logo: non3,
     text: "Extremely efficient and hard working team, very well led by their super efficient, energetic and brilliant director Shahnawaz.",
     rating: 5,
   },
-  // {
-  //   videoUrl: 'https://youtube.com/shorts/MV5HVnpf0jw?si=a2But55QD1Ogo7NO',
-  //   author: 'Officer – Marketing',
-  //   company: 'Lilavati Hospital and Research Centre',
-  //   text: "We could have no better partner than Mind Frame India for making our presence felt on social media platforms.",
-  //   rating: 5,
-  // },
-  // {
-  //   videoUrl: 'https://youtube.com/shorts/Z1pH_0_5_Ik?si=3QvkbF7s_UvTxork',
-  //   author: 'National Board Member',
-  //   company: 'USIPI',
-  //   text: "The staff right from the CEO up to the junior most level takes immense interest in all aspects of every project.",
-  //   rating: 5,
-  // },
-  // {
-  //   videoUrl: 'https://youtube.com/shorts/Z1pH_0_5_Ik?si=3QvkbF7s_UvTxork',
-  //   author: 'Branding & Marketing Head',
-  //   company: 'Infocus & Sharp India',
-  //   text: "I would recommend this creative set of individuals to anybody looking for an out of box 360 approach.",
-  //   rating: 5,
-  // },
 ];
 
-// Extracts the 11-char YouTube video ID from watch / share / shorts / youtu.be links
 function getYouTubeId(url) {
   if (!url) return null;
   const patterns = [
@@ -297,7 +243,6 @@ const budgetOptions = [
   '₹5,00,000+',
 ];
 
-// ─── FIELD ERROR TEXT ───────────────────────────────────────────────────────
 const FieldError = ({ name }) => (
   <ErrorMessage name={name}>
     {(msg) => (
@@ -382,7 +327,6 @@ function ContactModal({ isOpen, onClose }) {
         boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
         padding: isMobile ? '32px 22px' : '40px 48px',
       }}>
-        {/* Close button */}
         <button
           onClick={onClose}
           aria-label="Close"
@@ -406,7 +350,6 @@ function ContactModal({ isOpen, onClose }) {
           <FaTimes />
         </button>
 
-        {/* Heading */}
         <h2 style={{
           textAlign: 'center',
           fontFamily: "'Cormorant Garamond', serif",
@@ -444,19 +387,16 @@ function ContactModal({ isOpen, onClose }) {
                 columnGap: 32,
                 rowGap: 22,
               }}>
-                {/* Name */}
                 <div>
                   <Field name="name" type="text" placeholder="Name" style={inputStyle} />
                   <FieldError name="name" />
                 </div>
 
-                {/* Company */}
                 <div>
                   <Field name="company" type="text" placeholder="Company/Organization" style={inputStyle} />
                   <FieldError name="company" />
                 </div>
 
-                {/* Contact Number */}
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid #ddd' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: '0 0 auto', padding: '8px 2px' }}>
@@ -473,13 +413,11 @@ function ContactModal({ isOpen, onClose }) {
                   <FieldError name="contactNumber" />
                 </div>
 
-                {/* Email */}
                 <div>
                   <Field name="email" type="email" placeholder="Email" style={inputStyle} />
                   <FieldError name="email" />
                 </div>
 
-                {/* Creative Solution */}
                 <div>
                   <div style={{ position: 'relative' }}>
                     <Field as="select" name="creativeSolution" style={{
@@ -496,7 +434,6 @@ function ContactModal({ isOpen, onClose }) {
                   <FieldError name="creativeSolution" />
                 </div>
 
-                {/* Budget Range */}
                 <div>
                   <div style={{ position: 'relative' }}>
                     <Field as="select" name="budgetRange" style={selectStyle}>
@@ -510,7 +447,6 @@ function ContactModal({ isOpen, onClose }) {
                   <FieldError name="budgetRange" />
                 </div>
 
-                {/* Comments — full width */}
                 <div style={{ gridColumn: isMobile ? 'auto' : '1 / -1' }}>
                   <Field
                     as="textarea"
@@ -523,7 +459,6 @@ function ContactModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              {/* Not a robot */}
               <div style={{ marginTop: 28 }}>
                 <label style={{
                   display: 'flex',
@@ -556,7 +491,6 @@ function ContactModal({ isOpen, onClose }) {
                 <FieldError name="notRobot" />
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -586,7 +520,7 @@ function ContactModal({ isOpen, onClose }) {
   );
 }
 
-// Reusable client logo card — images only (no text)
+// ─── CLIENT LOGO CARD ──────────────────────────────────────────────────────
 function ClientLogoCard({ client, isMobile }) {
   return (
     <div
@@ -649,7 +583,8 @@ function ClientLogoCard({ client, isMobile }) {
   );
 }
 
-// ─── VIDEO TESTIMONIAL CAROUSEL ─────────────────────────────────────────────
+
+// ─── VIDEO TESTIMONIAL CAROUSEL ────────────────────────────────────────────
 function VideoTestimonialCarousel({ isMobile }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -672,7 +607,7 @@ function VideoTestimonialCarousel({ isMobile }) {
 
   return (
     <div style={{
-      padding: isMobile ? '50px 20px' : '80px 48px',
+      padding: isMobile ? '50px 20px' : '70px 48px',
       position: 'relative',
       overflow: 'hidden',
       background: 'linear-gradient(135deg, #f5f2ed 0%, #faf8f5 100%)',
@@ -680,7 +615,7 @@ function VideoTestimonialCarousel({ isMobile }) {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -694,20 +629,28 @@ function VideoTestimonialCarousel({ isMobile }) {
             color: '#1a1a1a',
             margin: '0 0 8px',
           }}>
-            Hear It From <span style={{ color: gold }}>Our Clients</span>
+            What Our<span style={{ color: gold }}> Client Say</span>
           </h2>
-          <div style={{ width: 50, height: 2, background: gold, margin: '0 auto' }} />
+          <div style={{ width: 50, height: 2, background: gold, margin: '0 auto 12px' }} />
+          <p style={{
+            fontSize: isMobile ? 13 : 15,
+            color: '#6b5f53',
+            maxWidth: 500,
+            margin: '0 auto',
+          }}>
+           
+          </p>
         </div>
 
         {/* Video + Review side by side */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '1.15fr 1fr',
+          gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1fr',
           background: '#fff',
-          borderRadius: 18,
+          borderRadius: 20,
           overflow: 'hidden',
-          border: '1px solid rgba(0,0,0,0.06)',
-          boxShadow: '0 16px 50px rgba(0,0,0,0.08)',
+          border: '1px solid rgba(201,168,76,0.08)',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
         }}>
           {/* Video side */}
           <div style={{
@@ -745,9 +688,8 @@ function VideoTestimonialCarousel({ isMobile }) {
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 100%)' }} />
 
-                {/* Gold corner frame accent */}
-                <div style={{ position: 'absolute', top: 18, left: 18, width: 32, height: 32, borderTop: `2px solid ${gold}`, borderLeft: `2px solid ${gold}`, opacity: 0.85 }} />
-                <div style={{ position: 'absolute', bottom: 18, right: 18, width: 32, height: 32, borderBottom: `2px solid ${gold}`, borderRight: `2px solid ${gold}`, opacity: 0.85 }} />
+                <div style={{ position: 'absolute', top: 18, left: 18, width: 28, height: 28, borderTop: `2px solid ${gold}`, borderLeft: `2px solid ${gold}`, opacity: 0.7 }} />
+                <div style={{ position: 'absolute', bottom: 18, right: 18, width: 28, height: 28, borderBottom: `2px solid ${gold}`, borderRight: `2px solid ${gold}`, opacity: 0.7 }} />
 
                 <div style={{
                   position: 'absolute',
@@ -761,7 +703,7 @@ function VideoTestimonialCarousel({ isMobile }) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 10px 34px rgba(201,168,76,0.55)',
+                  boxShadow: '0 10px 34px rgba(201,168,76,0.5)',
                   transition: 'transform 0.25s ease',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.08)'; }}
@@ -770,7 +712,6 @@ function VideoTestimonialCarousel({ isMobile }) {
                   <FaPlay size={isMobile ? 18 : 24} color="#fff" style={{ marginLeft: 4 }} />
                 </div>
 
-                {/* Company name chip on the thumbnail */}
                 <div style={{
                   position: 'absolute',
                   bottom: 18,
@@ -778,7 +719,16 @@ function VideoTestimonialCarousel({ isMobile }) {
                   right: 70,
                   textAlign: 'left',
                 }}>
-                  <div style={{ fontSize: isMobile ? 13 : 15, fontWeight: 700, color: '#fff', fontFamily: "'Cormorant Garamond', serif" }}>
+                  <div style={{ 
+                    fontSize: isMobile ? 12 : 14, 
+                    fontWeight: 600, 
+                    color: '#fff', 
+                    fontFamily: "'Cormorant Garamond', serif",
+                    background: 'rgba(0,0,0,0.4)',
+                    padding: '4px 12px',
+                    borderRadius: 4,
+                    display: 'inline-block',
+                  }}>
                     {current.company}
                   </div>
                 </div>
@@ -795,77 +745,105 @@ function VideoTestimonialCarousel({ isMobile }) {
                 textAlign: 'center',
                 padding: 24,
               }}>
-                Invalid or missing video URL for {current.company}
+                Invalid video URL
               </div>
             )}
           </div>
 
           {/* Review side */}
           <div style={{
-            padding: isMobile ? '28px 22px' : '48px 44px',
+            padding: isMobile ? '28px 22px' : '44px 40px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             background: '#fff',
           }}>
-            <FaQuoteLeft size={26} color={gold} style={{ opacity: 0.35, marginBottom: 16 }} />
+            {current.logo && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                marginBottom: 16,
+              }}>
+                <img
+                  src={current.logo}
+                  alt={`${current.company} logo`}
+                  style={{
+                    height: isMobile ? 35 : 85,
+                    width: 'auto',
+                    maxWidth: 160,
+                    objectFit: 'contain',
+                    opacity: 0.8,
+                    filter: 'grayscale(20%)',
+                  }}
+                />
+              </div>
+            )}
 
-            <div style={{ display: 'flex', marginBottom: 16 }}>
+            <FaQuoteLeft size={24} color={gold} style={{ opacity: 0.3, marginBottom: 14 }} />
+
+            <div style={{ display: 'flex', marginBottom: 14 }}>
               {renderStars(current.rating)}
             </div>
 
             <p style={{
-              fontSize: isMobile ? 15 : 17,
+              fontSize: isMobile ? 14 : 16,
               color: '#3a3a3a',
               lineHeight: 1.8,
               fontStyle: 'italic',
-              margin: '0 0 24px',
+              margin: '0 0 20px',
             }}>
               "{current.text}"
             </p>
 
-            <div style={{ marginBottom: 28, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-              <div style={{ fontSize: isMobile ? 15 : 17, fontWeight: 700, color: '#1a1a1a', fontFamily: "'Cormorant Garamond', serif" }}>
+            <div style={{ marginBottom: 24, paddingTop: 14, borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+              <div style={{ 
+                fontSize: isMobile ? 15 : 17, 
+                fontWeight: 700, 
+                color: '#1a1a1a', 
+                fontFamily: "'Cormorant Garamond', serif" 
+              }}>
                 {current.author}
               </div>
-              <div style={{ fontSize: 13, color: gold, fontWeight: 600, marginTop: 2 }}>
+              <div style={{ fontSize: 12, color: gold, fontWeight: 600, marginTop: 2 }}>
                 {current.company}
               </div>
             </div>
 
             {/* Navigation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <button
                 onClick={() => goTo(activeIndex - 1)}
                 aria-label="Previous testimonial"
                 style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  border: '1.5px solid rgba(0,0,0,0.15)',
+                  width: 38, height: 38, borderRadius: '50%',
+                  border: '1.5px solid #e0d8ce',
                   background: 'transparent', color: '#1a1a1a',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: 'pointer', transition: 'all 0.25s ease',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.background = gold; e.currentTarget.style.color = '#fff'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e0d8ce'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; }}
               >
-                <FaArrowLeft size={14} />
+                <FaArrowLeft size={13} />
               </button>
 
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: 6, flex: 1 }}>
                 {videoTestimonials.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => goTo(i)}
                     aria-label={`Go to testimonial ${i + 1}`}
                     style={{
-                      width: i === activeIndex ? 22 : 7,
-                      height: 7,
-                      borderRadius: 4,
-                      background: i === activeIndex ? gold : 'rgba(0,0,0,0.15)',
+                      flex: 1,
+                      height: 4,
+                      borderRadius: 2,
+                      background: i === activeIndex ? gold : 'rgba(0,0,0,0.1)',
                       border: 'none',
                       cursor: 'pointer',
                       padding: 0,
                       transition: 'all 0.3s ease',
+                      maxWidth: 60,
                     }}
                   />
                 ))}
@@ -875,16 +853,16 @@ function VideoTestimonialCarousel({ isMobile }) {
                 onClick={() => goTo(activeIndex + 1)}
                 aria-label="Next testimonial"
                 style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  border: '1.5px solid rgba(0,0,0,0.15)',
+                  width: 38, height: 38, borderRadius: '50%',
+                  border: '1.5px solid #e0d8ce',
                   background: 'transparent', color: '#1a1a1a',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: 'pointer', transition: 'all 0.25s ease',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.background = gold; e.currentTarget.style.color = '#fff'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e0d8ce'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1a1a1a'; }}
               >
-                <FaArrowRight size={14} />
+                <FaArrowRight size={13} />
               </button>
             </div>
           </div>
@@ -894,19 +872,15 @@ function VideoTestimonialCarousel({ isMobile }) {
   );
 }
 
+// ─── MAIN COMPONENT ─────────────────────────────────────────────────────────
 const Testimonials = () => {
-  const [current, setCurrent] = useState(0);
-  const [visible, setVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   // Logo carousel state
   const [logoStartIndex, setLogoStartIndex] = useState(0);
   const [visibleLogosCount, setVisibleLogosCount] = useState(5);
-  const logoCarouselRef = useRef(null);
 
-  // Get visible logos count based on screen size
   const getVisibleLogosCount = () => {
     if (typeof window === 'undefined') return 5;
     if (window.innerWidth < 640) return 2;
@@ -925,7 +899,7 @@ const Testimonials = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // AUTO-SLIDE LOGOS - Changes every 3 seconds
+  // AUTO-SLIDE LOGOS
   useEffect(() => {
     const interval = setInterval(() => {
       setLogoStartIndex((prev) => (prev + 1) % logos.length);
@@ -933,26 +907,6 @@ const Testimonials = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const goTo = useCallback((idx) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setVisible(false);
-    setTimeout(() => {
-      setCurrent((idx + testimonials.length) % testimonials.length);
-      setVisible(true);
-      setTimeout(() => setIsAnimating(false), 400);
-    }, 300);
-  }, [isAnimating]);
-
-  // AUTO-SLIDE TESTIMONIALS - Changes every 5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      goTo(current + 1);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [current, goTo]);
-
-  // Get visible logos for carousel
   const getVisibleLogos = () => {
     const result = [];
     for (let i = 0; i < visibleLogosCount; i++) {
@@ -960,18 +914,6 @@ const Testimonials = () => {
       result.push(logos[idx]);
     }
     return result;
-  };
-
-  // Render stars
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <FaStar
-        key={i}
-        size={16}
-        color={i < rating ? gold : '#ddd'}
-        style={{ marginRight: 4 }}
-      />
-    ));
   };
 
   return (
@@ -983,14 +925,34 @@ const Testimonials = () => {
         path={seoConfig.testimonial.path}
       />
 
-      <div style={{ fontFamily: "'DM Sans', sans-serif", color: '#1a1a1a', background: '#faf8f5' }}>
+      <style>{`
+        @keyframes fadeInScale {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .logo-item {
+          animation: fadeInScale 0.5s ease-out;
+        }
+      `}</style>
 
+      <div style={{ 
+        fontFamily: "'DM Sans', sans-serif", 
+        color: '#1a1a1a', 
+        background: '#faf8f5',
+        minHeight: '100vh',
+      }}>
+        
+     
 
-        {/* ============== OUR CLIENTS - NON-PROFIT & MORE BRANDS ============== */}
+        {/* ============== OUR CLIENTS SECTION ============== */}
         <div style={{
           padding: isMobile ? '50px 20px' : '70px 48px',
           background: '#fff',
-          borderBottom: '1px solid rgba(0,0,0,0.06)',
+          borderBottom: '1px solid rgba(201,168,76,0.08)',
         }}>
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
             {/* Section Header */}
@@ -1006,92 +968,86 @@ const Testimonials = () => {
               </h2>
               <div style={{ width: 50, height: 2, background: gold, margin: '0 auto' }} />
             </div>
-  {/* ============== PROFESSIONAL LOGO CAROUSEL ============== */}
-        <div style={{
-          padding: isMobile ? '40px 20px' : '60px 48px',
-          background: 'linear-gradient(135deg, #f5f2ed 0%, #faf8f5 100%)',
-          borderBottom: '1px solid rgba(0,0,0,0.06)',
-        }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-            
 
-            {/* Logo Carousel */}
+            {/* Professional Logo Carousel */}
             <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: isMobile ? 30 : 50,
-              transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              padding: isMobile ? '30px 0' : '40px 0',
             }}>
-              {getVisibleLogos().map((logo, idx) => (
-                <div
-                  key={`${logo.name}-${logoStartIndex}-${idx}`}
-                  style={{
-                    flex: '0 0 auto',
-                    width: isMobile ? 120 : 180,
-                    height: isMobile ? 80 : 120,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    opacity: 0.7,
-                    filter: 'grayscale(30%)',
-                    transition: 'all 0.4s ease',
-                    cursor: 'default',
-                    animation: 'fadeInScale 0.5s ease-out',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.filter = 'grayscale(0%)';
-                    e.currentTarget.style.transform = 'scale(1.08)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = '0.7';
-                    e.currentTarget.style.filter = 'grayscale(30%)';
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                >
-                  <img
-                    src={logo.image}
-                    alt={logo.name}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: isMobile ? 30 : 50,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              }}>
+                {getVisibleLogos().map((logo, idx) => (
+                  <div
+                    key={`${logo.name}-${logoStartIndex}-${idx}`}
+                    className="logo-item"
                     style={{
-                      maxWidth: '100%',
-                      maxHeight: '100%',
-                      objectFit: 'contain',
+                      flex: '0 0 auto',
+                      width: isMobile ? 120 : 180,
+                      height: isMobile ? 80 : 120,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      opacity: 0.7,
+                      filter: 'grayscale(30%)',
+                      transition: 'all 0.4s ease',
+                      cursor: 'default',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.filter = 'grayscale(0%)';
+                      e.currentTarget.style.transform = 'scale(1.08)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0.7';
+                      e.currentTarget.style.filter = 'grayscale(30%)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    <img
+                      src={logo.image}
+                      alt={logo.name}
+                      style={{
+                        maxWidth: '100%',
+                        maxHeight: '100%',
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Progress Dots */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 8,
+                marginTop: 32,
+              }}>
+                {logos.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setLogoStartIndex(i)}
+                    style={{
+                      width: i === logoStartIndex ? 24 : 6,
+                      height: 6,
+                      borderRadius: 3,
+                      background: i === logoStartIndex ? gold : '#ddd',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      transition: 'all 0.3s ease',
                     }}
                   />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-
-            {/* Progress Dots */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 8,
-              marginTop: 32,
-            }}>
-              {logos.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setLogoStartIndex(i)}
-                  style={{
-                    width: i === logoStartIndex ? 24 : 6,
-                    height: 6,
-                    borderRadius: 3,
-                    background: i === logoStartIndex ? gold : '#ddd',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    transition: 'all 0.3s ease',
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
 
             {/* Non-Profit Section */}
-            <div style={{ marginBottom: 48 , marginTop:48}}>
+            <div style={{ marginBottom: 48, marginTop: 30 }}>
               <h3 style={{
                 fontSize: isMobile ? 18 : 22,
                 fontWeight: 600,
@@ -1131,7 +1087,7 @@ const Testimonials = () => {
                 gap: 10,
               }}>
                 <FaGlobe size={20} color={gold} />
-                More Brands...
+                More Brands
               </h3>
               <div style={{
                 display: 'grid',
@@ -1145,8 +1101,6 @@ const Testimonials = () => {
             </div>
           </div>
         </div>
-
-
 
         {/* ============== VIDEO TESTIMONIALS CAROUSEL ============== */}
         <VideoTestimonialCarousel isMobile={isMobile} />
@@ -1188,10 +1142,10 @@ const Testimonials = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 10,
-                padding: '14px 36px',
+                padding: '16px 42px',
                 background: gold,
                 color: '#fff',
-                borderRadius: 8,
+                borderRadius: 50,
                 border: 'none',
                 fontWeight: 600,
                 fontSize: 14,
@@ -1217,19 +1171,6 @@ const Testimonials = () => {
         </div>
 
         <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-
-        <style>{`
-          @keyframes fadeInScale {
-            from {
-              opacity: 0;
-              transform: scale(0.9);
-            }
-            to {
-              opacity: 1;
-              transform: scale(1);
-            }
-          }
-        `}</style>
       </div>
     </>
   );
