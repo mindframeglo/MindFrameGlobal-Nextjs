@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import SEO from '@/components/SEO';
 import { seoConfig } from '@/config/seoConfig';
@@ -70,6 +70,13 @@ const projects = [
   },
 ];
 
+const pulseKeyframes = `
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+`;
+
 export default function OurWork() {
   const [filter, setFilter] = useState('all');
   const [hoveredId, setHoveredId] = useState(null);
@@ -80,6 +87,19 @@ export default function OurWork() {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    const styleTag = document.createElement('style');
+    styleTag.setAttribute('data-pulse-style', 'true');
+    styleTag.textContent = pulseKeyframes;
+    document.head.appendChild(styleTag);
+
+    return () => {
+      styleTag.remove();
+    };
   }, []);
 
   const filteredProjects = filter === 'all' 
@@ -638,13 +658,3 @@ const styles = {
     cursor: "pointer",
   },
 };
-
-// Add keyframes for pulse animation
-const styleTag = document.createElement('style');
-styleTag.textContent = `
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-`;
-document.head.appendChild(styleTag);
