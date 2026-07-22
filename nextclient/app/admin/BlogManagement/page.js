@@ -100,6 +100,14 @@ export default function BlogManagement() {
   const handleEditImageUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    const MAX_SIZE = 2 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      toast.error("Image size must be under 2MB");
+      e.target.value = "";
+      return;
+    }
+
     setUploadingImage(true);
     try {
       const formDataForUpload = new FormData();
@@ -363,7 +371,7 @@ export default function BlogManagement() {
                       marginTop: "5px",
                     }}
                   >
-                    Supported: JPEG, PNG, GIF, WebP (Max 20MB)
+                    Supported: JPEG, PNG, GIF, WebP (Max 2MB)
                   </p>
                   {uploadingImage && (
                     <div
