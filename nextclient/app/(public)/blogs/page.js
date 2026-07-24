@@ -188,28 +188,32 @@ export default function Blogs() {
             max-width: 1200px; margin: 0 auto;
           }
           .bl-search-row {
-            display: flex; gap: 12px; margin-bottom: 28px;
-            position: relative;
-          }
-          .bl-search-icon {
-            position: absolute;
-            left: 18px; top: 50%;
-            transform: translateY(-50%);
-            color: ${gold};
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-          }
-          .bl-search-input {
-            flex: 1; padding: 14px 18px 14px 46px;
-            border: 1.5px solid #e0d8ce; border-radius: 50px;
-            font-size: 13.5px; font-family: 'DM Sans', sans-serif;
-            color: #333; outline: none;
-            transition: border-color 0.25s, box-shadow 0.25s;
-            background: #faf8f5;
-            width: 100%;
-            min-width: 0;
-          }
+  display: flex; gap: 12px; margin-bottom: 28px;
+  /* position: relative; -- ab yahan se hata sakte ho, wrapper pe move ho gaya */
+}
+.bl-search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+.bl-search-icon {
+  position: absolute;
+  left: 18px; top: 50%;
+  transform: translateY(-50%);
+  color: ${gold};
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+.bl-search-input {
+  width: 100%;
+  padding: 14px 18px 14px 46px;
+  border: 1.5px solid #e0d8ce; border-radius: 50px;
+  font-size: 13.5px; font-family: 'DM Sans', sans-serif;
+  color: #333; outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  background: #faf8f5;
+}
           .bl-search-input:focus {
             border-color: ${gold};
             background: #fff;
@@ -582,23 +586,26 @@ export default function Blogs() {
         {/* ── SEARCH & FILTER ── */}
         <div className="bl-filter-wrap">
           <div className="bl-filter-inner">
-            <form onSubmit={handleSearch} className="bl-search-row">
-              <span className="bl-search-icon">
-                <FaSearch size={16} />
-              </span>
-              <input
-                type="text"
-                placeholder="Search blogs by title or content..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="bl-search-input"
-                aria-label="Search blogs"
-              />
-              <button type="submit" className="bl-search-btn">
-                <FaSearch size={14} />
-                Search
-              </button>
-            </form>
+            
+        <form onSubmit={handleSearch} className="bl-search-row">
+  <div className="bl-search-input-wrap">
+    <span className="bl-search-icon">
+      <FaSearch size={16} />
+    </span>
+    <input
+      type="text"
+      placeholder="Search blogs by title or content..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="bl-search-input"
+      aria-label="Search blogs"
+    />
+  </div>
+  <button type="submit" className="bl-search-btn">
+    <FaSearch size={14} />
+    Search
+  </button>
+</form>
 
             <div className="bl-filter-label">
               <FaTag size={16} />

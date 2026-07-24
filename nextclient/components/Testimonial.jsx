@@ -2,7 +2,8 @@
 
 /**
  * Testimonials Page — Professional Redesign
- * Features: Hero section, client logos, video testimonials carousel with reviews side by side, "Get in Touch" modal
+ * Features: Hero section, animated auto-sliding client/non-profit/more-brands logo carousels,
+ * video testimonials carousel with reviews side by side (fixed-size, animated on navigation), "Get in Touch" modal
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
@@ -63,7 +64,7 @@ const non2 = '/assets/client-logo/non2.png';
 const non3 = '/assets/client-logo/non3.png';
 const non4 = '/assets/client-logo/non4.png';
 
-// More brand 
+// More brand
 const more1 = '/assets/client-logo/more1.png';
 const more2 = '/assets/client-logo/more2.png';
 const more3 = '/assets/client-logo/more3.png';
@@ -137,19 +138,19 @@ const logos = [
 // Non-Profit and More Brands
 const clientsData = {
   nonProfit: [
-    { image: non1 },
-    { image: non2 },
-    { image: non3 },
-    { image: non4 },
+    { name: 'Non-Profit Partner 1', image: non1 },
+    { name: 'Non-Profit Partner 2', image: non2 },
+    { name: 'Non-Profit Partner 3', image: non3 },
+    { name: 'Non-Profit Partner 4', image: non4 },
   ],
   moreBrands: [
-    { image: more1 },
-    { image: more2 },
-    { image: more3 },
-    { image: more5 },
-    { image: more6 },
-    { image: more7 },
-  ]
+    { name: 'Brand Partner 1', image: more1 },
+    { name: 'Brand Partner 2', image: more2 },
+    { name: 'Brand Partner 3', image: more3 },
+    { name: 'Brand Partner 4', image: more5 },
+    { name: 'Brand Partner 5', image: more6 },
+    { name: 'Brand Partner 6', image: more7 },
+  ],
 };
 
 // ─── TEXT TESTIMONIALS ──────────────────────────────────────────────────────
@@ -187,6 +188,27 @@ const videoTestimonials = [
     rating: 5,
   },
 ];
+
+
+// Reusable eyebrow label
+function Eyebrow({ children, dark = false }) {
+  return (
+    <div style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 10,
+      fontSize: 11,
+      letterSpacing: 3,
+      textTransform: 'uppercase',
+      color: gold,
+      fontWeight: 600,
+      marginBottom: 12,
+    }}>
+      <span style={{ width: 24, height: 1, background: gold, opacity: dark ? 0.8 : 1 }} />
+      {children}
+    </div>
+  );
+}
 
 function getYouTubeId(url) {
   if (!url) return null;
@@ -520,74 +542,128 @@ function ContactModal({ isOpen, onClose }) {
   );
 }
 
-// ─── CLIENT LOGO CARD ──────────────────────────────────────────────────────
-function ClientLogoCard({ client, isMobile }) {
+// ─── AUTO-SLIDING LOGO CAROUSEL (single line, continuous auto-play) ────────
+// Reused for "Our Clients", "Non-Profit" and "More Brands" so all three
+// sections behave the same way: one line, sliding on their own.
+function LogoCarousel({ items, isMobile, intervalMs = 3000, itemWidth, itemHeight }) {
+  const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const getVisibleCount = useCallback(() => {
+    if (typeof window === 'undefined') return 4;
+    const w = window.innerWidth;
+    if (w < 640) return 2;
+    if (w < 768) return 3;
+    if (w < 1024) return 4;
+    return Math.min(5, items.length);
+  }, [items.length]);
+
+  useEffect(() => {
+    const handleResize = () => setVisibleCount(getVisibleCount());
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getVisibleCount]);
+
+  useEffect(() => {
+    if (items.length <= visibleCount) return; // nothing to slide
+    const id = setInterval(() => {
+      setStartIndex((prev) => (prev + 1) % items.length);
+    }, intervalMs);
+    return () => clearInterval(id);
+  }, [items.length, visibleCount, intervalMs]);
+
+  const visibleItems = [];
+  const count = Math.min(visibleCount, items.length);
+  for (let i = 0; i < count; i++) {
+    visibleItems.push(items[(startIndex + i) % items.length]);
+  }
+
+  const width = itemWidth ?? (isMobile ? 110 : 160);
+  const height = itemHeight ?? (isMobile ? 70 : 100);
+
   return (
-    <div
-      style={{
-        background: '#faf8f5',
-        borderRadius: 10,
-        padding: isMobile ? '24px 16px' : '32px 24px',
-        border: '1px solid #eee',
-        transition: 'all 0.3s ease',
-        textAlign: 'center',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: isMobile ? 80 : 120,
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = gold;
-        e.currentTarget.style.background = '#f5f2ed';
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 10px 28px rgba(201,168,76,0.15)';
-        const img = e.currentTarget.querySelector('img');
-        if (img) {
-          img.style.opacity = '1';
-          img.style.filter = 'grayscale(0%)';
-        }
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = '#eee';
-        e.currentTarget.style.background = '#faf8f5';
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = 'none';
-        const img = e.currentTarget.querySelector('img');
-        if (img) {
-          img.style.opacity = '0.75';
-          img.style.filter = 'grayscale(30%)';
-        }
-      }}
-    >
-      <div style={{
-        width: '100%',
-        height: isMobile ? 60 : 80,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        <img
-          src={client.image}
-          alt="Client logo"
-          style={{
-            maxWidth: '100%',
-            maxHeight: '100%',
-            objectFit: 'contain',
-            opacity: 0.75,
-            filter: 'grayscale(30%)',
-            transition: 'all 0.3s ease',
-          }}
-        />
+    <div>
+      {/* Fixed-height viewport so the row never reflows the page */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'nowrap',
+          overflow: 'hidden',
+          gap: isMobile ? 20 : 40,
+          height: height + (isMobile ? 16 : 24),
+          padding: isMobile ? '8px 0' : '12px 0',
+        }}
+      >
+        {visibleItems.map((item, idx) => (
+          <div
+            key={`${item.name}-${startIndex}-${idx}`}
+            className="logo-item"
+            style={{
+              flex: `0 0 ${width}px`,
+              width,
+              height,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: 0.7,
+              filter: 'grayscale(30%)',
+              transition: 'opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease',
+              cursor: 'default',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '1';
+              e.currentTarget.style.filter = 'grayscale(0%)';
+              e.currentTarget.style.transform = 'scale(1.08)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '0.7';
+              e.currentTarget.style.filter = 'grayscale(30%)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            <img
+              src={item.image}
+              alt={item.name || 'Logo'}
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+            />
+          </div>
+        ))}
       </div>
+
+      {/* Progress dots */}
+      {items.length > visibleCount && (
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 18 }}>
+          {items.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setStartIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              style={{
+                width: i === startIndex ? 20 : 6,
+                height: 6,
+                borderRadius: 3,
+                background: i === startIndex ? gold : '#ddd',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                transition: 'all 0.3s ease',
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
-
 
 // ─── VIDEO TESTIMONIAL CAROUSEL ────────────────────────────────────────────
 function VideoTestimonialCarousel({ isMobile }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
 
   const current = videoTestimonials[activeIndex];
   const videoId = getYouTubeId(current.videoUrl);
@@ -598,12 +674,17 @@ function VideoTestimonialCarousel({ isMobile }) {
     const nextIndex = (idx + videoTestimonials.length) % videoTestimonials.length;
     setActiveIndex(nextIndex);
     setIsPlaying(false);
+    setAnimKey((k) => k + 1); // retrigger enter animation every navigation
   };
 
   const renderStars = (rating) =>
     Array.from({ length: 5 }, (_, i) => (
       <FaStar key={i} size={14} color={i < rating ? gold : '#e0e0e0'} style={{ marginRight: 3 }} />
     ));
+
+  // Fixed container height so the card never resizes with content length
+  const CARD_HEIGHT = isMobile ? undefined : 460;
+  const VIDEO_HEIGHT = isMobile ? 220 : 460;
 
   return (
     <div style={{
@@ -622,6 +703,8 @@ function VideoTestimonialCarousel({ isMobile }) {
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
+                      <Eyebrow>Testimonial</Eyebrow>
+
           <h2 style={{
             fontSize: isMobile ? 28 : 38,
             fontWeight: 700,
@@ -632,17 +715,9 @@ function VideoTestimonialCarousel({ isMobile }) {
             What Our<span style={{ color: gold }}> Client Say</span>
           </h2>
           <div style={{ width: 50, height: 2, background: gold, margin: '0 auto 12px' }} />
-          <p style={{
-            fontSize: isMobile ? 13 : 15,
-            color: '#6b5f53',
-            maxWidth: 500,
-            margin: '0 auto',
-          }}>
-           
-          </p>
         </div>
 
-        {/* Video + Review side by side */}
+        {/* Video + Review side by side — fixed height on desktop, animated on navigation */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1fr',
@@ -651,167 +726,195 @@ function VideoTestimonialCarousel({ isMobile }) {
           overflow: 'hidden',
           border: '1px solid rgba(201,168,76,0.08)',
           boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
+          height: CARD_HEIGHT,
         }}>
           {/* Video side */}
           <div style={{
             position: 'relative',
-            aspectRatio: isMobile ? '16/10' : '4/3',
+            height: VIDEO_HEIGHT,
             background: '#0a0a0a',
+            overflow: 'hidden',
           }}>
-            {isPlaying && embedSrc ? (
-              <iframe
-                key={embedSrc}
-                src={embedSrc}
-                title={`${current.company} video testimonial`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-              />
-            ) : thumbnailSrc ? (
-              <button
-                onClick={() => setIsPlaying(true)}
-                aria-label={`Play testimonial video from ${current.company}`}
-                style={{
-                  position: 'relative',
+            <div
+              key={`video-${animKey}`}
+              style={{ width: '100%', height: '100%', animation: 'fadeInScale 0.45s ease-out' }}
+            >
+              {isPlaying && embedSrc ? (
+                <iframe
+                  key={embedSrc}
+                  src={embedSrc}
+                  title={`${current.company} video testimonial`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+                />
+              ) : thumbnailSrc ? (
+                <button
+                  onClick={() => setIsPlaying(true)}
+                  aria-label={`Play testimonial video from ${current.company}`}
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    display: 'block',
+                  }}
+                >
+                  <img
+                    src={thumbnailSrc}
+                    alt={`${current.company} testimonial thumbnail`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 100%)' }} />
+
+                  <div style={{ position: 'absolute', top: 18, left: 18, width: 28, height: 28, borderTop: `2px solid ${gold}`, borderLeft: `2px solid ${gold}`, opacity: 0.7 }} />
+                  <div style={{ position: 'absolute', bottom: 18, right: 18, width: 28, height: 28, borderBottom: `2px solid ${gold}`, borderRight: `2px solid ${gold}`, opacity: 0.7 }} />
+
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: isMobile ? 60 : 76,
+                    height: isMobile ? 60 : 76,
+                    borderRadius: '50%',
+                    background: gold,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 10px 34px rgba(201,168,76,0.5)',
+                    transition: 'transform 0.25s ease',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.08)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)'; }}
+                  >
+                    <FaPlay size={isMobile ? 18 : 24} color="#fff" style={{ marginLeft: 4 }} />
+                  </div>
+
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 18,
+                    left: 18,
+                    right: 70,
+                    textAlign: 'left',
+                  }}>
+                    <div style={{
+                      fontSize: isMobile ? 12 : 14,
+                      fontWeight: 600,
+                      color: '#fff',
+                      fontFamily: "'Cormorant Garamond', serif",
+                      background: 'rgba(0,0,0,0.4)',
+                      padding: '4px 12px',
+                      borderRadius: 4,
+                      display: 'inline-block',
+                    }}>
+                      {current.company}
+                    </div>
+                  </div>
+                </button>
+              ) : (
+                <div style={{
                   width: '100%',
                   height: '100%',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                  display: 'block',
-                }}
-              >
-                <img
-                  src={thumbnailSrc}
-                  alt={`${current.company} testimonial thumbnail`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 100%)' }} />
-
-                <div style={{ position: 'absolute', top: 18, left: 18, width: 28, height: 28, borderTop: `2px solid ${gold}`, borderLeft: `2px solid ${gold}`, opacity: 0.7 }} />
-                <div style={{ position: 'absolute', bottom: 18, right: 18, width: 28, height: 28, borderBottom: `2px solid ${gold}`, borderRight: `2px solid ${gold}`, opacity: 0.7 }} />
-
-                <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: isMobile ? 60 : 76,
-                  height: isMobile ? 60 : 76,
-                  borderRadius: '50%',
-                  background: gold,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 10px 34px rgba(201,168,76,0.5)',
-                  transition: 'transform 0.25s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.08)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)'; }}
-                >
-                  <FaPlay size={isMobile ? 18 : 24} color="#fff" style={{ marginLeft: 4 }} />
-                </div>
-
-                <div style={{
-                  position: 'absolute',
-                  bottom: 18,
-                  left: 18,
-                  right: 70,
-                  textAlign: 'left',
+                  color: 'rgba(255,255,255,0.4)',
+                  fontSize: 13,
+                  textAlign: 'center',
+                  padding: 24,
                 }}>
-                  <div style={{ 
-                    fontSize: isMobile ? 12 : 14, 
-                    fontWeight: 600, 
-                    color: '#fff', 
-                    fontFamily: "'Cormorant Garamond', serif",
-                    background: 'rgba(0,0,0,0.4)',
-                    padding: '4px 12px',
-                    borderRadius: 4,
-                    display: 'inline-block',
-                  }}>
-                    {current.company}
-                  </div>
+                  Invalid video URL
                 </div>
-              </button>
-            ) : (
-              <div style={{
-                width: '100%',
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'rgba(255,255,255,0.4)',
-                fontSize: 13,
-                textAlign: 'center',
-                padding: 24,
-              }}>
-                Invalid video URL
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
-          {/* Review side */}
+          {/* Review side — fixed height, content vertically centered, scrolls if it ever overflows */}
           <div style={{
-            padding: isMobile ? '28px 22px' : '44px 40px',
+            height: isMobile ? 'auto' : CARD_HEIGHT,
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
             background: '#fff',
+            overflow: 'hidden',
           }}>
-            {current.logo && (
-              <div style={{
+            <div
+              key={`review-${animKey}`}
+              style={{
+                flex: 1,
+                minHeight: 0,
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                marginBottom: 16,
-              }}>
-                <img
-                  src={current.logo}
-                  alt={`${current.company} logo`}
-                  style={{
-                    height: isMobile ? 35 : 85,
-                    width: 'auto',
-                    maxWidth: 160,
-                    objectFit: 'contain',
-                    opacity: 0.8,
-                    filter: 'grayscale(20%)',
-                  }}
-                />
+                flexDirection: 'column',
+                justifyContent: 'center',
+                padding: isMobile ? '28px 22px' : '40px 40px 28px',
+                overflowY: 'auto',
+                animation: 'slideUp 0.45s ease-out',
+              }}
+            >
+              {current.logo && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  marginBottom: 16,
+                  flexShrink: 0,
+                }}>
+                  <img
+                    src={current.logo}
+                    alt={`${current.company} logo`}
+                    style={{
+                      height: isMobile ? 35 : 60,
+                      width: 'auto',
+                      maxWidth: 160,
+                      objectFit: 'contain',
+                      opacity: 0.8,
+                      filter: 'grayscale(20%)',
+                    }}
+                  />
+                </div>
+              )}
+
+              <FaQuoteLeft size={22} color={gold} style={{ opacity: 0.3, marginBottom: 12, flexShrink: 0 }} />
+
+              <div style={{ display: 'flex', marginBottom: 12, flexShrink: 0 }}>
+                {renderStars(current.rating)}
               </div>
-            )}
 
-            <FaQuoteLeft size={24} color={gold} style={{ opacity: 0.3, marginBottom: 14 }} />
+              <p style={{
+                fontSize: isMobile ? 14 : 15.5,
+                color: '#3a3a3a',
+                lineHeight: 1.75,
+                fontStyle: 'italic',
+                margin: '0 0 18px',
+              }}>
+                "{current.text}"
+              </p>
 
-            <div style={{ display: 'flex', marginBottom: 14 }}>
-              {renderStars(current.rating)}
+              <div style={{ paddingTop: 12, borderTop: '1px solid rgba(0,0,0,0.06)', flexShrink: 0 }}>
+                <div style={{
+                  fontSize: isMobile ? 15 : 17,
+                  fontWeight: 700,
+                  color: '#1a1a1a',
+                  fontFamily: "'Cormorant Garamond', serif"
+                }}>
+                  {current.author}
+                </div>
+                <div style={{ fontSize: 12, color: gold, fontWeight: 600, marginTop: 2 }}>
+                  {current.company}
+                </div>
+              </div>
             </div>
 
-            <p style={{
-              fontSize: isMobile ? 14 : 16,
-              color: '#3a3a3a',
-              lineHeight: 1.8,
-              fontStyle: 'italic',
-              margin: '0 0 20px',
+            {/* Navigation — pinned outside the animated block so it stays put */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 14,
+              padding: isMobile ? '0 22px 24px' : '0 40px 28px',
+              flexShrink: 0,
             }}>
-              "{current.text}"
-            </p>
-
-            <div style={{ marginBottom: 24, paddingTop: 14, borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-              <div style={{ 
-                fontSize: isMobile ? 15 : 17, 
-                fontWeight: 700, 
-                color: '#1a1a1a', 
-                fontFamily: "'Cormorant Garamond', serif" 
-              }}>
-                {current.author}
-              </div>
-              <div style={{ fontSize: 12, color: gold, fontWeight: 600, marginTop: 2 }}>
-                {current.company}
-              </div>
-            </div>
-
-            {/* Navigation */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <button
                 onClick={() => goTo(activeIndex - 1)}
                 aria-label="Previous testimonial"
@@ -877,44 +980,12 @@ const Testimonials = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Logo carousel state
-  const [logoStartIndex, setLogoStartIndex] = useState(0);
-  const [visibleLogosCount, setVisibleLogosCount] = useState(5);
-
-  const getVisibleLogosCount = () => {
-    if (typeof window === 'undefined') return 5;
-    if (window.innerWidth < 640) return 2;
-    if (window.innerWidth < 768) return 3;
-    if (window.innerWidth < 1024) return 4;
-    return 5;
-  };
-
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      setVisibleLogosCount(getVisibleLogosCount());
-    };
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // AUTO-SLIDE LOGOS
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLogoStartIndex((prev) => (prev + 1) % logos.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getVisibleLogos = () => {
-    const result = [];
-    for (let i = 0; i < visibleLogosCount; i++) {
-      const idx = (logoStartIndex + i) % logos.length;
-      result.push(logos[idx]);
-    }
-    return result;
-  };
 
   return (
     <>
@@ -927,11 +998,11 @@ const Testimonials = () => {
 
       <style>{`
         @keyframes fadeInScale {
-          from { opacity: 0; transform: scale(0.9); }
+          from { opacity: 0; transform: scale(0.96); }
           to { opacity: 1; transform: scale(1); }
         }
         @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px); }
+          from { opacity: 0; transform: translateY(16px); }
           to { opacity: 1; transform: translateY(0); }
         }
         .logo-item {
@@ -939,14 +1010,12 @@ const Testimonials = () => {
         }
       `}</style>
 
-      <div style={{ 
-        fontFamily: "'DM Sans', sans-serif", 
-        color: '#1a1a1a', 
+      <div style={{
+        fontFamily: "'DM Sans', sans-serif",
+        color: '#1a1a1a',
         background: '#faf8f5',
         minHeight: '100vh',
       }}>
-        
-     
 
         {/* ============== OUR CLIENTS SECTION ============== */}
         <div style={{
@@ -970,89 +1039,17 @@ const Testimonials = () => {
             </div>
 
             {/* Professional Logo Carousel */}
-            <div style={{
-              padding: isMobile ? '30px 0' : '40px 0',
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: isMobile ? 30 : 50,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-              }}>
-                {getVisibleLogos().map((logo, idx) => (
-                  <div
-                    key={`${logo.name}-${logoStartIndex}-${idx}`}
-                    className="logo-item"
-                    style={{
-                      flex: '0 0 auto',
-                      width: isMobile ? 120 : 180,
-                      height: isMobile ? 80 : 120,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      opacity: 0.7,
-                      filter: 'grayscale(30%)',
-                      transition: 'all 0.4s ease',
-                      cursor: 'default',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                      e.currentTarget.style.filter = 'grayscale(0%)';
-                      e.currentTarget.style.transform = 'scale(1.08)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = '0.7';
-                      e.currentTarget.style.filter = 'grayscale(30%)';
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                  >
-                    <img
-                      src={logo.image}
-                      alt={logo.name}
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'contain',
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* Progress Dots */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 8,
-                marginTop: 32,
-              }}>
-                {logos.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setLogoStartIndex(i)}
-                    style={{
-                      width: i === logoStartIndex ? 24 : 6,
-                      height: 6,
-                      borderRadius: 3,
-                      background: i === logoStartIndex ? gold : '#ddd',
-                      border: 'none',
-                      cursor: 'pointer',
-                      padding: 0,
-                      transition: 'all 0.3s ease',
-                    }}
-                  />
-                ))}
-              </div>
+            <div style={{ padding: isMobile ? '20px 0 30px' : '20px 0 40px' }}>
+              <LogoCarousel items={logos} isMobile={isMobile} intervalMs={3000} />
             </div>
 
-            {/* Non-Profit Section */}
+            {/* Non-Profit Section — auto-sliding, single line */}
             <div style={{ marginBottom: 48, marginTop: 30 }}>
               <h3 style={{
                 fontSize: isMobile ? 18 : 22,
                 fontWeight: 600,
                 color: '#333',
-                marginBottom: 20,
+                marginBottom: 12,
                 fontFamily: "'Cormorant Garamond', serif",
                 letterSpacing: 0.5,
                 display: 'flex',
@@ -1062,24 +1059,22 @@ const Testimonials = () => {
                 <FaRegBuilding size={20} color={gold} />
                 Non-Profit
               </h3>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-                gap: isMobile ? 12 : 16,
-              }}>
-                {clientsData.nonProfit.map((client, idx) => (
-                  <ClientLogoCard key={idx} client={client} isMobile={isMobile} />
-                ))}
-              </div>
+              <LogoCarousel
+                items={clientsData.nonProfit}
+                isMobile={isMobile}
+                intervalMs={2600}
+                itemWidth={isMobile ? 120 : 170}
+                itemHeight={isMobile ? 70 : 100}
+              />
             </div>
 
-            {/* More Brands Section */}
+            {/* More Brands Section — auto-sliding, single line */}
             <div>
               <h3 style={{
                 fontSize: isMobile ? 18 : 22,
                 fontWeight: 600,
                 color: '#333',
-                marginBottom: 20,
+                marginBottom: 12,
                 fontFamily: "'Cormorant Garamond', serif",
                 letterSpacing: 0.5,
                 display: 'flex',
@@ -1089,15 +1084,13 @@ const Testimonials = () => {
                 <FaGlobe size={20} color={gold} />
                 More Brands
               </h3>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-                gap: isMobile ? 12 : 16,
-              }}>
-                {clientsData.moreBrands.map((client, idx) => (
-                  <ClientLogoCard key={idx} client={client} isMobile={isMobile} />
-                ))}
-              </div>
+              <LogoCarousel
+                items={clientsData.moreBrands}
+                isMobile={isMobile}
+                intervalMs={2800}
+                itemWidth={isMobile ? 120 : 170}
+                itemHeight={isMobile ? 70 : 100}
+              />
             </div>
           </div>
         </div>

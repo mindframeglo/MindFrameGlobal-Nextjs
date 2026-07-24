@@ -47,13 +47,13 @@ const projects = [
     category: "Case Study · OUR WORK",
     image: '/assets/work/work5.png',
   },
-  {
-    id: 6,
-    slug: "shahi-zaikha",
-    title: "Branding Solutions for Shahi Zaikha",
-    category: "Case Study · OUR WORK",
-    image: '/assets/work/work6.png',
-  },
+  // {
+  //   id: 6,
+  //   slug: "shahi-zaikha",
+  //   title: "Branding Solutions for Shahi Zaikha",
+  //   category: "Case Study · OUR WORK",
+  //   image: '/assets/work/work6.png',
+  // },
   {
     id: 7,
     slug: "perkin-elmer",

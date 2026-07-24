@@ -68,13 +68,13 @@ const portfolioData = {
     ClientName: "BISMA CORP - dedicated to revolutionizing your data management journey for BISMA",
     images: ["/assets/work/work5.png"],
   },
-  "shahi-zaikha": {
-    title: "Branding Solutions for Shahi Zaikha",
-    desc: "Mind Frame Global provided comprehensive branding services for Shahi Zaikha, a premium catering service based in San Francisco. Our team developed a cohesive brand identity that reflected the essence of their culinary offerings, including logo design, color schemes, and visual aesthetics that positioned them as a standout in the catering industry",
-    ProjectType: "Branding Solutions for Shahi Zaikha",
-    ClientName: "Shahi Zaikha - Family Restaurant",
-    images: ["/assets/work/work6.png"],
-  },
+  // "shahi-zaikha": {
+  //   title: "Branding Solutions for Shahi Zaikha",
+  //   desc: "Mind Frame Global provided comprehensive branding services for Shahi Zaikha, a premium catering service based in San Francisco. Our team developed a cohesive brand identity that reflected the essence of their culinary offerings, including logo design, color schemes, and visual aesthetics that positioned them as a standout in the catering industry",
+  //   ProjectType: "Branding Solutions for Shahi Zaikha",
+  //   ClientName: "Shahi Zaikha - Family Restaurant",
+  //   images: ["/assets/work/work6.png"],
+  // },
   "perkin-elmer": {
     title: "PerkinElmer Digital Growth Strategy",
     desc: "PerkinElmer aimed to enhance its market presence and drive business growth with a focused Digital Strategy. We provided a suite of services, including Creative Designing, Social Media Marketing, Digital Marketing, Event Pramotion, and Performance Marketing. Our approach was designed to elevate brand visibility, foster engagement, and ultimately boost their market share.",
