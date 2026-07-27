@@ -289,7 +289,7 @@ export const submitQuickContact = async (req, res, next) => {
     }
 
     const mailOptions = {
-      from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
+      from: `"Mind Frame Global Website" <${process.env.SMTP_USER}>`,
       to: "msali@mindframeglobal.com",
       cc: "seo@mindframeglobal.com",
       replyTo: email,
