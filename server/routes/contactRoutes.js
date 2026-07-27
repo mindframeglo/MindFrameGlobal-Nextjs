@@ -13,7 +13,8 @@ const router = express.Router();
 
 // ── Public routes ──────────────────────
 router.post('/contact', createContact);                   // DB में save होगा
-router.post('/quick', submitQuickContact);                // सिर्फ email भेजेगा
+router.post('/contact/quick', submitQuickContact);        // header + contact form email bhejega
+router.post('/quick', submitQuickContact);                // backward compatibility
 
 // ── Admin routes ──────────────────────
 router.get('/contacts', getAllContacts);
