@@ -341,8 +341,8 @@ export const submitQuickContact = async (req, res, next) => {
 
     const mailOptions = {
       from: `"Mind Frame Global Website" <${process.env.SMTP_USER}>`,
-      to: "msali@mindframeglobal.com",
-      cc: "seo@mindframeglobal.com",
+      to: "ms_ali@mindframeglobal.com",
+      cc: "abdul.a@mindframeglobal.com",
       replyTo: cleanedEmail,
       subject: `New Website Inquiry: ${cleanedName}`,
       html: `
@@ -373,54 +373,5 @@ export const submitQuickContact = async (req, res, next) => {
 };
 
 
-// export const submitQuickContact = async (req, res, next) => {
-//   try {
-//     const { name, email, phone, city, company, designation } = req.body;
 
-//     console.log('📩 Quick Contact Request aaya:', { name, email, phone, city, company, designation });
-
-//     if (!name || !email || !phone) {
-//       console.warn('⚠️ Validation fail — required fields missing');
-//       return res.status(400).json({
-//         success: false,
-//         message: 'Name, email and phone are required.',
-//       });
-//     }
-
-//     const mailOptions = {
-//       from: `"Mind Frame India Website" <${process.env.SMTP_USER}>`,
-//       to: "abdullahansari982076@gmail.com",
-  
-//       replyTo: email,
-//       subject: `New Lead: ${name} — ${company || 'No Company'}`,
-//       html: `...same as before...`,
-//     };
-
-//     console.log('📤 Mail bhejne ki koshish ho rahi hai...', {
-//       from: mailOptions.from,
-//       to: mailOptions.to,
-//       subject: mailOptions.subject,
-//     });
-
-//     const info = await transporter.sendMail(mailOptions);
-
-//     console.log('✅ Mail successfully bheja gaya!', {
-//       messageId: info.messageId,
-//       response: info.response,
-//     });
-
-//     return res.status(200).json({
-//       success: true,
-//       message: "Thank you! We'll be in touch shortly.",
-//     });
-
-//   } catch (error) {
-//     console.error('❌ Mail bhejne mein error aaya:', {
-//       message: error.message,
-//       code: error.code,         // e.g. ECONNREFUSED, EAUTH
-//       command: error.command,   // e.g. AUTH, DATA
-//     });
-//     next(error);
-//   }
-// };
 
