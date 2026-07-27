@@ -146,13 +146,20 @@ export default function Contact() {
       }
       setLoading(true);
       try {
-        const response = await apiClient.post('/contact', values);
+        const response = await apiClient.post('/contact', {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          message: values.message,
+          company: '',
+          designation: '',
+        });
         if (response.data.success) {
           toast.success('Thank you! We will get back to you soon.');
           resetForm();
           setCaptchaChecked(false);
         } else {
-          toast.error('Something went wrong. Please try again.');
+          toast.error(response.data.message || 'Something went wrong. Please try again.');
         }
       } catch (error) {
         console.error('Contact form error:', error);

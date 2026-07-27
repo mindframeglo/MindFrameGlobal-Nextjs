@@ -37,9 +37,21 @@ const transporter = nodemailer.createTransport({
  */
 export const createContact = async (req, res, next) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const { name, email, phone, message, company, designation, creativeSolution, budgetRange, contactNumber, comments } = req.body;
 
-    const hasRecent = await Contact.hasRecentSubmission(email, phone);
+    const cleanedName = name?.trim();
+    const cleanedEmail = email?.trim().toLowerCase();
+    const cleanedPhone = phone || contactNumber || '';
+    const cleanedMessage = message || comments || '';
+
+    if (!cleanedName || !cleanedEmail || !cleanedPhone || !cleanedMessage) {
+      return res.status(400).json({
+        success: false,
+        message: 'Name, email, phone and message are required.'
+      });
+    }
+
+    const hasRecent = await Contact.hasRecentSubmission(cleanedEmail, cleanedPhone);
     if (hasRecent) {
       return res.status(429).json({
         success: false,
@@ -48,11 +60,33 @@ export const createContact = async (req, res, next) => {
     }
 
     const contact = await Contact.create({
-      name: name.trim(),
-      email: email.toLowerCase().trim(),
-      phone: phone.trim(),
-      message: message.trim(),
+      name: cleanedName,
+      email: cleanedEmail,
+      phone: cleanedPhone,
+      message: cleanedMessage,
     });
+
+    const mailOptions = {
+      from: `"Mind Frame Global Website" <${process.env.SMTP_USER}>`,
+      to: 'msali@mindframeglobal.com',
+      cc: 'seo@mindframeglobal.com',
+      replyTo: cleanedEmail,
+      subject: `New Website Inquiry: ${cleanedName}`,
+      html: `
+        <h2 style="color:#c9a84c;font-family:Arial,sans-serif;">New Contact Form Submission</h2>
+        <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
+          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${cleanedName}</td></tr>
+          <tr><td><strong>Email</strong></td><td><a href="mailto:${cleanedEmail}">${cleanedEmail}</a></td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Phone</strong></td><td>${cleanedPhone}</td></tr>
+          <tr><td><strong>Company</strong></td><td>${company || '—'}</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Service / Designation</strong></td><td>${designation || creativeSolution || '—'}</td></tr>
+          <tr><td><strong>Budget Range</strong></td><td>${budgetRange || '—'}</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Message</strong></td><td>${cleanedMessage}</td></tr>
+        </table>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
 
     res.status(201).json({
       success: true,
@@ -279,9 +313,26 @@ export const getContactStats = async (req, res, next) => {
  */
 export const submitQuickContact = async (req, res, next) => {
   try {
-    const { name, email, phone, city, company, designation } = req.body;
+    const {
+      name,
+      email,
+      phone,
+      city,
+      company,
+      designation,
+      message,
+      comments,
+      creativeSolution,
+      budgetRange,
+      contactNumber,
+    } = req.body;
 
-    if (!name || !email || !phone) {
+    const cleanedName = name?.trim();
+    const cleanedEmail = email?.trim().toLowerCase();
+    const cleanedPhone = phone || contactNumber || '';
+    const cleanedMessage = message || comments || '';
+
+    if (!cleanedName || !cleanedEmail || !cleanedPhone) {
       return res.status(400).json({
         success: false,
         message: 'Name, email and phone are required.',
@@ -292,17 +343,19 @@ export const submitQuickContact = async (req, res, next) => {
       from: `"Mind Frame Global Website" <${process.env.SMTP_USER}>`,
       to: "msali@mindframeglobal.com",
       cc: "seo@mindframeglobal.com",
-      replyTo: email,
-      subject: `New Lead: ${name} — ${company || 'No Company'}`,
+      replyTo: cleanedEmail,
+      subject: `New Website Inquiry: ${cleanedName}`,
       html: `
-        <h2 style="color:#c9a84c;font-family:Arial,sans-serif;">New Quick Contact Submission</h2>
+        <h2 style="color:#c9a84c;font-family:Arial,sans-serif;">New Website Inquiry</h2>
         <table cellpadding="10" style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:14px;">
-          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${name}</td></tr>
-          <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
-          <tr style="background:#f9f9f9"><td><strong>Phone</strong></td><td>${phone}</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Name</strong></td><td>${cleanedName}</td></tr>
+          <tr><td><strong>Email</strong></td><td><a href="mailto:${cleanedEmail}">${cleanedEmail}</a></td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Phone</strong></td><td>${cleanedPhone}</td></tr>
           <tr><td><strong>City</strong></td><td>${city || '—'}</td></tr>
           <tr style="background:#f9f9f9"><td><strong>Company</strong></td><td>${company || '—'}</td></tr>
-          <tr><td><strong>Designation</strong></td><td>${designation || '—'}</td></tr>
+          <tr><td><strong>Designation / Service</strong></td><td>${designation || creativeSolution || '—'}</td></tr>
+          <tr style="background:#f9f9f9"><td><strong>Budget Range</strong></td><td>${budgetRange || '—'}</td></tr>
+          <tr><td><strong>Message</strong></td><td>${cleanedMessage || '—'}</td></tr>
         </table>
       `,
     };

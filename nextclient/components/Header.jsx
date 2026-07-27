@@ -316,6 +316,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { FaTimes, FaChevronDown } from 'react-icons/fa';
+import apiClient from '@/services/apiClient';
 
 // USA Flag SVG Component
 const USAFlag = ({ size = 24 }) => (
@@ -525,13 +526,26 @@ function ContactModal({ isOpen, onClose }) {
           validationSchema={ContactSchema}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             try {
-              await new Promise((resolve) => setTimeout(resolve, 800));
-              console.log('Contact form submitted:', values);
-              toast.success("Thanks! We'll get back to you shortly.");
-              resetForm();
-              onClose();
+              const response = await apiClient.post('/contact/quick', {
+                name: values.name,
+                email: values.email,
+                phone: values.contactNumber,
+                company: values.company,
+                designation: values.creativeSolution,
+                message: values.comments,
+                creativeSolution: values.creativeSolution,
+                budgetRange: values.budgetRange,
+              });
+
+              if (response.data?.success) {
+                toast.success("Thanks! We'll get back to you shortly.");
+                resetForm();
+                onClose();
+              } else {
+                toast.error(response.data?.message || 'Something went wrong. Please try again.');
+              }
             } catch (err) {
-              toast.error('Something went wrong. Please try again.');
+              toast.error(err.response?.data?.message || 'Something went wrong. Please try again.');
             } finally {
               setSubmitting(false);
             }
