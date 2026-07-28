@@ -125,13 +125,13 @@ const USAFlag = ({ size = 24 }) => (
 
 // Logo data
 const logos = [
-  { name: 'New India Assurance', image: client1 },
+  { name: 'New Global Assurance', image: client1 },
   { name: 'InFocus', image: client2 },
   { name: 'Pratimoksha', image: client3 },
   { name: 'Leadership Mavericks', image: client4 },
   { name: 'Lilavati Hospital', image: client5 },
   { name: 'Supreme Furniture', image: client6 },
-  { name: 'Mindframe India', image: client7 },
+  { name: 'Mindframe Global', image: client7 },
   { name: 'Additional Client', image: client8 },
 ];
 
@@ -162,9 +162,15 @@ const testimonials = [
     rating: 5,
   },
   {
-    text: "Our Company is glad to be associated with Mind Frame India. Extremely efficient and hard working team very well led by their Super efficient, energetic and brilliant director Shahnawaz. They understand the world of marketing in its true sense. Their ability to meet the timelines at short notice without compromising on quality, is commendable. We look forward to a mutually beneficial business association with them even in near future and wish them success.",
+    text: "Our Company is glad to be associated with Mind Frame Global. Extremely efficient and hard working team very well led by their Super efficient, energetic and brilliant director Shahnawaz. They understand the world of marketing in its true sense. Their ability to meet the timelines at short notice without compromising on quality, is commendable. We look forward to a mutually beneficial business association with them even in near future and wish them success.",
     author: 'Dr. Aneesah Nadir',
     company: 'Head of I.S.S.A',
+    rating: 5,
+  },
+  {
+    text: "Our Company is glad to be associated with Mind Frame Global. Extremely efficient and hard working team very well led by their Super efficient, energetic and brilliant director Shahnawaz. They understand the world of marketing in its true sense. Their ability to meet the timelines at short notice without compromising on quality, is commendable. We look forward to a mutually beneficial business association with them even in near future and wish them success.",
+    author: 'Kamel Shiha',
+    company: 'Head of jmart',
     rating: 5,
   },
 ];
@@ -185,6 +191,14 @@ const videoTestimonials = [
     company: 'Head of I.S.S.A',
     logo: non3,
     text: "Extremely efficient and hard working team, very well led by their super efficient, energetic and brilliant director Shahnawaz.",
+    rating: 5,
+  },
+   {
+    videoUrl: 'https://www.youtube.com/shorts/tsKakuOqUA0',
+    author: 'kamel Shiha',
+    company: 'Founder and Director',
+    logo: more3,
+    text: "Behind every brand is a team that thinks beyond borders. Grateful to Mind Frame Global for making scale predictable.Huge appreciation for Mind Frame Global for taking us global.",
     rating: 5,
   },
 ];
